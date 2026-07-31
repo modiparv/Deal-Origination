@@ -1,0 +1,73 @@
+# Negative fixture: rubric weights sum to 0.90.
+asset_class: buyout
+deal_type: control
+geography:
+  include:
+  - GB
+id: bad-weights
+name: UK Lower-Mid-Market Control Buyout
+ownership:
+  exclude:
+  - pe_backed
+  - listed
+  - listed_subsidiary
+  include:
+  - owner_managed
+  - independent
+  on_unclassifiable: flag
+rubric:
+- guidance: 'Score on margin stability, revenue trajectory over available filed periods,
+    and working capital discipline. Cite figure IDs.
+
+    '
+  id: financial_quality
+  scale:
+  - 1
+  - 5
+  weight: 0.2
+- id: succession_opportunity
+  scale:
+  - 1
+  - 5
+  weight: 0.25
+- id: market_position
+  scale:
+  - 1
+  - 5
+  weight: 0.2
+- id: complexity_risk
+  scale:
+  - 1
+  - 5
+  weight: 0.25
+sectors:
+  exclude:
+  - 6419*
+  include:
+  - 620*
+  - 711*
+  - 8610*
+  taxonomy: sic_2007
+signals:
+  new_security_registered:
+    exclude_lender_categories:
+    - invoice_finance
+    - asset_finance
+    - landlord
+    exclude_refinance: true
+    lookback_months: 24
+  succession_risk:
+    no_younger_director_appointed:
+      age_below: 48
+      within_years: 5
+    psc_age_threshold: 58
+size:
+  on_insufficient_data: flag
+  primary:
+    currency: GBP
+    max: 5000000
+    metric: ebitda
+    min: 1000000
+thresholds:
+  advance_to_profile: 3.5
+  flag_for_review: 3.0

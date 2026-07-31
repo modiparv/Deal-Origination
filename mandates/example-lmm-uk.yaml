@@ -1,0 +1,69 @@
+# UK lower-mid-market control buyout mandate.
+#
+# geography is GB only: the Companies House register (England & Wales,
+# Scotland, Northern Ireland). Ireland is a separate registry (CRO) with
+# paid, PDF-only accounts — see PLAN.md finding W2.
+#
+# size.metric ebitda validates with a recorded WARNING: its input concepts
+# (operating_profit, depreciation_amortisation) are only available where a
+# P&L is filed. Companies outside that condition screen as
+# insufficient_data and are handled per on_insufficient_data — a permanent
+# property of UK public data, not a transitional gap.
+
+id: lmm-uk-buyout
+name: UK Lower-Mid-Market Control Buyout
+asset_class: buyout
+deal_type: control
+
+geography:
+  include: [GB]
+
+size:
+  primary:
+    metric: ebitda
+    currency: GBP
+    min: 1_000_000
+    max: 5_000_000
+  on_insufficient_data: flag
+
+sectors:
+  taxonomy: sic_2007
+  include: ["620*", "711*", "8610*"]
+  exclude: ["6419*"]
+
+ownership:
+  include: [owner_managed, independent]
+  exclude: [pe_backed, listed, listed_subsidiary]
+  on_unclassifiable: flag
+
+signals:
+  succession_risk:
+    psc_age_threshold: 58
+    no_younger_director_appointed:
+      age_below: 48
+      within_years: 5
+  new_security_registered:
+    lookback_months: 24
+    exclude_refinance: true
+    exclude_lender_categories: [invoice_finance, asset_finance, landlord]
+
+rubric:
+  - id: financial_quality
+    weight: 0.30
+    scale: [1, 5]
+    guidance: >
+      Score on margin stability, revenue trajectory over available filed
+      periods, and working capital discipline. Cite figure IDs.
+  - id: succession_opportunity
+    weight: 0.25
+    scale: [1, 5]
+  - id: market_position
+    weight: 0.20
+    scale: [1, 5]
+  - id: complexity_risk
+    weight: 0.25
+    scale: [1, 5]
+
+thresholds:
+  advance_to_profile: 3.5
+  flag_for_review: 3.0
