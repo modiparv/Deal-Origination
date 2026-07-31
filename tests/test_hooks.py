@@ -73,6 +73,27 @@ class TestNetworkAllowlist:
             decision({"tool_name": "Bash", "tool_input": {"command": "pytest -q"}}) is None
         )
 
+    def test_bash_pip_install_from_pypi_allowed(self):
+        # Build infrastructure is not a data source; pip must work.
+        assert (
+            decision(
+                {
+                    "tool_name": "Bash",
+                    "tool_input": {
+                        "command": "curl -sS https://pypi.org/simple/pydantic/"
+                    },
+                }
+            )
+            is None
+        )
+
+    def test_webfetch_build_host_still_denied(self):
+        # BUILD_HOSTS applies to Bash only; WebFetch stays source-scoped.
+        assert (
+            decision({"tool_name": "WebFetch", "tool_input": {"url": "https://pypi.org/x"}})
+            == "deny"
+        )
+
 
 class TestCredentialGuard:
     def test_bash_touching_env_denied(self):

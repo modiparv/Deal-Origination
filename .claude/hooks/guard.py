@@ -34,6 +34,15 @@ ALLOWED_HOSTS = (
     "developer-specs.company-information.service.gov.uk",
 )
 
+# Build/packaging infrastructure, permitted for shell commands only (pip,
+# uv). These are NOT data sources: nothing fetched from them can become a
+# figure — provenance is enforced at the schema layer, where a filed
+# figure must cite a SourceDocument from a registry adapter.
+BUILD_HOSTS = (
+    "pypi.org",
+    "files.pythonhosted.org",
+)
+
 _NETWORK_CMD_RE = re.compile(r"\b(curl|wget|httpx|http|nc|ncat|telnet)\b")
 _URL_HOST_RE = re.compile(r"https?://([A-Za-z0-9.-]+)")
 _CREDENTIAL_RE = re.compile(
@@ -51,9 +60,9 @@ def _deny(reason: str) -> dict:
     }
 
 
-def _host_allowed(host: str) -> bool:
+def _host_allowed(host: str, extra: tuple[str, ...] = ()) -> bool:
     host = host.lower().rstrip(".")
-    return any(host == allowed for allowed in ALLOWED_HOSTS)
+    return any(host == allowed for allowed in (*ALLOWED_HOSTS, *extra))
 
 
 def decide(payload: dict) -> dict | None:
@@ -93,7 +102,7 @@ def decide(payload: dict) -> dict | None:
                     "explicitly so the allowlist can check it"
                 )
             for host in hosts:
-                if not _host_allowed(host):
+                if not _host_allowed(host, extra=BUILD_HOSTS):
                     return _deny(
                         f"network command targets {host!r}, outside the source "
                         f"allowlist"
