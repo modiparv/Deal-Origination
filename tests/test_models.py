@@ -149,11 +149,54 @@ class TestEvent:
         ev = Event(
             id="E1",
             company_id="C1",
-            event_type=EventType.CHARGE_REGISTERED,
+            event_type=EventType.SECURITY_INTEREST_REGISTERED,
             event_date=D,
             transaction_id="TX1",
         )
-        assert ev.event_type is EventType.CHARGE_REGISTERED
+        assert ev.event_type is EventType.SECURITY_INTEREST_REGISTERED
+
+
+class TestModeAwareScoring:
+    def test_skipped_dimension_requires_reason_and_no_value(self):
+        from deal_engine.models import Score
+
+        with pytest.raises(pydantic.ValidationError, match="skip_reason"):
+            Score(
+                id="S1", company_id="C1", mandate_id="M1",
+                rubric_dimension="financial_quality", rationale="n/a",
+                skipped=True, run_id="R1",
+            )
+        with pytest.raises(pydantic.ValidationError, match="must not carry a score"):
+            Score(
+                id="S1", company_id="C1", mandate_id="M1",
+                rubric_dimension="financial_quality", rationale="n/a",
+                skipped=True, skip_reason="financial mode unavailable",
+                score=3.0, run_id="R1",
+            )
+        with pytest.raises(pydantic.ValidationError, match="requires a score"):
+            Score(
+                id="S1", company_id="C1", mandate_id="M1",
+                rubric_dimension="financial_quality", rationale="n/a",
+                run_id="R1",
+            )
+
+    def test_renormalised_composite_must_be_flagged(self):
+        from deal_engine.models import CompositeScore
+
+        with pytest.raises(pydantic.ValidationError, match="renormalised"):
+            CompositeScore(
+                id="CS1", company_id="C1", mandate_id="M1", value=3.7,
+                dimensions_run=["market_position"],
+                dimensions_skipped=["financial_quality"],
+                renormalised=False, run_id="R1",
+            )
+        ok = CompositeScore(
+            id="CS1", company_id="C1", mandate_id="M1", value=3.7,
+            dimensions_run=["market_position"],
+            dimensions_skipped=["financial_quality"],
+            renormalised=True, run_id="R1",
+        )
+        assert ok.renormalised
 
 
 class TestModelTableParity:
@@ -163,10 +206,11 @@ class TestModelTableParity:
         sqlalchemy = pytest.importorskip("sqlalchemy")  # noqa: F841
         from deal_engine.db import tables
         from deal_engine.models import (
+            BeneficialOwner,
             Company,
+            CompositeScore,
             FilingRecord,
             Officer,
-            PscRecord,
             RunRecord,
             Score,
             ScreenResult,
@@ -193,12 +237,13 @@ class TestModelTableParity:
                 },
             ),
             (Officer, tables.OfficerRow, set(), set()),
-            (PscRecord, tables.PscRecordRow, set(), set()),
+            (BeneficialOwner, tables.BeneficialOwnerRow, set(), set()),
             (FilingRecord, tables.FilingRow, set(), set()),
             (Event, tables.EventRow, set(), set()),
             (RunRecord, tables.RunRow, set(), set()),
             (ScreenResult, tables.ScreenResultRow, set(), set()),
             (Score, tables.ScoreRow, set(), set()),
+            (CompositeScore, tables.CompositeScoreRow, set(), set()),
         ]
         for model, row_cls, model_only, row_only in pairs:
             model_fields = set(model.model_fields)

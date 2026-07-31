@@ -8,24 +8,47 @@ pytest.importorskip(
 
 from pathlib import Path  # noqa: E402
 
+from deal_engine.jurisdiction import load_jurisdictions  # noqa: E402
 from deal_engine.mandate.loader import MandateLoadError, load_mandate, mandate_numerals  # noqa: E402
 from deal_engine.mandate.validator import Severity, validate_mandate  # noqa: E402
+from deal_engine.models.mode import ModeRequirement, ScreeningMode  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-EXAMPLE = ROOT / "mandates" / "example-lmm-uk.yaml"
+EXAMPLE = ROOT / "mandates" / "example-lmm-gb.yaml"
 FIXTURES = ROOT / "tests" / "fixtures" / "mandates"
+
+# Real profiles plus the signal-only test jurisdiction (XS).
+PROFILES = {
+    **load_jurisdictions(ROOT / "jurisdictions"),
+    **load_jurisdictions(ROOT / "tests" / "fixtures" / "jurisdictions"),
+}
 
 
 def report_for(path):
-    return validate_mandate(load_mandate(path))
+    return validate_mandate(load_mandate(path), jurisdictions=PROFILES)
+
+
+class TestJurisdictionProfiles:
+    def test_gb_profile_loads(self):
+        gb = load_jurisdictions(ROOT / "jurisdictions")["GB"]
+        assert set(gb.available_modes) == {ScreeningMode.FINANCIAL, ScreeningMode.SIGNAL}
+        assert gb.classification_taxonomy == "sic_2007"
+        assert gb.validate_registration_id("00000006")
+        assert gb.validate_registration_id("SC123456")
+        assert not gb.validate_registration_id("1234")
+        assert gb.filing_lag is not None and gb.filing_lag.max_months == 21
 
 
 class TestExampleMandate:
     def test_loads(self):
         mandate = load_mandate(EXAMPLE)
-        assert mandate.id == "lmm-uk-buyout"
+        assert mandate.id == "lmm-gb-buyout"
         assert mandate.geography.include == ["GB"]
         assert mandate.size.primary.min == 1_000_000  # YAML underscore literal
+        assert set(mandate.required_modes) == {ScreeningMode.FINANCIAL, ScreeningMode.SIGNAL}
+        by_id = {d.id: d for d in mandate.rubric}
+        assert by_id["financial_quality"].requires_mode is ModeRequirement.FINANCIAL
+        assert by_id["market_position"].requires_mode is ModeRequirement.ANY
 
     def test_validates_with_conditional_coverage_warning(self):
         report = report_for(EXAMPLE)
@@ -44,6 +67,7 @@ class TestBrokenMandates:
         report = report_for(FIXTURES / "gb-ie-ebitda.yaml")
         assert not report.ok
         codes = {i.code for i in report.errors}
+        assert "unknown_jurisdiction" in codes  # IE has no profile
         assert "no_adapter_for_jurisdiction" in codes
         assert "concept_unavailable" in codes
         # The amended Phase 0 gate: errors name the specific unsatisfied
@@ -52,6 +76,17 @@ class TestBrokenMandates:
         assert "'IE'" in messages
         assert "operating_profit" in messages
         assert "ebitda" in messages
+
+    def test_financial_mode_over_signal_only_jurisdiction_rejected(self):
+        report = report_for(FIXTURES / "financial-mode-over-signal-only.yaml")
+        assert not report.ok
+        issue = next(i for i in report.errors if i.code == "mode_unavailable")
+        # Names the modes, the jurisdiction, and the reason.
+        assert "'XS'" in issue.message
+        assert "financial" in issue.message
+        assert "signal" in issue.message
+        assert issue.data["jurisdiction"] == "XS"
+        assert issue.data["available_modes"] == ["signal"]
 
     def test_bad_weights_rejected(self):
         report = report_for(FIXTURES / "bad-weights.yaml")
@@ -81,7 +116,7 @@ class TestBrokenMandates:
 
 class TestSignalParams:
     def test_bad_signal_params_rejected(self, tmp_path):
-        text = (EXAMPLE).read_text().replace("psc_age_threshold: 58", "psc_age_threshold: 300")
+        text = (EXAMPLE).read_text().replace("beneficial_owner_age_threshold: 58", "beneficial_owner_age_threshold: 300")
         bad = tmp_path / "bad-params.yaml"
         bad.write_text(text)
         report = report_for(bad)

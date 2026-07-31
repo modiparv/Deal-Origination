@@ -19,6 +19,15 @@ tiers reflect UK filing regimes as of 2026:
 The P&L gap is permanent architecture, not transitional: the April 2028
 ECCTA reforms require small companies to file a P&L but allow them to opt
 out of public display.
+
+This module is also the home of Companies House vocabulary. Core modules
+use neutral terms; the adapter translates (see VOCABULARY). Registry
+gotchas that Phase 1 parsers must honour, recorded here rather than in
+core: the canonical PSC statement enum key misspells "significant"
+(`no-individual-or-entity-with-signficant-control`), the charges list
+misspells `unfiletered_count`, officer and PSC dates of birth are
+month/year only, and the filing-history category enum is officially
+incomplete — store verbatim, match tolerantly, never validate strictly.
 """
 
 from __future__ import annotations
@@ -29,6 +38,27 @@ from deal_engine.adapters.base import (
     ConceptCoverage,
     CoverageTier,
 )
+
+# Local term -> canonical vocabulary. Every Companies House-specific name
+# lives on the left; core code knows only the right-hand terms. Phase 1
+# mappers translate at the adapter boundary.
+VOCABULARY = {
+    "psc": "beneficial_owner",
+    "psc statement": "ownership_statement",
+    "natures of control": "control_natures",
+    "charge": "security_interest",
+    "persons entitled": "secured_parties",
+    "particulars": "details",
+    "company number (CRN)": "registration_id",
+    "sic code": "classification_code (taxonomy: sic_2007)",
+    "accounting reference date": "fiscal_period_end",
+    "filleted / abridged / micro-entity accounts": (
+        "account_type value feeding capability-matrix conditions; "
+        "concept unavailability is a coverage fact, not a core state"
+    ),
+    "form codes (AA, CS01, MR01, AA01, ...)": "FilingRecord.type, verbatim",
+    "confirmation statement": "statutory filing: confirmation_of_details",
+}
 
 # Account types under which a P&L is on the public record.
 _PL_BEARING = frozenset({"full", "medium", "group"})

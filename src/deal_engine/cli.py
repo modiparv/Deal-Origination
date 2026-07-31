@@ -22,8 +22,14 @@ EXIT_NOT_IMPLEMENTED = 3
 
 
 @mandate_app.command("validate")
-def mandate_validate(path: Path = typer.Argument(..., help="Mandate YAML file")) -> None:
-    """Validate a mandate against schema, registries and adapter capabilities."""
+def mandate_validate(
+    path: Path = typer.Argument(..., help="Mandate YAML file"),
+    jurisdictions: Path = typer.Option(
+        Path("jurisdictions"), "--jurisdictions", help="Jurisdiction profile directory"
+    ),
+) -> None:
+    """Validate a mandate against schema, registries, jurisdiction
+    profiles and adapter capabilities."""
     logger = RunLogger("mandate validate", {"path": str(path)}).start()
     try:
         mandate = load_mandate(path)
@@ -32,7 +38,7 @@ def mandate_validate(path: Path = typer.Argument(..., help="Mandate YAML file"))
         logger.finish(EXIT_LOAD_FAILED)
         raise typer.Exit(EXIT_LOAD_FAILED)
 
-    report = validate_mandate(mandate)
+    report = validate_mandate(mandate, profile_dir=jurisdictions)
     for issue in report.issues:
         stream_err = issue.severity is Severity.ERROR
         typer.echo(f"{issue.severity.value.upper()} [{issue.code}] {issue.message}", err=stream_err)
@@ -63,8 +69,11 @@ def db_init(
 def ingest(
     mandate: Path = typer.Option(..., "--mandate", help="Mandate YAML file"),
     limit: int = typer.Option(200, "--limit", help="Maximum companies to ingest"),
+    jurisdictions: Path = typer.Option(
+        Path("jurisdictions"), "--jurisdictions", help="Jurisdiction profile directory"
+    ),
 ) -> None:
-    """Ingest companies for a mandate (Companies House adapter: Phase 1)."""
+    """Ingest companies for a mandate (registry adapters arrive in Phase 1)."""
     logger = RunLogger("ingest", {"mandate": str(mandate), "limit": limit}).start()
     try:
         loaded = load_mandate(mandate)
@@ -72,14 +81,14 @@ def ingest(
         typer.echo(f"LOAD ERROR: {exc}", err=True)
         logger.finish(EXIT_LOAD_FAILED)
         raise typer.Exit(EXIT_LOAD_FAILED)
-    report = validate_mandate(loaded)
+    report = validate_mandate(loaded, profile_dir=jurisdictions)
     if not report.ok:
         for issue in report.errors:
             typer.echo(f"ERROR [{issue.code}] {issue.message}", err=True)
         logger.finish(EXIT_VALIDATION_FAILED)
         raise typer.Exit(EXIT_VALIDATION_FAILED)
     typer.echo(
-        "ingest is not available yet: the Companies House adapter arrives in "
+        "ingest is not available yet: the first registry adapter arrives in "
         "Phase 1 (the mandate itself validated successfully)",
         err=True,
     )

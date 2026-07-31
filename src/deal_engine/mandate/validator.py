@@ -1,15 +1,20 @@
 """Semantic mandate validation against static declarations.
 
-Produces a report of issues with two severities:
+Reads two kinds of declaration: jurisdiction profiles (what a
+jurisdiction is — modes, taxonomy, identifier format) and adapter
+capability matrices (what an adapter can supply). Produces a report of
+issues with two severities:
 
-- ERROR: the mandate cannot run — unknown taxonomy or signal, malformed
-  parameters, a jurisdiction no enabled adapter covers, a size metric
-  whose required concepts no adapter supplies for a jurisdiction, or an
-  unobservable metric not explicitly declared modelled.
+- ERROR: the mandate cannot run — a jurisdiction with no profile, a
+  required screening mode the profile does not offer, an unknown
+  taxonomy or signal, malformed parameters, a jurisdiction no enabled
+  adapter covers, a size metric whose required concepts no adapter
+  supplies for a jurisdiction, or an unobservable metric not explicitly
+  declared modelled.
 - WARNING: the mandate runs with recorded coverage gaps — e.g. a metric
-  whose inputs are only conditionally available (P&L-bearing filers), with
-  the machine-readable condition attached so the coverage report can
-  predict observability before ingest.
+  whose inputs are only conditionally available, with the
+  machine-readable condition attached so the coverage report can predict
+  observability before ingest.
 """
 
 from __future__ import annotations
@@ -17,6 +22,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 from enum import Enum
+from pathlib import Path
 
 from pydantic import ValidationError
 
@@ -24,10 +30,14 @@ from deal_engine.adapters.base import CapabilityMatrix, CoverageTier
 from deal_engine.adapters.registry import ENABLED_ADAPTERS
 from deal_engine.concepts import CONCEPTS
 from deal_engine.derive.registry import DERIVED_METRICS, resolve_required_concepts
+from deal_engine.jurisdiction import (
+    DEFAULT_PROFILE_DIR,
+    JurisdictionProfile,
+    load_jurisdictions,
+)
 from deal_engine.models.mandate import Mandate, SizeMetricSpec
 from deal_engine.signals.registry import SIGNALS
 
-KNOWN_TAXONOMIES = {"sic_2007"}
 _SECTOR_CODE_RE = re.compile(r"^\d{1,5}\*?$")
 _WEIGHT_TOLERANCE = 1e-6
 
@@ -65,16 +75,19 @@ class ValidationReport:
 def validate_mandate(
     mandate: Mandate,
     adapters: dict[str, CapabilityMatrix] | None = None,
+    jurisdictions: dict[str, JurisdictionProfile] | None = None,
+    profile_dir: Path | str = DEFAULT_PROFILE_DIR,
 ) -> ValidationReport:
     matrices = list((adapters if adapters is not None else ENABLED_ADAPTERS).values())
+    profiles = jurisdictions if jurisdictions is not None else load_jurisdictions(profile_dir)
     report = ValidationReport()
 
     _check_rubric(mandate, report)
     _check_thresholds(mandate, report)
-    _check_sectors(mandate, report)
+    _check_sectors(mandate, profiles, report)
     _check_ownership(mandate, report)
     _check_signals(mandate, report)
-    _check_geography(mandate, matrices, report)
+    _check_geography(mandate, matrices, profiles, report)
     _check_size_metric(mandate, mandate.size.primary, "size.primary", matrices, report)
     if mandate.size.secondary is not None:
         _check_size_metric(mandate, mandate.size.secondary, "size.secondary", matrices, report)
@@ -115,14 +128,26 @@ def _check_thresholds(mandate: Mandate, report: ValidationReport) -> None:
             )
 
 
-def _check_sectors(mandate: Mandate, report: ValidationReport) -> None:
-    if mandate.sectors.taxonomy not in KNOWN_TAXONOMIES:
+def _check_sectors(
+    mandate: Mandate,
+    profiles: dict[str, JurisdictionProfile],
+    report: ValidationReport,
+) -> None:
+    # A taxonomy is "known" if some included jurisdiction's profile
+    # declares it — taxonomies are jurisdiction data, not a code constant.
+    declared = {
+        p.classification_taxonomy
+        for j, p in profiles.items()
+        if j in mandate.geography.include
+    }
+    if declared and mandate.sectors.taxonomy not in declared:
         report.issues.append(
             Issue(
                 Severity.ERROR,
                 "unknown_taxonomy",
-                f"sectors.taxonomy {mandate.sectors.taxonomy!r} is not a known "
-                f"taxonomy {sorted(KNOWN_TAXONOMIES)}",
+                f"sectors.taxonomy {mandate.sectors.taxonomy!r} is not the "
+                f"classification taxonomy of any included jurisdiction "
+                f"(declared: {sorted(declared)})",
             )
         )
     for code in [*mandate.sectors.include, *mandate.sectors.exclude]:
@@ -175,9 +200,42 @@ def _check_signals(mandate: Mandate, report: ValidationReport) -> None:
 
 
 def _check_geography(
-    mandate: Mandate, matrices: list[CapabilityMatrix], report: ValidationReport
+    mandate: Mandate,
+    matrices: list[CapabilityMatrix],
+    profiles: dict[str, JurisdictionProfile],
+    report: ValidationReport,
 ) -> None:
     for jurisdiction in mandate.geography.include:
+        profile = profiles.get(jurisdiction)
+        if profile is None:
+            report.issues.append(
+                Issue(
+                    Severity.ERROR,
+                    "unknown_jurisdiction",
+                    f"no jurisdiction profile exists for {jurisdiction!r}; add "
+                    f"one under jurisdictions/ before mandates may include it",
+                    data={"jurisdiction": jurisdiction},
+                )
+            )
+        else:
+            offered = set(profile.available_modes)
+            if not offered & set(mandate.required_modes):
+                report.issues.append(
+                    Issue(
+                        Severity.ERROR,
+                        "mode_unavailable",
+                        f"required_modes "
+                        f"{[m.value for m in mandate.required_modes]} not "
+                        f"available for jurisdiction {jurisdiction!r}: its "
+                        f"profile offers only "
+                        f"{sorted(m.value for m in offered)}",
+                        data={
+                            "jurisdiction": jurisdiction,
+                            "required_modes": [m.value for m in mandate.required_modes],
+                            "available_modes": sorted(m.value for m in offered),
+                        },
+                    )
+                )
         if not any(m.covers_jurisdiction(jurisdiction) for m in matrices):
             report.issues.append(
                 Issue(

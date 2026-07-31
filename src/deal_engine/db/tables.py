@@ -41,16 +41,19 @@ class Base(DeclarativeBase):
 
 class CompanyRow(Base):
     __tablename__ = "companies"
-    __table_args__ = (UniqueConstraint("jurisdiction", "company_number", name="uq_company_number"),)
+    __table_args__ = (
+        UniqueConstraint("jurisdiction", "registration_id", name="uq_company_registration"),
+    )
 
     id: Mapped[str] = mapped_column(String, primary_key=True)
     jurisdiction: Mapped[str] = mapped_column(String, nullable=False)
-    company_number: Mapped[str] = mapped_column(String, nullable=False)
+    registration_id: Mapped[str] = mapped_column(String, nullable=False)
     name: Mapped[str] = mapped_column(String, nullable=False)
     name_variants: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
     incorporation_date: Mapped[date | None] = mapped_column(Date)
     status: Mapped[str | None] = mapped_column(String)
-    sic_codes: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    classification_codes: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    classification_taxonomy: Mapped[str | None] = mapped_column(String)
     registered_address: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
     ownership_classification: Mapped[str | None] = mapped_column(String)
     ownership_confidence: Mapped[float | None] = mapped_column(Float)
@@ -167,17 +170,17 @@ class OfficerRow(Base):
     country_of_residence: Mapped[str | None] = mapped_column(String)
 
 
-class PscRecordRow(Base):
-    __tablename__ = "psc_records"
-    __table_args__ = (UniqueConstraint("company_id", "psc_id", name="uq_psc_record"),)
+class BeneficialOwnerRow(Base):
+    __tablename__ = "beneficial_owners"
+    __table_args__ = (UniqueConstraint("company_id", "external_id", name="uq_beneficial_owner"),)
 
     id: Mapped[str] = mapped_column(String, primary_key=True)
     company_id: Mapped[str] = mapped_column(ForeignKey("companies.id"), nullable=False)
-    psc_id: Mapped[str] = mapped_column(String, nullable=False)
+    external_id: Mapped[str] = mapped_column(String, nullable=False)
     kind: Mapped[str] = mapped_column(String, nullable=False)
     name: Mapped[str | None] = mapped_column(String)
     name_elements: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
-    natures_of_control: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    control_natures: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
     notified_on: Mapped[date | None] = mapped_column(Date)
     ceased_on: Mapped[date | None] = mapped_column(Date)
     dob_month: Mapped[int | None] = mapped_column(Integer)
@@ -185,8 +188,8 @@ class PscRecordRow(Base):
     identification: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
 
 
-class PscStatementRow(Base):
-    __tablename__ = "psc_statements"
+class OwnershipStatementRow(Base):
+    __tablename__ = "ownership_statements"
 
     id: Mapped[str] = mapped_column(String, primary_key=True)
     company_id: Mapped[str] = mapped_column(ForeignKey("companies.id"), nullable=False)
@@ -221,20 +224,20 @@ class FilingRow(Base):
     paper_filed: Mapped[bool | None] = mapped_column(Boolean)
 
 
-class ChargeRow(Base):
-    __tablename__ = "charges"
-    __table_args__ = (UniqueConstraint("company_id", "charge_code", name="uq_charge"),)
+class SecurityInterestRow(Base):
+    __tablename__ = "security_interests"
+    __table_args__ = (UniqueConstraint("company_id", "external_id", name="uq_security_interest"),)
 
     id: Mapped[str] = mapped_column(String, primary_key=True)
     company_id: Mapped[str] = mapped_column(ForeignKey("companies.id"), nullable=False)
-    charge_code: Mapped[str] = mapped_column(String, nullable=False)
+    external_id: Mapped[str] = mapped_column(String, nullable=False)
     status: Mapped[str | None] = mapped_column(String)
     created_on: Mapped[date | None] = mapped_column(Date)
     delivered_on: Mapped[date | None] = mapped_column(Date)
     satisfied_on: Mapped[date | None] = mapped_column(Date)
     classification: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
-    particulars: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
-    persons_entitled: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    details: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
+    secured_parties: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
     transactions: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
 
 
@@ -287,12 +290,33 @@ class ScreenResultRow(Base):
 
 class ScoreRow(Base):
     __tablename__ = "scores"
+    __table_args__ = (
+        CheckConstraint(
+            "(skipped = 0 AND score IS NOT NULL) OR (skipped = 1 AND score IS NULL)",
+            name="ck_score_skip_consistency",
+        ),
+    )
 
     id: Mapped[str] = mapped_column(String, primary_key=True)
     company_id: Mapped[str] = mapped_column(ForeignKey("companies.id"), nullable=False)
     mandate_id: Mapped[str] = mapped_column(String, nullable=False)
     rubric_dimension: Mapped[str] = mapped_column(String, nullable=False)
-    score: Mapped[float] = mapped_column(Float, nullable=False)
+    score: Mapped[float | None] = mapped_column(Float)
     rationale: Mapped[str] = mapped_column(Text, nullable=False)
     figure_ids_cited: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    skipped: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    skip_reason: Mapped[str | None] = mapped_column(String)
+    run_id: Mapped[str] = mapped_column(ForeignKey("runs.run_id"), nullable=False)
+
+
+class CompositeScoreRow(Base):
+    __tablename__ = "composite_scores"
+
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    company_id: Mapped[str] = mapped_column(ForeignKey("companies.id"), nullable=False)
+    mandate_id: Mapped[str] = mapped_column(String, nullable=False)
+    value: Mapped[float] = mapped_column(Float, nullable=False)
+    renormalised: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    dimensions_run: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    dimensions_skipped: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
     run_id: Mapped[str] = mapped_column(ForeignKey("runs.run_id"), nullable=False)

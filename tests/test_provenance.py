@@ -41,7 +41,7 @@ def session(tmp_path):
     init_db(engine)
     factory = make_session_factory(engine)
     with factory() as s:
-        s.add(CompanyRow(id="C1", jurisdiction="GB", company_number="00000006", name="Test Ltd"))
+        s.add(CompanyRow(id="C1", jurisdiction="GB", registration_id="00000006", name="Test Ltd"))
         s.add_row = None
         add_source_document(
             s,

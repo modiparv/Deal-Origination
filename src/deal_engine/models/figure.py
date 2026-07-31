@@ -2,8 +2,8 @@
 
 A Figure is an *observation*: what one source document says a concept's
 value was for a period. The same (company, concept, period) legitimately
-arrives from multiple documents — every UK filing restates prior-year
-comparatives — so the natural key includes the source document, and a
+arrives from multiple documents — statutory filings routinely restate
+prior-period comparatives — so the natural key includes the source document, and a
 deterministic `is_current` selection (latest filed date wins) chooses the
 canonical observation. Superseded observations are never deleted.
 

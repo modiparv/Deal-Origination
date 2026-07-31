@@ -6,10 +6,10 @@ filing history, fetch only what is new) and the Event stream, which is a
 deterministic projection of these rows — never independently written, so
 the two cannot drift.
 
-Filing categories are NOT validated against the documented enum:
-Companies House acknowledges the published list is incomplete
-(confirmation-statement, gazette, insolvency and others appear in live
-data).
+Categories, types and descriptions are adapter-native strings stored in
+neutral columns; core never validates them against a registry's
+documented enum (registries' published enums are routinely incomplete —
+the owning adapter documents the specifics).
 """
 
 from __future__ import annotations
@@ -27,7 +27,7 @@ class FilingRecord(BaseModel):
     transaction_id: str
     category: str | None = None
     subcategory: str | None = None
-    type: str | None = None  # form code: AA, CS01, MR01, ...
+    type: str | None = None  # registry form code, verbatim
     date: date | None = None
     description: str | None = None
     description_values: dict[str, str] = Field(default_factory=dict)

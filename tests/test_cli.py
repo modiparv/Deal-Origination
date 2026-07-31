@@ -13,8 +13,9 @@ from typer.testing import CliRunner  # noqa: E402
 from deal_engine import cli  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-EXAMPLE = ROOT / "mandates" / "example-lmm-uk.yaml"
+EXAMPLE = ROOT / "mandates" / "example-lmm-gb.yaml"
 FIXTURES = ROOT / "tests" / "fixtures" / "mandates"
+JURISDICTIONS = ["--jurisdictions", str(ROOT / "jurisdictions")]
 
 runner = CliRunner()
 
@@ -25,15 +26,15 @@ def _isolated_logs(tmp_path, monkeypatch):
 
 
 def test_validate_example_exits_zero_with_warning():
-    result = runner.invoke(cli.app, ["mandate", "validate", str(EXAMPLE)])
+    result = runner.invoke(cli.app, ["mandate", "validate", str(EXAMPLE), *JURISDICTIONS])
     assert result.exit_code == 0, result.output
-    assert "VALID: lmm-uk-buyout" in result.output
+    assert "VALID: lmm-gb-buyout" in result.output
     assert "conditional_coverage" in result.output
 
 
 def test_validate_gb_ie_exits_nonzero_naming_jurisdiction():
     result = runner.invoke(
-        cli.app, ["mandate", "validate", str(FIXTURES / "gb-ie-ebitda.yaml")]
+        cli.app, ["mandate", "validate", str(FIXTURES / "gb-ie-ebitda.yaml"), *JURISDICTIONS]
     )
     assert result.exit_code == cli.EXIT_VALIDATION_FAILED
     combined = result.output
@@ -47,14 +48,14 @@ def test_validate_missing_file_exits_load_error():
 
 
 def test_validate_logs_run(tmp_path):
-    result = runner.invoke(cli.app, ["mandate", "validate", str(EXAMPLE)])
+    result = runner.invoke(cli.app, ["mandate", "validate", str(EXAMPLE), *JURISDICTIONS])
     assert result.exit_code == 0
     logs = list((tmp_path / "logs" / "runs").glob("*.jsonl"))
     assert len(logs) == 1
 
 
 def test_ingest_validates_then_reports_not_implemented():
-    result = runner.invoke(cli.app, ["ingest", "--mandate", str(EXAMPLE)])
+    result = runner.invoke(cli.app, ["ingest", "--mandate", str(EXAMPLE), *JURISDICTIONS])
     assert result.exit_code == cli.EXIT_NOT_IMPLEMENTED
     assert "Phase 1" in result.output
 

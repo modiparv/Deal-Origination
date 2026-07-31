@@ -28,6 +28,17 @@ say so — never work around it silently.
    OF INDEPENDENCE. Unclassifiable ownership is flagged, never passed.
 7. **Signals are named after what is observed, not what is inferred** —
    `new_security_registered`, not `recent_debt_raise`.
+8. **Core is jurisdiction-generic.** Jurisdiction facts live in
+   `jurisdictions/*.yaml`; local registry vocabulary lives in
+   `src/deal_engine/adapters/` and nowhere else — enforced by the
+   leakage-guard test (`tests/test_leakage_guard.py`), which fails on any
+   jurisdiction-specific token in core. Add local terms to the adapter's
+   VOCABULARY map, never to core.
+9. **Screening mode is per company.** `financial` (filed statements
+   machine-readable) vs `signal` (observable behaviour only); rubric
+   dimensions declare `requires_mode`; skipped dimensions are recorded
+   and composites over partial dimensions carry `renormalised=True` —
+   a partial score never renders as complete.
 
 ## Execution model
 

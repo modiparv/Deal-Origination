@@ -1,14 +1,16 @@
 """Signal detector declarations.
 
 Standing rule (decision record §4): signals are named after what is
-*observed*, never after what is inferred. A registered security is not a
-debt raise; there is no public field for a "successor". Each declaration
-records the specific observation backing the signal so a profile can show
-why a company was flagged rather than asserting the conclusion.
+*observed*, never after what is inferred. A registered security interest
+is not a debt raise; there is no filed concept of a "successor". Each
+declaration records the specific observation backing the signal so a
+profile can show why a company was flagged rather than asserting the
+conclusion.
 
 Detector implementations arrive in Phase 2; Phase 0 declares names and
 parameter schemas so mandate validation can reject unknown signals and
-malformed parameters.
+malformed parameters. Registry-specific detection mechanics live with
+the owning adapter.
 """
 
 from __future__ import annotations
@@ -22,24 +24,28 @@ class _Params(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
 
-class NoYoungerDirector(_Params):
+class NoYoungerOfficer(_Params):
     age_below: int = Field(ge=18, le=100)
     within_years: int = Field(ge=1, le=50)
 
 
 class SuccessionRiskParams(_Params):
-    """Age keyed on individual PSCs holding a control band — the owner's
-    age is the buyout-relevant one, not any director's. The no-younger-
-    director rule is an explicitly named heuristic with known failure
-    modes (non-board successors are invisible by design)."""
+    """Age keyed on individual beneficial owners holding a control
+    interest — the owner's age is the buyout-relevant one, not any
+    officer's. Ages derive from registry-published birth data (often
+    month/year granularity). The no-younger-officer rule is an explicitly
+    named heuristic with known failure modes: successors not yet
+    appointed to the board are invisible by design."""
 
-    psc_age_threshold: int = Field(ge=18, le=100)
-    no_younger_director_appointed: NoYoungerDirector | None = None
+    beneficial_owner_age_threshold: int = Field(ge=18, le=100)
+    no_younger_officer_appointed: NoYoungerOfficer | None = None
 
 
 class NewSecurityRegisteredParams(_Params):
-    """Observes charge registrations only: no amounts (post-2013 charges
-    state none), secured lending only, lender may be a security agent."""
+    """Observes registered security interests only: registered
+    particulars commonly omit secured amounts, unsecured borrowing never
+    appears, and the named secured party may be an agent rather than the
+    economic lender."""
 
     lookback_months: int = Field(ge=1, le=120)
     exclude_refinance: bool = True
@@ -59,16 +65,16 @@ SIGNALS: dict[str, SignalDecl] = {
         SignalDecl(
             "succession_risk",
             SuccessionRiskParams,
-            "Individual PSC with a control band aged at or above the threshold "
-            "(DOB month/year from the register), optionally with no younger "
-            "director appointed within the stated window.",
+            "Individual beneficial owner with a control interest aged at or "
+            "above the threshold (registry-published birth data), optionally "
+            "with no younger officer appointed within the stated window.",
         ),
         SignalDecl(
             "new_security_registered",
             NewSecurityRegisteredParams,
-            "Charge registered within the lookback window with status "
-            "outstanding, minus refinance patterns and excluded lender "
-            "categories.",
+            "Security interest registered within the lookback window and "
+            "still outstanding, minus refinance patterns and excluded "
+            "lender categories.",
         ),
     ]
 }

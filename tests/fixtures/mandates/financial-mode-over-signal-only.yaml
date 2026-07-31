@@ -1,11 +1,12 @@
-# Negative fixture: enterprise_value is unobservable and must be declared
-# basis: modelled with a named model.
+# Negative fixture: requires FINANCIAL mode over a jurisdiction whose profile
+# offers only SIGNAL (fixture profile XS). Expected ERROR names the modes,
+# the jurisdiction, and the reason.
 asset_class: buyout
 deal_type: control
 geography:
   include:
-  - GB
-id: undeclared-modelled
+  - XS
+id: financial-mode-over-signal-only
 name: GB Lower-Mid-Market Control Buyout
 ownership:
   exclude:
@@ -18,7 +19,6 @@ ownership:
   on_unclassifiable: flag
 required_modes:
 - financial
-- signal
 rubric:
 - guidance: 'Score on margin stability, revenue trajectory over available filed periods,
     and working capital discipline. Cite figure IDs.
@@ -76,11 +76,6 @@ size:
     max: 5000000
     metric: ebitda
     min: 1000000
-  secondary:
-    metric: enterprise_value
-    currency: GBP
-    min: 5000000
-    max: 50000000
 thresholds:
   advance_to_profile: 3.5
   flag_for_review: 3.0

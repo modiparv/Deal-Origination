@@ -1,14 +1,16 @@
 """Canonical concept registry.
 
 The jurisdiction-agnostic vocabulary of financial concepts the engine
-understands. Adapters map source-native tags (XBRL concepts, PDF locations)
-onto these names; the capability matrix and derive registry both key off
-them. Deliberately dependency-free so every layer can import it.
+understands. Adapters map source-native tags (XBRL concepts, PDF
+locations) onto these names; the capability matrix and derive registry
+both key off them. Deliberately dependency-free so every layer can
+import it.
 
-Concepts reliably present for *all* UK filers (including micro-entity and
-filleted small-company accounts) are first-class citizens here — they are
-the only financial fields available for most of the lower-mid-market
-universe, not an afterthought.
+Concepts reliably present even under reduced-disclosure filing regimes
+(where smaller companies publish balance-sheet data but no income
+statement) are first-class citizens here — for much of the
+lower-mid-market universe they are the only filed financial fields, not
+an afterthought.
 """
 
 from __future__ import annotations
@@ -25,9 +27,10 @@ class PeriodType(str, Enum):
 class Flow(str, Enum):
     """What kind of quantity a concept is.
 
-    Used by the Phase 1 sign-normalisation layer: cost/expense concepts are
-    conventionally tagged positive under negated-label presentation, and the
-    parser needs to know a concept's nature to normalise safely.
+    Used by the parse-time sign-normalisation layer: cost/expense
+    concepts are conventionally tagged positive under negated-label
+    presentation, and the parser needs a concept's nature to normalise
+    safely.
     """
 
     INCOME = "income"
@@ -47,19 +50,20 @@ class Concept:
 
 
 _ALL = [
-    # Profit & loss — available only where a P&L is filed (medium/large/full
-    # filers); see the Companies House capability matrix.
+    # Income statement — available only where one is published; see each
+    # adapter's capability matrix conditions.
     Concept("revenue", PeriodType.DURATION, Flow.INCOME, "Turnover / revenue"),
     Concept("gross_profit", PeriodType.DURATION, Flow.INCOME, "Gross profit or loss"),
     Concept("operating_profit", PeriodType.DURATION, Flow.INCOME, "Operating profit or loss"),
-    Concept("profit_before_tax", PeriodType.DURATION, Flow.INCOME, "Profit or loss on ordinary activities before tax"),
+    Concept("profit_before_tax", PeriodType.DURATION, Flow.INCOME, "Profit or loss before tax"),
     Concept("profit_for_period", PeriodType.DURATION, Flow.INCOME, "Profit or loss for the financial period"),
     Concept("staff_costs", PeriodType.DURATION, Flow.EXPENSE, "Staff costs / employee benefits expense"),
     Concept("depreciation_amortisation", PeriodType.DURATION, Flow.EXPENSE, "Depreciation, amortisation and impairment expense"),
     Concept("tax_charge", PeriodType.DURATION, Flow.EXPENSE, "Tax on profit or loss"),
-    # Balance sheet — reliably present across regimes (micro aggregates some).
+    # Balance sheet — reliably present across regimes (the smallest
+    # regimes aggregate some lines).
     Concept("cash", PeriodType.INSTANT, Flow.ASSET, "Cash at bank and in hand"),
-    Concept("debtors", PeriodType.INSTANT, Flow.ASSET, "Debtors"),
+    Concept("debtors", PeriodType.INSTANT, Flow.ASSET, "Debtors / receivables"),
     Concept("current_assets", PeriodType.INSTANT, Flow.ASSET, "Total current assets"),
     Concept("fixed_assets", PeriodType.INSTANT, Flow.ASSET, "Total fixed assets"),
     Concept("creditors_within_one_year", PeriodType.INSTANT, Flow.LIABILITY, "Creditors: amounts falling due within one year"),
@@ -69,10 +73,10 @@ _ALL = [
     Concept("net_assets", PeriodType.INSTANT, Flow.EQUITY, "Net assets or liabilities"),
     Concept("equity", PeriodType.INSTANT, Flow.EQUITY, "Shareholders' funds / equity"),
     Concept("share_capital", PeriodType.INSTANT, Flow.EQUITY, "Called-up share capital"),
-    Concept("retained_earnings", PeriodType.INSTANT, Flow.EQUITY, "Retained earnings / profit and loss reserve"),
-    # The one P&L-adjacent figure present in every regime including micro and
-    # filleted accounts (statutory footnote since 2016) — the best free size
-    # proxy for P&L-invisible companies.
+    Concept("retained_earnings", PeriodType.INSTANT, Flow.EQUITY, "Retained earnings / accumulated profit and loss"),
+    # The one income-adjacent datum most registries require in every
+    # regime — the best free size proxy where no income statement is
+    # published, and a first-class screening field.
     Concept("average_employees", PeriodType.DURATION, Flow.COUNT, "Average number of employees during the period"),
 ]
 

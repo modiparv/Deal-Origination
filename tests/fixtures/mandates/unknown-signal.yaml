@@ -5,7 +5,7 @@ geography:
   include:
   - GB
 id: unknown-signal
-name: UK Lower-Mid-Market Control Buyout
+name: GB Lower-Mid-Market Control Buyout
 ownership:
   exclude:
   - pe_backed
@@ -15,27 +15,34 @@ ownership:
   - owner_managed
   - independent
   on_unclassifiable: flag
+required_modes:
+- financial
+- signal
 rubric:
 - guidance: 'Score on margin stability, revenue trajectory over available filed periods,
     and working capital discipline. Cite figure IDs.
 
     '
   id: financial_quality
+  requires_mode: financial
   scale:
   - 1
   - 5
   weight: 0.3
 - id: succession_opportunity
+  requires_mode: any
   scale:
   - 1
   - 5
   weight: 0.25
 - id: market_position
+  requires_mode: any
   scale:
   - 1
   - 5
   weight: 0.2
 - id: complexity_risk
+  requires_mode: any
   scale:
   - 1
   - 5

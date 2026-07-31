@@ -1,0 +1,13 @@
+# Test fixture: a jurisdiction whose registry publishes no machine-readable
+# financial statements — signal-mode screening only.
+id: XS
+name: Signal-Only Testland
+available_modes: [signal]
+registration_id:
+  pattern: "^[0-9]{9}$"
+  description: Nine-digit registry number.
+classification_taxonomy: sic_2007
+currency: USD
+statutory_filings: []
+caveats:
+  - No public filed financial statements; screening is signal-mode only.

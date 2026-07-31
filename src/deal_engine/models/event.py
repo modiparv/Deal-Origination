@@ -16,13 +16,13 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 
 class EventType(str, Enum):
-    CHARGE_REGISTERED = "charge_registered"
-    CHARGE_SATISFIED = "charge_satisfied"
+    SECURITY_INTEREST_REGISTERED = "security_interest_registered"
+    SECURITY_INTEREST_SATISFIED = "security_interest_satisfied"
     OFFICER_APPOINTED = "officer_appointed"
     OFFICER_RESIGNED = "officer_resigned"
     AUDITOR_RESIGNED = "auditor_resigned"
     FILING_LATE = "filing_late"
-    ARD_CHANGED = "ard_changed"
+    FISCAL_PERIOD_END_CHANGED = "fiscal_period_end_changed"
     NAME_CHANGED = "name_changed"
     INSOLVENCY_CASE = "insolvency_case"
     RESTATEMENT = "restatement"

@@ -13,6 +13,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from deal_engine.models.common import OwnershipClass
+from deal_engine.models.mode import ModeRequirement, ScreeningMode
 
 
 class _Spec(BaseModel):
@@ -68,6 +69,9 @@ class RubricDimension(_Spec):
     weight: float = Field(gt=0.0, le=1.0)
     scale: tuple[int, int]
     guidance: str | None = None
+    # Which screening mode this dimension needs for a given company; the
+    # scorer skips it (recorded, renormalised) when unavailable.
+    requires_mode: ModeRequirement = ModeRequirement.ANY
 
     @model_validator(mode="after")
     def _scale_ordered(self) -> "RubricDimension":
@@ -87,6 +91,10 @@ class Mandate(_Spec):
     name: str
     asset_class: str
     deal_type: str
+    # Modes under which a company satisfies this mandate — any one
+    # suffices. Resolved per company at screen time, never per
+    # jurisdiction: two companies in one jurisdiction can differ.
+    required_modes: list[ScreeningMode] = Field(min_length=1)
     geography: GeographySpec
     size: SizeSpec
     sectors: SectorsSpec
