@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Deal Origination Engine — Operations</title>
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📇</text></svg>" />
+</head>
+<body>
+<header class="site-header">
+  <div>
+    <h1>Deal Origination Engine</h1>
+    <p class="subtitle">Operations — ingest coverage, run history, and review dossiers</p>
+  </div>
+  <p class="build-meta" id="build-meta"></p>
+</header>
+
+<main>
+  <section id="latest"></section>
+  <section id="coverage"></section>
+  <section id="runs"></section>
+  <section id="spot-check"></section>
+  <section id="mandates"></section>
+</main>
+
+<footer class="site-footer">
+  <p>
+    Every figure shown is a filed observation citing its source document, period end
+    and filed date; nothing here is computed by a language model. Where a concept is
+    absent, the absence carries a recorded cause. Filed registry data is 9–21 months
+    stale by construction; profiles state the dated public evidence, never the
+    negative &ldquo;not being marketed&rdquo;.
+  </p>
+  <p class="golden-inventory" id="golden-inventory"></p>
+</footer>
+
+<div id="tooltip" class="tooltip" hidden></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
