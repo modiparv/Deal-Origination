@@ -1,0 +1,57 @@
+name: record-fixtures
+
+# Manually triggered: Actions tab -> record-fixtures -> Run workflow.
+# Records the verbatim API surface for the given company numbers into
+# evals/golden/companies/ and commits it to the branch the workflow ran
+# on — the raw half of the company-level golden set (decision record
+# §14). The hand-verified expected.yaml files are authored afterwards
+# from the recorded data. Read-only against the registry.
+
+on:
+  workflow_dispatch:
+    inputs:
+      companies:
+        description: Space-separated company numbers
+        required: true
+      docs:
+        description: Accounts documents per company
+        default: "3"
+
+permissions:
+  contents: write
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    env:
+      CH_API_KEY: ${{ secrets.CH_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check secret present
+        run: |
+          if [ -z "$CH_API_KEY" ]; then
+            echo "CH_API_KEY secret is not set."
+            exit 1
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+
+      - name: Record
+        run: |
+          python scripts/record_fixtures.py ${{ inputs.companies }} \
+            --docs "${{ inputs.docs }}" \
+            --out evals/golden/companies
+
+      - name: Commit fixtures to branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898024+github-actions[bot]@users.noreply.github.com"
+          git add evals/golden/companies
+          git commit -m "Record company fixtures: ${{ inputs.companies }}"
+          git push

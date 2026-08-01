@@ -217,6 +217,35 @@ def _insert_if_absent(session: Session, row) -> bool:
     return False
 
 
+def _upsert(
+    session: Session,
+    row_cls,
+    mapped: dict,
+    date_fields: tuple[str, ...],
+    counts: dict[str, int],
+    family: str,
+) -> None:
+    """Insert a mapped record, or update the changed columns of the
+    existing row (same deterministic id). Identical data touches
+    nothing, which is what keeps re-ingest and no-op refresh at zero."""
+    data = dict(mapped)
+    for field in date_fields:
+        data[field] = _d(data[field])
+    existing = session.get(row_cls, data["id"])
+    if existing is None:
+        session.add(row_cls(**data))
+        session.flush()
+        _bump(counts, f"{family}_new")
+        return
+    changed = False
+    for key, value in data.items():
+        if key != "id" and getattr(existing, key) != value:
+            setattr(existing, key, value)
+            changed = True
+    if changed:
+        _bump(counts, f"{family}_updated")
+
+
 def figure_id(source_document_id: str, draft: FigureDraft, dims_hash: str, unit: str) -> str:
     key = "|".join(
         [source_document_id, draft.concept, draft.period_start, draft.period_end, dims_hash, unit]
@@ -268,6 +297,71 @@ def _upsert_company(session: Session, mapped: dict, counts: dict[str, int]) -> s
     return cid
 
 
+def sync_officers(
+    session: Session, client: CompaniesHouseClient, registration_id: str, cid: str, counts: dict[str, int]
+) -> None:
+    for item in client.get_officers(registration_id):
+        _upsert(
+            session,
+            OfficerRow,
+            mapping.map_officer(item, cid),
+            ("appointed_on", "resigned_on"),
+            counts,
+            "officers",
+        )
+
+
+def sync_beneficial_owners(
+    session: Session, client: CompaniesHouseClient, registration_id: str, cid: str, counts: dict[str, int]
+) -> None:
+    for item in client.get_beneficial_owners(registration_id):
+        _upsert(
+            session,
+            BeneficialOwnerRow,
+            mapping.map_beneficial_owner(item, cid),
+            ("notified_on", "ceased_on"),
+            counts,
+            "beneficial_owners",
+        )
+    for item in client.get_ownership_statements(registration_id):
+        _upsert(
+            session,
+            OwnershipStatementRow,
+            mapping.map_ownership_statement(item, cid),
+            ("notified_on", "ceased_on"),
+            counts,
+            "ownership_statements",
+        )
+    for mapped in mapping.map_exemptions(client.get_exemptions(registration_id), cid):
+        _upsert(session, ExemptionRow, mapped, (), counts, "exemptions")
+
+
+def sync_security_interests(
+    session: Session, client: CompaniesHouseClient, registration_id: str, cid: str, counts: dict[str, int]
+) -> None:
+    for item in client.get_charges(registration_id).get("items", []):
+        _upsert(
+            session,
+            SecurityInterestRow,
+            mapping.map_security_interest(item, cid),
+            ("created_on", "delivered_on", "satisfied_on"),
+            counts,
+            "security_interests",
+        )
+
+
+def sync_filings(
+    session: Session, raw_items: list[dict], cid: str, counts: dict[str, int]
+) -> None:
+    # Filing-history transactions are immutable registry records: insert
+    # only, never update — the transaction diff depends on that.
+    for item in raw_items:
+        mapped = mapping.map_filing(item, cid)
+        row = FilingRow(**{**mapped, "filing_date": _d(mapped["filing_date"])})
+        if _insert_if_absent(session, row):
+            _bump(counts, "filings_new")
+
+
 def _ingest_registry_records(
     session: Session,
     client: CompaniesHouseClient,
@@ -279,65 +373,11 @@ def _ingest_registry_records(
     interests and filing history. Returns the RAW filing-history items —
     accounts-document selection needs the absolute metadata URLs the
     mapped rows deliberately do not carry."""
-    for item in client.get_officers(registration_id):
-        mapped = mapping.map_officer(item, cid)
-        row = OfficerRow(
-            **{
-                **mapped,
-                "appointed_on": _d(mapped["appointed_on"]),
-                "resigned_on": _d(mapped["resigned_on"]),
-            }
-        )
-        if _insert_if_absent(session, row):
-            _bump(counts, "officers_new")
-
-    for item in client.get_beneficial_owners(registration_id):
-        mapped = mapping.map_beneficial_owner(item, cid)
-        row = BeneficialOwnerRow(
-            **{
-                **mapped,
-                "notified_on": _d(mapped["notified_on"]),
-                "ceased_on": _d(mapped["ceased_on"]),
-            }
-        )
-        if _insert_if_absent(session, row):
-            _bump(counts, "beneficial_owners_new")
-
-    for item in client.get_ownership_statements(registration_id):
-        mapped = mapping.map_ownership_statement(item, cid)
-        row = OwnershipStatementRow(
-            **{
-                **mapped,
-                "notified_on": _d(mapped["notified_on"]),
-                "ceased_on": _d(mapped["ceased_on"]),
-            }
-        )
-        if _insert_if_absent(session, row):
-            _bump(counts, "ownership_statements_new")
-
-    for mapped in mapping.map_exemptions(client.get_exemptions(registration_id), cid):
-        if _insert_if_absent(session, ExemptionRow(**mapped)):
-            _bump(counts, "exemptions_new")
-
-    for item in client.get_charges(registration_id).get("items", []):
-        mapped = mapping.map_security_interest(item, cid)
-        row = SecurityInterestRow(
-            **{
-                **mapped,
-                "created_on": _d(mapped["created_on"]),
-                "delivered_on": _d(mapped["delivered_on"]),
-                "satisfied_on": _d(mapped["satisfied_on"]),
-            }
-        )
-        if _insert_if_absent(session, row):
-            _bump(counts, "security_interests_new")
-
+    sync_officers(session, client, registration_id, cid, counts)
+    sync_beneficial_owners(session, client, registration_id, cid, counts)
+    sync_security_interests(session, client, registration_id, cid, counts)
     raw_filings = client.get_filing_history(registration_id)
-    for item in raw_filings:
-        mapped = mapping.map_filing(item, cid)
-        row = FilingRow(**{**mapped, "filing_date": _d(mapped["filing_date"])})
-        if _insert_if_absent(session, row):
-            _bump(counts, "filings_new")
+    sync_filings(session, raw_filings, cid, counts)
     return raw_filings
 
 

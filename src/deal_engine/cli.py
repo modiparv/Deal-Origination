@@ -154,6 +154,10 @@ def ingest(
         f"(universe hits {summary['universe_hits']}, examined {summary['examined']}, "
         f"skipped {sum(summary['skipped'].values())}: {summary['skipped']})"
     )
+    _finish_run(logger, summary, counts)
+
+
+def _finish_run(logger: RunLogger, summary: dict, counts: dict) -> None:
     for key in sorted(counts):
         typer.echo(f"  {key}: {counts[key]}")
     typer.echo(f"coverage report: {summary['report_path']}")
@@ -165,6 +169,86 @@ def ingest(
         logger.finish(EXIT_INGEST_ERRORS, counts)
         raise typer.Exit(EXIT_INGEST_ERRORS)
     logger.finish(0, counts)
+
+
+@app.command()
+def refresh(
+    mandate: Path = typer.Option(..., "--mandate", help="Mandate YAML file"),
+    limit: int = typer.Option(0, "--limit", help="Companies to refresh (0 = whole store)"),
+    jurisdictions: Path = typer.Option(
+        Path("jurisdictions"), "--jurisdictions", help="Jurisdiction profile directory"
+    ),
+    db_path: Path = typer.Option(Path("data/engine.db"), "--db", help="SQLite database path"),
+    data_dir: Path = typer.Option(Path("data"), "--data", help="Data root (cache, reports)"),
+) -> None:
+    """Incrementally refresh companies already in the store: the
+    filing-history transaction diff decides what is refetched."""
+    import os
+
+    logger = RunLogger("refresh", {"mandate": str(mandate), "limit": limit}).start()
+    try:
+        loaded = load_mandate(mandate)
+    except MandateLoadError as exc:
+        typer.echo(f"LOAD ERROR: {exc}", err=True)
+        logger.finish(EXIT_LOAD_FAILED)
+        raise typer.Exit(EXIT_LOAD_FAILED)
+    report = validate_mandate(loaded, profile_dir=jurisdictions)
+    if not report.ok:
+        for issue in report.errors:
+            typer.echo(f"ERROR [{issue.code}] {issue.message}", err=True)
+        logger.finish(EXIT_VALIDATION_FAILED)
+        raise typer.Exit(EXIT_VALIDATION_FAILED)
+
+    from deal_engine.adapters.registry import ingest_runner_for
+
+    runner = ingest_runner_for(set(loaded.geography.include))
+    if runner is None or runner.load_refresh is None:
+        typer.echo(
+            f"ERROR: no refresh implementation for jurisdictions "
+            f"{sorted(loaded.geography.include)}",
+            err=True,
+        )
+        logger.finish(EXIT_NOT_IMPLEMENTED)
+        raise typer.Exit(EXIT_NOT_IMPLEMENTED)
+    missing = [name for name in runner.required_env if not os.environ.get(name)]
+    if missing:
+        typer.echo(
+            f"ERROR: adapter {runner.adapter!r} requires environment "
+            f"variable(s) {', '.join(missing)} — set them before running refresh.",
+            err=True,
+        )
+        logger.finish(EXIT_MISSING_ENV)
+        raise typer.Exit(EXIT_MISSING_ENV)
+
+    from deal_engine.db.session import get_engine, init_db, make_session_factory
+
+    if not db_path.exists():
+        typer.echo(
+            f"ERROR: database {db_path} does not exist — refresh only updates "
+            f"an existing store; run ingest first.",
+            err=True,
+        )
+        logger.finish(EXIT_INGEST_ERRORS)
+        raise typer.Exit(EXIT_INGEST_ERRORS)
+    engine = get_engine(db_path)
+    init_db(engine)
+    run = runner.load_refresh()
+    summary = run(
+        os.environ,
+        make_session_factory(engine),
+        loaded,
+        run_id=logger.run_id,
+        data_root=data_dir,
+        limit=limit,
+        progress=lambda msg: logger.log("progress", message=msg),
+    )
+    counts = {**summary["counts"], "refreshed": summary["refreshed"]}
+    typer.echo(
+        f"refreshed {summary['refreshed']}/{summary['companies_in_store']} companies "
+        f"({summary['counts'].get('companies_changed', 0)} changed, "
+        f"{summary['counts'].get('companies_unchanged', 0)} unchanged)"
+    )
+    _finish_run(logger, summary, counts)
 
 
 if __name__ == "__main__":

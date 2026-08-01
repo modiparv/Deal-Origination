@@ -43,6 +43,7 @@ class IngestRunnerDecl:
     jurisdictions: frozenset[str]
     required_env: tuple[str, ...]
     load: Callable[[], Callable]
+    load_refresh: Callable[[], Callable] | None = None
 
 
 def _load_companies_house_runner() -> Callable:
@@ -51,12 +52,19 @@ def _load_companies_house_runner() -> Callable:
     return run_from_env
 
 
+def _load_companies_house_refresh() -> Callable:
+    from deal_engine.adapters.companies_house.refresh import refresh_from_env
+
+    return refresh_from_env
+
+
 INGEST_RUNNERS: tuple[IngestRunnerDecl, ...] = (
     IngestRunnerDecl(
         adapter=COMPANIES_HOUSE_CAPABILITIES.adapter,
         jurisdictions=COMPANIES_HOUSE_CAPABILITIES.jurisdictions,
         required_env=("CH_API_KEY",),
         load=_load_companies_house_runner,
+        load_refresh=_load_companies_house_refresh,
     ),
 )
 
