@@ -293,9 +293,11 @@ def _check_size_metric(
         return
 
     for jurisdiction in mandate.geography.include:
+        # When no adapter covers the jurisdiction, _check_geography has
+        # already emitted its ERROR — but the concept-level errors are
+        # still emitted so the report names each unsatisfied concept for
+        # the jurisdiction (the gate requires that specificity).
         covering = [m for m in matrices if m.covers_jurisdiction(jurisdiction)]
-        if not covering:
-            continue  # already an ERROR from _check_geography
         for concept in sorted(required):
             best = _best_coverage(covering, concept)
             if best is None:
