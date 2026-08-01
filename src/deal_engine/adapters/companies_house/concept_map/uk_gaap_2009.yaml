@@ -1,0 +1,30 @@
+# Old UK GAAP (pre-FRC) taxonomy -> canonical concepts. Still present in
+# older filings on the register. Synonyms from the UK government's own
+# bulk-parser mapping.
+
+namespaces:
+  - "http://www.xbrl.org/uk/gaap/core/2009-09-01"
+
+concepts:
+  TurnoverGrossOperatingRevenue: revenue
+  GrossProfitLoss: gross_profit
+  OperatingProfitLoss: operating_profit
+  ProfitLossOnOrdinaryActivitiesBeforeTax: profit_before_tax
+  ProfitLossForPeriod: profit_for_period
+  StaffCosts: staff_costs
+  DepreciationOtherAmountsWrittenOffTangibleIntangibleFixedAssets: depreciation_amortisation
+  TaxOnProfitOrLossOnOrdinaryActivities: tax_charge
+  CashBankInHand: cash
+  Debtors: debtors
+  CurrentAssets: current_assets
+  FixedAssets: fixed_assets
+  NetCurrentAssetsLiabilities: net_current_assets
+  TotalAssetsLessCurrentLiabilities: total_assets_less_current_liabilities
+  NetAssetsLiabilitiesIncludingPensionAssetLiability: net_assets
+  ShareholderFunds: equity
+  CalledUpShareCapital: share_capital
+  ProfitLossAccountReserve: retained_earnings
+  EmployeesTotal: average_employees
+  # Old GAAP used distinct concepts for the maturity split.
+  CreditorsDueWithinOneYear: creditors_within_one_year
+  CreditorsDueAfterOneYear: creditors_after_one_year

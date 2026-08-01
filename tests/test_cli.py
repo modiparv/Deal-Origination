@@ -54,10 +54,21 @@ def test_validate_logs_run(tmp_path):
     assert len(logs) == 1
 
 
-def test_ingest_validates_then_reports_not_implemented():
+def test_ingest_without_adapter_credentials_fails_closed(monkeypatch):
+    monkeypatch.delenv("CH_API_KEY", raising=False)
     result = runner.invoke(cli.app, ["ingest", "--mandate", str(EXAMPLE), *JURISDICTIONS])
-    assert result.exit_code == cli.EXIT_NOT_IMPLEMENTED
-    assert "Phase 1" in result.output
+    assert result.exit_code == cli.EXIT_MISSING_ENV
+    # The variable name comes from the runner declaration, not CLI source.
+    assert "CH_API_KEY" in result.output
+
+
+def test_ingest_still_validates_mandate_first(monkeypatch):
+    monkeypatch.delenv("CH_API_KEY", raising=False)
+    result = runner.invoke(
+        cli.app,
+        ["ingest", "--mandate", str(FIXTURES / "gb-ie-ebitda.yaml"), *JURISDICTIONS],
+    )
+    assert result.exit_code == cli.EXIT_VALIDATION_FAILED
 
 
 def test_db_init(tmp_path):

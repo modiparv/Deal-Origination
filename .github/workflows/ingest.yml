@@ -1,0 +1,96 @@
+name: ingest
+
+# Manually triggered: Actions tab -> ingest -> Run workflow.
+# Runs a real mandate ingest against the live registry using the
+# CH_API_KEY repository secret, then commits the coverage report,
+# spot-check dossier, run log and gzipped database to the branch the
+# workflow ran on under artifacts/ingest/<run id>/ (the artifact CDN is
+# unreachable from some review environments; git is not).
+#
+# Request volume: ~13 API calls per ingested company plus one profile
+# per triaged company. At the default limit of 200 the client-side rate
+# limiter (500 requests per 5-minute window) paces the run to roughly
+# 30-40 minutes. Fetched documents stay in the runner's cache directory
+# and are NOT committed — only derived rows and reports leave the run.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mandate:
+        description: Mandate YAML path
+        default: mandates/example-lmm-gb.yaml
+      limit:
+        description: Maximum companies to ingest
+        default: "200"
+      docs_per_company:
+        description: Accounts documents fetched per company
+        default: "3"
+      spot_check_sample:
+        description: Companies in the spot-check dossier
+        default: "10"
+
+permissions:
+  contents: write
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      CH_API_KEY: ${{ secrets.CH_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check secret present
+        run: |
+          if [ -z "$CH_API_KEY" ]; then
+            echo "CH_API_KEY secret is not set. Add it under:"
+            echo "  repo Settings -> Secrets and variables -> Actions -> New repository secret"
+            exit 1
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+
+      - name: Run ingest
+        run: |
+          deal-engine ingest \
+            --mandate "${{ inputs.mandate }}" \
+            --limit "${{ inputs.limit }}" \
+            --docs-per-company "${{ inputs.docs_per_company }}" \
+            --db data/engine.db --data data
+
+      - name: Spot-check dossier
+        run: |
+          python scripts/spot_check.py \
+            --db data/engine.db \
+            --sample "${{ inputs.spot_check_sample }}" \
+            --out data/reports/spot-check.md
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ingest-run
+          path: |
+            data/reports/
+            logs/runs/
+          if-no-files-found: error
+
+      - name: Commit results to branch
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898024+github-actions[bot]@users.noreply.github.com"
+          dest="artifacts/ingest/${{ github.run_id }}"
+          mkdir -p "$dest"
+          cp -r data/reports/. "$dest/"
+          cp -r logs/runs/. "$dest/"
+          gzip -c data/engine.db > "$dest/engine.db.gz"
+          git add "$dest"
+          git commit -m "Ingest run ${{ github.run_id }}: coverage report + spot-check"
+          git push

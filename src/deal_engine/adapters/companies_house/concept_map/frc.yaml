@@ -1,0 +1,47 @@
+# FRC taxonomy suite -> canonical concepts.
+#
+# Local names are stable across FRC generations (2014-2025); the
+# namespace list pins which generations this file covers. Grounded in
+# the live-verified golden filing (uk-core, 2019-01-01 suite) and the
+# UK government's own bulk-parser synonym tables.
+#
+# Dimensional concepts: FRC-era Creditors carries the maturity split in
+# the context dimension uk-core:MaturitiesOrExpirationPeriodsDimension
+# (verified in the golden filing) — never in the concept name.
+
+namespaces:
+  - "http://xbrl.frc.org.uk/fr/2014-09-01/core"
+  - "http://xbrl.frc.org.uk/fr/2019-01-01/core"
+  - "http://xbrl.frc.org.uk/fr/2021-01-01/core"
+  - "http://xbrl.frc.org.uk/fr/2022-01-01/core"
+  - "http://xbrl.frc.org.uk/fr/2023-01-01/core"
+  - "http://xbrl.frc.org.uk/fr/2024-01-01/core"
+  - "http://xbrl.frc.org.uk/fr/2025-01-01/core"
+
+concepts:
+  TurnoverRevenue: revenue
+  GrossProfitLoss: gross_profit
+  OperatingProfitLoss: operating_profit
+  ProfitLossOnOrdinaryActivitiesBeforeTax: profit_before_tax
+  ProfitLoss: profit_for_period
+  StaffCostsEmployeeBenefitsExpense: staff_costs
+  DepreciationAmortisationImpairmentExpense: depreciation_amortisation
+  TaxTaxCreditOnProfitOrLossOnOrdinaryActivities: tax_charge
+  CashBankOnHand: cash
+  Debtors: debtors
+  CurrentAssets: current_assets
+  FixedAssets: fixed_assets
+  NetCurrentAssetsLiabilities: net_current_assets
+  TotalAssetsLessCurrentLiabilities: total_assets_less_current_liabilities
+  NetAssetsLiabilities: net_assets
+  Equity: equity
+  CalledUpShareCapital: share_capital
+  RetainedEarningsAccumulatedLosses: retained_earnings
+  AverageNumberEmployeesDuringPeriod: average_employees
+
+dimensional_concepts:
+  Creditors:
+    dimension: MaturitiesOrExpirationPeriodsDimension
+    members:
+      WithinOneYear: creditors_within_one_year
+      AfterOneYear: creditors_after_one_year

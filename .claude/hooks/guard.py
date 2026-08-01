@@ -43,7 +43,11 @@ BUILD_HOSTS = (
     "files.pythonhosted.org",
 )
 
-_NETWORK_CMD_RE = re.compile(r"\b(curl|wget|httpx|http|nc|ncat|telnet)\b")
+# Real network CLIs only. The `http`/`httpx` CLI names are deliberately
+# absent: as bare tokens they false-positive on every mention of the
+# httpx *library* and on "http" scheme text, and the egress proxy is the
+# actual enforcement layer for anything this pattern misses.
+_NETWORK_CMD_RE = re.compile(r"\b(curl|wget|ncat|telnet)\b|(?<![\w./-])nc\s")
 _URL_HOST_RE = re.compile(r"https?://([A-Za-z0-9.-]+)")
 _CREDENTIAL_RE = re.compile(
     r"(?<![\w.-])\.env(?!\.example)(?![\w])|\.pem\b|secrets?\.(json|ya?ml|toml)\b|id_rsa\b"
