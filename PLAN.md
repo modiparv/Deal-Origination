@@ -255,9 +255,27 @@ Every CLI invocation writes `logs/runs/{run_id}.jsonl`: command, args, git SHA, 
 
 ## 4. Phase 1 plan
 
-### 4.0 Step zero — verify the live API surface (per §7, unchanged and necessary)
+### 4.0 Step zero — verify the live API surface (executed by you, locally)
 
-All API research so far comes from CH's own spec/enum repos and documentation extracts because this sandbox's egress proxy blocks Companies House hosts (see §8). Before coding against responses: register a key, hit each endpoint for 3–5 known companies, and diff reality against the expected surfaces recorded in this plan (paths, field spellings, pagination maxima, whether the Document API shares the 600/5min quota, the disqualified-officers resource whose spec CH flags as stale). Record the transcripts as test fixtures.
+**Execution split (decision record, 2026-08-01):** the sandbox network
+policy is fixed to package managers; Companies House hosts are
+permanently unreachable from it. Therefore: the sandbox writes the
+adapter, parsers, concept map and tests against committed fixtures; **you
+run live fetches locally** and commit cached responses as fixtures; the
+200-company ingest gate run happens on your machine via the CLI
+(`CH_API_KEY` in your local `.env`), with the run log, coverage report
+and sample handed back for the gate review.
+
+Step zero accordingly: `docs/live-api-verification.md` is the numbered
+request list — ~25 calls verifying auth, rate-limit headers, advanced
+search shape, officer DOB granularity, PSC kinds/statement spellings,
+filing-history links, the document-metadata `resources` object, the
+302-to-storage redirect (with and without forwarded auth), charge
+envelope spellings, and exemptions — plus two saved accounts documents
+(one full filer, one small filer) that seed `evals/golden/filings/`.
+Adapter coding against live-response reality starts when that report is
+back; a `scripts/record_fixtures.py` then systematises fixture capture
+with auth stripped.
 
 ### 4.1 New files
 
@@ -381,9 +399,22 @@ Pydantic models mirror these; constraints shown are enforced in SQLAlchemy DDL. 
 
 Silence on any of these blocks the corresponding build step; per §0 I will not work around them.
 
-## 8. Environment prerequisites
+## 8. Environment prerequisites (revised 2026-08-01)
 
-- **This remote sandbox currently cannot reach Companies House**: the egress proxy returns 403 for `api.company-information.service.gov.uk`, `document-api...`, `download.companieshouse.gov.uk`, and the developer docs site. Phase 1's step 4.0 and the 200-company ingest need either these hosts allowlisted in this environment's network policy or the ingest run executed elsewhere.
-- **PyPI is also blocked** (`pypi.org`, `files.pythonhosted.org` — discovered during Phase 0 build): third-party packages cannot be installed normally. Pure-Python dependencies were vendored from source via the git relay for local verification, but `pydantic-core` (compiled Rust) cannot be built or fetched here, so **the full Phase 0 test gate cannot run in this environment until PyPI is allowlisted**. Allowlisting `pypi.org` + `files.pythonhosted.org` unblocks it immediately.
+- **The sandbox network policy is fixed to package managers** (personal
+  plan): Companies House hosts are permanently unreachable from the
+  sandbox and cannot be allowlisted. This is design input, not a defect —
+  Phase 1 splits execution: sandbox = code, parsers, tests over committed
+  fixtures; your machine = live fetches (per
+  `docs/live-api-verification.md`), fixture capture, and the ingest gate
+  run with `CH_API_KEY` in your local `.env` (never committed).
+- **PyPI** (`pypi.org`, `files.pythonhosted.org`) is intended to be
+  reachable and is required for the Phase 0 gate. As of 2026-08-01 06:01
+  UTC both this session and a freshly spawned remote container still
+  receive `403 x-deny-reason: host_not_allowed` for pypi.org — the
+  allowlist change has not reached this environment. Fallbacks: a fresh
+  session on this branch after the policy lands, or run
+  `pip install -e ".[dev]" && pytest` locally and paste the output; the
+  gate is identical either way.
 - **A Companies House API key** (free, registered at the Developer Hub) supplied as `CH_API_KEY`. REST and streaming keys are distinct types; only REST is needed for Phase 1.
 - One human read of the CH API terms page at key registration (the page itself was unreachable from here). Caching/storing register data and filed documents is permitted — CH publishes its own bulk products for exactly that — with UK GDPR responsibility for officer/PSC personal data noted in CLAUDE.md.
