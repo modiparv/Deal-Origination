@@ -10,6 +10,9 @@ name: live-api-verification
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -36,3 +39,17 @@ jobs:
           name: live-api-verification
           path: out/
           if-no-files-found: error
+
+      # Also commit the results to the branch this workflow ran on, so
+      # environments that cannot reach the artifact CDN can fetch them
+      # via git. Response data only — no request credentials are stored.
+      - name: Commit results to branch
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898024+github-actions[bot]@users.noreply.github.com"
+          mkdir -p evals/golden/seed
+          cp -r out/. evals/golden/seed/
+          git add evals/golden/seed
+          git commit -m "Live API verification results (run ${{ github.run_id }})"
+          git push
