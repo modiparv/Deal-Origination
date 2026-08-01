@@ -157,28 +157,38 @@ class TestEvent:
 
 
 class TestModeAwareScoring:
-    def test_skipped_dimension_requires_reason_and_no_value(self):
+    """Absence carries a cause: the three distinct not-scored states must
+    survive on the row, never collapse into one null."""
+
+    def _score(self, **overrides):
         from deal_engine.models import Score
 
-        with pytest.raises(pydantic.ValidationError, match="skip_reason"):
-            Score(
-                id="S1", company_id="C1", mandate_id="M1",
-                rubric_dimension="financial_quality", rationale="n/a",
-                skipped=True, run_id="R1",
-            )
-        with pytest.raises(pydantic.ValidationError, match="must not carry a score"):
-            Score(
-                id="S1", company_id="C1", mandate_id="M1",
-                rubric_dimension="financial_quality", rationale="n/a",
-                skipped=True, skip_reason="financial mode unavailable",
-                score=3.0, run_id="R1",
-            )
+        base = dict(
+            id="S1", company_id="C1", mandate_id="M1",
+            rubric_dimension="financial_quality", rationale="n/a", run_id="R1",
+        )
+        base.update(overrides)
+        return Score(**base)
+
+    def test_each_absence_state_requires_reason_and_no_value(self):
+        from deal_engine.models import ScoreState
+
+        for state in (
+            ScoreState.NOT_OBSERVABLE,
+            ScoreState.SKIPPED_MODE,
+            ScoreState.NOT_REACHED,
+        ):
+            with pytest.raises(pydantic.ValidationError, match="state_reason"):
+                self._score(state=state)
+            with pytest.raises(pydantic.ValidationError, match="must not carry a score"):
+                self._score(state=state, state_reason="x", score=3.0)
+            ok = self._score(state=state, state_reason="explains the absence")
+            assert ok.score is None and ok.state is state
+
+    def test_scored_requires_value(self):
         with pytest.raises(pydantic.ValidationError, match="requires a score"):
-            Score(
-                id="S1", company_id="C1", mandate_id="M1",
-                rubric_dimension="financial_quality", rationale="n/a",
-                run_id="R1",
-            )
+            self._score()
+        assert self._score(score=3.0).score == 3.0
 
     def test_renormalised_composite_must_be_flagged(self):
         from deal_engine.models import CompositeScore
@@ -186,17 +196,66 @@ class TestModeAwareScoring:
         with pytest.raises(pydantic.ValidationError, match="renormalised"):
             CompositeScore(
                 id="CS1", company_id="C1", mandate_id="M1", value=3.7,
-                dimensions_run=["market_position"],
-                dimensions_skipped=["financial_quality"],
+                dimensions_scored=["market_position"],
+                dimensions_not_scored=["financial_quality"],
                 renormalised=False, run_id="R1",
             )
         ok = CompositeScore(
             id="CS1", company_id="C1", mandate_id="M1", value=3.7,
-            dimensions_run=["market_position"],
-            dimensions_skipped=["financial_quality"],
+            dimensions_scored=["market_position"],
+            dimensions_not_scored=["financial_quality"],
             renormalised=True, run_id="R1",
         )
         assert ok.renormalised
+
+
+class TestCoverageFacts:
+    """Amendment B: unavailability carries a reason code, and a parse
+    failure is a surfaced defect, never a silent data limitation."""
+
+    def _fact(self, **overrides):
+        from deal_engine.models import ConceptCoverageFact, CoverageStatus
+
+        base = dict(
+            id="CF1", company_id="C1", concept="revenue", period_end=D,
+            status=CoverageStatus.AVAILABLE, source_document_id="DOC1",
+            run_id="R1",
+        )
+        base.update(overrides)
+        return ConceptCoverageFact(**base)
+
+    def test_not_filed_forbids_document_reference(self):
+        from deal_engine.models import CoverageStatus
+
+        with pytest.raises(pydantic.ValidationError, match="contradicts"):
+            self._fact(status=CoverageStatus.NOT_FILED, source_document_id="DOC1")
+        ok = self._fact(status=CoverageStatus.NOT_FILED, source_document_id=None)
+        assert ok.source_document_id is None
+
+    def test_examined_statuses_require_document(self):
+        from deal_engine.models import CoverageStatus
+
+        for status in (
+            CoverageStatus.AVAILABLE,
+            CoverageStatus.FILED_WITHOUT_CONCEPT,
+            CoverageStatus.UNPARSEABLE_FORMAT,
+        ):
+            with pytest.raises(pydantic.ValidationError, match="required"):
+                self._fact(status=status, source_document_id=None)
+
+    def test_parse_failure_requires_detail(self):
+        from deal_engine.models import CoverageStatus
+
+        with pytest.raises(pydantic.ValidationError, match="system defect"):
+            self._fact(status=CoverageStatus.PARSE_FAILED)
+        ok = self._fact(
+            status=CoverageStatus.PARSE_FAILED, detail="nil facts exceeded threshold"
+        )
+        assert ok.detail
+
+    def test_unknown_concept_rejected(self):
+        with pytest.raises(pydantic.ValidationError, match="unknown canonical concept"):
+            self._fact(concept="ebitda_margin_estimate")
 
 
 class TestModelTableParity:
@@ -209,6 +268,7 @@ class TestModelTableParity:
             BeneficialOwner,
             Company,
             CompositeScore,
+            ConceptCoverageFact,
             FilingRecord,
             Officer,
             RunRecord,
@@ -244,6 +304,7 @@ class TestModelTableParity:
             (ScreenResult, tables.ScreenResultRow, set(), set()),
             (Score, tables.ScoreRow, set(), set()),
             (CompositeScore, tables.CompositeScoreRow, set(), set()),
+            (ConceptCoverageFact, tables.ConceptCoverageRow, set(), set()),
         ]
         for model, row_cls, model_only, row_only in pairs:
             model_fields = set(model.model_fields)

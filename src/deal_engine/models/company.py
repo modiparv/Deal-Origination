@@ -56,4 +56,7 @@ class Company(BaseModel):
     classification_codes: list[str] = Field(default_factory=list)
     classification_taxonomy: str | None = None  # e.g. per jurisdiction profile
     registered_address: dict[str, str] = Field(default_factory=dict)
+    # None = assessment has not run yet (a lifecycle state, visible via
+    # runs); UNCLASSIFIABLE = assessment ran and could not determine —
+    # two different absences, never conflated.
     ownership: OwnershipAssessment | None = None

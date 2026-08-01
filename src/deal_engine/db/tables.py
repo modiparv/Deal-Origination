@@ -292,8 +292,9 @@ class ScoreRow(Base):
     __tablename__ = "scores"
     __table_args__ = (
         CheckConstraint(
-            "(skipped = 0 AND score IS NOT NULL) OR (skipped = 1 AND score IS NULL)",
-            name="ck_score_skip_consistency",
+            "(state = 'scored' AND score IS NOT NULL) OR "
+            "(state != 'scored' AND score IS NULL AND state_reason IS NOT NULL)",
+            name="ck_score_state_consistency",
         ),
     )
 
@@ -301,11 +302,11 @@ class ScoreRow(Base):
     company_id: Mapped[str] = mapped_column(ForeignKey("companies.id"), nullable=False)
     mandate_id: Mapped[str] = mapped_column(String, nullable=False)
     rubric_dimension: Mapped[str] = mapped_column(String, nullable=False)
+    state: Mapped[str] = mapped_column(String, nullable=False, default="scored")
     score: Mapped[float | None] = mapped_column(Float)
     rationale: Mapped[str] = mapped_column(Text, nullable=False)
     figure_ids_cited: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
-    skipped: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
-    skip_reason: Mapped[str | None] = mapped_column(String)
+    state_reason: Mapped[str | None] = mapped_column(String)
     run_id: Mapped[str] = mapped_column(ForeignKey("runs.run_id"), nullable=False)
 
 
@@ -317,6 +318,33 @@ class CompositeScoreRow(Base):
     mandate_id: Mapped[str] = mapped_column(String, nullable=False)
     value: Mapped[float] = mapped_column(Float, nullable=False)
     renormalised: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
-    dimensions_run: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
-    dimensions_skipped: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    dimensions_scored: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    dimensions_not_scored: Mapped[list] = mapped_column(JSON, nullable=False, default=list)
+    run_id: Mapped[str] = mapped_column(ForeignKey("runs.run_id"), nullable=False)
+
+
+class ConceptCoverageRow(Base):
+    __tablename__ = "concept_coverage"
+    __table_args__ = (
+        UniqueConstraint(
+            "run_id", "company_id", "concept", "period_end", name="uq_coverage_fact"
+        ),
+        CheckConstraint(
+            "(status = 'not_filed' AND source_document_id IS NULL) OR "
+            "(status != 'not_filed' AND source_document_id IS NOT NULL)",
+            name="ck_coverage_document_reference",
+        ),
+        CheckConstraint(
+            "(status != 'parse_failed') OR (detail IS NOT NULL)",
+            name="ck_coverage_parse_failure_detail",
+        ),
+    )
+
+    id: Mapped[str] = mapped_column(String, primary_key=True)
+    company_id: Mapped[str] = mapped_column(ForeignKey("companies.id"), nullable=False)
+    concept: Mapped[str] = mapped_column(String, nullable=False)
+    period_end: Mapped[date] = mapped_column(Date, nullable=False)
+    status: Mapped[str] = mapped_column(String, nullable=False)
+    source_document_id: Mapped[str | None] = mapped_column(ForeignKey("source_documents.id"))
+    detail: Mapped[str | None] = mapped_column(String)
     run_id: Mapped[str] = mapped_column(ForeignKey("runs.run_id"), nullable=False)

@@ -6,13 +6,16 @@ from deal_engine.models.beneficial_owner import (
 from deal_engine.models.common import (
     Basis,
     Consolidation,
+    CoverageStatus,
     OwnershipClass,
     ParseStatus,
     RestatementClass,
+    ScoreState,
     ScreenOutcome,
     dimensions_hash,
 )
 from deal_engine.models.company import Company, OwnershipAssessment
+from deal_engine.models.coverage import ConceptCoverageFact
 from deal_engine.models.event import Event, EventType
 from deal_engine.models.figure import Derivation, Figure
 from deal_engine.models.filing import FilingRecord
@@ -28,7 +31,9 @@ __all__ = [
     "BeneficialOwner",
     "Company",
     "CompositeScore",
+    "ConceptCoverageFact",
     "Consolidation",
+    "CoverageStatus",
     "Derivation",
     "Event",
     "EventType",
@@ -45,6 +50,7 @@ __all__ = [
     "RestatementClass",
     "RunRecord",
     "Score",
+    "ScoreState",
     "ScreenOutcome",
     "ScreenResult",
     "ScreeningMode",
