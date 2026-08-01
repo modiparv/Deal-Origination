@@ -48,8 +48,17 @@ def _strip_prefix(qname: str) -> str:
     return qname.rsplit(":", 1)[-1].strip()
 
 
-def _resolve_namespace(prefix: str, namespaces: dict[str, str]) -> str:
-    return namespaces.get(f"xmlns:{prefix}") or namespaces.get(prefix) or ""
+def _first(value: object) -> object:
+    # ixbrlparse stores namespace values as LISTS (it splits the xmlns
+    # attribute on spaces); a single URI arrives as a one-element list.
+    if isinstance(value, (list, tuple)):
+        return value[0] if value else ""
+    return value
+
+
+def _resolve_namespace(prefix: str, namespaces: dict[str, object]) -> str:
+    value = namespaces.get(f"xmlns:{prefix}") or namespaces.get(prefix) or ""
+    return str(_first(value))
 
 
 def _segment_dimensions(context: object) -> dict[str, str]:
@@ -68,8 +77,9 @@ def parse_ixbrl(handle: IO) -> ParsedDocument:
     from ixbrlparse import IXBRL  # heavy import kept local
 
     parsed = IXBRL(handle, raise_on_error=False)
-    raw_namespaces = {
-        str(k): str(v) for k, v in (getattr(parsed, "namespaces", {}) or {}).items()
+    raw_namespaces: dict[str, object] = dict(getattr(parsed, "namespaces", {}) or {})
+    display_namespaces = {
+        str(k): str(_first(v)) for k, v in raw_namespaces.items()
     }
 
     facts: list[RawFact] = []
@@ -105,7 +115,7 @@ def parse_ixbrl(handle: IO) -> ParsedDocument:
     errors = [repr(e) for e in (getattr(parsed, "errors", None) or [])]
     return ParsedDocument(
         facts=facts,
-        namespaces=raw_namespaces,
+        namespaces=display_namespaces,
         error_count=len(errors),
         errors=errors,
     )

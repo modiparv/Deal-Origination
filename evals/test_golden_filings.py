@@ -50,8 +50,9 @@ def test_golden_filing(expected_path):
     for row in expected["figures"]:
         key = (row["concept"], str(row["period_end"]))
         assert key in by_key, (
-            f"expected figure missing: {key}; got "
-            f"{sorted(by_key)}"
+            f"expected figure missing: {key}; got {sorted(by_key)}; "
+            f"unmapped tags: {figures.unmapped}; "
+            f"namespaces: {parsed.namespaces}"
         )
         draft = by_key[key]
         assert draft.value == Decimal(str(row["value"])), (
