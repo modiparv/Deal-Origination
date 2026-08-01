@@ -28,7 +28,9 @@ class FilingRecord(BaseModel):
     category: str | None = None
     subcategory: str | None = None
     type: str | None = None  # registry form code, verbatim
-    date: date | None = None
+    # Named filing_date, not `date`: a field named identically to its own
+    # type shadows it during deferred-annotation evaluation.
+    filing_date: date | None = None
     description: str | None = None
     description_values: dict[str, str] = Field(default_factory=dict)
     document_id: str | None = None  # parsed from links.document_metadata

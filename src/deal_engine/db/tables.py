@@ -217,7 +217,7 @@ class FilingRow(Base):
     category: Mapped[str | None] = mapped_column(String)
     subcategory: Mapped[str | None] = mapped_column(String)
     type: Mapped[str | None] = mapped_column(String)
-    date: Mapped[date | None] = mapped_column(Date)
+    filing_date: Mapped[date | None] = mapped_column(Date)
     description: Mapped[str | None] = mapped_column(String)
     description_values: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
     document_id: Mapped[str | None] = mapped_column(String)
