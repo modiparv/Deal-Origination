@@ -1,0 +1,57 @@
+# Hand-verified expected figures for the first golden filing.
+#
+# Source: gb-10122954-2022-04-30-micro-entity.xhtml — a real micro-entity
+# filing (registration 10122954, period ending 2022-04-30), retrieved
+# through the registry document API during live verification and
+# hand-read against the rendered document.
+#
+# What this fixture exercises: the FRC 2019-01-01 taxonomy
+# (uk-core -> http://xbrl.frc.org.uk/fr/2019-01-01/core); instant
+# balance-sheet facts alongside duration facts; current AND prior-period
+# comparatives in one document (the observation model's reason to exist);
+# the creditors maturity split expressed through the
+# uk-core:MaturitiesOrExpirationPeriodsDimension dimension
+# (WithinOneYear / AfterOneYear members); decimals="2", no scale, no
+# sign attributes; and a real-world tagging quirk — the average-employees
+# count carries unitRef="GBP", so the parser must classify by concept,
+# not trust the unit.
+#
+# No income-statement concepts exist in this document: revenue and
+# operating profit must come out as coverage facts
+# (filed_without_concept), never as parse failures.
+
+document: gb-10122954-2022-04-30-micro-entity.xhtml
+registration_id: "10122954"
+taxonomy_namespace: "http://xbrl.frc.org.uk/fr/2019-01-01/core"
+
+figures:
+  # period ending 2022-04-30 (current)
+  - {concept: fixed_assets,                          period_end: 2022-04-30, value: 1084}
+  - {concept: current_assets,                        period_end: 2022-04-30, value: 9032}
+  - {concept: creditors_within_one_year,             period_end: 2022-04-30, value: 500}
+  - {concept: creditors_after_one_year,              period_end: 2022-04-30, value: 1960}
+  - {concept: net_current_assets,                    period_end: 2022-04-30, value: 8532}
+  - {concept: total_assets_less_current_liabilities, period_end: 2022-04-30, value: 9616}
+  - {concept: net_assets,                            period_end: 2022-04-30, value: 7656}
+  - {concept: equity,                                period_end: 2022-04-30, value: 7656}
+  - {concept: average_employees,                     period_start: 2021-05-01, period_end: 2022-04-30, value: 2}
+  # period ending 2021-04-30 (prior-year comparatives, same document)
+  - {concept: fixed_assets,                          period_end: 2021-04-30, value: 599}
+  - {concept: current_assets,                        period_end: 2021-04-30, value: 7473}
+  - {concept: creditors_within_one_year,             period_end: 2021-04-30, value: 477}
+  - {concept: creditors_after_one_year,              period_end: 2021-04-30, value: 1960}
+  - {concept: net_current_assets,                    period_end: 2021-04-30, value: 6996}
+  - {concept: total_assets_less_current_liabilities, period_end: 2021-04-30, value: 7595}
+  - {concept: net_assets,                            period_end: 2021-04-30, value: 5635}
+  - {concept: equity,                                period_end: 2021-04-30, value: 5635}
+  - {concept: average_employees,                     period_start: 2020-05-01, period_end: 2021-04-30, value: 2}
+
+absent_concepts:
+  # Must surface as coverage facts (filed_without_concept), never errors.
+  - revenue
+  - gross_profit
+  - operating_profit
+  - staff_costs
+  - depreciation_amortisation
+  - cash
+  - debtors
