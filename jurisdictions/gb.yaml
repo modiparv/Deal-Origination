@@ -1,0 +1,70 @@
+# Jurisdiction profile: United Kingdom (Companies House register).
+# This file — not core code — is where UK-specific facts live.
+
+id: GB
+name: United Kingdom
+# GB means the Companies House register in full: England & Wales,
+# Scotland and Northern Ireland — not Great Britain in the geographic
+# sense. The Republic of Ireland is a separate registry (CRO).
+
+available_modes: [financial, signal]
+
+registration_id:
+  # Eight digits, or a two-letter register prefix (e.g. Scotland,
+  # Northern Ireland, LLPs) followed by six digits.
+  pattern: "^(?:[0-9]{8}|[A-Z]{2}[0-9]{6})$"
+  description: >
+    Companies House registered number: 8 digits for England & Wales
+    companies; two-letter prefix + 6 digits for other registers and
+    entity types (SC, NI, OC, SO, NC, ...).
+
+classification_taxonomy: sic_2007
+
+currency: GBP
+
+statutory_filings:
+  - type: annual_accounts
+    cadence: annual
+    availability_lag_months: 9   # private-company filing deadline after period end
+  - type: confirmation_of_details
+    cadence: annual
+    availability_lag_months: 0.5
+  - type: ownership_declaration   # PSC register entries and statements
+    cadence: event_driven
+  - type: security_interest_registration   # charges (MR01), 21-day deadline
+    cadence: event_driven
+  - type: officer_change
+    cadence: event_driven
+
+filing_lag:
+  # Filed accounts are 9–21 months stale by construction: up to 12 months
+  # of period plus the 9-month filing deadline.
+  min_months: 9
+  max_months: 21
+
+caveats:
+  - >
+    Most small companies file "filleted" accounts with no profit & loss
+    statement, and micro-entities file ~5 balance-sheet lines; revenue
+    and operating profit are unavailable for a large share of the
+    register. Reforms effective April 2028 require small companies to
+    file a P&L but permit opting out of public display — treat the gap
+    as permanent.
+  - >
+    The April 2025 size-threshold uplift (small = turnover <= GBP 15m)
+    moved thousands of companies from P&L-filing to filleted regimes;
+    go-forward coverage in the lower-mid-market worsens through 2028.
+  - >
+    Classification codes are self-reported, unverified, and frequently
+    stale; holding companies carry head-office codes while trading
+    subsidiaries carry the real ones.
+  - >
+    Beneficial-ownership declarations are self-reported; identity
+    verification became mandatory November 2025 with a 12-month
+    phase-in, so expect correction churn in ownership records.
+  - >
+    Registered security interests omit secured amounts (post-2013
+    regime) and name security agents rather than economic lenders.
+  - >
+    Officer and beneficial-owner birth dates are published at
+    month/year granularity only.

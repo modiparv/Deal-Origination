@@ -1,0 +1,43 @@
+name: gate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+
+      - name: Tests
+        run: python -m pytest -q -rs
+
+      - name: Gate — example mandate validates (expect exit 0 with coverage warning)
+        run: deal-engine mandate validate mandates/example-lmm-gb.yaml
+
+      - name: Gate — GB+IE fixture rejected naming jurisdiction and concepts
+        run: |
+          if deal-engine mandate validate tests/fixtures/mandates/gb-ie-ebitda.yaml; then
+            echo "ERROR: expected validation failure" && exit 1
+          else
+            echo "rejected as expected"
+          fi
+
+      - name: Gate — FINANCIAL mode over signal-only jurisdiction rejected
+        run: |
+          if deal-engine mandate validate tests/fixtures/mandates/financial-mode-over-signal-only.yaml --jurisdictions tests/fixtures/jurisdictions; then
+            echo "ERROR: expected validation failure" && exit 1
+          else
+            echo "rejected as expected"
+          fi
+
+      - name: Gate — db init
+        run: deal-engine db init --db /tmp/gate.db

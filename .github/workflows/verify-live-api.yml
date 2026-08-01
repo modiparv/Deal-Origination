@@ -1,0 +1,38 @@
+name: live-api-verification
+
+# Manually triggered: Actions tab -> live-api-verification -> Run workflow.
+# Requires the CH_API_KEY repository secret
+# (Settings -> Secrets and variables -> Actions -> New repository secret).
+# Runs the numbered protocol from docs/live-api-verification.md and
+# uploads the report + raw responses + saved accounts documents as a
+# downloadable artifact. ~25 API calls, far below the rate limit.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    env:
+      CH_API_KEY: ${{ secrets.CH_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check secret present
+        run: |
+          if [ -z "$CH_API_KEY" ]; then
+            echo "CH_API_KEY secret is not set. Add it under:"
+            echo "  repo Settings -> Secrets and variables -> Actions -> New repository secret"
+            exit 1
+          fi
+
+      - name: Run verification protocol
+        run: bash scripts/verify_live_api.sh out
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-api-verification
+          path: out/
+          if-no-files-found: error

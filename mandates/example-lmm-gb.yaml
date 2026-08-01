@@ -1,0 +1,75 @@
+# GB lower-mid-market control buyout mandate.
+#
+# Jurisdiction facts (register scope, taxonomy, filing lag, disclosure
+# caveats) live in jurisdictions/gb.yaml, not here and not in code.
+#
+# size.metric ebitda validates with a recorded WARNING: its input
+# concepts are only conditionally available (income-statement-bearing
+# filers). Companies outside that condition screen as insufficient_data
+# per on_insufficient_data — resolved per company, permanent by design.
+
+id: lmm-gb-buyout
+name: GB Lower-Mid-Market Control Buyout
+asset_class: buyout
+deal_type: control
+
+# Either mode suffices for a company to be screenable under this
+# mandate; mode is resolved per company from what its filings contain.
+required_modes: [financial, signal]
+
+geography:
+  include: [GB]
+
+size:
+  primary:
+    metric: ebitda
+    currency: GBP
+    min: 1_000_000
+    max: 5_000_000
+  on_insufficient_data: flag
+
+sectors:
+  taxonomy: sic_2007
+  include: ["620*", "711*", "8610*"]
+  exclude: ["6419*"]
+
+ownership:
+  include: [owner_managed, independent]
+  exclude: [pe_backed, listed, listed_subsidiary]
+  on_unclassifiable: flag
+
+signals:
+  succession_risk:
+    beneficial_owner_age_threshold: 58
+    no_younger_officer_appointed:
+      age_below: 48
+      within_years: 5
+  new_security_registered:
+    lookback_months: 24
+    exclude_refinance: true
+    exclude_lender_categories: [invoice_finance, asset_finance, landlord]
+
+rubric:
+  - id: financial_quality
+    weight: 0.30
+    scale: [1, 5]
+    requires_mode: financial
+    guidance: >
+      Score on margin stability, revenue trajectory over available filed
+      periods, and working capital discipline. Cite figure IDs.
+  - id: succession_opportunity
+    weight: 0.25
+    scale: [1, 5]
+    requires_mode: any
+  - id: market_position
+    weight: 0.20
+    scale: [1, 5]
+    requires_mode: any
+  - id: complexity_risk
+    weight: 0.25
+    scale: [1, 5]
+    requires_mode: any
+
+thresholds:
+  advance_to_profile: 3.5
+  flag_for_review: 3.0
