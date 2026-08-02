@@ -44,3 +44,9 @@ class SourceDocument(BaseModel):
     fetch_headers: dict[str, str] = Field(default_factory=dict)
     parse_status: ParseStatus = ParseStatus.PENDING
     parse_error_count: int = 0
+    # Document self-description: which software produced the filing, as
+    # tagged in the filing itself. Every parse defect found so far has
+    # clustered by product, so the coverage report breaks parse yield
+    # down by this field — a product silently yielding zero figures must
+    # be visible without a cluster investigation.
+    production_software: str | None = None

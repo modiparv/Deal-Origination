@@ -128,3 +128,36 @@ class TestSicExpansion:
         assert sic.matches_any("62012", ["62012"])
         assert not sic.matches_any("64191", ["620*"])
         assert sic.matches_any("64191", ["6419*"])
+
+
+class TestProductionSoftware:
+    def _doc(self, text_facts):
+        from deal_engine.parse.ixbrl import ParsedDocument, TextFact
+
+        return ParsedDocument(
+            facts=[],
+            namespaces={},
+            error_count=0,
+            text_facts=[TextFact(*tf) for tf in text_facts],
+        )
+
+    def test_reads_name_production_software_by_local_name(self):
+        doc = self._doc(
+            [
+                ("http://xbrl.frc.org.uk/cd/2024-01-01/business", "bus",
+                 "NameProductionSoftware", "Digita Accounts Production Advanced"),
+            ]
+        )
+        assert mapping.production_software(doc) == "Digita Accounts Production Advanced"
+
+    def test_prefix_is_irrelevant(self):
+        # Older filings use uk-bus:, and prefixes are vendor-arbitrary.
+        doc = self._doc(
+            [("", "uk-bus", "NameProductionSoftware", "Companies House")]
+        )
+        assert mapping.production_software(doc) == "Companies House"
+
+    def test_absent_or_empty_tag_yields_none(self):
+        assert mapping.production_software(self._doc([])) is None
+        empty = self._doc([("", "bus", "NameProductionSoftware", "")])
+        assert mapping.production_software(empty) is None

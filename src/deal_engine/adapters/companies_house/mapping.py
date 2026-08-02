@@ -168,3 +168,17 @@ def map_security_interest(item: dict, cid: str) -> dict:
         ],
         "transactions": list(item.get("transactions", [])),
     }
+
+
+def production_software(parsed) -> str | None:
+    """The software that produced the filing, as tagged in the filing
+    itself (bus:/uk-bus: NameProductionSoftware across taxonomy eras).
+
+    Matched by local name because the prefix is vendor-arbitrary and the
+    business-vocabulary namespace varies by taxonomy vintage. Feeds the
+    coverage report's per-product parse-yield breakdown: every parse
+    defect found so far clustered by product."""
+    for fact in getattr(parsed, "text_facts", None) or []:
+        if fact.local_name == "NameProductionSoftware" and fact.text:
+            return fact.text
+    return None

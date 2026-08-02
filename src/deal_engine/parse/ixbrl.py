@@ -38,12 +38,26 @@ class RawFact:
     raw_text: str
 
 
+@dataclass(frozen=True)
+class TextFact:
+    """A non-numeric inline fact: declarations, names, narrative tags.
+
+    Carried so adapters can read document self-description (e.g. the
+    production-software tag) — never a source of figures."""
+
+    namespace: str
+    prefix: str
+    local_name: str
+    text: str
+
+
 @dataclass
 class ParsedDocument:
     facts: list[RawFact]
     namespaces: dict[str, str]  # prefix -> URI
     error_count: int
     errors: list[str] = field(default_factory=list)
+    text_facts: list[TextFact] = field(default_factory=list)
 
 
 def _strip_prefix(qname: str) -> str:
@@ -154,10 +168,26 @@ def parse_ixbrl(handle: IO) -> ParsedDocument:
             )
         )
 
+    text_facts: list[TextFact] = []
+    for nn in getattr(parsed, "nonnumeric", None) or []:
+        text = getattr(nn, "value", None)
+        if text is None:
+            continue
+        prefix = str(getattr(nn, "schema", ""))
+        text_facts.append(
+            TextFact(
+                namespace=_resolve_namespace(prefix, raw_namespaces, document_bindings),
+                prefix=prefix,
+                local_name=str(getattr(nn, "name", "")),
+                text=str(text).strip(),
+            )
+        )
+
     errors = [repr(e) for e in (getattr(parsed, "errors", None) or [])]
     return ParsedDocument(
         facts=facts,
         namespaces=display_namespaces,
         error_count=len(errors),
         errors=errors,
+        text_facts=text_facts,
     )

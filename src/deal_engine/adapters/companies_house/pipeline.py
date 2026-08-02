@@ -448,11 +448,13 @@ def _ingest_accounts_document(
 
     parsed = parse_ixbrl(io.BytesIO(result.content))
     figures = extract_figures(parsed, concept_map)
+    software = mapping.production_software(parsed)
     if figures.parse_error_count > config.quarantine_error_threshold:
         doc = SourceDocument(
             **base,
             parse_status=ParseStatus.QUARANTINED,
             parse_error_count=figures.parse_error_count,
+            production_software=software,
         )
         row = add_source_document(session, doc)
         session.flush()
@@ -463,6 +465,7 @@ def _ingest_accounts_document(
         **base,
         parse_status=ParseStatus.PARSED,
         parse_error_count=figures.parse_error_count,
+        production_software=software,
     )
     row = add_source_document(session, doc)
     session.flush()
@@ -860,6 +863,54 @@ def build_coverage_report(session: Session, run_id: str, mandate) -> dict:
             concept_bucket = bucket["concepts"].setdefault(fact.concept, {})
             concept_bucket[fact.status] = concept_bucket.get(fact.status, 0) + 1
 
+    # Parse yield by filing-production software, over the machine-readable
+    # documents of the companies in this report. Every parse defect found
+    # so far clustered by product (first instance: Digita Accounts
+    # Production Advanced declaring xmlns per element) — a product whose
+    # documents parse but yield zero figures must be visible here, not
+    # discovered by a cluster investigation.
+    cids = list(company_status)
+    software_stats: dict[str, dict] = {}
+    if cids:
+        figure_docs = {
+            row[0]
+            for row in session.execute(
+                select(FigureRow.source_document_id).where(
+                    FigureRow.company_id.in_(cids)
+                )
+            )
+        }
+        machine_readable = (
+            ParseStatus.PARSED.value,
+            ParseStatus.QUARANTINED.value,
+        )
+        doc_rows = (
+            session.execute(
+                select(SourceDocumentRow).where(
+                    SourceDocumentRow.company_id.in_(cids),
+                    SourceDocumentRow.parse_status.in_(machine_readable),
+                )
+            )
+            .scalars()
+            .all()
+        )
+        for doc in doc_rows:
+            bucket = software_stats.setdefault(
+                doc.production_software or "undeclared",
+                {"documents": 0, "with_figures": 0, "zero_figure": 0, "quarantined": 0},
+            )
+            bucket["documents"] += 1
+            if doc.parse_status == ParseStatus.QUARANTINED.value:
+                bucket["quarantined"] += 1
+            elif doc.id in figure_docs:
+                bucket["with_figures"] += 1
+            else:
+                bucket["zero_figure"] += 1
+        for bucket in software_stats.values():
+            bucket["figure_yield"] = round(
+                bucket["with_figures"] / bucket["documents"], 3
+            )
+
     # A company whose only machine-readable documents failed to parse is
     # a system defect, not an observation about the company — it must not
     # inflate the signal-mode count (which asserts "no machine-readable
@@ -883,6 +934,7 @@ def build_coverage_report(session: Session, run_id: str, mandate) -> dict:
         "mandate_id": mandate.id,
         "companies_with_coverage_facts": len(company_status),
         "screening_modes": modes,
+        "by_production_software": dict(sorted(software_stats.items())),
         "by_classification_code": {
             code: {
                 "companies": len(bucket["companies"]),

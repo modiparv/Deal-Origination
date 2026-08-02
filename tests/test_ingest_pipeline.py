@@ -250,6 +250,13 @@ class TestFullIngest:
             "signal": 0,
             "parse_failed": 0,
         }
+        # Parse yield by filing-production software (the golden filing
+        # self-declares "Companies House" via uk-bus:NameProductionSoftware).
+        software = report["by_production_software"]["Companies House"]
+        assert software["zero_figure"] == 0
+        assert software["quarantined"] == 0
+        assert software["with_figures"] == software["documents"]
+        assert software["figure_yield"] == 1.0
         assert Path(summary1["report_path"]).is_file()
 
         # ---- Re-ingest: zero new rows, zero flag changes (DoD #4). ----

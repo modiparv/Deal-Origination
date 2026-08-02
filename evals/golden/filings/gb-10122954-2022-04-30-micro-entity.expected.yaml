@@ -22,6 +22,7 @@
 
 document: gb-10122954-2022-04-30-micro-entity.xhtml
 registration_id: "10122954"
+production_software: "Companies House"
 taxonomy_namespace: "http://xbrl.frc.org.uk/fr/2019-01-01/core"
 
 figures:
