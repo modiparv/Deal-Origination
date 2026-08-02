@@ -100,7 +100,28 @@ for (const asset of ["index.html", "styles.css", "app.js"]) {
   cpSync(join(here, "src", asset), join(dist, asset));
 }
 writeFileSync(join(dist, "data.js"), `window.__DATA__ = ${JSON.stringify(data)};\n`);
+
+// Demo surface (web/src/demo/): a separate audience — investment
+// professionals, not operations. Its dataset is exported from the
+// committed engine.db of a verified run by scripts/export_demo_data.py
+// into web/demo-data/demo-data.json; the build only wraps it. No demo
+// data file → the demo ships its empty state, never samples.
+const demoSrc = join(here, "src", "demo");
+const demoDist = join(dist, "demo");
+mkdirSync(demoDist, { recursive: true });
+for (const asset of ["index.html", "company.html", "trace.html", "demo.css", "demo.js"]) {
+  cpSync(join(demoSrc, asset), join(demoDist, asset));
+}
+const demoDataPath = join(repo, "web", "demo-data", "demo-data.json");
+const demoData = existsSync(demoDataPath) ? readFileSync(demoDataPath, "utf8") : null;
+writeFileSync(
+  join(demoDist, "demo-data.js"),
+  demoData
+    ? `window.__DEMO__ = ${demoData};\n`
+    : `window.__DEMO__ = { run: {}, companies: [], figures: {}, figures_by_company: {}, documents: {}, coverage: {} };\n`
+);
+
 console.log(
   `built dist: ${data.runs.length} run summaries, ${data.mandates.length} mandate(s), ` +
-    `${data.golden.filings} golden filing(s)`
+    `${data.golden.filings} golden filing(s), demo data ${demoData ? "present" : "ABSENT (empty state)"}`
 );

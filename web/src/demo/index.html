@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Screen results — Deal Origination Engine</title>
+<link rel="stylesheet" href="demo.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📇</text></svg>" />
+</head>
+<body data-page="list">
+<header class="demo-header">
+  <div>
+    <h1>Screen results</h1>
+    <p class="crumb">Mandate universe sample — UK lower-mid-market buyout thesis</p>
+  </div>
+  <p class="run-meta" id="run-meta"></p>
+</header>
+
+<main>
+  <p class="note">Companies ingested from the mandate's sector and incorporation filters.
+  Screening scores, flags and derived metrics (margin) are Phase 2 and have not run —
+  those columns state <code>not_reached</code> rather than showing anything invented.
+  Every populated figure links to its source filing.</p>
+
+  <div class="toolbar">
+    <label>sector <select id="f-sic"></select></label>
+    <label>mode <select id="f-mode">
+      <option value="">all</option>
+      <option value="financial">financial</option>
+      <option value="signal">signal</option>
+      <option value="parse_failed">parse_failed</option>
+    </select></label>
+    <input type="search" id="f-q" placeholder="search name or company number" />
+    <span class="count" id="f-count"></span>
+  </div>
+
+  <div id="list-root"><table id="list-table"></table></div>
+
+  <section><h2>State vocabulary</h2><div id="list-legend"></div></section>
+</main>
+
+<footer class="demo-footer"><p id="run-footer"></p></footer>
+<script src="demo-data.js"></script>
+<script src="demo.js"></script>
+</body>
+</html>
