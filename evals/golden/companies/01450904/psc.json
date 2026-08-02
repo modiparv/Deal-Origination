@@ -1,0 +1,157 @@
+{
+ "active_count": 2,
+ "ceased_count": 2,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Stakehill Industrial Estate",
+    "country": "United Kingdom",
+    "locality": "Middleton",
+    "postal_code": "M24 2FL",
+    "premises": "Unit 44 Touchet Hall Road",
+    "region": "Manchester"
+   },
+   "ceased": false,
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 2,
+    "year": 1971
+   },
+   "etag": "4887b7a8ac236e05dbd950bd3981818d7137f84a",
+   "identity_verification_details": {
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-05-26"
+   },
+   "kind": "individual-person-with-significant-control",
+   "links": {
+    "self": "/company/01450904/persons-with-significant-control/individual/4qaaX3RVr0BRsaisICP4RN6tf54"
+   },
+   "name": "Mrs Joanne Boon",
+   "name_elements": {
+    "forename": "Joanne",
+    "surname": "Boon",
+    "title": "Mrs"
+   },
+   "nationality": "British",
+   "natures_of_control": [
+    "ownership-of-shares-25-to-50-percent",
+    "voting-rights-25-to-50-percent"
+   ],
+   "notified_on": "2026-04-02"
+  },
+  {
+   "address": {
+    "address_line_1": "Unit 44 Touchet Hall Road",
+    "address_line_2": "Stakehill Industrial Estate",
+    "locality": "Middleton",
+    "postal_code": "M24 2FL",
+    "region": "Manchester"
+   },
+   "ceased": true,
+   "ceased_on": "2026-04-02",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 11,
+    "year": 1966
+   },
+   "etag": "bc7db8a57a52955c2846d1c97f8cd2670fcac229",
+   "identity_verification_details": {
+    "appointment_verification_statement_date": "2026-11-01",
+    "appointment_verification_statement_due_on": "2026-11-14"
+   },
+   "kind": "individual-person-with-significant-control",
+   "links": {
+    "self": "/company/01450904/persons-with-significant-control/individual/uzrBvX_nnZw1MuQdh_BH_JWkD1k"
+   },
+   "name": "Mr Geoffrey Magee",
+   "name_elements": {
+    "forename": "Geoffrey",
+    "surname": "Magee",
+    "title": "Mr"
+   },
+   "nationality": "British",
+   "natures_of_control": [
+    "ownership-of-shares-25-to-50-percent",
+    "voting-rights-25-to-50-percent"
+   ],
+   "notified_on": "2016-04-06"
+  },
+  {
+   "address": {
+    "address_line_1": "Unit 44 Touchet Hall Road",
+    "address_line_2": "Stakehill Industrial Estate",
+    "locality": "Middleton",
+    "postal_code": "M24 2FL",
+    "region": "Manchester"
+   },
+   "ceased": true,
+   "ceased_on": "2019-03-20",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 10,
+    "year": 1961
+   },
+   "etag": "085adc7e6c036c35100cc468b1186d56de124fb1",
+   "kind": "individual-person-with-significant-control",
+   "links": {
+    "self": "/company/01450904/persons-with-significant-control/individual/1TGiYyOStOnLCFdWBxIUP7K24KE"
+   },
+   "name": "Mr Mark George Edmonds",
+   "name_elements": {
+    "forename": "Mark",
+    "middle_name": "George",
+    "surname": "Edmonds",
+    "title": "Mr"
+   },
+   "nationality": "British",
+   "natures_of_control": [
+    "ownership-of-shares-25-to-50-percent",
+    "voting-rights-25-to-50-percent"
+   ],
+   "notified_on": "2016-04-06"
+  },
+  {
+   "address": {
+    "address_line_1": "Unit 44 Touchet Hall Road",
+    "address_line_2": "Stakehill Industrial Estate",
+    "locality": "Middleton",
+    "postal_code": "M24 2FL",
+    "region": "Manchester"
+   },
+   "ceased": false,
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 7,
+    "year": 1971
+   },
+   "etag": "5dac6543d09f6a284fb7f39dcfefa62e0ad8490b",
+   "identity_verification_details": {
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-05-11"
+   },
+   "kind": "individual-person-with-significant-control",
+   "links": {
+    "self": "/company/01450904/persons-with-significant-control/individual/_8r1y0ayyO1TP0_uf5L5V9oFbrY"
+   },
+   "name": "Mr David Keith Boon",
+   "name_elements": {
+    "forename": "David",
+    "middle_name": "Keith",
+    "surname": "Boon",
+    "title": "Mr"
+   },
+   "nationality": "British",
+   "natures_of_control": [
+    "ownership-of-shares-25-to-50-percent",
+    "voting-rights-25-to-50-percent"
+   ],
+   "notified_on": "2016-04-06"
+  }
+ ],
+ "items_per_page": 25,
+ "links": {
+  "self": "/company/01450904/persons-with-significant-control"
+ },
+ "start_index": 0,
+ "total_results": 4
+}

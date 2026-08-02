@@ -1,0 +1,61 @@
+{
+ "accounts": {
+  "accounting_reference_date": {
+   "day": "28",
+   "month": "02"
+  },
+  "last_accounts": {
+   "made_up_to": "2026-02-28",
+   "period_end_on": "2026-02-28",
+   "period_start_on": "2025-03-01",
+   "type": "micro-entity"
+  },
+  "next_accounts": {
+   "due_on": "2027-11-30",
+   "overdue": false,
+   "period_end_on": "2027-02-28",
+   "period_start_on": "2026-03-01"
+  },
+  "next_due": "2027-11-30",
+  "next_made_up_to": "2027-02-28",
+  "overdue": false
+ },
+ "can_file": true,
+ "company_name": "ARAL ESTATES LIMITED",
+ "company_number": "00915706",
+ "company_status": "active",
+ "confirmation_statement": {
+  "last_made_up_to": "2026-02-28",
+  "next_due": "2027-03-14",
+  "next_made_up_to": "2027-02-28",
+  "overdue": false
+ },
+ "date_of_creation": "1967-09-19",
+ "etag": "2c83f168db4b16a91ad8087d669fd88c7659a8d7",
+ "has_been_liquidated": false,
+ "has_charges": false,
+ "has_insolvency_history": false,
+ "has_super_secure_pscs": false,
+ "jurisdiction": "england-wales",
+ "last_full_members_list_date": "2016-02-28",
+ "links": {
+  "filing_history": "/company/00915706/filing-history",
+  "officers": "/company/00915706/officers",
+  "persons_with_significant_control": "/company/00915706/persons-with-significant-control",
+  "self": "/company/00915706"
+ },
+ "registered_office_address": {
+  "address_line_1": "8 Castle Meadow",
+  "address_line_2": "Painscastle",
+  "country": "Wales",
+  "locality": "Builth Wells",
+  "postal_code": "LD2 3JZ",
+  "region": "Powys"
+ },
+ "registered_office_is_in_dispute": false,
+ "sic_codes": [
+  "71122"
+ ],
+ "type": "ltd",
+ "undeliverable_registered_office_address": false
+}

@@ -1,0 +1,23 @@
+{
+ "barcode": "XE7YPB1U",
+ "category": "accounts",
+ "company_number": "01356854",
+ "created_at": "2025-07-31T08:21:48.69746804Z",
+ "etag": "",
+ "filename": "01356854_aa_2025-07-31",
+ "links": {
+  "document": "https://document-api.company-information.service.gov.uk/document/uyWAT3bdk7k_-AcTRlr-ir4pjQbsLxULh6RIpLeVG9U/content",
+  "self": "https://document-api.company-information.service.gov.uk/document/uyWAT3bdk7k_-AcTRlr-ir4pjQbsLxULh6RIpLeVG9U"
+ },
+ "pages": 9,
+ "resources": {
+  "application/pdf": {
+   "content_length": 114308
+  },
+  "application/xhtml+xml": {
+   "content_length": 131812
+  }
+ },
+ "significant_date": "2024-12-31T00:00:00Z",
+ "significant_date_type": "made-up-date"
+}

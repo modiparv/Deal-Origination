@@ -1,0 +1,40 @@
+{
+ "active_count": 1,
+ "ceased_count": 0,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Carlyon Road",
+    "country": "England",
+    "locality": "Atherstone",
+    "postal_code": "CV9 1LQ",
+    "premises": "17",
+    "region": "Warwickshire"
+   },
+   "ceased": false,
+   "etag": "2922759e59ba1c898d6a88128d5b4823e375c56b",
+   "identification": {
+    "country_registered": "England",
+    "legal_authority": "Companies Act 2006",
+    "legal_form": "Limited Company",
+    "place_registered": "Companies House England And Wales",
+    "registration_number": "03884245"
+   },
+   "kind": "corporate-entity-person-with-significant-control",
+   "links": {
+    "self": "/company/01116596/persons-with-significant-control/corporate-entity/OA6pmXcB00aJ_c4whKOFiGukIIQ"
+   },
+   "name": "A N Tools Limited",
+   "natures_of_control": [
+    "ownership-of-shares-75-to-100-percent"
+   ],
+   "notified_on": "2016-04-06"
+  }
+ ],
+ "items_per_page": 25,
+ "links": {
+  "self": "/company/01116596/persons-with-significant-control"
+ },
+ "start_index": 0,
+ "total_results": 1
+}

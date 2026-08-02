@@ -1,0 +1,49 @@
+{
+ "active_count": 1,
+ "ceased_count": 0,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Redfields Industrial Park",
+    "address_line_2": "Church Crookham",
+    "locality": "Fleet",
+    "postal_code": "GU52 0RD",
+    "premises": "Unit 6",
+    "region": "Hampshire"
+   },
+   "ceased": false,
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 9,
+    "year": 1956
+   },
+   "etag": "b5d981f5f16c70d07e323bf6a4b112ad0b7f116a",
+   "identity_verification_details": {
+    "appointment_verification_statement_date": "2026-09-27",
+    "appointment_verification_statement_due_on": "2026-10-10"
+   },
+   "kind": "individual-person-with-significant-control",
+   "links": {
+    "self": "/company/01169166/persons-with-significant-control/individual/QqbHreQbp8b_YsYYg1jO1TJAop0"
+   },
+   "name": "Mr Keith David Edwards",
+   "name_elements": {
+    "forename": "Keith",
+    "middle_name": "David",
+    "surname": "Edwards",
+    "title": "Mr"
+   },
+   "nationality": "British",
+   "natures_of_control": [
+    "ownership-of-shares-75-to-100-percent"
+   ],
+   "notified_on": "2016-09-01"
+  }
+ ],
+ "items_per_page": 25,
+ "links": {
+  "self": "/company/01169166/persons-with-significant-control"
+ },
+ "start_index": 0,
+ "total_results": 1
+}

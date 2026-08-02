@@ -1,0 +1,61 @@
+{
+ "accounts": {
+  "accounting_reference_date": {
+   "day": "31",
+   "month": "08"
+  },
+  "last_accounts": {
+   "made_up_to": "2025-08-31",
+   "period_end_on": "2025-08-31",
+   "period_start_on": "2024-09-01",
+   "type": "total-exemption-full"
+  },
+  "next_accounts": {
+   "due_on": "2027-05-31",
+   "overdue": false,
+   "period_end_on": "2026-08-31",
+   "period_start_on": "2025-09-01"
+  },
+  "next_due": "2027-05-31",
+  "next_made_up_to": "2026-08-31",
+  "overdue": false
+ },
+ "can_file": true,
+ "company_name": "SUBCRAFT LIMITED",
+ "company_number": "01385545",
+ "company_status": "active",
+ "confirmation_statement": {
+  "last_made_up_to": "2025-07-04",
+  "next_due": "2026-07-18",
+  "next_made_up_to": "2026-07-04",
+  "overdue": true
+ },
+ "date_of_creation": "1978-08-24",
+ "etag": "e13c85143e30a9812e6e71f51f834a94335d5eab",
+ "has_been_liquidated": false,
+ "has_charges": false,
+ "has_insolvency_history": false,
+ "has_super_secure_pscs": false,
+ "jurisdiction": "england-wales",
+ "last_full_members_list_date": "2015-07-18",
+ "links": {
+  "charges": "/company/01385545/charges",
+  "filing_history": "/company/01385545/filing-history",
+  "officers": "/company/01385545/officers",
+  "persons_with_significant_control": "/company/01385545/persons-with-significant-control",
+  "self": "/company/01385545"
+ },
+ "registered_office_address": {
+  "address_line_1": "Knoll House",
+  "address_line_2": "Knoll Road",
+  "locality": "Camberley",
+  "postal_code": "GU15 3SY",
+  "region": "Surrey"
+ },
+ "registered_office_is_in_dispute": false,
+ "sic_codes": [
+  "71129"
+ ],
+ "type": "ltd",
+ "undeliverable_registered_office_address": false
+}

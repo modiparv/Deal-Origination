@@ -1,0 +1,51 @@
+{
+ "active_count": 1,
+ "ceased_count": 0,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Deeprose Close",
+    "country": "England",
+    "locality": "Guildford",
+    "postal_code": "GU2 9NA",
+    "premises": "17",
+    "region": "Surrey"
+   },
+   "ceased": false,
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 8,
+    "year": 1945
+   },
+   "etag": "de32d7ddc1614a43065c3795403378441f61eb09",
+   "identity_verification_details": {
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-07-09"
+   },
+   "kind": "individual-person-with-significant-control",
+   "links": {
+    "self": "/company/01385545/persons-with-significant-control/individual/IoQDoLeRxjeld5pD0dubpMjxSxw"
+   },
+   "name": "Mr Michael John Arthur Chapman",
+   "name_elements": {
+    "forename": "Michael",
+    "middle_name": "John Arthur",
+    "surname": "Chapman",
+    "title": "Mr"
+   },
+   "nationality": "British",
+   "natures_of_control": [
+    "ownership-of-shares-75-to-100-percent",
+    "voting-rights-75-to-100-percent",
+    "right-to-appoint-and-remove-directors"
+   ],
+   "notified_on": "2016-04-06"
+  }
+ ],
+ "items_per_page": 25,
+ "links": {
+  "self": "/company/01385545/persons-with-significant-control"
+ },
+ "start_index": 0,
+ "total_results": 1
+}

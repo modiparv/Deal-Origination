@@ -1,0 +1,600 @@
+{
+ "active_count": 4,
+ "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+ "inactive_count": 0,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Chorley North Business Park,",
+    "address_line_2": "Drumhead Road,",
+    "country": "England",
+    "locality": "Chorley",
+    "postal_code": "PR6 7BX",
+    "premises": "Rivington House,",
+    "region": "Lancashire"
+   },
+   "appointed_on": "2021-09-06",
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/HGZCh_DQIDRPHj9ENsCmAgMeWlQ/appointments"
+    },
+    "self": "/company/01250877/appointments/qV9SdQXas0ATB_5n27FOZSQeLjE"
+   },
+   "name": "RILEY, Deborah",
+   "officer_role": "secretary",
+   "person_number": "287233080001"
+  },
+  {
+   "address": {
+    "address_line_1": "Chorley North Business Park,",
+    "address_line_2": "Drumhead Road,",
+    "country": "England",
+    "locality": "Chorley",
+    "postal_code": "PR6 7BX",
+    "premises": "Rivington House,",
+    "region": "Lancashire"
+   },
+   "appointed_on": "2021-09-07",
+   "country_of_residence": "Canada",
+   "date_of_birth": {
+    "month": 4,
+    "year": 1967
+   },
+   "etag": "41f188fe6d6b8abb24d17b9a2873d33fc6de5ae5",
+   "identity_verification_details": {
+    "anti_money_laundering_supervisory_bodies": [
+     "The Law Society of England and Wales (Solicitors Regulatory Authority - SRA)"
+    ],
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-07-26",
+    "authorised_corporate_service_provider_name": "FOX WILLIAMS LLP ACSP",
+    "identity_verified_on": "2025-10-15",
+    "preferred_name": "Brian Beattie"
+   },
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/S_YGUfnNwBo8NfA9tPPHIB4BJcY/appointments"
+    },
+    "self": "/company/01250877/appointments/KZS8OIlvWB77llg-qI9NXkrRyts"
+   },
+   "name": "BEATTIE, Brian",
+   "nationality": "Canadian",
+   "officer_role": "director",
+   "person_number": "178964850001"
+  },
+  {
+   "address": {
+    "address_line_1": "Chorley North Business Park,",
+    "address_line_2": "Drumhead Road,",
+    "country": "England",
+    "locality": "Chorley",
+    "postal_code": "PR6 7BX",
+    "premises": "Rivington House,",
+    "region": "Lancashire"
+   },
+   "appointed_on": "2023-10-10",
+   "country_of_residence": "United States",
+   "date_of_birth": {
+    "month": 6,
+    "year": 1961
+   },
+   "etag": "5301060b1c4894bf50d937c3ab9e6b75edd357fd",
+   "identity_verification_details": {
+    "anti_money_laundering_supervisory_bodies": [
+     "The Law Society of England and Wales (Solicitors Regulatory Authority - SRA)"
+    ],
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-07-26",
+    "authorised_corporate_service_provider_name": "FOX WILLIAMS LLP ACSP",
+    "identity_verified_on": "2025-11-14",
+    "preferred_name": "Richard Paul Reynertson"
+   },
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/ozikIhdFSVBY8ClgLcYA7cpAw7I/appointments"
+    },
+    "self": "/company/01250877/appointments/u8gVzB6lu2MZM1aNRGRb2ZLmWGE"
+   },
+   "name": "REYNERTSON, Richard",
+   "nationality": "American",
+   "officer_role": "director",
+   "person_number": "316506720001"
+  },
+  {
+   "address": {
+    "address_line_1": "Chorley North Business Park,",
+    "address_line_2": "Drumhead Road,",
+    "country": "England",
+    "locality": "Chorley",
+    "postal_code": "PR6 7BX",
+    "premises": "Rivington House,",
+    "region": "Lancashire"
+   },
+   "appointed_on": "2017-09-08",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 11,
+    "year": 1969
+   },
+   "etag": "9e28523666022a12d47eaaea3132c32cff694bee",
+   "identity_verification_details": {
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-07-26"
+   },
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/AkmkLV1oOhlgXd1D__ge-EHVNC4/appointments"
+    },
+    "self": "/company/01250877/appointments/g7juEc1ygEso-vSwZvDVp4vB5Dk"
+   },
+   "name": "RILEY, Deborah",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "93505650001"
+  },
+  {
+   "address": {
+    "address_line_1": "Newbank 1 Liverpool Road",
+    "address_line_2": "Longton",
+    "locality": "Preston",
+    "postal_code": "PR4 5HA",
+    "region": "Lancashire"
+   },
+   "appointed_on": "1992-07-24",
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/BBx4tBvl_M2uKRf5UTRbHhONfdo/appointments"
+    },
+    "self": "/company/01250877/appointments/7pae-tYFIkVqd6y2sgVdUBvBOqw"
+   },
+   "name": "CHAPPELL, Anthony Edward",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "22797780001",
+   "resigned_on": "1993-07-12"
+  },
+  {
+   "address": {
+    "address_line_1": "1 Liverpool Road",
+    "address_line_2": "Longton",
+    "locality": "Preston",
+    "postal_code": "PR4 5HA",
+    "region": "Lancashire"
+   },
+   "appointed_before": "1991-07-24",
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/iSaiNZmYQpijIHbsxTuiydQLzYg/appointments"
+    },
+    "self": "/company/01250877/appointments/BMgZ5MtN543sygVXfSLFL8ajv4k"
+   },
+   "name": "CHAPPELL, Marion Jean",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "14029880001",
+   "resigned_on": "1992-07-24"
+  },
+  {
+   "address": {
+    "address_line_1": "Fox Hill",
+    "locality": "Bath",
+    "postal_code": "BA2 5QN",
+    "premises": "4",
+    "region": "Avon"
+   },
+   "appointed_on": "2008-04-04",
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/ESpW_wlhByCiPNA85eOcskygtOs/appointments"
+    },
+    "self": "/company/01250877/appointments/osiQUjCdJt4ImZSZm8o1GWQtGWw"
+   },
+   "name": "CLAY, Robert Peter",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "118346310001",
+   "resigned_on": "2021-09-06"
+  },
+  {
+   "address": {
+    "address_line_1": "Dil Koosha Beech Avenue",
+    "address_line_2": "Anderton",
+    "locality": "Chorley",
+    "postal_code": "PR6 9PQ",
+    "region": "Lancashire"
+   },
+   "appointed_on": "1993-07-12",
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/L9ttAQ2ByGHzAdGUiZDBxX-iGJs/appointments"
+    },
+    "self": "/company/01250877/appointments/3320H6fBb8AhsQragcwljZamPms"
+   },
+   "name": "ENTWISTLE, Donald Bernard",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "49141910001",
+   "resigned_on": "1999-06-25"
+  },
+  {
+   "address": {
+    "address_line_1": "Whittles Farm",
+    "address_line_2": "Roby Mill",
+    "locality": "Skelmersdale",
+    "postal_code": "WN8 0QF",
+    "region": "Lancashire"
+   },
+   "appointed_on": "1999-06-26",
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/nl1SUFcp7tsdlF56vchGpfUIdxY/appointments"
+    },
+    "self": "/company/01250877/appointments/MDXOqfq3k8X6dRl_bGjiKNYVwko"
+   },
+   "name": "HAILWOOD, Kenneth Stanley",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "65130060001",
+   "resigned_on": "2008-04-04"
+  },
+  {
+   "address": {
+    "address_line_1": "Alfege Street Sw",
+    "country": "Canada",
+    "locality": "Calgary",
+    "postal_code": "T2T 3S4",
+    "premises": "3211",
+    "region": "Canada"
+   },
+   "appointed_on": "2010-01-14",
+   "country_of_residence": "Canada",
+   "date_of_birth": {
+    "month": 12,
+    "year": 1960
+   },
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/407vSTYcqna4lOkHIZ0HMWmW2HU/appointments"
+    },
+    "self": "/company/01250877/appointments/ES5eZpucCU-cR4Dr9yhV69Q_ta0"
+   },
+   "name": "BAKER, James Arthur",
+   "nationality": "Canadian",
+   "officer_role": "director",
+   "person_number": "149261740001",
+   "resigned_on": "2023-10-10"
+  },
+  {
+   "address": {
+    "address_line_1": "Newbank 1 Liverpool Road",
+    "address_line_2": "Longton",
+    "locality": "Preston",
+    "postal_code": "PR4 5HA",
+    "region": "Lancashire"
+   },
+   "appointed_before": "1991-07-24",
+   "date_of_birth": {
+    "month": 10,
+    "year": 1940
+   },
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/BBx4tBvl_M2uKRf5UTRbHhONfdo/appointments"
+    },
+    "self": "/company/01250877/appointments/de6St1Sar6NEMinUlqcF-60lBKI"
+   },
+   "name": "CHAPPELL, Anthony Edward",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "22797780001",
+   "resigned_on": "2001-12-17"
+  },
+  {
+   "address": {
+    "address_line_1": "Fox Hill",
+    "locality": "Bath",
+    "postal_code": "BA2 5QN",
+    "premises": "4",
+    "region": "Avon"
+   },
+   "appointed_on": "2008-04-04",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 7,
+    "year": 1970
+   },
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/ESpW_wlhByCiPNA85eOcskygtOs/appointments"
+    },
+    "self": "/company/01250877/appointments/okTGbF-mAgiTVjkQcS3pe5m7CDI"
+   },
+   "name": "CLAY, Robert Peter",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "118346310001",
+   "resigned_on": "2021-09-06"
+  },
+  {
+   "address": {
+    "address_line_1": "3 The Grove",
+    "address_line_2": "Chipperfield Road",
+    "locality": "Kings Langley",
+    "postal_code": "WD4 9JF",
+    "region": "Hertfordshire"
+   },
+   "appointed_before": "1991-07-24",
+   "date_of_birth": {
+    "month": 1,
+    "year": 1953
+   },
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/fr1KvnVnv25FTrmomzZYzJNThac/appointments"
+    },
+    "self": "/company/01250877/appointments/cxyC7BZEnaGId9ijaCCU1GL7I5o"
+   },
+   "name": "FLOYED, Ian Geofrey",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "14029890001",
+   "resigned_on": "1998-08-19"
+  },
+  {
+   "address": {
+    "address_line_1": "166 Bold Lane",
+    "address_line_2": "Aughton",
+    "locality": "Ormskirk",
+    "postal_code": "L39 6SH",
+    "region": "Lancashire"
+   },
+   "appointed_before": "1991-07-24",
+   "date_of_birth": {
+    "month": 2,
+    "year": 1942
+   },
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/TpcWRA6DV0Sg1H4lflj6HJjVGIU/appointments"
+    },
+    "self": "/company/01250877/appointments/WOZo3b9psdM7zDhcZ8UxbrvpNbA"
+   },
+   "name": "GORE, George Eric",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "22797770001",
+   "resigned_on": "2001-12-17"
+  },
+  {
+   "address": {
+    "address_line_1": "Whittles Farm",
+    "address_line_2": "Roby Mill",
+    "locality": "Skelmersdale",
+    "postal_code": "WN8 0QF",
+    "region": "Lancashire"
+   },
+   "appointed_on": "1999-09-01",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 8,
+    "year": 1962
+   },
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/nl1SUFcp7tsdlF56vchGpfUIdxY/appointments"
+    },
+    "self": "/company/01250877/appointments/vekGndoKNVWB3xSKn4BVoKAds40"
+   },
+   "name": "HAILWOOD, Kenneth Stanley",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "65130060001",
+   "resigned_on": "2008-04-04"
+  },
+  {
+   "address": {
+    "address_line_1": "6 Parnham Close Bradley Fold",
+    "address_line_2": "Radcliffe",
+    "locality": "Manchester",
+    "postal_code": "M26 3XU"
+   },
+   "appointed_on": "2000-11-03",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 11,
+    "year": 1964
+   },
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/yoTyb4-NW2Hsck6M46aDlZW9u_M/appointments"
+    },
+    "self": "/company/01250877/appointments/FRmnQzjAKIF84bGRkRnLBUVMdzA"
+   },
+   "name": "HARRIS, Glynn Richard",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "72847140002",
+   "resigned_on": "2008-04-04"
+  },
+  {
+   "address": {
+    "address_line_1": "Royal Albert Crescent",
+    "country": "Canada",
+    "locality": "Oakville",
+    "postal_code": "L6H 3A7",
+    "premises": "292",
+    "region": "Ontario"
+   },
+   "appointed_on": "2008-04-04",
+   "country_of_residence": "Canada",
+   "date_of_birth": {
+    "month": 11,
+    "year": 1962
+   },
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/wmAupjto8GDxRsNFrIt2jWb8KU8/appointments"
+    },
+    "self": "/company/01250877/appointments/MqRjD8QRyRdxyYFHA9yZleNg-2w"
+   },
+   "name": "MILLER, Mark",
+   "nationality": "Canadian",
+   "officer_role": "director",
+   "person_number": "129600780001",
+   "resigned_on": "2009-09-01"
+  },
+  {
+   "address": {
+    "address_line_1": "1 Watson Street",
+    "country": "Uk",
+    "locality": "Manchester",
+    "postal_code": "M3 4EF",
+    "premises": "C4-3"
+   },
+   "appointed_on": "2008-04-08",
+   "country_of_residence": "Canada",
+   "date_of_birth": {
+    "month": 11,
+    "year": 1972
+   },
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/FLBwXOetCvOCAZdOUjr-Mx2uX7Q/appointments"
+    },
+    "self": "/company/01250877/appointments/df4MesgXHU12a8Q9aEVgsc5Vl4w"
+   },
+   "name": "NOBLE, Farley",
+   "nationality": "Canadian",
+   "officer_role": "director",
+   "person_number": "129706480002",
+   "resigned_on": "2011-03-28"
+  },
+  {
+   "address": {
+    "address_line_1": "Springwood 82 The Common",
+    "address_line_2": "Parbold",
+    "locality": "Wigan",
+    "postal_code": "WN8 7EA",
+    "region": "Lancashire"
+   },
+   "appointed_on": "1997-12-01",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 2,
+    "year": 1962
+   },
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/-Zb9aFNEs-iVHa3_KL7Krrjx5DU/appointments"
+    },
+    "self": "/company/01250877/appointments/9aKYvesBeq-H88QWS-dZpYYMFpA"
+   },
+   "name": "RICHARDS, Keith Douglas",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "72281390002",
+   "resigned_on": "2008-04-04"
+  },
+  {
+   "address": {
+    "address_line_1": "Drumhead Road",
+    "country": "England",
+    "locality": "Chorley",
+    "postal_code": "PR6 7BX",
+    "premises": "Rivington House",
+    "region": "Lancashire"
+   },
+   "appointed_on": "2011-09-05",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 11,
+    "year": 1969
+   },
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/AkmkLV1oOhlgXd1D__ge-EHVNC4/appointments"
+    },
+    "self": "/company/01250877/appointments/pP3shDO9C_odDoTvFe0ZCKPL-eM"
+   },
+   "name": "RILEY, Deborah",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "93505650001",
+   "resigned_on": "2014-12-31"
+  },
+  {
+   "address": {
+    "address_line_1": "Staverton",
+    "country": "England",
+    "locality": "Trowbridge",
+    "postal_code": "BA14 6PH",
+    "premises": "The Mill",
+    "region": "Wiltshire"
+   },
+   "appointed_on": "2014-10-14",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 3,
+    "year": 1979
+   },
+   "etag": "bd0b9d41a7d704b7d09a1e711cd03c7a5e164134",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/IecMru5cqGrQBni5vDDiaEgccII/appointments"
+    },
+    "self": "/company/01250877/appointments/-cokWJbel_AB-8TXb9J1BK_BGeQ"
+   },
+   "name": "WALSH, Matthew James",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "193140300001",
+   "resigned_on": "2017-09-08"
+  }
+ ],
+ "items_per_page": 35,
+ "kind": "officer-list",
+ "links": {
+  "self": "/company/01250877/officers"
+ },
+ "resigned_count": 17,
+ "start_index": 0,
+ "total_results": 21
+}

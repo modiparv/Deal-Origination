@@ -1,0 +1,63 @@
+{
+ "accounts": {
+  "accounting_reference_date": {
+   "day": "30",
+   "month": "09"
+  },
+  "last_accounts": {
+   "made_up_to": "2025-09-30",
+   "period_end_on": "2025-09-30",
+   "period_start_on": "2024-10-01",
+   "type": "unaudited-abridged"
+  },
+  "next_accounts": {
+   "due_on": "2027-06-30",
+   "overdue": false,
+   "period_end_on": "2026-09-30",
+   "period_start_on": "2025-10-01"
+  },
+  "next_due": "2027-06-30",
+  "next_made_up_to": "2026-09-30",
+  "overdue": false
+ },
+ "can_file": true,
+ "company_name": "A.& S. DONALDSON (NORTHERN IRELAND) LIMITED",
+ "company_number": "NI009814",
+ "company_status": "active",
+ "confirmation_statement": {
+  "last_made_up_to": "2026-05-25",
+  "next_due": "2027-06-08",
+  "next_made_up_to": "2027-05-25",
+  "overdue": false
+ },
+ "date_of_creation": "1973-10-30",
+ "etag": "25c9a11b49d9c8259ee6c3ecf56a45263a020096",
+ "has_charges": false,
+ "has_insolvency_history": false,
+ "has_super_secure_pscs": false,
+ "jurisdiction": "northern-ireland",
+ "last_full_members_list_date": "2015-10-31",
+ "links": {
+  "charges": "/company/NI009814/charges",
+  "filing_history": "/company/NI009814/filing-history",
+  "officers": "/company/NI009814/officers",
+  "persons_with_significant_control": "/company/NI009814/persons-with-significant-control",
+  "persons_with_significant_control_statements": "/company/NI009814/persons-with-significant-control-statements",
+  "self": "/company/NI009814"
+ },
+ "registered_office_address": {
+  "address_line_1": "15 Ballinderry Road",
+  "country": "Northern Ireland",
+  "locality": "Lisburn",
+  "postal_code": "BT28 2SA",
+  "region": "Co Antrim"
+ },
+ "registered_office_is_in_dispute": false,
+ "sic_codes": [
+  "47190",
+  "47410",
+  "62090"
+ ],
+ "type": "ltd",
+ "undeliverable_registered_office_address": false
+}

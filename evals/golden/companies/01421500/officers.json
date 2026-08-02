@@ -1,0 +1,177 @@
+{
+ "active_count": 4,
+ "etag": "4ff99f5699b5d3b9aba15737b2e254cf80fcdf06",
+ "inactive_count": 0,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Houghton Street",
+    "country": "United Kingdom",
+    "locality": "Bury",
+    "postal_code": "BL9 0TA",
+    "premises": "2/4",
+    "region": "Lancashire"
+   },
+   "appointed_before": "1991-12-06",
+   "etag": "4ff99f5699b5d3b9aba15737b2e254cf80fcdf06",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/LzXCjPytBj-K-YW9-_SUU3tHjN8/appointments"
+    },
+    "self": "/company/01421500/appointments/3pZIb1VIQk-l1qnTe0nSZg1RY30"
+   },
+   "name": "JENKINS, Amarjit Kaur",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "21030780001"
+  },
+  {
+   "address": {
+    "address_line_1": "Houghton Street",
+    "country": "United Kingdom",
+    "locality": "Bury",
+    "postal_code": "BL9 0TA",
+    "premises": "2/4",
+    "region": "Lancashire"
+   },
+   "appointed_before": "1991-12-06",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 6,
+    "year": 1954
+   },
+   "etag": "c7bb50a9a57236b4cf21311c635df118a0841ff9",
+   "identity_verification_details": {
+    "anti_money_laundering_supervisory_bodies": [
+     "Association of Accounting Technicians (AAT)"
+    ],
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-04-16",
+    "authorised_corporate_service_provider_name": "SMITH BUTLER LTD ACSP",
+    "identity_verified_on": "2026-04-15",
+    "preferred_name": "Amarjit Kaur jenkins"
+   },
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/LzXCjPytBj-K-YW9-_SUU3tHjN8/appointments"
+    },
+    "self": "/company/01421500/appointments/ww-HA6T0WXwCZWAwMrgJnJQgMP8"
+   },
+   "name": "JENKINS, Amarjit Kaur",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "21030780001"
+  },
+  {
+   "address": {
+    "address_line_1": "Houghton Street",
+    "country": "United Kingdom",
+    "locality": "Bury",
+    "postal_code": "BL9 0TA",
+    "premises": "2/4",
+    "region": "Lancashire"
+   },
+   "appointed_before": "1991-12-06",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 12,
+    "year": 1953
+   },
+   "etag": "9ef1a659587dd3ed7873f863e8796acd194a6ecc",
+   "identity_verification_details": {
+    "anti_money_laundering_supervisory_bodies": [
+     "Association of Accounting Technicians (AAT)"
+    ],
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-04-16",
+    "authorised_corporate_service_provider_name": "SMITH BUTLER LTD ACSP",
+    "identity_verified_on": "2026-04-15",
+    "preferred_name": "William Jenkins"
+   },
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/7zgfESCi-7fiiIXQn9iqItjdDAY/appointments"
+    },
+    "self": "/company/01421500/appointments/D8HqtmdNBf6N8m-spuDpVgo6xgs"
+   },
+   "name": "JENKINS, William",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "21030790001"
+  },
+  {
+   "address": {
+    "address_line_1": "Houghton Street",
+    "locality": "Bury",
+    "postal_code": "BL9 0TA",
+    "premises": "2/4",
+    "region": "Lancashire"
+   },
+   "appointed_on": "2025-04-01",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 12,
+    "year": 1972
+   },
+   "etag": "43efbace6992017de8b06ce67ae68fa323777709",
+   "identity_verification_details": {
+    "anti_money_laundering_supervisory_bodies": [
+     "Association of Accounting Technicians (AAT)"
+    ],
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-04-16",
+    "authorised_corporate_service_provider_name": "SMITH BUTLER LTD ACSP",
+    "identity_verified_on": "2026-04-15",
+    "preferred_name": "Timothy Alan Rogerson"
+   },
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/ji3IJOY3o7D8A4UcuacvBrUyehM/appointments"
+    },
+    "self": "/company/01421500/appointments/efq9zJURVsrusskv2aRpRX4SSls"
+   },
+   "name": "ROGERSON, Timothy Alan",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "334473160001"
+  },
+  {
+   "address": {
+    "address_line_1": "40 Heathside Road",
+    "address_line_2": "Withington",
+    "locality": "Manchester",
+    "postal_code": "M20 4XJ"
+   },
+   "appointed_on": "2007-12-31",
+   "date_of_birth": {
+    "month": 1,
+    "year": 1962
+   },
+   "etag": "4ff99f5699b5d3b9aba15737b2e254cf80fcdf06",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/MlwHlKnx1Q5lLNGF0ZPCy3NrrHI/appointments"
+    },
+    "self": "/company/01421500/appointments/KzJ_7caix7aWukqSYKFY0k0eYfw"
+   },
+   "name": "HESFORD, Mark Ian",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "19388110002",
+   "resigned_on": "2009-11-06"
+  }
+ ],
+ "items_per_page": 35,
+ "kind": "officer-list",
+ "links": {
+  "self": "/company/01421500/officers"
+ },
+ "resigned_count": 1,
+ "start_index": 0,
+ "total_results": 5
+}

@@ -1,0 +1,124 @@
+{
+ "active_count": 1,
+ "etag": "5d45f4a0b7b78699b2b53dee7fd27207cade3210",
+ "inactive_count": 0,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Old Orchard House",
+    "address_line_2": "Hunts Lane",
+    "locality": "Netherseal",
+    "postal_code": "DE12 8BJ",
+    "region": "Derbyshire"
+   },
+   "appointed_before": "1991-12-26",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 10,
+    "year": 1960
+   },
+   "etag": "5d45f4a0b7b78699b2b53dee7fd27207cade3210",
+   "identity_verification_details": {
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2025-12-22"
+   },
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/cO5e3T1vRttG5bqz7GeA9WqBF20/appointments"
+    },
+    "self": "/company/01116596/appointments/XN5knFRK8YIX9Ujn0lGK2VqWPBk"
+   },
+   "name": "ROWLEY, Shaun",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "22465090003"
+  },
+  {
+   "address": {
+    "address_line_1": "Greenfields",
+    "address_line_2": "31 Main Street, Frolesworth",
+    "locality": "Lutterworth",
+    "postal_code": "LE17 5EG",
+    "region": "Leicestershire"
+   },
+   "appointed_before": "1991-12-26",
+   "etag": "6f955e188f1dc7bf5f06e953d0fc272c85804bd0",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/HyAxeSLcyyGMDbHm0skhtZPE1QE/appointments"
+    },
+    "self": "/company/01116596/appointments/xwd2RYJ_ursbWrXaFwfqgq60uF4"
+   },
+   "name": "NAYLOR, Alan Maurice",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "22465080002",
+   "resigned_on": "2015-06-11"
+  },
+  {
+   "address": {
+    "address_line_1": "97 Elmsthorpe Lane",
+    "address_line_2": "Earl Shilton",
+    "locality": "Leicester",
+    "postal_code": "LE9 7PT",
+    "region": "Leicestershire"
+   },
+   "appointed_before": "1991-12-26",
+   "date_of_birth": {
+    "month": 11,
+    "year": 1936
+   },
+   "etag": "6f955e188f1dc7bf5f06e953d0fc272c85804bd0",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/MpkElz3J8oBVMH2IuX07ekPjkRA/appointments"
+    },
+    "self": "/company/01116596/appointments/HjiHVRUM7pA7WmYkpiuaMu8IGAk"
+   },
+   "name": "ALBRIGHTON, Alan",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "22465100001",
+   "resigned_on": "1999-04-01"
+  },
+  {
+   "address": {
+    "address_line_1": "Greenfields",
+    "address_line_2": "31 Main Street, Frolesworth",
+    "locality": "Lutterworth",
+    "postal_code": "LE17 5EG",
+    "region": "Leicestershire"
+   },
+   "appointed_before": "1991-12-26",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 11,
+    "year": 1942
+   },
+   "etag": "6f955e188f1dc7bf5f06e953d0fc272c85804bd0",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/HyAxeSLcyyGMDbHm0skhtZPE1QE/appointments"
+    },
+    "self": "/company/01116596/appointments/jugtm-EvHZvYDTiGD-J99apfFqM"
+   },
+   "name": "NAYLOR, Alan Maurice",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "22465080002",
+   "resigned_on": "2015-06-11"
+  }
+ ],
+ "items_per_page": 35,
+ "kind": "officer-list",
+ "links": {
+  "self": "/company/01116596/officers"
+ },
+ "resigned_count": 3,
+ "start_index": 0,
+ "total_results": 4
+}

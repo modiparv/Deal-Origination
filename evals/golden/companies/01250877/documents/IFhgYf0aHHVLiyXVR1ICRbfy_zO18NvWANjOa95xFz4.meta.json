@@ -1,0 +1,23 @@
+{
+ "barcode": "XD8VFX36",
+ "category": "accounts",
+ "company_number": "01250877",
+ "created_at": "2024-08-05T10:47:55.764219356Z",
+ "etag": "",
+ "filename": "01250877_aa_2024-08-05",
+ "links": {
+  "document": "https://document-api.company-information.service.gov.uk/document/IFhgYf0aHHVLiyXVR1ICRbfy_zO18NvWANjOa95xFz4/content",
+  "self": "https://document-api.company-information.service.gov.uk/document/IFhgYf0aHHVLiyXVR1ICRbfy_zO18NvWANjOa95xFz4"
+ },
+ "pages": 29,
+ "resources": {
+  "application/pdf": {
+   "content_length": 600017
+  },
+  "application/xhtml+xml": {
+   "content_length": 262318
+  }
+ },
+ "significant_date": "2023-12-31T00:00:00Z",
+ "significant_date_type": "made-up-date"
+}

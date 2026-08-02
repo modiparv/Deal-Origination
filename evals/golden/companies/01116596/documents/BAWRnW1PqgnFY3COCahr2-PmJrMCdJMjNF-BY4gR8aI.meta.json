@@ -1,0 +1,20 @@
+{
+ "barcode": "AEC7CYO1",
+ "category": "accounts",
+ "company_number": "01116596",
+ "created_at": "2025-10-06T23:27:55.533524431Z",
+ "etag": "",
+ "filename": "",
+ "links": {
+  "document": "https://document-api.company-information.service.gov.uk/document/BAWRnW1PqgnFY3COCahr2-PmJrMCdJMjNF-BY4gR8aI/content",
+  "self": "https://document-api.company-information.service.gov.uk/document/BAWRnW1PqgnFY3COCahr2-PmJrMCdJMjNF-BY4gR8aI"
+ },
+ "pages": 28,
+ "resources": {
+  "application/pdf": {
+   "content_length": 895924
+  }
+ },
+ "significant_date": "2024-12-31T00:00:00Z",
+ "significant_date_type": "made-up-date"
+}

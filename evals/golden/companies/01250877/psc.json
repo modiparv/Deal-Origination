@@ -1,0 +1,73 @@
+{
+ "active_count": 1,
+ "ceased_count": 1,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Staverton",
+    "locality": "Trowbridge",
+    "postal_code": "BA14 6PH",
+    "premises": "The Mill",
+    "region": "Wiltshire"
+   },
+   "ceased": true,
+   "ceased_on": "2016-04-06",
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 7,
+    "year": 1970
+   },
+   "etag": "15944cd39b8e97e69120222046ee8e87f76efff6",
+   "kind": "individual-person-with-significant-control",
+   "links": {
+    "self": "/company/01250877/persons-with-significant-control/individual/gMbdlXszcF8dBvp6ST_vV5oUNHk"
+   },
+   "name": "Mr Robert Peter Clay",
+   "name_elements": {
+    "forename": "Robert",
+    "middle_name": "Peter",
+    "surname": "Clay",
+    "title": "Mr"
+   },
+   "nationality": "British",
+   "natures_of_control": [
+    "significant-influence-or-control"
+   ],
+   "notified_on": "2016-04-06"
+  },
+  {
+   "address": {
+    "address_line_1": "Bewley House",
+    "address_line_2": "Marshfield Road",
+    "country": "England",
+    "locality": "Chippenham",
+    "postal_code": "SN15 1JW",
+    "premises": "Brook Suite, Ground Floor"
+   },
+   "ceased": false,
+   "etag": "11a895253dfbb45917c8ea5537a31704b359f08f",
+   "identification": {
+    "country_registered": "England",
+    "legal_authority": "Companies Act 2006",
+    "legal_form": "Limited Company",
+    "place_registered": "Companies House England And Wales",
+    "registration_number": "6483887"
+   },
+   "kind": "corporate-entity-person-with-significant-control",
+   "links": {
+    "self": "/company/01250877/persons-with-significant-control/corporate-entity/_UJVT1N_Fxxl8lEkcpIYznGhlUQ"
+   },
+   "name": "Volaris Group Uk Holdco Ltd",
+   "natures_of_control": [
+    "ownership-of-shares-75-to-100-percent"
+   ],
+   "notified_on": "2016-04-06"
+  }
+ ],
+ "items_per_page": 25,
+ "links": {
+  "self": "/company/01250877/persons-with-significant-control"
+ },
+ "start_index": 0,
+ "total_results": 2
+}

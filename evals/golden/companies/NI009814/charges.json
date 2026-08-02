@@ -1,0 +1,181 @@
+{
+ "etag": "bb01ff59dfe67ead44c8437e5086db5e97e2ebe7",
+ "items": [
+  {
+   "charge_code": "NI0098140005",
+   "charge_number": 5,
+   "classification": {
+    "description": "A registered charge",
+    "type": "charge-description"
+   },
+   "created_on": "2019-10-25",
+   "delivered_on": "2019-10-30",
+   "etag": "2e315ba358ff123b61fe599df2cd1881b863ea4f",
+   "links": {
+    "self": "/company/NI009814/charges/nnJhBJ48bhrPWargWu3DruEzk3c"
+   },
+   "particulars": {
+    "contains_fixed_charge": true,
+    "contains_floating_charge": true,
+    "contains_negative_pledge": true,
+    "description": "All that and those the property situate and known as 15 ballinderry road, lisburn, BT28 2SA being more particularly comprised in land registry folio AN21510L county antrim.",
+    "floating_charge_covers_all": true,
+    "type": "brief-description"
+   },
+   "persons_entitled": [
+    {
+     "name": "Aib Group (UK) P.L.C."
+    }
+   ],
+   "status": "outstanding",
+   "transactions": [
+    {
+     "delivered_on": "2019-10-30",
+     "filing_type": "create-charge-with-deed",
+     "links": {
+      "filing": "/company/NI009814/filing-history/MzI0ODA5NDk1N2FkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 4,
+   "classification": {
+    "description": "Mortgage or charge",
+    "type": "charge-description"
+   },
+   "created_on": "2008-10-01",
+   "delivered_on": "2008-10-10",
+   "etag": "f8f4cbe262e47a820881a3c9320aec270218a483",
+   "links": {
+    "self": "/company/NI009814/charges/9tOysiO1TEPRPnzLloMO5ncbxtg"
+   },
+   "particulars": {
+    "description": "All monies mortgage debenture. The company as security for the payment and discharge of the secured obligations (as defined in the mortgage debenture) as beneficial owner hereby:. (A) secure all sums of money which have been or are now or may hereafter from time to time be advanced to the company by the bank;. (B) all other indebtedness and/or contingent and whether incurred solely,severally,jointly and as principal or surety;. (For more information see 402 form).",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Aib Group (UK) PLC"
+    }
+   ],
+   "secured_details": {
+    "description": "0",
+    "type": "amount-secured"
+   },
+   "status": "outstanding",
+   "transactions": [
+    {
+     "delivered_on": "2008-10-10",
+     "filing_type": "create-charge-northern-ireland-pre-2006-companies-act-form-402R"
+    }
+   ]
+  },
+  {
+   "charge_number": 3,
+   "classification": {
+    "description": "Debenture",
+    "type": "charge-description"
+   },
+   "created_on": "1992-07-15",
+   "delivered_on": "1992-07-22",
+   "etag": "94a5936bcb3679256d94a90d108b8ab6724c0a04",
+   "links": {
+    "self": "/company/NI009814/charges/SfE-00uG6eleTxGIUIpU-1Sd-cw"
+   },
+   "particulars": {
+    "description": "All monies debenture. The premises held under a conveyance dated the 29TH december 1988 made between edward grainger andd anna M. grainger (being no. 116 strand road, portstewart in the townland of east crossreagh parish of agherton and county of londonderry and also property situate at benson street, lisburn together with specified assets of the company).",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Allied Irish Banks PLC"
+    }
+   ],
+   "satisfied_on": "2008-09-25",
+   "secured_details": {
+    "description": "0",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1992-07-22",
+     "filing_type": "charge-satisfaction-northern-ireland-pre-2006-companies-act"
+    }
+   ]
+  },
+  {
+   "charge_number": 2,
+   "classification": {
+    "description": "Debenture",
+    "type": "charge-description"
+   },
+   "created_on": "1978-11-13",
+   "delivered_on": "1978-12-01",
+   "etag": "42941e6325349018bcd034c860b8b66d6f90fdf9",
+   "links": {
+    "self": "/company/NI009814/charges/llPwY2-dh4khFs9SN7931J8TXL8"
+   },
+   "particulars": {
+    "description": "All monies debenture. All and singular the company's undertaking and all its property and assets whatsoever and wheresoever both present and future including (without prejudice to the generality of the charge created thereby) its uncalled capital and goodwill.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Allies Irish Banks Limited"
+    }
+   ],
+   "satisfied_on": "2008-09-25",
+   "secured_details": {
+    "description": "0",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1978-12-01",
+     "filing_type": "charge-satisfaction-northern-ireland-pre-2006-companies-act"
+    }
+   ]
+  },
+  {
+   "charge_number": 1,
+   "classification": {
+    "description": "Equitable mortgage",
+    "type": "charge-description"
+   },
+   "created_on": "1976-01-16",
+   "delivered_on": "1976-01-28",
+   "etag": "6aeb204fee06b4f529b807a073aeebdfc9048253",
+   "links": {
+    "self": "/company/NI009814/charges/uwD-D--65QSSSMD9PRKOd_upy-g"
+   },
+   "particulars": {
+    "description": "Equitable mortgage by deposit of title deeds. All that and those the hereditaments and premises the property of the company situate on the north side of benson street in the town or borough of lisburn parish of lisburn alias blaris barony of upper massereene and county of antrim.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Allied Irish Banks Limited"
+    }
+   ],
+   "satisfied_on": "2008-09-25",
+   "secured_details": {
+    "description": "0",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1976-01-28",
+     "filing_type": "charge-satisfaction-northern-ireland-pre-2006-companies-act"
+    }
+   ]
+  }
+ ],
+ "part_satisfied_count": 0,
+ "satisfied_count": 3,
+ "total_count": 5,
+ "unfiltered_count": 5
+}

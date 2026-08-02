@@ -1,0 +1,335 @@
+{
+ "active_count": 1,
+ "etag": "e75c1cdfec90077582789131202dc6969676ee94",
+ "inactive_count": 0,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Coln Gardens",
+    "address_line_2": "Andoversford",
+    "country": "England",
+    "locality": "Cheltenham",
+    "postal_code": "GL54 4NB",
+    "premises": "12"
+   },
+   "appointed_on": "2024-08-14",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 5,
+    "year": 1984
+   },
+   "etag": "e75c1cdfec90077582789131202dc6969676ee94",
+   "identity_verification_details": {
+    "appointment_verification_statement_due_on": "2026-11-01"
+   },
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/uAw8IOzNi-9hn3KhEVZprEKGR_E/appointments"
+    },
+    "self": "/company/00515148/appointments/xxE9WuXE_tTJXhVAr4KCLMFtGgA"
+   },
+   "name": "RODRIGUES, Anna Marie",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "286815540001"
+  },
+  {
+   "address": {
+    "address_line_1": "Hayden Hill House Old Gloucester Road",
+    "address_line_2": "Hayden",
+    "locality": "Cheltenham",
+    "postal_code": "GL51 0SW",
+    "region": "Gloucestershire"
+   },
+   "appointed_before": "1991-07-05",
+   "etag": "6ebd8ca89545166d4e387858a380c3e329eaf071",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/ytBXmKYKrHKVDBFUIihUN9APEO8/appointments"
+    },
+    "self": "/company/00515148/appointments/4-5myLB--BHSpfdki3etu06opsw"
+   },
+   "name": "ALLEN, William Sinclair",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "45170350001",
+   "resigned_on": "1992-01-01"
+  },
+  {
+   "address": {
+    "address_line_1": "Gloucestershire Airport",
+    "country": "United Kingdom",
+    "locality": "Cheltenham",
+    "postal_code": "GL51 6SP",
+    "premises": "Hangar Se38",
+    "region": "Gloucestershire"
+   },
+   "appointed_on": "2011-06-01",
+   "etag": "6ebd8ca89545166d4e387858a380c3e329eaf071",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/vKTLdY32tFFBWAqsxcq9RjK1T3I/appointments"
+    },
+    "self": "/company/00515148/appointments/0bVj0NUMEL4SgoEYv1_9RsGB354"
+   },
+   "name": "BUREL, Carole",
+   "officer_role": "secretary",
+   "person_number": "163295430001",
+   "resigned_on": "2024-08-14"
+  },
+  {
+   "address": {
+    "address_line_1": "21 Boulton Road",
+    "address_line_2": "Pitville",
+    "locality": "Cheltenham",
+    "postal_code": "GL50 4RZ",
+    "region": "Gloucestershire"
+   },
+   "appointed_on": "1992-01-01",
+   "etag": "6ebd8ca89545166d4e387858a380c3e329eaf071",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/rp8TZKC0oW8mNssEf0vcCHf5TcE/appointments"
+    },
+    "self": "/company/00515148/appointments/x8A7c1yQ6hZ2aLHqW7MZE3IPbAw"
+   },
+   "name": "PARSHOTAM, Jitendra",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "22175440002",
+   "resigned_on": "2010-07-01"
+  },
+  {
+   "address": {
+    "address_line_1": "Gloucestershire Airport",
+    "country": "United Kingdom",
+    "locality": "Cheltenham",
+    "postal_code": "GL51 6SP",
+    "premises": "Hangar Se38",
+    "region": "Gloucestershire"
+   },
+   "appointed_on": "1989-09-29",
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 1,
+    "year": 1950
+   },
+   "etag": "6ebd8ca89545166d4e387858a380c3e329eaf071",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/ytBXmKYKrHKVDBFUIihUN9APEO8/appointments"
+    },
+    "self": "/company/00515148/appointments/6aRZx1ECeKt6Ffn4RKxH3lqmcm0"
+   },
+   "name": "ALLEN, William Sinclair",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "45170350009",
+   "resigned_on": "2024-08-14"
+  },
+  {
+   "address": {
+    "address_line_1": "Edgehill Stanley Road",
+    "address_line_2": "Battledown",
+    "locality": "Cheltenham",
+    "postal_code": "GL52 6PB",
+    "region": "Gloucestershire"
+   },
+   "appointed_before": "1991-07-05",
+   "date_of_birth": {
+    "month": 1,
+    "year": 1919
+   },
+   "etag": "6ebd8ca89545166d4e387858a380c3e329eaf071",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/dEMleD8GoVGoz18cRtKEI1JbCMI/appointments"
+    },
+    "self": "/company/00515148/appointments/77UP2bpcOcdimcSG90TDPC7TH-c"
+   },
+   "name": "ALLEN, William",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "1597180001",
+   "resigned_on": "1991-10-26"
+  },
+  {
+   "address": {
+    "address_line_1": "3 Foxleigh Crescent",
+    "address_line_2": "Longlevens",
+    "locality": "Gloucester",
+    "postal_code": "GL2 0XW",
+    "region": "Gloucestershire"
+   },
+   "appointed_before": "1991-07-05",
+   "date_of_birth": {
+    "month": 6,
+    "year": 1951
+   },
+   "etag": "6ebd8ca89545166d4e387858a380c3e329eaf071",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/nq2z3wDZvhda3oPXPJy6wzD-F7A/appointments"
+    },
+    "self": "/company/00515148/appointments/uq7BrVXZJGXY9HxxEEe2Iy7JXLU"
+   },
+   "name": "HAMILTON, Richard Dennis",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "15807550002",
+   "resigned_on": "2002-07-05"
+  },
+  {
+   "address": {
+    "address_line_1": "48 St Michaels Road",
+    "address_line_2": "The Woodlands",
+    "locality": "Cheltenham",
+    "postal_code": "GL51 3RR",
+    "region": "Gloucestershire"
+   },
+   "appointed_on": "1999-02-19",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 2,
+    "year": 1952
+   },
+   "etag": "6ebd8ca89545166d4e387858a380c3e329eaf071",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/htDcy0TwjGVfAGYimpHPEpht-FY/appointments"
+    },
+    "self": "/company/00515148/appointments/KjkTWP2T0ib2A-2yZsBNl6MFPTU"
+   },
+   "name": "KANE, Brian Malcolm",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "95676950001",
+   "resigned_on": "2006-12-04"
+  },
+  {
+   "address": {
+    "address_line_1": "Greystones",
+    "address_line_2": "The Stream",
+    "locality": "Ashleworth",
+    "postal_code": "GL19 4JH",
+    "region": "Gloucestershire"
+   },
+   "appointed_on": "1999-02-19",
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 8,
+    "year": 1967
+   },
+   "etag": "6ebd8ca89545166d4e387858a380c3e329eaf071",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/36KySZfNd6a381UwlXRy0-DMB2c/appointments"
+    },
+    "self": "/company/00515148/appointments/yNTvzjzG1JyNknbs7Zqmu_KVMQw"
+   },
+   "name": "MORRIS, Simon Kenneth",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "63010690002",
+   "resigned_on": "2005-09-01"
+  },
+  {
+   "address": {
+    "address_line_1": "Ardenne Belmont Avenue",
+    "address_line_2": "Hucclecote Road",
+    "locality": "Gloucester",
+    "postal_code": "GL3 3SE"
+   },
+   "appointed_on": "1999-02-19",
+   "date_of_birth": {
+    "month": 8,
+    "year": 1963
+   },
+   "etag": "6ebd8ca89545166d4e387858a380c3e329eaf071",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/_MHCLuo4KfzUPiU2YKMtXhu1lPU/appointments"
+    },
+    "self": "/company/00515148/appointments/LvBXJj8gWHrv4HUrz9hg-j9rAAI"
+   },
+   "name": "MORRISON, Alasdair Ian",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "63010660001",
+   "resigned_on": "2001-04-30"
+  },
+  {
+   "address": {
+    "address_line_1": "21 Boulton Road",
+    "address_line_2": "Pitville",
+    "locality": "Cheltenham",
+    "postal_code": "GL50 4RZ",
+    "region": "Gloucestershire"
+   },
+   "appointed_on": "1992-01-01",
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 3,
+    "year": 1960
+   },
+   "etag": "6ebd8ca89545166d4e387858a380c3e329eaf071",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/rp8TZKC0oW8mNssEf0vcCHf5TcE/appointments"
+    },
+    "self": "/company/00515148/appointments/_scp7i_Qn3Yi5KCXCdBQOL_UuPQ"
+   },
+   "name": "PARSHOTAM, Jitendra",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "22175440002",
+   "resigned_on": "2010-07-01"
+  },
+  {
+   "address": {
+    "address_line_1": "116 Meadoway",
+    "address_line_2": "Bishops Cleeve",
+    "locality": "Cheltenham",
+    "postal_code": "GL52 4NB",
+    "region": "Gloucestershire"
+   },
+   "appointed_before": "1991-07-05",
+   "date_of_birth": {
+    "month": 9,
+    "year": 1958
+   },
+   "etag": "6ebd8ca89545166d4e387858a380c3e329eaf071",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/tUWhssOcEOAqR5YllSQfkLjx-hI/appointments"
+    },
+    "self": "/company/00515148/appointments/XYAlZD1rqx0uj5Gc9S4UrJkGBQ4"
+   },
+   "name": "PEARCE, Nigel Leslie",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "15807540001",
+   "resigned_on": "1996-10-23"
+  }
+ ],
+ "items_per_page": 35,
+ "kind": "officer-list",
+ "links": {
+  "self": "/company/00515148/officers"
+ },
+ "resigned_count": 11,
+ "start_index": 0,
+ "total_results": 12
+}

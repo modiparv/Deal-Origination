@@ -1,0 +1,72 @@
+{
+ "active_count": 1,
+ "ceased_count": 1,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Woodrolfe Road",
+    "address_line_2": "Tollesbury",
+    "country": "England",
+    "locality": "Maldon",
+    "postal_code": "CM9 8SE",
+    "premises": "Volspec Limited",
+    "region": "Essex"
+   },
+   "ceased": false,
+   "etag": "86e1007b4661ed33acc0c857864591d9d3b12e5a",
+   "identification": {
+    "country_registered": "England",
+    "legal_authority": "Companies Act",
+    "legal_form": "Limited Company",
+    "place_registered": "United Kingdom Companies House",
+    "registration_number": "14057115"
+   },
+   "kind": "corporate-entity-person-with-significant-control",
+   "links": {
+    "self": "/company/01137688/persons-with-significant-control/corporate-entity/ikWOIWQ_MzzeYwOqKeYSXqiIlGE"
+   },
+   "name": "Volspec Trading Limited",
+   "natures_of_control": [
+    "ownership-of-shares-75-to-100-percent",
+    "voting-rights-75-to-100-percent"
+   ],
+   "notified_on": "2024-03-05"
+  },
+  {
+   "address": {
+    "address_line_1": "Silks Way",
+    "country": "United Kingdom",
+    "locality": "Braintree",
+    "postal_code": "CM7 3GB",
+    "premises": "3 Warners Mill",
+    "region": "Essex"
+   },
+   "ceased": true,
+   "ceased_on": "2024-03-05",
+   "etag": "070d5ee3f697635ea9b8a4f11e292ad61d2840af",
+   "identification": {
+    "country_registered": "England And Wales",
+    "legal_authority": "Companies Act 2006",
+    "legal_form": "Private Company Limited By Shares",
+    "place_registered": "England And Wales",
+    "registration_number": "06497601"
+   },
+   "kind": "corporate-entity-person-with-significant-control",
+   "links": {
+    "self": "/company/01137688/persons-with-significant-control/corporate-entity/sDymkaAfNOnOZ07imN_6GSfAf3I"
+   },
+   "name": "Volspec (Holdings) Limited",
+   "natures_of_control": [
+    "ownership-of-shares-75-to-100-percent",
+    "voting-rights-75-to-100-percent"
+   ],
+   "notified_on": "2016-04-06"
+  }
+ ],
+ "items_per_page": 25,
+ "links": {
+  "self": "/company/01137688/persons-with-significant-control"
+ },
+ "start_index": 0,
+ "total_results": 2
+}

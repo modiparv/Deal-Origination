@@ -1,0 +1,281 @@
+{
+ "active_count": 1,
+ "etag": "bdaf2972632f83b6a9396ef72f4d10760a593b0f",
+ "inactive_count": 0,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Ballinderry Road",
+    "country": "Northern Ireland",
+    "locality": "Lisburn",
+    "postal_code": "BT28 2SA",
+    "premises": "15",
+    "region": "Co Antrim"
+   },
+   "appointed_on": "2005-06-27",
+   "country_of_residence": "Northern Ireland",
+   "date_of_birth": {
+    "month": 1,
+    "year": 1976
+   },
+   "etag": "bdaf2972632f83b6a9396ef72f4d10760a593b0f",
+   "identity_verification_details": {
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-06-02"
+   },
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/NfApuvvuohSvd9b1Yd5bqppY7zE/appointments"
+    },
+    "self": "/company/NI009814/appointments/NfApuvvuohSvd9b1Yd5bqppY7zE"
+   },
+   "name": "HILL, Ronald Andrew",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "145205160005"
+  },
+  {
+   "address": {
+    "address_line_1": "Ballinderry Road",
+    "country": "Northern Ireland",
+    "locality": "Lisburn",
+    "postal_code": "BT28 2SA",
+    "premises": "15",
+    "region": "Co Antrim"
+   },
+   "appointed_on": "2014-01-23",
+   "etag": "a915ca61965674f315bbfec127d0cf7a2857c2b4",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/jZMWOe_ac5WLOlZuj0tsUr92YFE/appointments"
+    },
+    "self": "/company/NI009814/appointments/S5nNoj2xGixXAfgNcfifZ1GwNVU"
+   },
+   "name": "MARSHALL, Barry",
+   "officer_role": "secretary",
+   "person_number": "184501170001",
+   "resigned_on": "2022-04-06"
+  },
+  {
+   "address": {
+    "address_line_1": "\"Edenvale Lodge\"",
+    "address_line_2": "125,Steeple Road",
+    "locality": "Antrim",
+    "postal_code": "BT41 2LW",
+    "region": "Co.Antrim"
+   },
+   "appointed_on": "1973-10-30",
+   "etag": "a915ca61965674f315bbfec127d0cf7a2857c2b4",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/rqpJVVzWfAk089i2VJfeJRxM_io/appointments"
+    },
+    "self": "/company/NI009814/appointments/rqpJVVzWfAk089i2VJfeJRxM_io"
+   },
+   "name": "SHAW, Wilma",
+   "officer_role": "secretary",
+   "person_number": "145205100001",
+   "resigned_on": "2013-04-16"
+  },
+  {
+   "address": {
+    "address_line_1": "Ballinderry Road",
+    "country": "Northern Ireland",
+    "locality": "Lisburn",
+    "postal_code": "BT28 2SA",
+    "premises": "15",
+    "region": "Co Antrim"
+   },
+   "appointed_on": "2005-06-27",
+   "country_of_residence": "Northern Ireland",
+   "date_of_birth": {
+    "month": 1,
+    "year": 1967
+   },
+   "etag": "a915ca61965674f315bbfec127d0cf7a2857c2b4",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/q-8egi4OZ4xDW5yXZdd6F7mFM7E/appointments"
+    },
+    "self": "/company/NI009814/appointments/q-8egi4OZ4xDW5yXZdd6F7mFM7E"
+   },
+   "name": "BROWN, William",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "145205180002",
+   "resigned_on": "2025-03-31"
+  },
+  {
+   "address": {
+    "address_line_1": "Ballinderry Road",
+    "country": "Northern Ireland",
+    "locality": "Lisburn",
+    "postal_code": "BT28 2SA",
+    "premises": "15",
+    "region": "Co Antrim"
+   },
+   "appointed_on": "2005-06-27",
+   "country_of_residence": "Northern Ireland",
+   "date_of_birth": {
+    "month": 2,
+    "year": 1963
+   },
+   "etag": "a915ca61965674f315bbfec127d0cf7a2857c2b4",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/AvgeIJWUkn-hx4YFFsXNKZw4fn4/appointments"
+    },
+    "self": "/company/NI009814/appointments/dL5tja5YziXR18ph4Eyia0_-ViA"
+   },
+   "name": "MARSHALL, Barry",
+   "nationality": "Irish",
+   "officer_role": "director",
+   "person_number": "137589890001",
+   "resigned_on": "2022-04-06"
+  },
+  {
+   "address": {
+    "address_line_1": "3 Hillcrest,Pond Park Road",
+    "address_line_2": "Lisburn",
+    "locality": "Co.Antrim",
+    "postal_code": "BT28 3LJ"
+   },
+   "appointed_on": "1973-10-30",
+   "date_of_birth": {
+    "month": 8,
+    "year": 1948
+   },
+   "etag": "a915ca61965674f315bbfec127d0cf7a2857c2b4",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/3df4FNtRUlIRsT20BX89Uva_9Bc/appointments"
+    },
+    "self": "/company/NI009814/appointments/3df4FNtRUlIRsT20BX89Uva_9Bc"
+   },
+   "name": "MILLAR, Sheila Elizabeth",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "145205140001",
+   "resigned_on": "2008-10-01"
+  },
+  {
+   "address": {
+    "address_line_1": "3 Hillcrest,Pond Park Road",
+    "address_line_2": "Lisburn",
+    "locality": "Co.Antrim",
+    "postal_code": "BT28 3LJ"
+   },
+   "appointed_on": "1973-10-30",
+   "country_of_residence": "Northern Ireland",
+   "date_of_birth": {
+    "month": 7,
+    "year": 1947
+   },
+   "etag": "a915ca61965674f315bbfec127d0cf7a2857c2b4",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/p7pivYv61LWMwUfz2GavggxI518/appointments"
+    },
+    "self": "/company/NI009814/appointments/M4WggN4zgu-qsiTR8_ZWARDSUdY"
+   },
+   "name": "MILLAR, Thomas Henry",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "143395780001",
+   "resigned_on": "2008-10-01"
+  },
+  {
+   "address": {
+    "address_line_1": "Edenvale Lodge",
+    "address_line_2": "125 Steeple Road",
+    "locality": "Antrim",
+    "postal_code": "BT41 2LW"
+   },
+   "appointed_on": "1973-10-30",
+   "country_of_residence": "Northern Ireland",
+   "date_of_birth": {
+    "month": 1,
+    "year": 1951
+   },
+   "etag": "a915ca61965674f315bbfec127d0cf7a2857c2b4",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/PORQSzDJNNIOG-Veu9kIsDtzVZ0/appointments"
+    },
+    "self": "/company/NI009814/appointments/PORQSzDJNNIOG-Veu9kIsDtzVZ0"
+   },
+   "name": "SHAW, Wilhelmina",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "145205150001",
+   "resigned_on": "2013-04-16"
+  },
+  {
+   "address": {
+    "address_line_1": "20 Limestone Meadows",
+    "address_line_2": "Moira",
+    "postal_code": "BT67 0UT"
+   },
+   "appointed_on": "1973-10-30",
+   "date_of_birth": {
+    "month": 8,
+    "year": 1946
+   },
+   "etag": "a915ca61965674f315bbfec127d0cf7a2857c2b4",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/LSYUiJHnUrukG5WNzjDDO7DClI0/appointments"
+    },
+    "self": "/company/NI009814/appointments/LSYUiJHnUrukG5WNzjDDO7DClI0"
+   },
+   "name": "TOSH, Muriel Jeanette",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "145205120001",
+   "resigned_on": "2008-10-01"
+  },
+  {
+   "address": {
+    "address_line_1": "20 Limestone Meadows",
+    "address_line_2": "Moira",
+    "locality": "Co Down",
+    "postal_code": "BT67 0UT"
+   },
+   "appointed_on": "1973-10-30",
+   "date_of_birth": {
+    "month": 5,
+    "year": 1943
+   },
+   "etag": "a915ca61965674f315bbfec127d0cf7a2857c2b4",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/BuW71HDd1EetHGMafj4OkhtXrDI/appointments"
+    },
+    "self": "/company/NI009814/appointments/BuW71HDd1EetHGMafj4OkhtXrDI"
+   },
+   "name": "TOSH, Wilson Matthew",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "145205110001",
+   "resigned_on": "2008-10-01"
+  }
+ ],
+ "items_per_page": 35,
+ "kind": "officer-list",
+ "links": {
+  "self": "/company/NI009814/officers"
+ },
+ "resigned_count": 9,
+ "start_index": 0,
+ "total_results": 10
+}

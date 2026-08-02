@@ -1,0 +1,72 @@
+{
+ "accounts": {
+  "accounting_reference_date": {
+   "day": "30",
+   "month": "06"
+  },
+  "last_accounts": {
+   "made_up_to": "2025-06-30",
+   "period_end_on": "2025-06-30",
+   "period_start_on": "2024-07-01",
+   "type": "total-exemption-full"
+  },
+  "next_accounts": {
+   "due_on": "2027-03-31",
+   "overdue": false,
+   "period_end_on": "2026-06-30",
+   "period_start_on": "2025-07-01"
+  },
+  "next_due": "2027-03-31",
+  "next_made_up_to": "2026-06-30",
+  "overdue": false
+ },
+ "can_file": true,
+ "company_name": "JENKINS DESIGN SERVICES LIMITED",
+ "company_number": "01421500",
+ "company_status": "active",
+ "confirmation_statement": {
+  "last_made_up_to": "2026-04-09",
+  "next_due": "2027-04-23",
+  "next_made_up_to": "2027-04-09",
+  "overdue": false
+ },
+ "date_of_creation": "1979-05-21",
+ "etag": "635f1850b9a82c74205473732f996c63eeccda3b",
+ "has_been_liquidated": false,
+ "has_charges": false,
+ "has_insolvency_history": false,
+ "has_super_secure_pscs": false,
+ "jurisdiction": "england-wales",
+ "last_full_members_list_date": "2015-12-06",
+ "links": {
+  "charges": "/company/01421500/charges",
+  "filing_history": "/company/01421500/filing-history",
+  "officers": "/company/01421500/officers",
+  "persons_with_significant_control": "/company/01421500/persons-with-significant-control",
+  "self": "/company/01421500"
+ },
+ "previous_company_names": [
+  {
+   "ceased_on": "1996-11-26",
+   "effective_from": "1991-07-23",
+   "name": "JENKINS TECHNICAL SERVICES LIMITED"
+  },
+  {
+   "ceased_on": "1991-07-23",
+   "effective_from": "1979-05-21",
+   "name": "FUMEHALL LIMITED"
+  }
+ ],
+ "registered_office_address": {
+  "address_line_1": "2/4 Houghton Street",
+  "locality": "Bury",
+  "postal_code": "BL9 0TA",
+  "region": "Lancashire"
+ },
+ "registered_office_is_in_dispute": false,
+ "sic_codes": [
+  "71111"
+ ],
+ "type": "ltd",
+ "undeliverable_registered_office_address": false
+}

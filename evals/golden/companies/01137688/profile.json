@@ -1,0 +1,61 @@
+{
+ "accounts": {
+  "accounting_reference_date": {
+   "day": "30",
+   "month": "04"
+  },
+  "last_accounts": {
+   "made_up_to": "2025-04-30",
+   "period_end_on": "2025-04-30",
+   "period_start_on": "2024-05-01",
+   "type": "total-exemption-full"
+  },
+  "next_accounts": {
+   "due_on": "2027-01-31",
+   "overdue": false,
+   "period_end_on": "2026-04-30",
+   "period_start_on": "2025-05-01"
+  },
+  "next_due": "2027-01-31",
+  "next_made_up_to": "2026-04-30",
+  "overdue": false
+ },
+ "can_file": true,
+ "company_name": "VOLSPEC LIMITED",
+ "company_number": "01137688",
+ "company_status": "active",
+ "confirmation_statement": {
+  "last_made_up_to": "2026-02-14",
+  "next_due": "2027-02-28",
+  "next_made_up_to": "2027-02-14",
+  "overdue": false
+ },
+ "date_of_creation": "1973-10-03",
+ "etag": "bd94587ed36a91db36d53e2b7dfd588b1ef9a162",
+ "has_been_liquidated": false,
+ "has_charges": false,
+ "has_insolvency_history": false,
+ "has_super_secure_pscs": false,
+ "jurisdiction": "england-wales",
+ "last_full_members_list_date": "2016-06-20",
+ "links": {
+  "charges": "/company/01137688/charges",
+  "filing_history": "/company/01137688/filing-history",
+  "officers": "/company/01137688/officers",
+  "persons_with_significant_control": "/company/01137688/persons-with-significant-control",
+  "self": "/company/01137688"
+ },
+ "registered_office_address": {
+  "address_line_1": "Woodrolfe Road",
+  "address_line_2": "Tollesbury",
+  "locality": "Maldon",
+  "postal_code": "CM9 8SE",
+  "region": "Essex"
+ },
+ "registered_office_is_in_dispute": false,
+ "sic_codes": [
+  "71129"
+ ],
+ "type": "ltd",
+ "undeliverable_registered_office_address": false
+}

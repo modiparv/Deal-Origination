@@ -1,0 +1,145 @@
+{
+ "active_count": 1,
+ "ceased_count": 3,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Coln Gardens",
+    "address_line_2": "Andoversford",
+    "country": "England",
+    "locality": "Cheltenham",
+    "postal_code": "GL54 4NB",
+    "premises": "12"
+   },
+   "ceased": false,
+   "etag": "1249a6543b6495c2b0bdf4512583a963abb8b605",
+   "identification": {
+    "country_registered": "England",
+    "legal_authority": "Companies Act 2006",
+    "legal_form": "Private Limited Company",
+    "place_registered": "England And Wales",
+    "registration_number": "14317448"
+   },
+   "kind": "corporate-entity-person-with-significant-control",
+   "links": {
+    "self": "/company/00515148/persons-with-significant-control/corporate-entity/TgRHesom1oSMktB4NbdkF0PeRqY"
+   },
+   "name": "S Rodrigues Ltd",
+   "natures_of_control": [
+    "ownership-of-shares-75-to-100-percent",
+    "voting-rights-75-to-100-percent"
+   ],
+   "notified_on": "2024-08-14"
+  },
+  {
+   "address": {
+    "address_line_1": "Bayshill Road",
+    "country": "England",
+    "locality": "Cheltenham",
+    "postal_code": "GL50 3AT",
+    "premises": "Windsor House"
+   },
+   "ceased": true,
+   "ceased_on": "2024-08-14",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 1,
+    "year": 1950
+   },
+   "etag": "50fd648bcdc86effee885ae7a89a09dcdca01ad6",
+   "kind": "individual-person-with-significant-control",
+   "links": {
+    "self": "/company/00515148/persons-with-significant-control/individual/Z6hGjnZiIn16lA1UeS7aT-s2DxU"
+   },
+   "name": "Mr William Sinclair Allen",
+   "name_elements": {
+    "forename": "William",
+    "middle_name": "Sinclair",
+    "surname": "Allen",
+    "title": "Mr"
+   },
+   "nationality": "British",
+   "natures_of_control": [
+    "ownership-of-shares-75-to-100-percent",
+    "voting-rights-75-to-100-percent"
+   ],
+   "notified_on": "2016-04-06"
+  },
+  {
+   "address": {
+    "address_line_1": "Gloucestershire Airport",
+    "country": "United Kingdom",
+    "locality": "Cheltenham",
+    "postal_code": "GL51 6SP",
+    "premises": "Hangar Se38",
+    "region": "Gloucestershire"
+   },
+   "ceased": true,
+   "ceased_on": "2024-08-14",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 12,
+    "year": 1942
+   },
+   "etag": "4c953c74b17202b1481fada660cbc990afbb3fb1",
+   "kind": "individual-person-with-significant-control",
+   "links": {
+    "self": "/company/00515148/persons-with-significant-control/individual/BHXn2z8b0HCYEVGNrcGOziL219E"
+   },
+   "name": "Mr George Gordon Lowthian",
+   "name_elements": {
+    "forename": "George",
+    "middle_name": "Gordon",
+    "surname": "Lowthian",
+    "title": "Mr"
+   },
+   "nationality": "British",
+   "natures_of_control": [
+    "ownership-of-shares-50-to-75-percent-as-trust",
+    "voting-rights-50-to-75-percent-as-trust"
+   ],
+   "notified_on": "2016-04-06"
+  },
+  {
+   "address": {
+    "address_line_1": "Gloucestershire Airport",
+    "country": "United Kingdom",
+    "locality": "Cheltenham",
+    "postal_code": "GL51 6SP",
+    "premises": "Hangar Se38",
+    "region": "Gloucestershire"
+   },
+   "ceased": true,
+   "ceased_on": "2024-08-14",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 6,
+    "year": 1953
+   },
+   "etag": "4bc7b80742776f64881d44ff4c706fe63fc43bf9",
+   "kind": "individual-person-with-significant-control",
+   "links": {
+    "self": "/company/00515148/persons-with-significant-control/individual/aF2OQ3t9qzeCbaNAGisPzHm7yAs"
+   },
+   "name": "Mr Andrew Richard George Turrell",
+   "name_elements": {
+    "forename": "Andrew",
+    "middle_name": "Richard George",
+    "surname": "Turrell",
+    "title": "Mr"
+   },
+   "nationality": "British",
+   "natures_of_control": [
+    "ownership-of-shares-50-to-75-percent-as-trust",
+    "voting-rights-50-to-75-percent-as-trust"
+   ],
+   "notified_on": "2016-04-06"
+  }
+ ],
+ "items_per_page": 25,
+ "links": {
+  "self": "/company/00515148/persons-with-significant-control"
+ },
+ "start_index": 0,
+ "total_results": 4
+}

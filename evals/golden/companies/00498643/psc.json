@@ -1,0 +1,47 @@
+{
+ "active_count": 1,
+ "ceased_count": 0,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "[Bsh Projects] Redhouse Road",
+    "address_line_2": "Moulton Park Industrial Estate",
+    "country": "England",
+    "locality": "Northampton",
+    "premises": "Moulton Park Business Centre"
+   },
+   "ceased": false,
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 7,
+    "year": 1963
+   },
+   "etag": "8af3bf22bdb71776b35aded1cfb74b72bd15f90a",
+   "identity_verification_details": {
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-03-02"
+   },
+   "kind": "individual-person-with-significant-control",
+   "links": {
+    "self": "/company/00498643/persons-with-significant-control/individual/flEMv-d9yBZVlAcvhttkNAKsEbQ"
+   },
+   "name": "Mr Matthew Hanna",
+   "name_elements": {
+    "forename": "Matthew",
+    "surname": "Hanna",
+    "title": "Mr"
+   },
+   "nationality": "British",
+   "natures_of_control": [
+    "ownership-of-shares-75-to-100-percent"
+   ],
+   "notified_on": "2016-04-06"
+  }
+ ],
+ "items_per_page": 25,
+ "links": {
+  "self": "/company/00498643/persons-with-significant-control"
+ },
+ "start_index": 0,
+ "total_results": 1
+}

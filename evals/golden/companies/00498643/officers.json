@@ -1,0 +1,192 @@
+{
+ "active_count": 1,
+ "etag": "a95a7e1ba90c5b714e37e1724d844d1532df7491",
+ "inactive_count": 0,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "St Peters Gardens",
+    "address_line_2": "Weston Favell",
+    "country": "England",
+    "locality": "Northampton",
+    "postal_code": "NN3 3JT",
+    "premises": "18",
+    "region": "Northamptonshire"
+   },
+   "appointed_on": "2009-07-13",
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 7,
+    "year": 1963
+   },
+   "etag": "a95a7e1ba90c5b714e37e1724d844d1532df7491",
+   "identity_verification_details": {
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-03-03"
+   },
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/Yy5-15f-whNJyiQEeVrQ_Mbk_qk/appointments"
+    },
+    "self": "/company/00498643/appointments/102s3IuAE52ismtRsq_Mud7Rfm0"
+   },
+   "name": "HANNA, Matthew",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "139549640001"
+  },
+  {
+   "address": {
+    "address_line_1": "New Lodge",
+    "address_line_2": "Northampton Road Earls Barton",
+    "locality": "Northampton",
+    "postal_code": "NN6 0HF"
+   },
+   "appointed_on": "1998-11-01",
+   "etag": "ddd66073afab9c90e7dd05ab966882adead80861",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/-H7AqFz1y-xZ6a1dJnxmJIFhAFI/appointments"
+    },
+    "self": "/company/00498643/appointments/lB3UOCwQ7wYpgWWvJrGwxUbJobo"
+   },
+   "name": "BOULOS, Joyce",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "62212040001",
+   "resigned_on": "2018-07-05"
+  },
+  {
+   "address": {
+    "address_line_1": "New Lodge",
+    "address_line_2": "Earls Barton",
+    "locality": "Northampton",
+    "postal_code": "NN6 0HF"
+   },
+   "appointed_before": "1991-12-31",
+   "etag": "2ac614e3869e287b42c93453db709d3b93db32de",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/OhhTxGMstPnDDXyxTTMLIwu19mY/appointments"
+    },
+    "self": "/company/00498643/appointments/HaHwHDuCgCplA5HC-W-PyXszNNQ"
+   },
+   "name": "BOULOS, Rebecca",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "29808210001",
+   "resigned_on": "1998-11-01"
+  },
+  {
+   "address": {
+    "address_line_1": "New Lodge",
+    "address_line_2": "Northampton Road Earls Barton",
+    "locality": "Northampton",
+    "postal_code": "NN6 0HF"
+   },
+   "appointed_on": "1994-09-05",
+   "etag": "7034ece0b91fb021d53ea6c53b336e917d29c10e",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/-H7AqFz1y-xZ6a1dJnxmJIFhAFI/appointments"
+    },
+    "self": "/company/00498643/appointments/uB0czaKho8i-WIBrtaatSFOO5no"
+   },
+   "name": "BOULOS, Joyce",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "62212040001",
+   "resigned_on": "1997-10-01"
+  },
+  {
+   "address": {
+    "address_line_1": "New Lodge",
+    "address_line_2": "Earls Barton",
+    "locality": "Northampton",
+    "postal_code": "NN6 0HF"
+   },
+   "appointed_on": "1997-10-01",
+   "date_of_birth": {
+    "month": 7,
+    "year": 1919
+   },
+   "etag": "4740e58533cc226ec1d1835ddae773256a11c681",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/D6kXbqE3WuUoNTHERnyyICSr9N4/appointments"
+    },
+    "self": "/company/00498643/appointments/xtHIF5_wRDnLbzPaeCh33v_mHOE"
+   },
+   "name": "BOULOS, Peter",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "8074520001",
+   "resigned_on": "2009-07-13"
+  },
+  {
+   "address": {
+    "address_line_1": "New Lodge",
+    "address_line_2": "Earls Barton",
+    "locality": "Northampton",
+    "postal_code": "NN6 0HF"
+   },
+   "appointed_before": "1991-12-31",
+   "date_of_birth": {
+    "month": 7,
+    "year": 1919
+   },
+   "etag": "e44a356a7fb644308f3228c4e2eb83fadd0a4f74",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/D6kXbqE3WuUoNTHERnyyICSr9N4/appointments"
+    },
+    "self": "/company/00498643/appointments/bTbpgwBVo5Ez4kqiXfnGFPg9ahg"
+   },
+   "name": "BOULOS, Peter",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "8074520001",
+   "resigned_on": "1994-09-05"
+  },
+  {
+   "address": {
+    "address_line_1": "New Lodge",
+    "address_line_2": "Earls Barton",
+    "locality": "Northampton",
+    "postal_code": "NN6 0HF"
+   },
+   "appointed_before": "1991-12-31",
+   "date_of_birth": {
+    "month": 8,
+    "year": 1964
+   },
+   "etag": "5323a147674382035a21a3a00883c2a6a94c8d30",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/OhhTxGMstPnDDXyxTTMLIwu19mY/appointments"
+    },
+    "self": "/company/00498643/appointments/n2j2Cc1lGWGNtzFoogQMNSlI0ng"
+   },
+   "name": "BOULOS, Rebecca",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "29808210001",
+   "resigned_on": "1998-11-01"
+  }
+ ],
+ "items_per_page": 35,
+ "kind": "officer-list",
+ "links": {
+  "self": "/company/00498643/officers"
+ },
+ "resigned_count": 6,
+ "start_index": 0,
+ "total_results": 7
+}

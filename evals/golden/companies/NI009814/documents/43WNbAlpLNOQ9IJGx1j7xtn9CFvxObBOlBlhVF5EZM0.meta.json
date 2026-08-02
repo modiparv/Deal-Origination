@@ -1,0 +1,23 @@
+{
+ "barcode": "XD66HCI0",
+ "category": "accounts",
+ "company_number": "NI009814",
+ "created_at": "2024-06-27T17:15:01.655224879Z",
+ "etag": "",
+ "filename": "NI009814_aa_2024-06-27",
+ "links": {
+  "document": "https://document-api.company-information.service.gov.uk/document/43WNbAlpLNOQ9IJGx1j7xtn9CFvxObBOlBlhVF5EZM0/content",
+  "self": "https://document-api.company-information.service.gov.uk/document/43WNbAlpLNOQ9IJGx1j7xtn9CFvxObBOlBlhVF5EZM0"
+ },
+ "pages": 13,
+ "resources": {
+  "application/pdf": {
+   "content_length": 245363
+  },
+  "application/xhtml+xml": {
+   "content_length": 159194
+  }
+ },
+ "significant_date": "2023-09-30T00:00:00Z",
+ "significant_date_type": "made-up-date"
+}

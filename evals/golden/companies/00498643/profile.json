@@ -1,0 +1,68 @@
+{
+ "accounts": {
+  "accounting_reference_date": {
+   "day": "28",
+   "month": "10"
+  },
+  "last_accounts": {
+   "made_up_to": "2024-10-31",
+   "period_end_on": "2024-10-31",
+   "period_start_on": "2023-11-01",
+   "type": "micro-entity"
+  },
+  "next_accounts": {
+   "due_on": "2026-10-06",
+   "overdue": false,
+   "period_end_on": "2025-10-28",
+   "period_start_on": "2024-11-01"
+  },
+  "next_due": "2026-10-06",
+  "next_made_up_to": "2025-10-28",
+  "overdue": false
+ },
+ "can_file": true,
+ "company_name": "BSH PLANNING LIMITED",
+ "company_number": "00498643",
+ "company_status": "active",
+ "confirmation_statement": {
+  "last_made_up_to": "2026-01-28",
+  "next_due": "2027-02-11",
+  "next_made_up_to": "2027-01-28",
+  "overdue": false
+ },
+ "date_of_creation": "1951-08-20",
+ "etag": "e70a3ceb90d3f53373cde05a8d3d87e25fd80e1f",
+ "has_been_liquidated": false,
+ "has_charges": false,
+ "has_insolvency_history": false,
+ "has_super_secure_pscs": false,
+ "jurisdiction": "england-wales",
+ "last_full_members_list_date": "2016-01-28",
+ "links": {
+  "charges": "/company/00498643/charges",
+  "filing_history": "/company/00498643/filing-history",
+  "officers": "/company/00498643/officers",
+  "persons_with_significant_control": "/company/00498643/persons-with-significant-control",
+  "self": "/company/00498643"
+ },
+ "previous_company_names": [
+  {
+   "ceased_on": "1999-02-02",
+   "effective_from": "1951-08-20",
+   "name": "BOULOS BROTHERS (LONDON) LIMITED"
+  }
+ ],
+ "registered_office_address": {
+  "address_line_1": "Moulton Park Business Centre [Bsh Projects] Redhouse Road",
+  "address_line_2": "Moulton Park Industrial Estate",
+  "country": "England",
+  "locality": "Northampton"
+ },
+ "registered_office_is_in_dispute": false,
+ "sic_codes": [
+  "70229",
+  "71112"
+ ],
+ "type": "ltd",
+ "undeliverable_registered_office_address": false
+}

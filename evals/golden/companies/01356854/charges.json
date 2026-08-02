@@ -1,0 +1,244 @@
+{
+ "etag": "b2df944cbb4d6d4fe75c6db859dc9d439e2f3cd7",
+ "items": [
+  {
+   "charge_code": "013568540006",
+   "charge_number": 6,
+   "classification": {
+    "description": "A registered charge",
+    "type": "charge-description"
+   },
+   "created_on": "2016-03-16",
+   "delivered_on": "2016-03-22",
+   "etag": "0acc7dac3c980117f192878e7bb1c8ccbe138257",
+   "links": {
+    "self": "/company/01356854/charges/BPSTjtMnWQ5I0X3DzKco-mLfDMc"
+   },
+   "particulars": {
+    "contains_fixed_charge": true,
+    "contains_negative_pledge": true,
+    "description": "By way of legal charge, the leasehold property known as the moat, belasis hall estate, billingham, registered with hm land registry under title number CE124313.",
+    "type": "brief-description"
+   },
+   "persons_entitled": [
+    {
+     "name": "Svenska Handelsbanken Ab (Publ)"
+    }
+   ],
+   "status": "outstanding",
+   "transactions": [
+    {
+     "delivered_on": "2016-03-22",
+     "filing_type": "create-charge-with-deed",
+     "links": {
+      "filing": "/company/01356854/filing-history/MzE0NDU4MjM2N2FkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_code": "013568540005",
+   "charge_number": 5,
+   "classification": {
+    "description": "A registered charge",
+    "type": "charge-description"
+   },
+   "created_on": "2016-03-16",
+   "delivered_on": "2016-03-21",
+   "etag": "36705cf4111b8cd137e979a14ba7ecc46067419f",
+   "links": {
+    "self": "/company/01356854/charges/6fJ8h57HnIFH5TSbrKw5x2nxVAc"
+   },
+   "particulars": {
+    "contains_fixed_charge": true,
+    "contains_floating_charge": true,
+    "contains_negative_pledge": true,
+    "description": "By way of debenture, a fixed charge over all estates or interests in any freehold or leasehold property in england and wales now or hereafter.",
+    "floating_charge_covers_all": true,
+    "type": "brief-description"
+   },
+   "persons_entitled": [
+    {
+     "name": "Svenska Handelsbanken Ab (Publ)"
+    }
+   ],
+   "status": "outstanding",
+   "transactions": [
+    {
+     "delivered_on": "2016-03-21",
+     "filing_type": "create-charge-with-deed",
+     "links": {
+      "filing": "/company/01356854/filing-history/MzE0NDQ3MDQwNWFkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_code": "013568540004",
+   "charge_number": 4,
+   "classification": {
+    "description": "A registered charge",
+    "type": "charge-description"
+   },
+   "created_on": "2016-03-16",
+   "delivered_on": "2016-03-21",
+   "etag": "13c3cd34b3433934e1c1c788ab608c5cb1628637",
+   "links": {
+    "self": "/company/01356854/charges/d04dpDKj6vy0hQIjd-j5kfzUE54"
+   },
+   "particulars": {
+    "contains_fixed_charge": true,
+    "contains_floating_charge": true,
+    "contains_negative_pledge": true,
+    "description": "By way of debenture, all freehold and leasehold property owned by the company from time to time .",
+    "floating_charge_covers_all": true,
+    "type": "brief-description"
+   },
+   "persons_entitled": [
+    {
+     "name": "Alan Edward Williamson"
+    }
+   ],
+   "status": "outstanding",
+   "transactions": [
+    {
+     "delivered_on": "2016-03-21",
+     "filing_type": "create-charge-with-deed",
+     "links": {
+      "filing": "/company/01356854/filing-history/MzE0NDQ2Nzg3MGFkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 3,
+   "classification": {
+    "description": "Legal charge",
+    "type": "charge-description"
+   },
+   "created_on": "1992-12-23",
+   "delivered_on": "1993-01-11",
+   "etag": "7c51ecfe0370f42d23cebf13164e8c669ee53349",
+   "links": {
+    "self": "/company/01356854/charges/AqQPhWp8knkBiFK6dby_4AHpbVY"
+   },
+   "particulars": {
+    "description": "Land at belasis estate billingham cleveland.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Barclays Bank PLC"
+    }
+   ],
+   "satisfied_on": "2016-03-16",
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee on any account whatsoever",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1993-01-11",
+     "filing_type": "create-charge-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01356854/filing-history/MDA2MzA4NzM4MWFkaXF6a2N4"
+     }
+    },
+    {
+     "delivered_on": "2016-03-16",
+     "filing_type": "charge-satisfaction",
+     "links": {
+      "filing": "/company/01356854/filing-history/MzE0NDE3NTUyOWFkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 2,
+   "classification": {
+    "description": "Guarantee & debenture",
+    "type": "charge-description"
+   },
+   "created_on": "1987-02-13",
+   "delivered_on": "1987-02-19",
+   "etag": "198263987f22508ce5c4aeb0ebf48001a3f6fd40",
+   "links": {
+    "self": "/company/01356854/charges/So6-f6lOp23WhDvtHknSBK0s7OM"
+   },
+   "particulars": {
+    "description": "Fixed and floating charges over the undertaking and all property and assets present and future including goodwill bookdebts uncalled capital buildings fixtures fixed plant and machinery.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Barclays Bank PLC"
+    }
+   ],
+   "satisfied_on": "1996-09-25",
+   "secured_details": {
+    "description": "All monies due or to become due from the company and/or tascomp systems limited to the chargee on any account whatsoever.",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1987-02-19",
+     "filing_type": "create-charge"
+    },
+    {
+     "delivered_on": "1996-09-25",
+     "filing_type": "charge-satisfaction-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01356854/filing-history/MDEwNTg5NjE0MmFkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 1,
+   "classification": {
+    "description": "Debenture",
+    "type": "charge-description"
+   },
+   "created_on": "1983-03-09",
+   "delivered_on": "1983-06-16",
+   "etag": "e6ed115ff7425f37a97823ea5ee010bd314991f0",
+   "links": {
+    "self": "/company/01356854/charges/qP5rfOHvxNm_GIqlc7cDX5HQSdE"
+   },
+   "particulars": {
+    "description": "Fixed & floating charges on undertaking and all property and assets present and future including goodwill & book debts uncalled capital. And all fixtures plant and machinery (please see doc m 23).",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Barclays Bank PLC"
+    }
+   ],
+   "satisfied_on": "2016-03-16",
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee on any account whatsoever",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1983-06-16",
+     "filing_type": "create-charge"
+    },
+    {
+     "delivered_on": "2016-03-16",
+     "filing_type": "charge-satisfaction",
+     "links": {
+      "filing": "/company/01356854/filing-history/MzE0NDE3NTQzMmFkaXF6a2N4"
+     }
+    }
+   ]
+  }
+ ],
+ "part_satisfied_count": 0,
+ "satisfied_count": 3,
+ "total_count": 6,
+ "unfiltered_count": 6
+}

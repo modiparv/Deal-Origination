@@ -1,0 +1,66 @@
+{
+ "accounts": {
+  "accounting_reference_date": {
+   "day": "31",
+   "month": "12"
+  },
+  "last_accounts": {
+   "made_up_to": "2024-12-31",
+   "period_end_on": "2024-12-31",
+   "period_start_on": "2024-01-01",
+   "type": "full"
+  },
+  "next_accounts": {
+   "due_on": "2026-09-30",
+   "overdue": false,
+   "period_end_on": "2025-12-31",
+   "period_start_on": "2025-01-01"
+  },
+  "next_due": "2026-09-30",
+  "next_made_up_to": "2025-12-31",
+  "overdue": false
+ },
+ "can_file": true,
+ "company_name": "ANT INDUSTRIES LIMITED",
+ "company_number": "01116596",
+ "company_status": "active",
+ "confirmation_statement": {
+  "last_made_up_to": "2025-12-21",
+  "next_due": "2027-01-04",
+  "next_made_up_to": "2026-12-21",
+  "overdue": false
+ },
+ "date_of_creation": "1973-06-05",
+ "etag": "ae091656fb30ff7e7d4197bec72e86eee7e1e33b",
+ "has_been_liquidated": false,
+ "has_charges": false,
+ "has_insolvency_history": false,
+ "has_super_secure_pscs": false,
+ "jurisdiction": "england-wales",
+ "last_full_members_list_date": "2015-12-21",
+ "links": {
+  "charges": "/company/01116596/charges",
+  "filing_history": "/company/01116596/filing-history",
+  "officers": "/company/01116596/officers",
+  "persons_with_significant_control": "/company/01116596/persons-with-significant-control",
+  "self": "/company/01116596"
+ },
+ "previous_company_names": [
+  {
+   "ceased_on": "2015-03-31",
+   "effective_from": "1973-06-05",
+   "name": "A.N. TOOLS LIMITED"
+  }
+ ],
+ "registered_office_address": {
+  "address_line_1": "17 Carlyon Rd",
+  "address_line_2": "Atherstone",
+  "postal_code": "CV9 1LQ"
+ },
+ "registered_office_is_in_dispute": false,
+ "sic_codes": [
+  "71129"
+ ],
+ "type": "ltd",
+ "undeliverable_registered_office_address": false
+}
