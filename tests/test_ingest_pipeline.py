@@ -245,7 +245,11 @@ class TestFullIngest:
         report = summary1["coverage"]
         assert report["by_classification_code"]["62012"]["companies"] == 1
         assert "47910" not in report["by_classification_code"]  # outside the mandate
-        assert report["screening_modes"] == {"financial": 1, "signal": 0}
+        assert report["screening_modes"] == {
+            "financial": 1,
+            "signal": 0,
+            "parse_failed": 0,
+        }
         assert Path(summary1["report_path"]).is_file()
 
         # ---- Re-ingest: zero new rows, zero flag changes (DoD #4). ----

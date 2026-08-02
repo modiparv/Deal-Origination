@@ -844,9 +844,14 @@ def build_coverage_report(session: Session, run_id: str, mandate) -> dict:
 
     by_code: dict[str, dict] = {}
     company_status: dict[str, bool] = {}  # cid -> any AVAILABLE concept
+    company_parse_failed: dict[str, bool] = {}  # cid -> any PARSE_FAILED concept
     for fact, company in rows:
         available = fact.status == CoverageStatus.AVAILABLE.value
+        failed = fact.status == CoverageStatus.PARSE_FAILED.value
         company_status[company.id] = company_status.get(company.id, False) or available
+        company_parse_failed[company.id] = (
+            company_parse_failed.get(company.id, False) or failed
+        )
         for code in company.classification_codes:
             if not sic.matches_any(str(code), include):
                 continue
@@ -855,9 +860,23 @@ def build_coverage_report(session: Session, run_id: str, mandate) -> dict:
             concept_bucket = bucket["concepts"].setdefault(fact.concept, {})
             concept_bucket[fact.status] = concept_bucket.get(fact.status, 0) + 1
 
+    # A company whose only machine-readable documents failed to parse is
+    # a system defect, not an observation about the company — it must not
+    # inflate the signal-mode count (which asserts "no machine-readable
+    # accounts exist"). Reported as its own bucket until the defect is
+    # fixed and the company re-ingested.
     modes = {
         "financial": sum(1 for has in company_status.values() if has),
-        "signal": sum(1 for has in company_status.values() if not has),
+        "signal": sum(
+            1
+            for cid, has in company_status.items()
+            if not has and not company_parse_failed.get(cid, False)
+        ),
+        "parse_failed": sum(
+            1
+            for cid, has in company_status.items()
+            if not has and company_parse_failed.get(cid, False)
+        ),
     }
     return {
         "run_id": run_id,

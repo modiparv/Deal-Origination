@@ -17,11 +17,13 @@ from deal_engine.parse.ixbrl import (
     ParsedDocument,
     RawFact,
     _resolve_namespace,
+    _scan_xmlns_bindings,
     _segment_dimensions,
     _strip_prefix,
 )
 
 FRC_2019 = "http://xbrl.frc.org.uk/fr/2019-01-01/core"
+FRC_2024 = "http://xbrl.frc.org.uk/fr/2024-01-01/core"
 
 
 class TestNamespaceResolution:
@@ -35,6 +37,38 @@ class TestNamespaceResolution:
 
     def test_unknown_prefix_resolves_empty(self):
         assert _resolve_namespace("mystery", {}) == ""
+
+
+class TestDocumentWideBindingFallback:
+    """Some production software (observed: Digita Accounts Production
+    Advanced) declares xmlns:core per element instead of on the root, so
+    ixbrlparse's root-level namespaces dict never sees it. Resolution
+    falls back to the document-wide scan — but only when the binding is
+    unambiguous."""
+
+    def test_scan_collects_per_element_declarations(self):
+        content = (
+            '<html xmlns="http://www.w3.org/1999/xhtml">'
+            f'<ix:nonFraction xmlns:core="{FRC_2024}" name="core:Equity"/>'
+            f'<ix:nonFraction xmlns:core="{FRC_2024}" name="core:CashBankOnHand"/>'
+            "</html>"
+        )
+        assert _scan_xmlns_bindings(content) == {"core": {FRC_2024}}
+
+    def test_fallback_resolves_prefix_missing_from_root(self):
+        bindings = {"core": {FRC_2024}}
+        assert _resolve_namespace("core", {}, bindings) == FRC_2024
+
+    def test_root_declaration_wins_over_fallback(self):
+        bindings = {"core": {FRC_2024}}
+        assert (
+            _resolve_namespace("core", {"xmlns:core": [FRC_2019]}, bindings)
+            == FRC_2019
+        )
+
+    def test_ambiguous_binding_stays_unresolved(self):
+        bindings = {"core": {FRC_2019, FRC_2024}}
+        assert _resolve_namespace("core", {}, bindings) == ""
 
 
 class TestSegmentDimensions:
