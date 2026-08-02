@@ -1,0 +1,22 @@
+{
+ "active_count": 0,
+ "ceased_count": 1,
+ "items": [
+  {
+   "ceased_on": "2025-03-31",
+   "etag": "2921f6d64fff92170f86d9283cfdce1fdccf232b",
+   "kind": "persons-with-significant-control-statement",
+   "links": {
+    "self": "/company/NI009814/persons-with-significant-control-statements/HqSGmQ-XWw45JBylM52kqT9YaL4"
+   },
+   "notified_on": "2020-04-21",
+   "statement": "no-individual-or-entity-with-signficant-control"
+  }
+ ],
+ "items_per_page": 25,
+ "links": {
+  "self": "/company/NI009814/persons-with-significant-control-statements"
+ },
+ "start_index": 0,
+ "total_results": 1
+}

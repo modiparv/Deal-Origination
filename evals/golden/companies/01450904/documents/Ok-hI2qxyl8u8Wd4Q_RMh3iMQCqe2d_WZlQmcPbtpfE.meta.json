@@ -1,0 +1,23 @@
+{
+ "barcode": "XC85RZ5E",
+ "category": "accounts",
+ "company_number": "01450904",
+ "created_at": "2023-07-20T09:02:51.872972533Z",
+ "etag": "",
+ "filename": "01450904_aa_2023-07-20",
+ "links": {
+  "document": "https://document-api.company-information.service.gov.uk/document/Ok-hI2qxyl8u8Wd4Q_RMh3iMQCqe2d_WZlQmcPbtpfE/content",
+  "self": "https://document-api.company-information.service.gov.uk/document/Ok-hI2qxyl8u8Wd4Q_RMh3iMQCqe2d_WZlQmcPbtpfE"
+ },
+ "pages": 11,
+ "resources": {
+  "application/pdf": {
+   "content_length": 164958
+  },
+  "application/xhtml+xml": {
+   "content_length": 160314
+  }
+ },
+ "significant_date": "2022-11-30T00:00:00Z",
+ "significant_date_type": "made-up-date"
+}

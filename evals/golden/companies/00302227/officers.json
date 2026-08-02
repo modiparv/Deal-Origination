@@ -1,0 +1,263 @@
+{
+ "active_count": 4,
+ "etag": "d67e640062f0c8138a1c962094d29fc470cc48aa",
+ "inactive_count": 0,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Fusion Court",
+    "address_line_2": "Aberford Road, Garforth",
+    "country": "England",
+    "locality": "Leeds",
+    "postal_code": "LS25 2GH",
+    "premises": "Unit 11"
+   },
+   "appointed_on": "2013-08-15",
+   "etag": "d67e640062f0c8138a1c962094d29fc470cc48aa",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/si8Kap1iJl79oJAOVPxXMCRlq6I/appointments"
+    },
+    "self": "/company/00302227/appointments/TeFRusB9RntneaNvEgpNGyC7Dvs"
+   },
+   "name": "MILLS, Emma",
+   "officer_role": "secretary",
+   "person_number": "181306260001"
+  },
+  {
+   "address": {
+    "address_line_1": "Fusion Court",
+    "address_line_2": "Aberford Road, Garforth",
+    "country": "England",
+    "locality": "Leeds",
+    "postal_code": "LS25 2GH",
+    "premises": "Unit 11"
+   },
+   "appointed_on": "2023-02-10",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 3,
+    "year": 1988
+   },
+   "etag": "fd79bae2bc2b624a9b4ca8cdfd5e71416f4bf961",
+   "identity_verification_details": {
+    "appointment_verification_statement_due_on": "2026-11-14"
+   },
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/eDSktXlqQGo4sifcOiBFqHqXe10/appointments"
+    },
+    "self": "/company/00302227/appointments/Qd8Clo-5CCWiVHZ_zk1KajQj3j8"
+   },
+   "name": "BENSON, Ashley Duncan Rodger",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "305588560001"
+  },
+  {
+   "address": {
+    "address_line_1": "Fusion Court",
+    "address_line_2": "Aberford Road, Garforth",
+    "country": "England",
+    "locality": "Leeds",
+    "postal_code": "LS25 2GH",
+    "premises": "Unit 11"
+   },
+   "appointed_before": "1991-12-27",
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 12,
+    "year": 1954
+   },
+   "etag": "e26274bf8d1d476a8d8fc900a7d8dfe9cf670773",
+   "identity_verification_details": {
+    "appointment_verification_statement_due_on": "2026-11-14"
+   },
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/vA_nSKMYhLNWg-9PanRk7KUw37Y/appointments"
+    },
+    "self": "/company/00302227/appointments/3F5H5gffeHp0MLCse8wyHQj9iDg"
+   },
+   "name": "BENSON, John Stuart",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "22093150004"
+  },
+  {
+   "address": {
+    "address_line_1": "Fusion Court",
+    "address_line_2": "Aberford Road, Garforth",
+    "country": "England",
+    "locality": "Leeds",
+    "postal_code": "LS25 2GH",
+    "premises": "Unit 11"
+   },
+   "appointed_on": "2014-12-19",
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 4,
+    "year": 1976
+   },
+   "etag": "8a35635219a0ba20dfea5a14efebcdc3f869bdc6",
+   "identity_verification_details": {
+    "appointment_verification_statement_due_on": "2026-11-14"
+   },
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/2LFIt6BigkZtG80ahIOhs6ReD1Q/appointments"
+    },
+    "self": "/company/00302227/appointments/MWXfcAh6rGZ8nriMTv4m2I4r6vs"
+   },
+   "name": "MILLS, Emma Louise",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "194426730002"
+  },
+  {
+   "address": {
+    "address_line_1": "Lanterns",
+    "address_line_2": "19 Clara Drive Calverley",
+    "locality": "Leeds",
+    "postal_code": "LS28 5QP",
+    "region": "West Yorkshire"
+   },
+   "appointed_before": "1991-12-27",
+   "etag": "d67e640062f0c8138a1c962094d29fc470cc48aa",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/vA_nSKMYhLNWg-9PanRk7KUw37Y/appointments"
+    },
+    "self": "/company/00302227/appointments/uGv_NHgpR_0mu-gfnn3J0m1MKYU"
+   },
+   "name": "BENSON, John Stuart",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "22093150002",
+   "resigned_on": "1996-08-22"
+  },
+  {
+   "address": {
+    "address_line_1": "58 Old Road",
+    "address_line_2": "Churwell Morley",
+    "locality": "Leeds",
+    "postal_code": "LS27 7RT",
+    "region": "West Yorkshire"
+   },
+   "appointed_on": "1996-08-20",
+   "etag": "d67e640062f0c8138a1c962094d29fc470cc48aa",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/QdXuR9StV2F4nsQg0YWGvl_Ewwc/appointments"
+    },
+    "self": "/company/00302227/appointments/IkwNt7Wk23lyhCxaTDYY2zaNbnI"
+   },
+   "name": "HAZELWOOD, Judith Stella",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "49206450002",
+   "resigned_on": "2012-09-28"
+  },
+  {
+   "address": {
+    "address_line_1": "Pepper Road",
+    "address_line_2": "Hunslet",
+    "country": "England",
+    "locality": "Leeds",
+    "postal_code": "LS10 2NP",
+    "premises": "Pepper House",
+    "region": "West Yorkshire"
+   },
+   "appointed_before": "1991-12-27",
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 9,
+    "year": 1925
+   },
+   "etag": "d67e640062f0c8138a1c962094d29fc470cc48aa",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/pQ-2PS_KyzdWQgPT0Ryk4_d-Dpc/appointments"
+    },
+    "self": "/company/00302227/appointments/kIybT1xCsDpNb9L6kT2yvvHNVt8"
+   },
+   "name": "BENSON, Herbert William",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "22093160002",
+   "resigned_on": "2013-04-07"
+  },
+  {
+   "address": {
+    "address_line_1": "Greenacres 82 Rein Road",
+    "address_line_2": "Tingley",
+    "locality": "Wakefield",
+    "postal_code": "WF3 1JA",
+    "region": "West Yorkshire"
+   },
+   "appointed_on": "1992-10-21",
+   "date_of_birth": {
+    "month": 8,
+    "year": 1965
+   },
+   "etag": "d67e640062f0c8138a1c962094d29fc470cc48aa",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/H3J85xZFQyQmNzYI-L-7qUTxo2c/appointments"
+    },
+    "self": "/company/00302227/appointments/C4U3i7aQnTzpEfRav8IRV036l40"
+   },
+   "name": "GREENWOOD, Russell Craig",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "31712650002",
+   "resigned_on": "2004-12-01"
+  },
+  {
+   "address": {
+    "address_line_1": "Pepper Road",
+    "address_line_2": "Hunslet",
+    "country": "England",
+    "locality": "Leeds",
+    "postal_code": "LS10 2NP",
+    "premises": "Pepper House",
+    "region": "West Yorkshire"
+   },
+   "appointed_on": "2001-09-01",
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 2,
+    "year": 1973
+   },
+   "etag": "d67e640062f0c8138a1c962094d29fc470cc48aa",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/M_du2OsSoL1WBJmx9kP9JlNY4Vk/appointments"
+    },
+    "self": "/company/00302227/appointments/sPjwrTZjEaI2Gsynp9rSSlQWQC8"
+   },
+   "name": "MINSKIP, David Leslie",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "79317450001",
+   "resigned_on": "2023-01-20"
+  }
+ ],
+ "items_per_page": 35,
+ "kind": "officer-list",
+ "links": {
+  "self": "/company/00302227/officers"
+ },
+ "resigned_count": 5,
+ "start_index": 0,
+ "total_results": 9
+}

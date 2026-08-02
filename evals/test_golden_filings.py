@@ -66,6 +66,11 @@ def test_golden_filing(expected_path):
             f"{concept} should be absent from this regime's filing"
         )
 
+    if "production_software" in expected:
+        from deal_engine.adapters.companies_house import mapping
+
+        assert mapping.production_software(parsed) == expected["production_software"]
+
 
 def test_golden_set_is_nonempty():
     assert CASES, "the golden filing set must not be empty from Phase 1 onward"

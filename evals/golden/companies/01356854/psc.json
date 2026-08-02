@@ -1,0 +1,41 @@
+{
+ "active_count": 1,
+ "ceased_count": 0,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Belasis Hall Technology Park",
+    "address_line_2": "Billingham",
+    "country": "United Kingdom",
+    "locality": "Stockton On Tees",
+    "postal_code": "TS23 4EE",
+    "premises": "Newburgh Court"
+   },
+   "ceased": false,
+   "etag": "130657dcbb2d7c4177acbde43632de284eaeda67",
+   "identification": {
+    "country_registered": "England",
+    "legal_authority": "Company Law",
+    "legal_form": "Limited Company",
+    "place_registered": "Uk Company Register",
+    "registration_number": "10037959"
+   },
+   "kind": "corporate-entity-person-with-significant-control",
+   "links": {
+    "self": "/company/01356854/persons-with-significant-control/corporate-entity/zlb-D1EplKkva5WH2m1c49_NnF4"
+   },
+   "name": "Tascomp Holdings Limited",
+   "natures_of_control": [
+    "ownership-of-shares-75-to-100-percent-as-firm",
+    "voting-rights-75-to-100-percent"
+   ],
+   "notified_on": "2016-05-01"
+  }
+ ],
+ "items_per_page": 25,
+ "links": {
+  "self": "/company/01356854/persons-with-significant-control"
+ },
+ "start_index": 0,
+ "total_results": 1
+}

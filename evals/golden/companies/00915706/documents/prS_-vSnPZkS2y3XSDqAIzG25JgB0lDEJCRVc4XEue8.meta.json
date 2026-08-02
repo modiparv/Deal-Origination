@@ -1,0 +1,23 @@
+{
+ "barcode": "XE7A6V2J",
+ "category": "accounts",
+ "company_number": "00915706",
+ "created_at": "2025-07-21T15:18:57.767310318Z",
+ "etag": "",
+ "filename": "00915706_aa_2025-07-21",
+ "links": {
+  "document": "https://document-api.company-information.service.gov.uk/document/prS_-vSnPZkS2y3XSDqAIzG25JgB0lDEJCRVc4XEue8/content",
+  "self": "https://document-api.company-information.service.gov.uk/document/prS_-vSnPZkS2y3XSDqAIzG25JgB0lDEJCRVc4XEue8"
+ },
+ "pages": 3,
+ "resources": {
+  "application/pdf": {
+   "content_length": 27458
+  },
+  "application/xhtml+xml": {
+   "content_length": 21579
+  }
+ },
+ "significant_date": "2025-02-28T00:00:00Z",
+ "significant_date_type": "made-up-date"
+}

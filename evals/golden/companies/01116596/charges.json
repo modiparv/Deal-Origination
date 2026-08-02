@@ -1,0 +1,452 @@
+{
+ "etag": "03311eac9192089f6e60b231ca9e800f2309c005",
+ "items": [
+  {
+   "charge_code": "011165960011",
+   "charge_number": 11,
+   "classification": {
+    "description": "A registered charge",
+    "type": "charge-description"
+   },
+   "created_on": "2015-06-11",
+   "delivered_on": "2015-06-16",
+   "etag": "15529b1934df00f14047e55e2a357742e0e6e9de",
+   "links": {
+    "self": "/company/01116596/charges/2pjxQCE_Fxhi46sjTgEE15MpVB0"
+   },
+   "particulars": {
+    "contains_negative_pledge": true,
+    "description": "L/H at carlyon road industrial estate carlyon road atherstone warwickshire t/no.WK380338.",
+    "type": "brief-description"
+   },
+   "persons_entitled": [
+    {
+     "name": "Alan Maurice Naylor"
+    }
+   ],
+   "satisfied_on": "2025-04-22",
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "2015-06-16",
+     "filing_type": "create-charge-with-deed",
+     "links": {
+      "filing": "/company/01116596/filing-history/MzEyNTY5NjAyNmFkaXF6a2N4"
+     }
+    },
+    {
+     "delivered_on": "2025-04-22",
+     "filing_type": "charge-satisfaction",
+     "links": {
+      "filing": "/company/01116596/filing-history/MzQ2MzUwODE5MWFkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_code": "011165960010",
+   "charge_number": 10,
+   "classification": {
+    "description": "A registered charge",
+    "type": "charge-description"
+   },
+   "created_on": "2015-06-11",
+   "delivered_on": "2015-06-16",
+   "etag": "635debc327a911a36dc9b149b33008efe415a8be",
+   "links": {
+    "self": "/company/01116596/charges/BCBaBMqjP8Owr1eqUwp9MefDlFY"
+   },
+   "particulars": {
+    "contains_fixed_charge": true,
+    "contains_floating_charge": true,
+    "contains_negative_pledge": true,
+    "floating_charge_covers_all": true
+   },
+   "persons_entitled": [
+    {
+     "name": "Alan Maurice Naylor"
+    }
+   ],
+   "satisfied_on": "2025-04-22",
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "2015-06-16",
+     "filing_type": "create-charge-with-deed",
+     "links": {
+      "filing": "/company/01116596/filing-history/MzEyNTY5NTUwMGFkaXF6a2N4"
+     }
+    },
+    {
+     "delivered_on": "2025-04-22",
+     "filing_type": "charge-satisfaction",
+     "links": {
+      "filing": "/company/01116596/filing-history/MzQ2MzUwNzc5N2FkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 9,
+   "classification": {
+    "description": "Legal charge",
+    "type": "charge-description"
+   },
+   "created_on": "2010-04-01",
+   "delivered_on": "2010-04-08",
+   "etag": "0216432c9d93e4763ca10cf081d08e8d8be4d996",
+   "links": {
+    "self": "/company/01116596/charges/KTsVZwIlUJOvPLbJioA__mo1WFo"
+   },
+   "particulars": {
+    "description": "Property k/a plot 20 carlyon road, atherstone, warwickshire t/no. WK380338 and the proceeds of sale of the property and all buildings and fixtures (including trade fixtures) from time to time in and on the property and the benefits of all rights easements and privileges appurtenant to or benefiting the property.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Lloyds Tsb Commercial Finance Limited"
+    }
+   ],
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee on any account whatsoever under the terms of the aforementioned instrument creating or evidencing the charge",
+    "type": "amount-secured"
+   },
+   "status": "outstanding",
+   "transactions": [
+    {
+     "delivered_on": "2010-04-08",
+     "filing_type": "create-charge-pre-april-2013",
+     "links": {
+      "filing": "/company/01116596/filing-history/MzAxMzI1NzU5MGFkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 8,
+   "classification": {
+    "description": "Debenture",
+    "type": "charge-description"
+   },
+   "created_on": "2009-10-05",
+   "delivered_on": "2009-10-14",
+   "etag": "165de61a5eddea4faa71c1c9bf5d26d4f45c37f6",
+   "links": {
+    "self": "/company/01116596/charges/oCA-9FbBt0tkusAaZ4MAY0SxcmQ"
+   },
+   "particulars": {
+    "description": "Fixed and floating charge over the undertaking and all property and assets present and future, including goodwill, book debts, uncalled capital, buildings, fixtures, fixed plant & machinery see image for full details.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Lloyds Tsb Commercial Finance Limited"
+    }
+   ],
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee on any account whatsoever",
+    "type": "amount-secured"
+   },
+   "status": "outstanding",
+   "transactions": [
+    {
+     "delivered_on": "2009-10-14",
+     "filing_type": "create-charge-pre-april-2013",
+     "links": {
+      "filing": "/company/01116596/filing-history/MzAwMDg4NDAyN2FkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 7,
+   "classification": {
+    "description": "Legal charge",
+    "type": "charge-description"
+   },
+   "created_on": "2003-04-04",
+   "delivered_on": "2003-04-09",
+   "etag": "c7a9e787eae7fbba9217e95f786b4e9ab533f6a0",
+   "links": {
+    "self": "/company/01116596/charges/BNOFnDXrMtHUjDEB-oGYVa5rQTs"
+   },
+   "particulars": {
+    "description": "F/Hold land at carlyon rd,atherstone,warwickshire CV9 1LQ; WK380338. Fixed charge all buildings and other structures fixed to the property fixed charge any goodwill relating to the property fixed charge all plant machinery and other items affixed to the property assignment of the rental sums together with the benefit of all rights and remedies fixed charge the proceeds of any claim made under insurance policy relating to the property floating charge all unattached plant machinery chattels and goods on or in or used in connection with the property or the business or undertaking at the property.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "The Governor and Company of the Bank of Scotland"
+    }
+   ],
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee on any account whatsoever",
+    "type": "amount-secured"
+   },
+   "status": "outstanding",
+   "transactions": [
+    {
+     "delivered_on": "2003-04-09",
+     "filing_type": "create-charge-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01116596/filing-history/MDExNjIzMjU2MGFkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 6,
+   "classification": {
+    "description": "Debenture",
+    "type": "charge-description"
+   },
+   "created_on": "2003-03-24",
+   "delivered_on": "2003-03-25",
+   "etag": "85306f10024b2012e3de0c98a735375d04eab3b4",
+   "links": {
+    "self": "/company/01116596/charges/F24g9IPm9bsYZUZKazcigAPhHTs"
+   },
+   "particulars": {
+    "description": "Fixed and floating charges over the undertaking and all property and assets present and future including goodwill bookdebts uncalled capital buildings fixtures fixed plant and machinery.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "The Governor and Company of the Bank of Scotland"
+    }
+   ],
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee on any account whatsoever",
+    "type": "amount-secured"
+   },
+   "status": "outstanding",
+   "transactions": [
+    {
+     "delivered_on": "2003-03-25",
+     "filing_type": "create-charge-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01116596/filing-history/MDA0Njk0Mjc4NGFkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 5,
+   "classification": {
+    "description": "Legal charge",
+    "type": "charge-description"
+   },
+   "created_on": "1999-04-01",
+   "delivered_on": "1999-04-13",
+   "etag": "ba6361d2184abf501d46495b4d676cf10d03f137",
+   "links": {
+    "self": "/company/01116596/charges/sdnOBlWbJf4CrvByOn71EmdiCLc"
+   },
+   "particulars": {
+    "description": "Plot 20,carlyon rd,atherstone industrial estate,atherstone,warwickshire.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Barclays Bank PLC"
+    }
+   ],
+   "satisfied_on": "2003-06-25",
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee on any account whatsoever",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1999-04-13",
+     "filing_type": "create-charge-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01116596/filing-history/MDE1Mjk4NDUwMGFkaXF6a2N4"
+     }
+    },
+    {
+     "delivered_on": "2003-06-25",
+     "filing_type": "charge-satisfaction-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01116596/filing-history/YWRpcXprY3g"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 4,
+   "classification": {
+    "description": "Debenture",
+    "type": "charge-description"
+   },
+   "created_on": "1999-03-01",
+   "delivered_on": "1999-03-11",
+   "etag": "dca962cda8efb8d3b1ad590ba785325e7fcfa63d",
+   "links": {
+    "self": "/company/01116596/charges/5XQ0rFasSG71nrHdKHcPKTTkTXs"
+   },
+   "particulars": {
+    "description": ".. fixed and floating charges over the undertaking and all property and assets present and future including goodwill bookdebts uncalled capital buildings fixtures fixed plant and machinery. See the mortgage charge document for full details.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Barclays Bank PLC"
+    }
+   ],
+   "satisfied_on": "2003-06-25",
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee on any account whatsoever",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1999-03-11",
+     "filing_type": "create-charge-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01116596/filing-history/MDA3NjcyNjU0MmFkaXF6a2N4"
+     }
+    },
+    {
+     "delivered_on": "2003-06-25",
+     "filing_type": "charge-satisfaction-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01116596/filing-history/YWRpcXprY3g"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 3,
+   "classification": {
+    "description": "Debenture",
+    "type": "charge-description"
+   },
+   "created_on": "1998-12-08",
+   "delivered_on": "1998-12-19",
+   "etag": "5aa045f78ce06344c781d5a465b818d67454a20d",
+   "links": {
+    "self": "/company/01116596/charges/mSEqbg4FKet69fB0QjzBmUQL_fY"
+   },
+   "particulars": {
+    "description": "Fixed and floating charges over the undertaking and all property and assets present and future including goodwill bookdebts uncalled capital buildings fixtures fixed plant and machinery.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Midland Bank PLC"
+    }
+   ],
+   "satisfied_on": "1999-04-10",
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee on any account whatsoever",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1998-12-19",
+     "filing_type": "create-charge-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01116596/filing-history/MDEzODU2Njc0OWFkaXF6a2N4"
+     }
+    },
+    {
+     "delivered_on": "1999-04-10",
+     "filing_type": "charge-satisfaction-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01116596/filing-history/YWRpcXprY3g"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 2,
+   "classification": {
+    "description": "Fixed and floating charge",
+    "type": "charge-description"
+   },
+   "created_on": "1988-01-18",
+   "delivered_on": "1988-01-25",
+   "etag": "bc93168af7647b4a1f6410d2cd169c7c4fa43eb8",
+   "links": {
+    "self": "/company/01116596/charges/baA-lzJ_JhePHPQPTgSiV6GJB5s"
+   },
+   "particulars": {
+    "description": "Fixed charge over all book debts & other debts owing to the company. Floating charge over the undertaking and all property and assets present and future including bookdebts (excluding those mentioned above) uncalled capital.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Midland Bank PLC"
+    }
+   ],
+   "satisfied_on": "1999-04-10",
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee on any account whatsoever",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1988-01-25",
+     "filing_type": "create-charge"
+    },
+    {
+     "delivered_on": "1999-04-10",
+     "filing_type": "charge-satisfaction-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01116596/filing-history/YWRpcXprY3g"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 1,
+   "classification": {
+    "description": "Mortgage",
+    "type": "charge-description"
+   },
+   "created_on": "1979-11-08",
+   "delivered_on": "1979-11-13",
+   "etag": "afca97cd8c2dd0426ecb675a06d2e0c08f724c3a",
+   "links": {
+    "self": "/company/01116596/charges/cl61S_A6yLo_YNG5ebCr4ZSimlc"
+   },
+   "particulars": {
+    "description": "Leasehold land & premises being plot 20 atherstone industrial estate, atherstone, warwickshire together with all fixtures whatsoever.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Midland Bank LTD"
+    }
+   ],
+   "satisfied_on": "1999-04-10",
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee on any account whatsoever",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1979-11-13",
+     "filing_type": "create-charge"
+    },
+    {
+     "delivered_on": "1999-04-10",
+     "filing_type": "charge-satisfaction-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01116596/filing-history/YWRpcXprY3g"
+     }
+    }
+   ]
+  }
+ ],
+ "part_satisfied_count": 0,
+ "satisfied_count": 7,
+ "total_count": 11,
+ "unfiltered_count": 11
+}

@@ -1,0 +1,141 @@
+{
+ "active_count": 1,
+ "etag": "952994df19fcac30b250829bb3d9038533e547ee",
+ "inactive_count": 0,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Deeprose Close",
+    "country": "England",
+    "locality": "Guildford",
+    "postal_code": "GU2 9NA",
+    "premises": "17",
+    "region": "Surrey"
+   },
+   "appointed_before": "1991-07-18",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 8,
+    "year": 1945
+   },
+   "etag": "952994df19fcac30b250829bb3d9038533e547ee",
+   "identity_verification_details": {
+    "appointment_verification_statement_due_on": "2026-07-18"
+   },
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/KN8DyjYelnrooBQHRGon7pYV-zE/appointments"
+    },
+    "self": "/company/01385545/appointments/miZ2wMvKz2cohfPqDFViCJNpRlQ"
+   },
+   "name": "CHAPMAN, Michael John Arthur",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "8526300004"
+  },
+  {
+   "address": {
+    "address_line_1": "High Street",
+    "country": "England",
+    "locality": "Bassingbourn",
+    "postal_code": "SG8 5NE",
+    "premises": "37",
+    "region": "Cambridgeshire"
+   },
+   "appointed_on": "1998-05-05",
+   "etag": "5868c9bb0cc7abe3e9a3fc89e250374b6e19c0f0",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/DQ0OxAjoIC0BnaK5jz_H7SxBYDw/appointments"
+    },
+    "self": "/company/01385545/appointments/F020ldp_csMWpD93gCUw-7o4ZFE"
+   },
+   "name": "CHAPMAN, Derek Victor George",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "59785470003",
+   "resigned_on": "2013-05-05"
+  },
+  {
+   "address": {
+    "address_line_1": "34 Wodeland Avenue",
+    "locality": "Guildford",
+    "postal_code": "GU2 5JZ",
+    "region": "Surrey"
+   },
+   "appointed_on": "1994-10-01",
+   "etag": "5868c9bb0cc7abe3e9a3fc89e250374b6e19c0f0",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/_99ZVluVe87boqKN72dIdkvOpgI/appointments"
+    },
+    "self": "/company/01385545/appointments/A_ki7wnT-L9Nykise1SSCO8bwJQ"
+   },
+   "name": "CHAPMAN, Joan",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "8526290001",
+   "resigned_on": "1998-04-23"
+  },
+  {
+   "address": {
+    "address_line_1": "10 Belvedere Court",
+    "address_line_2": "Blackwater",
+    "locality": "Camberley",
+    "postal_code": "GU17 9JF",
+    "region": "Surrey"
+   },
+   "appointed_before": "1991-07-18",
+   "etag": "5868c9bb0cc7abe3e9a3fc89e250374b6e19c0f0",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/7-O49iRVHa77wVxMn1pFMVvn3k0/appointments"
+    },
+    "self": "/company/01385545/appointments/KhtkkCWjJD32aArgcoaoC5s_4EI"
+   },
+   "name": "TRAVERS, Michael Joseph",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "5987440002",
+   "resigned_on": "1994-10-01"
+  },
+  {
+   "address": {
+    "address_line_1": "34 Wodeland Avenue",
+    "locality": "Guildford",
+    "postal_code": "GU2 5JZ",
+    "region": "Surrey"
+   },
+   "appointed_before": "1991-07-18",
+   "date_of_birth": {
+    "month": 10,
+    "year": 1950
+   },
+   "etag": "5868c9bb0cc7abe3e9a3fc89e250374b6e19c0f0",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/_99ZVluVe87boqKN72dIdkvOpgI/appointments"
+    },
+    "self": "/company/01385545/appointments/HxUxCqviu7Mw9B26zWrRTqEbLVI"
+   },
+   "name": "CHAPMAN, Joan",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "8526290001",
+   "resigned_on": "1998-04-23"
+  }
+ ],
+ "items_per_page": 35,
+ "kind": "officer-list",
+ "links": {
+  "self": "/company/01385545/officers"
+ },
+ "resigned_count": 4,
+ "start_index": 0,
+ "total_results": 5
+}

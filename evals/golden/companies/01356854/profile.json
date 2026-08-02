@@ -1,0 +1,69 @@
+{
+ "accounts": {
+  "accounting_reference_date": {
+   "day": "31",
+   "month": "12"
+  },
+  "last_accounts": {
+   "made_up_to": "2025-12-31",
+   "period_end_on": "2025-12-31",
+   "period_start_on": "2025-01-01",
+   "type": "unaudited-abridged"
+  },
+  "next_accounts": {
+   "due_on": "2027-09-30",
+   "overdue": false,
+   "period_end_on": "2026-12-31",
+   "period_start_on": "2026-01-01"
+  },
+  "next_due": "2027-09-30",
+  "next_made_up_to": "2026-12-31",
+  "overdue": false
+ },
+ "can_file": true,
+ "company_name": "TASCOMP LIMITED",
+ "company_number": "01356854",
+ "company_status": "active",
+ "confirmation_statement": {
+  "last_made_up_to": "2026-04-30",
+  "next_due": "2027-05-14",
+  "next_made_up_to": "2027-04-30",
+  "overdue": false
+ },
+ "date_of_creation": "1978-03-10",
+ "etag": "351f8f2cb4a73753bf043cda8282125b10543fec",
+ "has_been_liquidated": false,
+ "has_charges": false,
+ "has_insolvency_history": false,
+ "has_super_secure_pscs": false,
+ "jurisdiction": "england-wales",
+ "last_full_members_list_date": "2016-04-30",
+ "links": {
+  "charges": "/company/01356854/charges",
+  "filing_history": "/company/01356854/filing-history",
+  "officers": "/company/01356854/officers",
+  "persons_with_significant_control": "/company/01356854/persons-with-significant-control",
+  "self": "/company/01356854"
+ },
+ "previous_company_names": [
+  {
+   "ceased_on": "1981-12-31",
+   "effective_from": "1978-03-10",
+   "name": "COMVOGRAND LIMITED"
+  }
+ ],
+ "registered_office_address": {
+  "address_line_1": "Newburgh Court",
+  "address_line_2": "Belasis Hall Technology Park",
+  "locality": "Billingham",
+  "postal_code": "TS23 4EE",
+  "region": "Cleveland"
+ },
+ "registered_office_is_in_dispute": false,
+ "sic_codes": [
+  "47410",
+  "62012"
+ ],
+ "type": "ltd",
+ "undeliverable_registered_office_address": false
+}

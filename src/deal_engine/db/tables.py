@@ -84,6 +84,7 @@ class SourceDocumentRow(Base):
     fetch_headers: Mapped[dict] = mapped_column(JSON, nullable=False, default=dict)
     parse_status: Mapped[str] = mapped_column(String, nullable=False, default="pending")
     parse_error_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    production_software: Mapped[str | None] = mapped_column(String)
 
 
 class FigureRow(Base):

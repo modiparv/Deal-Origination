@@ -1,0 +1,23 @@
+{
+ "barcode": "XF33QTMG",
+ "category": "accounts",
+ "company_number": "01385545",
+ "created_at": "2026-05-29T11:09:56.203537368Z",
+ "etag": "",
+ "filename": "01385545_aa_2026-05-29",
+ "links": {
+  "document": "https://document-api.company-information.service.gov.uk/document/kpyQ1az3wQ_Pm_jgasWdGslvDcQgDNbnSWcf8r4_XKQ/content",
+  "self": "https://document-api.company-information.service.gov.uk/document/kpyQ1az3wQ_Pm_jgasWdGslvDcQgDNbnSWcf8r4_XKQ"
+ },
+ "pages": 6,
+ "resources": {
+  "application/pdf": {
+   "content_length": 87010
+  },
+  "application/xhtml+xml": {
+   "content_length": 95459
+  }
+ },
+ "significant_date": "2025-08-31T00:00:00Z",
+ "significant_date_type": "made-up-date"
+}

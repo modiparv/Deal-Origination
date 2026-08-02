@@ -16,6 +16,8 @@ Discipline this layer owns (per the plan):
 
 from __future__ import annotations
 
+import io
+import re
 from dataclasses import dataclass, field
 from decimal import Decimal
 from typing import IO
@@ -36,12 +38,26 @@ class RawFact:
     raw_text: str
 
 
+@dataclass(frozen=True)
+class TextFact:
+    """A non-numeric inline fact: declarations, names, narrative tags.
+
+    Carried so adapters can read document self-description (e.g. the
+    production-software tag) — never a source of figures."""
+
+    namespace: str
+    prefix: str
+    local_name: str
+    text: str
+
+
 @dataclass
 class ParsedDocument:
     facts: list[RawFact]
     namespaces: dict[str, str]  # prefix -> URI
     error_count: int
     errors: list[str] = field(default_factory=list)
+    text_facts: list[TextFact] = field(default_factory=list)
 
 
 def _strip_prefix(qname: str) -> str:
@@ -56,9 +72,38 @@ def _first(value: object) -> object:
     return value
 
 
-def _resolve_namespace(prefix: str, namespaces: dict[str, object]) -> str:
+def _resolve_namespace(
+    prefix: str,
+    namespaces: dict[str, object],
+    document_bindings: dict[str, set[str]] | None = None,
+) -> str:
     value = namespaces.get(f"xmlns:{prefix}") or namespaces.get(prefix) or ""
-    return str(_first(value))
+    resolved = str(_first(value))
+    if resolved:
+        return resolved
+    # Some production software (e.g. Digita Accounts Production) declares
+    # xmlns: on each element that uses the prefix instead of on the root;
+    # ixbrlparse only reads root-level declarations. Fall back to the
+    # document-wide scan, but only when the binding is unambiguous — a
+    # prefix bound to several URIs in one document stays unresolved and
+    # is reported unmapped rather than guessed.
+    if document_bindings:
+        uris = document_bindings.get(prefix, set())
+        if len(uris) == 1:
+            return next(iter(uris))
+    return ""
+
+
+_XMLNS_DECL_RE = re.compile(r"xmlns:([A-Za-z_][\w.-]*)\s*=\s*\"([^\"]+)\"")
+
+
+def _scan_xmlns_bindings(content: str) -> dict[str, set[str]]:
+    """Collect every xmlns:prefix="uri" declaration anywhere in the
+    document, root-level or per-element."""
+    bindings: dict[str, set[str]] = {}
+    for prefix, uri in _XMLNS_DECL_RE.findall(content):
+        bindings.setdefault(prefix, set()).add(uri.strip())
+    return bindings
 
 
 def _segment_dimensions(context: object) -> dict[str, str]:
@@ -76,7 +121,16 @@ def _segment_dimensions(context: object) -> dict[str, str]:
 def parse_ixbrl(handle: IO) -> ParsedDocument:
     from ixbrlparse import IXBRL  # heavy import kept local
 
-    parsed = IXBRL(handle, raise_on_error=False)
+    content = handle.read()
+    if isinstance(content, bytes):
+        text = content.decode("utf-8", errors="replace")
+        buffer: IO = io.BytesIO(content)
+    else:
+        text = content
+        buffer = io.StringIO(content)
+    document_bindings = _scan_xmlns_bindings(text)
+
+    parsed = IXBRL(buffer, raise_on_error=False)
     raw_namespaces: dict[str, object] = dict(getattr(parsed, "namespaces", {}) or {})
     display_namespaces = {
         str(k): str(_first(v)) for k, v in raw_namespaces.items()
@@ -98,7 +152,9 @@ def parse_ixbrl(handle: IO) -> ParsedDocument:
         end = getattr(context, "enddate", None)
         facts.append(
             RawFact(
-                namespace=_resolve_namespace(str(numeric.schema), raw_namespaces),
+                namespace=_resolve_namespace(
+                    str(numeric.schema), raw_namespaces, document_bindings
+                ),
                 prefix=str(numeric.schema),
                 local_name=str(numeric.name),
                 value=Decimal(str(numeric.value)),
@@ -112,10 +168,26 @@ def parse_ixbrl(handle: IO) -> ParsedDocument:
             )
         )
 
+    text_facts: list[TextFact] = []
+    for nn in getattr(parsed, "nonnumeric", None) or []:
+        text = getattr(nn, "value", None)
+        if text is None:
+            continue
+        prefix = str(getattr(nn, "schema", ""))
+        text_facts.append(
+            TextFact(
+                namespace=_resolve_namespace(prefix, raw_namespaces, document_bindings),
+                prefix=prefix,
+                local_name=str(getattr(nn, "name", "")),
+                text=str(text).strip(),
+            )
+        )
+
     errors = [repr(e) for e in (getattr(parsed, "errors", None) or [])]
     return ParsedDocument(
         facts=facts,
         namespaces=display_namespaces,
         error_count=len(errors),
         errors=errors,
+        text_facts=text_facts,
     )

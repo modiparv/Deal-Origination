@@ -1,0 +1,182 @@
+{
+ "active_count": 2,
+ "etag": "45c48b82ebca27036372f7bfe965882ffadf93de",
+ "inactive_count": 0,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Tollesbury",
+    "locality": "Maldon",
+    "postal_code": "CM9 8SE",
+    "premises": "Woodrolfe Road",
+    "region": "Essex"
+   },
+   "appointed_on": "2017-04-06",
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 1,
+    "year": 1982
+   },
+   "etag": "45c48b82ebca27036372f7bfe965882ffadf93de",
+   "identity_verification_details": {
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-03-03"
+   },
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/FRDIXNBkOQyQ-1UIpk0fulAk9cg/appointments"
+    },
+    "self": "/company/01137688/appointments/eBVS0xx-p4THTG82i5kGPqFjIpo"
+   },
+   "name": "NOTLEY, Andrew William",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "232555130001"
+  },
+  {
+   "address": {
+    "address_line_1": "Tollesbury",
+    "locality": "Maldon",
+    "postal_code": "CM9 8SE",
+    "premises": "Woodrolfe Road",
+    "region": "Essex"
+   },
+   "appointed_on": "2017-04-06",
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 6,
+    "year": 1962
+   },
+   "etag": "c835fc2713ff57993350f150daa9f814e430c55d",
+   "identity_verification_details": {
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-03-03"
+   },
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/bL8hlY3ZkNpF3Qp-G0WJC-iH7AI/appointments"
+    },
+    "self": "/company/01137688/appointments/LfWMoe3Yjs3mW5jT5dJf01J8WTI"
+   },
+   "name": "READ, Andrew Graham",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "179906950002"
+  },
+  {
+   "address": {
+    "address_line_1": "Medfields Beckingham Street",
+    "address_line_2": "Tolleshunt Major",
+    "locality": "Maldon",
+    "postal_code": "CM9 8LQ",
+    "region": "Essex"
+   },
+   "appointed_before": "1991-06-29",
+   "etag": "d40245325bb6226cfd6ab3feb78c0f957d509f1e",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/v2GY9m4gfzuSTskuZJWOPOFNwM8/appointments"
+    },
+    "self": "/company/01137688/appointments/bxxQ10la_zPq_1_Ln7CH-o8vkP4"
+   },
+   "name": "MOTT, Patrick Charles",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "14021040001",
+   "resigned_on": "2016-09-09"
+  },
+  {
+   "address": {
+    "address_line_1": "Tollesbury",
+    "locality": "Maldon",
+    "postal_code": "CM9 8SE",
+    "premises": "Woodrolfe Road",
+    "region": "Essex"
+   },
+   "appointed_on": "2008-04-30",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 10,
+    "year": 1959
+   },
+   "etag": "d40245325bb6226cfd6ab3feb78c0f957d509f1e",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/-WnbddccQEIiT3Sy05pWTgNlJAE/appointments"
+    },
+    "self": "/company/01137688/appointments/Qp8Keq4RoI55XliH4daPu9LAU-c"
+   },
+   "name": "BRAMMER, Robert George",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "127634130004",
+   "resigned_on": "2022-07-12"
+  },
+  {
+   "address": {
+    "address_line_1": "Sealands Barnhall Chase",
+    "address_line_2": "Tolleshunt Knights",
+    "locality": "Maldon",
+    "postal_code": "CM9 8HE",
+    "region": "Essex"
+   },
+   "appointed_before": "1991-06-29",
+   "date_of_birth": {
+    "month": 4,
+    "year": 1943
+   },
+   "etag": "d40245325bb6226cfd6ab3feb78c0f957d509f1e",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/N2anHacjx128AXOGoRs3WhJbx4o/appointments"
+    },
+    "self": "/company/01137688/appointments/JPLZvqFxFR3F9oA1Ng27-SupLO0"
+   },
+   "name": "HORNSEY, Alan Trangmar",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "14021050001",
+   "resigned_on": "2008-04-30"
+  },
+  {
+   "address": {
+    "address_line_1": "Tollesbury",
+    "locality": "Maldon",
+    "postal_code": "CM9 8SE",
+    "premises": "Woodrolfe Road",
+    "region": "Essex"
+   },
+   "appointed_before": "1991-06-29",
+   "date_of_birth": {
+    "month": 4,
+    "year": 1949
+   },
+   "etag": "d40245325bb6226cfd6ab3feb78c0f957d509f1e",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/v2GY9m4gfzuSTskuZJWOPOFNwM8/appointments"
+    },
+    "self": "/company/01137688/appointments/2p2Zs_ijdGrnTvuGx3jG4iUEIn4"
+   },
+   "name": "MOTT, Patrick Charles",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "14021040001",
+   "resigned_on": "2016-09-09"
+  }
+ ],
+ "items_per_page": 35,
+ "kind": "officer-list",
+ "links": {
+  "self": "/company/01137688/officers"
+ },
+ "resigned_count": 4,
+ "start_index": 0,
+ "total_results": 6
+}

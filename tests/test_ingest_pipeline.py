@@ -245,7 +245,18 @@ class TestFullIngest:
         report = summary1["coverage"]
         assert report["by_classification_code"]["62012"]["companies"] == 1
         assert "47910" not in report["by_classification_code"]  # outside the mandate
-        assert report["screening_modes"] == {"financial": 1, "signal": 0}
+        assert report["screening_modes"] == {
+            "financial": 1,
+            "signal": 0,
+            "parse_failed": 0,
+        }
+        # Parse yield by filing-production software (the golden filing
+        # self-declares "Companies House" via uk-bus:NameProductionSoftware).
+        software = report["by_production_software"]["Companies House"]
+        assert software["zero_figure"] == 0
+        assert software["quarantined"] == 0
+        assert software["with_figures"] == software["documents"]
+        assert software["figure_yield"] == 1.0
         assert Path(summary1["report_path"]).is_file()
 
         # ---- Re-ingest: zero new rows, zero flag changes (DoD #4). ----

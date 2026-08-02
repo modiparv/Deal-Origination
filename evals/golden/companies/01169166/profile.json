@@ -1,0 +1,64 @@
+{
+ "accounts": {
+  "accounting_reference_date": {
+   "day": "31",
+   "month": "08"
+  },
+  "last_accounts": {
+   "made_up_to": "2025-08-31",
+   "period_end_on": "2025-08-31",
+   "period_start_on": "2024-09-01",
+   "type": "total-exemption-full"
+  },
+  "next_accounts": {
+   "due_on": "2027-05-31",
+   "overdue": false,
+   "period_end_on": "2026-08-31",
+   "period_start_on": "2025-09-01"
+  },
+  "next_due": "2027-05-31",
+  "next_made_up_to": "2026-08-31",
+  "overdue": false
+ },
+ "can_file": true,
+ "company_name": "TICINO-DESINEX LIMITED",
+ "company_number": "01169166",
+ "company_status": "active",
+ "confirmation_statement": {
+  "last_made_up_to": "2025-09-26",
+  "next_due": "2026-10-10",
+  "next_made_up_to": "2026-09-26",
+  "overdue": false
+ },
+ "date_of_creation": "1974-05-06",
+ "etag": "004f983da42ec725fcf02753f18306e80f5af810",
+ "has_been_liquidated": false,
+ "has_charges": false,
+ "has_insolvency_history": false,
+ "has_super_secure_pscs": false,
+ "jurisdiction": "england-wales",
+ "last_full_members_list_date": "2015-09-26",
+ "links": {
+  "charges": "/company/01169166/charges",
+  "filing_history": "/company/01169166/filing-history",
+  "officers": "/company/01169166/officers",
+  "persons_with_significant_control": "/company/01169166/persons-with-significant-control",
+  "self": "/company/01169166"
+ },
+ "registered_office_address": {
+  "address_line_1": "Unit 6 Redfields Industrial Park",
+  "address_line_2": "Church Crookham",
+  "locality": "Fleet",
+  "postal_code": "GU52 0RD",
+  "region": "Hampshire"
+ },
+ "registered_office_is_in_dispute": false,
+ "sic_codes": [
+  "26120",
+  "26200",
+  "62090",
+  "72190"
+ ],
+ "type": "ltd",
+ "undeliverable_registered_office_address": false
+}

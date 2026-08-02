@@ -1,0 +1,214 @@
+{
+ "etag": "3263ebb65be728d8e29ce5a304ed332244c34017",
+ "items": [
+  {
+   "charge_number": 5,
+   "classification": {
+    "description": "Mortgage",
+    "type": "charge-description"
+   },
+   "created_on": "1966-03-11",
+   "delivered_on": "1966-03-30",
+   "etag": "70ebe76b254edece9c54fbe898b61f043f324873",
+   "links": {
+    "self": "/company/00498643/charges/clWnOUSOaMp5KpgYNCClJfs4O0g"
+   },
+   "particulars": {
+    "description": "13 danescroft gardens hendon middlesex.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Kalmak (London) LTD"
+    }
+   ],
+   "satisfied_on": "2013-07-22",
+   "secured_details": {
+    "description": "All monies due or to become due from baron (london) LTD to the chargee",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1966-03-30",
+     "filing_type": "create-charge"
+    },
+    {
+     "delivered_on": "2013-07-22",
+     "filing_type": "charge-satisfaction",
+     "links": {
+      "filing": "/company/00498643/filing-history/MzA4MTg5ODk0N2FkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 4,
+   "classification": {
+    "description": "Second charge",
+    "type": "charge-description"
+   },
+   "created_on": "1963-08-02",
+   "delivered_on": "1963-08-13",
+   "etag": "c44548522c90d0714092ad970b640c27c6b2108a",
+   "links": {
+    "self": "/company/00498643/charges/wh7pCV_P7DeOXyspHq111Bpy9AM"
+   },
+   "particulars": {
+    "description": "3 & 13 danescroft gardens hendon middlesex.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Tristan Investments LTD"
+    }
+   ],
+   "satisfied_on": "2013-07-22",
+   "secured_details": {
+    "description": "\u00a310,000",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1963-08-13",
+     "filing_type": "create-charge"
+    },
+    {
+     "delivered_on": "2013-07-22",
+     "filing_type": "charge-satisfaction",
+     "links": {
+      "filing": "/company/00498643/filing-history/MzA4MTg5ODg3NWFkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 3,
+   "classification": {
+    "description": "Second charge",
+    "type": "charge-description"
+   },
+   "created_on": "1962-11-26",
+   "delivered_on": "1962-12-12",
+   "etag": "4ddfa4e1411510c2ea66b02231f5747f5c5b31e8",
+   "links": {
+    "self": "/company/00498643/charges/1CKho3uYQO0-Qcp635g4FTRENts"
+   },
+   "particulars": {
+    "description": "3 & 13 danescroft gardens hendon middlesex.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Kalmark (London) LTD"
+    }
+   ],
+   "satisfied_on": "2013-07-22",
+   "secured_details": {
+    "description": "\u00a312,000",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1962-12-12",
+     "filing_type": "create-charge"
+    },
+    {
+     "delivered_on": "2013-07-22",
+     "filing_type": "charge-satisfaction",
+     "links": {
+      "filing": "/company/00498643/filing-history/MzA4MTg5ODc2OGFkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 2,
+   "classification": {
+    "description": "Legal charge",
+    "type": "charge-description"
+   },
+   "created_on": "1957-12-03",
+   "delivered_on": "1957-12-18",
+   "etag": "354783823ecc2aeb079ae7e3811db327aeb27559",
+   "links": {
+    "self": "/company/00498643/charges/JxtyPLISPv4Efo1E1YhcK2oyVXM"
+   },
+   "particulars": {
+    "description": "13 danescroft gardens hendon middlesex.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Abbey National Building Society"
+    }
+   ],
+   "satisfied_on": "2013-07-22",
+   "secured_details": {
+    "description": "\u00a34,950",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1957-12-18",
+     "filing_type": "create-charge"
+    },
+    {
+     "delivered_on": "2013-07-22",
+     "filing_type": "charge-satisfaction",
+     "links": {
+      "filing": "/company/00498643/filing-history/MzA4MTg5ODYzMWFkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 1,
+   "classification": {
+    "description": "Legal charge",
+    "type": "charge-description"
+   },
+   "created_on": "1957-12-03",
+   "delivered_on": "1957-12-18",
+   "etag": "c1c60911a2bfdaa340fd6b624ef06671f518e5d8",
+   "links": {
+    "self": "/company/00498643/charges/Uy1r6PhUL-d1vzWMvMnmWs5mQ_w"
+   },
+   "particulars": {
+    "description": "3 danescroft gardens hendon middlesex.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Abbey National Building Society"
+    }
+   ],
+   "satisfied_on": "2013-07-22",
+   "secured_details": {
+    "description": "\u00a34,700",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1957-12-18",
+     "filing_type": "create-charge"
+    },
+    {
+     "delivered_on": "2013-07-22",
+     "filing_type": "charge-satisfaction",
+     "links": {
+      "filing": "/company/00498643/filing-history/MzA4MTg5ODU3MGFkaXF6a2N4"
+     }
+    }
+   ]
+  }
+ ],
+ "part_satisfied_count": 0,
+ "satisfied_count": 5,
+ "total_count": 5,
+ "unfiltered_count": 5
+}

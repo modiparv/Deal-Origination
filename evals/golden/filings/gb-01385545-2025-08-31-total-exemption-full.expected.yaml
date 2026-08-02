@@ -1,0 +1,49 @@
+# Hand-verified expected figures for the per-element-xmlns golden filing.
+#
+# Source: gb-01385545-2025-08-31-total-exemption-full.xhtml — a real
+# total-exemption-full filing (registration 01385545, period ending
+# 2025-08-31), retrieved through the registry document API and hand-read
+# against the raw inline facts.
+#
+# What this fixture exercises: production software (tagged in-document
+# as bus:NameProductionSoftware "Digita Accounts Production Advanced")
+# that declares xmlns:core on EVERY element that uses the prefix instead
+# of on the root <html> element. ixbrlparse surfaces only root-level
+# declarations, so prefix resolution must fall back to the document-wide
+# xmlns scan; before that fallback existed, this document parsed to zero
+# mapped figures and the company was misreported as signal mode. Also
+# covers the FRC 2024-01-01 core vintage and the creditors maturity
+# split via nested dimensional context ids.
+
+document: gb-01385545-2025-08-31-total-exemption-full.xhtml
+registration_id: "01385545"
+production_software: "Digita Accounts Production Advanced"
+taxonomy_namespace: "http://xbrl.frc.org.uk/fr/2024-01-01/core"
+
+figures:
+  # period ending 2025-08-31 (current)
+  - {concept: cash,                                  period_end: 2025-08-31, value: 112498}
+  - {concept: creditors_within_one_year,             period_end: 2025-08-31, value: 4693}
+  - {concept: net_current_assets,                    period_end: 2025-08-31, value: 107805}
+  - {concept: total_assets_less_current_liabilities, period_end: 2025-08-31, value: 108929}
+  - {concept: net_assets,                            period_end: 2025-08-31, value: 108648}
+  - {concept: equity,                                period_end: 2025-08-31, value: 108648}
+  - {concept: average_employees,                     period_start: 2024-09-01, period_end: 2025-08-31, value: 1}
+  # period ending 2024-08-31 (prior-year comparatives, same document)
+  - {concept: cash,                                  period_end: 2024-08-31, value: 118890}
+  - {concept: creditors_within_one_year,             period_end: 2024-08-31, value: 5503}
+  - {concept: net_current_assets,                    period_end: 2024-08-31, value: 113387}
+  - {concept: total_assets_less_current_liabilities, period_end: 2024-08-31, value: 114885}
+  - {concept: net_assets,                            period_end: 2024-08-31, value: 114510}
+  - {concept: equity,                                period_end: 2024-08-31, value: 114510}
+  - {concept: average_employees,                     period_start: 2023-09-01, period_end: 2024-08-31, value: 1}
+
+absent_concepts:
+  # Must surface as coverage facts (filed_without_concept), never errors.
+  - revenue
+  - gross_profit
+  - operating_profit
+  - staff_costs
+  - debtors
+  - current_assets
+  - fixed_assets

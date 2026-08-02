@@ -45,6 +45,7 @@ def add_source_document(session: Session, doc: SourceDocument) -> SourceDocument
         fetch_headers=dict(doc.fetch_headers),
         parse_status=doc.parse_status.value,
         parse_error_count=doc.parse_error_count,
+        production_software=doc.production_software,
     )
     session.add(row)
     return row

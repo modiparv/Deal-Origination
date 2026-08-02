@@ -1,0 +1,23 @@
+{
+ "barcode": "XD6XHIH4",
+ "category": "accounts",
+ "company_number": "00498643",
+ "created_at": "2024-07-08T14:51:46.987804931Z",
+ "etag": "",
+ "filename": "00498643_aa_2024-07-08",
+ "links": {
+  "document": "https://document-api.company-information.service.gov.uk/document/h2cYJYOXIw70tuASJIRcbITIXxRtB7jp2KzqLpFMRA0/content",
+  "self": "https://document-api.company-information.service.gov.uk/document/h2cYJYOXIw70tuASJIRcbITIXxRtB7jp2KzqLpFMRA0"
+ },
+ "pages": 3,
+ "resources": {
+  "application/pdf": {
+   "content_length": 29307
+  },
+  "application/xhtml+xml": {
+   "content_length": 32195
+  }
+ },
+ "significant_date": "2023-10-31T00:00:00Z",
+ "significant_date_type": "made-up-date"
+}

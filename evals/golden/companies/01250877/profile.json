@@ -1,0 +1,74 @@
+{
+ "accounts": {
+  "accounting_reference_date": {
+   "day": "31",
+   "month": "12"
+  },
+  "last_accounts": {
+   "made_up_to": "2024-12-31",
+   "period_end_on": "2024-12-31",
+   "period_start_on": "2024-01-01",
+   "type": "full"
+  },
+  "next_accounts": {
+   "due_on": "2026-09-30",
+   "overdue": false,
+   "period_end_on": "2025-12-31",
+   "period_start_on": "2025-01-01"
+  },
+  "next_due": "2026-09-30",
+  "next_made_up_to": "2025-12-31",
+  "overdue": false
+ },
+ "can_file": true,
+ "company_name": "CULTURA TECHNOLOGIES LTD",
+ "company_number": "01250877",
+ "company_status": "active",
+ "confirmation_statement": {
+  "last_made_up_to": "2026-07-18",
+  "next_due": "2027-08-01",
+  "next_made_up_to": "2027-07-18",
+  "overdue": false
+ },
+ "date_of_creation": "1976-03-24",
+ "etag": "7826db7114684cf5979a1a958b6d1ea52a9640fa",
+ "has_been_liquidated": false,
+ "has_charges": false,
+ "has_insolvency_history": false,
+ "has_super_secure_pscs": false,
+ "jurisdiction": "england-wales",
+ "last_full_members_list_date": "2015-07-25",
+ "links": {
+  "charges": "/company/01250877/charges",
+  "filing_history": "/company/01250877/filing-history",
+  "officers": "/company/01250877/officers",
+  "persons_with_significant_control": "/company/01250877/persons-with-significant-control",
+  "self": "/company/01250877"
+ },
+ "previous_company_names": [
+  {
+   "ceased_on": "2011-05-05",
+   "effective_from": "2002-04-30",
+   "name": "CAL SOFTWARE LIMITED"
+  },
+  {
+   "ceased_on": "2002-04-30",
+   "effective_from": "1976-03-24",
+   "name": "COMPUTER APPLICATIONS LIMITED"
+  }
+ ],
+ "registered_office_address": {
+  "address_line_1": "Rivington House, Chorley North Business Park,",
+  "address_line_2": "Drumhead Road,",
+  "country": "England",
+  "locality": "Chorley",
+  "postal_code": "PR6 7BX",
+  "region": "Lancashire"
+ },
+ "registered_office_is_in_dispute": false,
+ "sic_codes": [
+  "62012"
+ ],
+ "type": "ltd",
+ "undeliverable_registered_office_address": false
+}

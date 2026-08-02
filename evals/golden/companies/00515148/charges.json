@@ -1,0 +1,133 @@
+{
+ "etag": "962c4e72919c87e0bd3f0f08dcde90aaf093799a",
+ "items": [
+  {
+   "charge_number": 3,
+   "classification": {
+    "description": "Floating charge over stock",
+    "type": "charge-description"
+   },
+   "created_on": "2007-07-25",
+   "delivered_on": "2007-07-28",
+   "etag": "67971758398a31d183eb0de4acce8481f079040f",
+   "links": {
+    "self": "/company/00515148/charges/i5C-n6WF7cXcxPjLorAPnZ-SZIg"
+   },
+   "particulars": {
+    "description": "All right title and interest in and to all used vehicles from time to time held in stock by the company in the course of its business and any insurance proceeds in respect thereof.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "William Sinclair Allen and Barnett Waddingham Trustees Limited as Trustees of the Wsa Pensionfund"
+    }
+   ],
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee under the terms of the aforementioned instrument creating or evidencing the charge",
+    "type": "amount-secured"
+   },
+   "status": "outstanding",
+   "transactions": [
+    {
+     "delivered_on": "2007-07-28",
+     "filing_type": "create-charge-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/00515148/filing-history/MDE4MzU1MjgxN2FkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 2,
+   "classification": {
+    "description": "Deed of floating charge over stock",
+    "type": "charge-description"
+   },
+   "created_on": "2003-04-29",
+   "delivered_on": "2003-05-06",
+   "etag": "4dd5dd2b658d27200a0fa162315333fb5a9a51ee",
+   "links": {
+    "self": "/company/00515148/charges/lIynth3KWb4oKwrdwSfnjL3OPHY"
+   },
+   "particulars": {
+    "description": "By way of floating charge all stocks of new and used motor vehicles owned by the company from time to time together with all guarantees and warranties relating to the property and any rights of the company against the manufacturers or suppliers of the property.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "First National Motor PLC"
+    }
+   ],
+   "satisfied_on": "2007-08-15",
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee on any account whatsoever",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "2003-05-06",
+     "filing_type": "create-charge-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/00515148/filing-history/MDEwODI5OTAxOWFkaXF6a2N4"
+     }
+    },
+    {
+     "delivered_on": "2007-08-15",
+     "filing_type": "charge-satisfaction-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/00515148/filing-history/YWRpcXprY3g"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 1,
+   "classification": {
+    "description": "Charge on vehicle stocks",
+    "type": "charge-description"
+   },
+   "created_on": "2002-09-25",
+   "delivered_on": "2002-09-26",
+   "etag": "5d8f12b10faff96bbf008928c46ade30b3600ee0",
+   "links": {
+    "self": "/company/00515148/charges/xQRleQ_2h90ZmXKh-rii_mnZsWQ"
+   },
+   "particulars": {
+    "description": "By way of first floating charge all new motor vehicles, by way of first fixed charge all proceeds of sale, all insurance monies, all debts under the terms of any sale, all the rights title and interest in and the benefit including the right to receive rent hire charges or any other payments of all contracts, the benefit of all guarantee indemnities and securities, all debts under the terms of or in relation to the debt, all rights enforcing the contracts and all guarantees indemnities and securities .. see the mortgage charge document for full details.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Fce Bank PLC T/a Mazda Credit"
+    }
+   ],
+   "satisfied_on": "2007-08-15",
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee under the terms of the aforementioned instrument creating or evidencing the charge",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "2002-09-26",
+     "filing_type": "create-charge-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/00515148/filing-history/MDA1NzQyMTE3MmFkaXF6a2N4"
+     }
+    },
+    {
+     "delivered_on": "2007-08-15",
+     "filing_type": "charge-satisfaction-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/00515148/filing-history/YWRpcXprY3g"
+     }
+    }
+   ]
+  }
+ ],
+ "part_satisfied_count": 0,
+ "satisfied_count": 2,
+ "total_count": 3,
+ "unfiltered_count": 3
+}

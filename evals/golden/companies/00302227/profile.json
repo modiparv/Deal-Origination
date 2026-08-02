@@ -1,0 +1,62 @@
+{
+ "accounts": {
+  "accounting_reference_date": {
+   "day": "31",
+   "month": "03"
+  },
+  "last_accounts": {
+   "made_up_to": "2025-03-31",
+   "period_end_on": "2025-03-31",
+   "period_start_on": "2024-04-01",
+   "type": "total-exemption-full"
+  },
+  "next_accounts": {
+   "due_on": "2026-12-31",
+   "overdue": false,
+   "period_end_on": "2026-03-31",
+   "period_start_on": "2025-04-01"
+  },
+  "next_due": "2026-12-31",
+  "next_made_up_to": "2026-03-31",
+  "overdue": false
+ },
+ "can_file": true,
+ "company_name": "A.TAYLOR & SON(LEEDS),LIMITED",
+ "company_number": "00302227",
+ "company_status": "active",
+ "confirmation_statement": {
+  "last_made_up_to": "2025-10-31",
+  "next_due": "2026-11-14",
+  "next_made_up_to": "2026-10-31",
+  "overdue": false
+ },
+ "date_of_creation": "1935-06-26",
+ "etag": "15519d351f116c897c69bc384e25f43b76504971",
+ "has_been_liquidated": false,
+ "has_charges": false,
+ "has_insolvency_history": false,
+ "has_super_secure_pscs": false,
+ "jurisdiction": "england-wales",
+ "last_full_members_list_date": "2015-10-31",
+ "links": {
+  "charges": "/company/00302227/charges",
+  "filing_history": "/company/00302227/filing-history",
+  "officers": "/company/00302227/officers",
+  "persons_with_significant_control": "/company/00302227/persons-with-significant-control",
+  "self": "/company/00302227"
+ },
+ "registered_office_address": {
+  "address_line_1": "Unit 11 Fusion Court",
+  "address_line_2": "Aberford Road, Garforth",
+  "country": "England",
+  "locality": "Leeds",
+  "postal_code": "LS25 2GH"
+ },
+ "registered_office_is_in_dispute": false,
+ "sic_codes": [
+  "68209",
+  "71129"
+ ],
+ "type": "ltd",
+ "undeliverable_registered_office_address": false
+}

@@ -1,0 +1,237 @@
+{
+ "active_count": 2,
+ "etag": "55dc02e2d91141726ac9dd0b04dc44c46ee5f3a9",
+ "inactive_count": 0,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Newburgh Court",
+    "address_line_2": "Belasis Hall Technology Park",
+    "locality": "Billingham",
+    "postal_code": "TS23 4EE",
+    "region": "Cleveland  "
+   },
+   "appointed_on": "2016-03-16",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 5,
+    "year": 1968
+   },
+   "etag": "55dc02e2d91141726ac9dd0b04dc44c46ee5f3a9",
+   "identity_verification_details": {
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-04-30"
+   },
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/afzNCidnwhPQ9vfskgE5a0sbxA4/appointments"
+    },
+    "self": "/company/01356854/appointments/OhmnDuBMfiZDjN8xyLYpP6y_d-I"
+   },
+   "name": "TIZARD, Ashley",
+   "nationality": "English",
+   "officer_role": "director",
+   "person_number": "205020890001"
+  },
+  {
+   "address": {
+    "address_line_1": "Newburgh Court",
+    "address_line_2": "Belasis Hall Technology Park",
+    "locality": "Billingham",
+    "postal_code": "TS23 4EE",
+    "region": "Cleveland  "
+   },
+   "appointed_on": "1995-05-10",
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 4,
+    "year": 1964
+   },
+   "etag": "2b038aeb76140c2009b508d0a295747a0024aa11",
+   "identity_verification_details": {
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-04-30"
+   },
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/SiUDB29XGyzBiDxaXIeABMM1unA/appointments"
+    },
+    "self": "/company/01356854/appointments/T4D_JUAQ1TLoAiB7ZvBs5AP2MZk"
+   },
+   "name": "WILLIAMSON, Alan Edward",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "43225370003"
+  },
+  {
+   "address": {
+    "address_line_1": "Bramley",
+    "address_line_2": "Dalton On Tees",
+    "locality": "Darlington",
+    "postal_code": "DL2 2NT",
+    "region": "County Durham"
+   },
+   "appointed_before": "1991-04-30",
+   "etag": "5cf377eb1c7f08a19f25ff267f83dcb3a661efd4",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/2uL07hNv8Y7RXBl5jSO6kenDgoM/appointments"
+    },
+    "self": "/company/01356854/appointments/ID9-CjEuOjr1SHeBL_KCe8C4fK4"
+   },
+   "name": "ROBINSON, Julia Anne",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "43225390002",
+   "resigned_on": "2008-07-31"
+  },
+  {
+   "address": {
+    "address_line_1": "Newburgh Court",
+    "address_line_2": "Belasis Hall Technology Park",
+    "locality": "Billingham",
+    "postal_code": "TS23 4EE",
+    "region": "Cleveland  "
+   },
+   "appointed_on": "1995-05-10",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 1,
+    "year": 1962
+   },
+   "etag": "5cf377eb1c7f08a19f25ff267f83dcb3a661efd4",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/6TnSEIgqu_yGVh0WEHPoFVvA4i8/appointments"
+    },
+    "self": "/company/01356854/appointments/kOlue7_eVZJbY6bcHx1-BOA8Ovg"
+   },
+   "name": "EVERINGTON, Paul Neil",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "43225350002",
+   "resigned_on": "2016-03-16"
+  },
+  {
+   "address": {
+    "address_line_1": "114a Guisborough Road",
+    "address_line_2": "Nunthorpe",
+    "locality": "Middlesbrough",
+    "postal_code": "TS7 0JA",
+    "region": "Cleveland"
+   },
+   "appointed_before": "1991-04-30",
+   "date_of_birth": {
+    "month": 4,
+    "year": 1936
+   },
+   "etag": "5cf377eb1c7f08a19f25ff267f83dcb3a661efd4",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/p6bLR62xN1OuoLkyRw4MN6I4fi0/appointments"
+    },
+    "self": "/company/01356854/appointments/dlo6L_GAQIKTrWisMcuGtPmQACI"
+   },
+   "name": "MUSGROVE, Peter Ainsworth",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "9430560002",
+   "resigned_on": "1995-05-10"
+  },
+  {
+   "address": {
+    "address_line_1": "29 Friars Pardon",
+    "address_line_2": "Hurworth",
+    "locality": "Darlington",
+    "postal_code": "DL2 2EA",
+    "region": "County Durham"
+   },
+   "appointed_before": "1991-04-30",
+   "date_of_birth": {
+    "month": 4,
+    "year": 1929
+   },
+   "etag": "5cf377eb1c7f08a19f25ff267f83dcb3a661efd4",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/VObMHxDVE1lRVB1uOuYf8Fieh9g/appointments"
+    },
+    "self": "/company/01356854/appointments/Zo4kcZerK5b_2lxpMu7MUj1y_GM"
+   },
+   "name": "ROBINSON, Alan",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "9430570001",
+   "resigned_on": "2008-12-31"
+  },
+  {
+   "address": {
+    "address_line_1": "29 Friars Pardon",
+    "address_line_2": "Hurworth",
+    "locality": "Darlington",
+    "postal_code": "DL2 2EA",
+    "region": "County Durham"
+   },
+   "appointed_before": "1991-04-30",
+   "date_of_birth": {
+    "month": 3,
+    "year": 1930
+   },
+   "etag": "5cf377eb1c7f08a19f25ff267f83dcb3a661efd4",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/sFF1vcqumu4SP63RPDDxD8MfqIE/appointments"
+    },
+    "self": "/company/01356854/appointments/1gdImWgSgqubyf-ZMbDdkruL3qY"
+   },
+   "name": "ROBINSON, Enid Lilian Violet",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "10158760001",
+   "resigned_on": "1995-05-10"
+  },
+  {
+   "address": {
+    "address_line_1": "Bramley",
+    "address_line_2": "Dalton On Tees",
+    "locality": "Darlington",
+    "postal_code": "DL2 2NT",
+    "region": "County Durham"
+   },
+   "appointed_on": "1994-05-10",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 9,
+    "year": 1964
+   },
+   "etag": "5cf377eb1c7f08a19f25ff267f83dcb3a661efd4",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/2uL07hNv8Y7RXBl5jSO6kenDgoM/appointments"
+    },
+    "self": "/company/01356854/appointments/wvdNmiWtrlMNptM6BfS2libZWSg"
+   },
+   "name": "ROBINSON, Julia Anne",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "43225390002",
+   "resigned_on": "2008-07-31"
+  }
+ ],
+ "items_per_page": 35,
+ "kind": "officer-list",
+ "links": {
+  "self": "/company/01356854/officers"
+ },
+ "resigned_count": 6,
+ "start_index": 0,
+ "total_results": 8
+}

@@ -1,0 +1,75 @@
+{
+ "active_count": 1,
+ "ceased_count": 1,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Ballinderry Road",
+    "country": "United Kingdom",
+    "locality": "Lisburn",
+    "postal_code": "BT28 2SA",
+    "premises": "15",
+    "region": "Co Antrim"
+   },
+   "ceased": false,
+   "etag": "cb47d25cb6203e91e4513bc9515d41e609fae694",
+   "identification": {
+    "country_registered": "United Kingdom",
+    "legal_authority": "Companies Act 2006",
+    "legal_form": "Limited Company",
+    "place_registered": "Northern Ireland Companies Register",
+    "registration_number": "Ni673213"
+   },
+   "kind": "corporate-entity-person-with-significant-control",
+   "links": {
+    "self": "/company/NI009814/persons-with-significant-control/corporate-entity/62thQ-nOVsMMhWOR5YqXYQd3Eo4"
+   },
+   "name": "Hico Group Ltd",
+   "natures_of_control": [
+    "ownership-of-shares-25-to-50-percent",
+    "voting-rights-25-to-50-percent",
+    "right-to-appoint-and-remove-directors"
+   ],
+   "notified_on": "2025-04-01"
+  },
+  {
+   "address": {
+    "address_line_1": "Ballinderry Road",
+    "country": "Northern Ireland",
+    "locality": "Lisburn",
+    "postal_code": "BT28 2SA",
+    "premises": "15",
+    "region": "Co Antrim"
+   },
+   "ceased": true,
+   "ceased_on": "2020-04-21",
+   "country_of_residence": "Northern Ireland",
+   "date_of_birth": {
+    "month": 1,
+    "year": 1967
+   },
+   "etag": "bf3d92b2a00a9b417c437321222206ed9c27ebe8",
+   "kind": "individual-person-with-significant-control",
+   "links": {
+    "self": "/company/NI009814/persons-with-significant-control/individual/xUrhM7ZtLIpIXpVyWMZZM8lSDus"
+   },
+   "name": "Mr William Brown",
+   "name_elements": {
+    "forename": "William",
+    "surname": "Brown",
+    "title": "Mr"
+   },
+   "nationality": "British",
+   "natures_of_control": [
+    "ownership-of-shares-25-to-50-percent"
+   ],
+   "notified_on": "2016-04-06"
+  }
+ ],
+ "items_per_page": 25,
+ "links": {
+  "self": "/company/NI009814/persons-with-significant-control"
+ },
+ "start_index": 0,
+ "total_results": 2
+}

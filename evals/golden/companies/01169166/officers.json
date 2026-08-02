@@ -1,0 +1,123 @@
+{
+ "active_count": 3,
+ "etag": "bacf82b21e0f3df2ab525408f9c7eab38489b901",
+ "inactive_count": 0,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "26 Scotland Hill",
+    "address_line_2": "Sandhurst",
+    "locality": "Camberley",
+    "postal_code": "GU47 8JR",
+    "region": "Berkshire"
+   },
+   "appointed_before": "1991-09-26",
+   "etag": "bacf82b21e0f3df2ab525408f9c7eab38489b901",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/kFCFg_KoPhoXlQS_NzlG_cwXHz8/appointments"
+    },
+    "self": "/company/01169166/appointments/P8YI1XgWiaFSR2eUcWNorB1Kr9M"
+   },
+   "name": "EDWARDS, Frances Edwina",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "20992140001"
+  },
+  {
+   "address": {
+    "address_line_1": "26 Scotland Hill",
+    "address_line_2": "Sandhurst",
+    "locality": "Camberley",
+    "postal_code": "GU47 8JR",
+    "region": "Berkshire"
+   },
+   "appointed_before": "1991-09-26",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 12,
+    "year": 1933
+   },
+   "etag": "62a18e5b654fa4d6bb0dad1ec78a82ba4f09c296",
+   "identity_verification_details": {
+    "appointment_verification_statement_due_on": "2026-10-10"
+   },
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/kFCFg_KoPhoXlQS_NzlG_cwXHz8/appointments"
+    },
+    "self": "/company/01169166/appointments/A0c12wuRyJn_GMapXD2w1hPtouY"
+   },
+   "name": "EDWARDS, Frances Edwina",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "20992140001"
+  },
+  {
+   "address": {
+    "address_line_1": "6 Goldsmith Way",
+    "locality": "Crowthorne",
+    "postal_code": "RG45 7QP",
+    "region": "Berkshire"
+   },
+   "appointed_on": "2001-09-01",
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 9,
+    "year": 1956
+   },
+   "etag": "1a667f4638374bfc16670ea532de2935d489cd16",
+   "identity_verification_details": {
+    "appointment_verification_statement_due_on": "2026-10-10"
+   },
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/Z0UbJku9mtz2MWr3LNNACbNCd-4/appointments"
+    },
+    "self": "/company/01169166/appointments/er8iTKWMYhgku9b6MeQjgIelTf8"
+   },
+   "name": "EDWARDS, Keith David",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "57878510001"
+  },
+  {
+   "address": {
+    "address_line_1": "26 Scotland Hill",
+    "address_line_2": "Sandhurst",
+    "locality": "Camberley",
+    "postal_code": "GU17 8JR",
+    "region": "Surrey"
+   },
+   "appointed_before": "1991-09-26",
+   "date_of_birth": {
+    "month": 10,
+    "year": 1932
+   },
+   "etag": "bacf82b21e0f3df2ab525408f9c7eab38489b901",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/YsNyiGBginfDm6vwsyEPONaUrlw/appointments"
+    },
+    "self": "/company/01169166/appointments/KpVVYvraRJDAfa2jn86xEN2v1aI"
+   },
+   "name": "EDWARDS, David Aubrey",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "20992150001",
+   "resigned_on": "2001-02-08"
+  }
+ ],
+ "items_per_page": 35,
+ "kind": "officer-list",
+ "links": {
+  "self": "/company/01169166/officers"
+ },
+ "resigned_count": 1,
+ "start_index": 0,
+ "total_results": 4
+}

@@ -1,0 +1,61 @@
+{
+ "accounts": {
+  "accounting_reference_date": {
+   "day": "30",
+   "month": "06"
+  },
+  "last_accounts": {
+   "made_up_to": "2025-06-30",
+   "period_end_on": "2025-06-30",
+   "period_start_on": "2024-07-01",
+   "type": "total-exemption-full"
+  },
+  "next_accounts": {
+   "due_on": "2027-03-31",
+   "overdue": false,
+   "period_end_on": "2026-06-30",
+   "period_start_on": "2025-07-01"
+  },
+  "next_due": "2027-03-31",
+  "next_made_up_to": "2026-06-30",
+  "overdue": false
+ },
+ "can_file": true,
+ "company_name": "COUNTY GARAGE (CHELTENHAM) LIMITED",
+ "company_number": "00515148",
+ "company_status": "active",
+ "confirmation_statement": {
+  "last_made_up_to": "2025-10-18",
+  "next_due": "2026-11-01",
+  "next_made_up_to": "2026-10-18",
+  "overdue": false
+ },
+ "date_of_creation": "1953-01-14",
+ "etag": "bf1eb4713be6be0fa68ce151b3e18793884a47dc",
+ "has_been_liquidated": false,
+ "has_charges": false,
+ "has_insolvency_history": false,
+ "has_super_secure_pscs": false,
+ "jurisdiction": "england-wales",
+ "last_full_members_list_date": "2015-07-01",
+ "links": {
+  "charges": "/company/00515148/charges",
+  "filing_history": "/company/00515148/filing-history",
+  "officers": "/company/00515148/officers",
+  "persons_with_significant_control": "/company/00515148/persons-with-significant-control",
+  "self": "/company/00515148"
+ },
+ "registered_office_address": {
+  "address_line_1": "12 Coln Gardens",
+  "address_line_2": "Andoversford",
+  "country": "England",
+  "locality": "Cheltenham",
+  "postal_code": "GL54 4NB"
+ },
+ "registered_office_is_in_dispute": false,
+ "sic_codes": [
+  "71129"
+ ],
+ "type": "ltd",
+ "undeliverable_registered_office_address": false
+}

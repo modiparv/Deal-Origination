@@ -1,0 +1,86 @@
+{
+ "active_count": 1,
+ "ceased_count": 1,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Fusion Court",
+    "address_line_2": "Aberford Road, Garforth",
+    "country": "England",
+    "locality": "Leeds",
+    "postal_code": "LS25 2GH",
+    "premises": "Unit 11"
+   },
+   "ceased": false,
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 3,
+    "year": 1988
+   },
+   "etag": "391c9256eb612ba93ff74c04b819550c9bc5034a",
+   "identity_verification_details": {
+    "appointment_verification_statement_date": "2026-11-01",
+    "appointment_verification_statement_due_on": "2026-11-14"
+   },
+   "kind": "individual-person-with-significant-control",
+   "links": {
+    "self": "/company/00302227/persons-with-significant-control/individual/f3uYOXNjUy8AXrxJ5U3jjRWTDr4"
+   },
+   "name": "Mr Ashley Duncan Rodger Benson",
+   "name_elements": {
+    "forename": "Ashley",
+    "middle_name": "Duncan Rodger",
+    "surname": "Benson",
+    "title": "Mr"
+   },
+   "nationality": "British",
+   "natures_of_control": [
+    "ownership-of-shares-25-to-50-percent",
+    "voting-rights-25-to-50-percent"
+   ],
+   "notified_on": "2022-08-10"
+  },
+  {
+   "address": {
+    "address_line_1": "Fusion Court",
+    "address_line_2": "Aberford Road, Garforth",
+    "country": "England",
+    "locality": "Leeds",
+    "postal_code": "LS25 2GH",
+    "premises": "Unit 11"
+   },
+   "ceased": true,
+   "ceased_on": "2022-08-10",
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 12,
+    "year": 1954
+   },
+   "etag": "6e777c1c1cb00ee104a3b93b72af8eb018524236",
+   "kind": "individual-person-with-significant-control",
+   "links": {
+    "self": "/company/00302227/persons-with-significant-control/individual/-4Bl1yyjEd7kOo08XnSKzmEMQjg"
+   },
+   "name": "Mr John Stuart Benson",
+   "name_elements": {
+    "forename": "John",
+    "middle_name": "Stuart",
+    "surname": "Benson",
+    "title": "Mr"
+   },
+   "nationality": "British",
+   "natures_of_control": [
+    "ownership-of-shares-75-to-100-percent",
+    "voting-rights-75-to-100-percent",
+    "right-to-appoint-and-remove-directors"
+   ],
+   "notified_on": "2016-04-06"
+  }
+ ],
+ "items_per_page": 25,
+ "links": {
+  "self": "/company/00302227/persons-with-significant-control"
+ },
+ "start_index": 0,
+ "total_results": 2
+}

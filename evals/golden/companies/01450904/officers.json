@@ -1,0 +1,292 @@
+{
+ "active_count": 3,
+ "etag": "62225c54f6a6ac22916214b28d96a0b81f7121a7",
+ "inactive_count": 0,
+ "items": [
+  {
+   "address": {
+    "address_line_1": "Unit 44 Touchet Hall Road",
+    "address_line_2": "Stakehill Industrial Estate",
+    "locality": "Middleton",
+    "postal_code": "M24 2FL",
+    "region": "Manchester"
+   },
+   "appointed_on": "2019-03-20",
+   "etag": "62225c54f6a6ac22916214b28d96a0b81f7121a7",
+   "former_names": [
+    {
+     "forenames": "DAVID K",
+     "surname": "BOON"
+    }
+   ],
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/yvfqYDgZt3_T9D7cYbVewd7C728/appointments"
+    },
+    "self": "/company/01450904/appointments/DEam46baL0ci8N0JY_0nZarsCkA"
+   },
+   "name": "BOON, David Keith",
+   "officer_role": "secretary",
+   "person_number": "256795980001"
+  },
+  {
+   "address": {
+    "address_line_1": "Stakehill Industrial Estate, Touchet Hall Road",
+    "address_line_2": "Middleton",
+    "country": "England",
+    "locality": "Manchester",
+    "postal_code": "M24 2FL",
+    "premises": "Unit 44"
+   },
+   "appointed_on": "2000-12-21",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 7,
+    "year": 1971
+   },
+   "etag": "eba0b0961bcf76cc5139b4b6ee746103da1b7a35",
+   "identity_verification_details": {
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-05-27"
+   },
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/xgk6lHrcS4EngJ3kC7KRxH0TbTc/appointments"
+    },
+    "self": "/company/01450904/appointments/v3wkeC9_XdOzwp2glcNibbNWfwE"
+   },
+   "name": "BOON, David Keith",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "75597960008"
+  },
+  {
+   "address": {
+    "address_line_1": "Unit 44 Touchet Hall Road",
+    "address_line_2": "Stakehill Industrial Estate",
+    "locality": "Middleton",
+    "postal_code": "M24 2FL",
+    "region": "Manchester"
+   },
+   "appointed_on": "2026-04-02",
+   "country_of_residence": "United Kingdom",
+   "date_of_birth": {
+    "month": 2,
+    "year": 1971
+   },
+   "etag": "60644503aef5d69425d36d3f302215012bc77ab2",
+   "identity_verification_details": {
+    "appointment_verification_end_on": "9999-12-31",
+    "appointment_verification_start_on": "2026-04-22"
+   },
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/KEuFTbgQi2TFaUsjBSHHbXMsPOo/appointments"
+    },
+    "self": "/company/01450904/appointments/3VxcWY9LePlTtRkCXP3vkkWxDR8"
+   },
+   "name": "BOON, Joanne",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "347753120001"
+  },
+  {
+   "address": {
+    "address_line_1": "38 Derwent Drive",
+    "locality": "Littleborough",
+    "postal_code": "OL15 0BT",
+    "region": "Lancashire"
+   },
+   "appointed_before": "1991-04-16",
+   "etag": "35a8b5dfe1f75a0605ccb185a6b1197c0c963da0",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/7j_C3r6HudUsu1KU1zapAku7k1k/appointments"
+    },
+    "self": "/company/01450904/appointments/G1zHRmecOK2212EHi2sBk8gCcY4"
+   },
+   "name": "BROWN, Thomas John",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "8264620001",
+   "resigned_on": "2000-12-21"
+  },
+  {
+   "address": {
+    "address_line_1": "Stakehill Industrial Estate, Touchet Hall Road",
+    "address_line_2": "Middleton",
+    "country": "England",
+    "locality": "Manchester",
+    "postal_code": "M24 2FL",
+    "premises": "Unit 44"
+   },
+   "appointed_on": "2000-12-21",
+   "etag": "483f156a626b45a9199d925282d7cb8c5749c98d",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/Sa2zJocYHjvF9O8B-ayAzoaA46s/appointments"
+    },
+    "self": "/company/01450904/appointments/Ma0sNEpZoEmE6kjQ_R84TGmFWgE"
+   },
+   "name": "EDMONDS, Mark George",
+   "nationality": "British",
+   "officer_role": "secretary",
+   "person_number": "78975670002",
+   "resigned_on": "2019-03-20"
+  },
+  {
+   "address": {
+    "address_line_1": "14 Ashfield Road",
+    "address_line_2": "Hadfield",
+    "locality": "Hyde",
+    "postal_code": "SK14 8BP",
+    "region": "Cheshire"
+   },
+   "appointed_before": "1991-04-16",
+   "date_of_birth": {
+    "month": 11,
+    "year": 1940
+   },
+   "etag": "0ea408b90edb6e2e5aa387558753e253f9c0378b",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/W5Yzlrs1uH9eTp7coWtUEGEGq8M/appointments"
+    },
+    "self": "/company/01450904/appointments/9qTJWlvYAAzkd7tG796fskOllzs"
+   },
+   "name": "BOON, Frank",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "8264630001",
+   "resigned_on": "2000-11-30"
+  },
+  {
+   "address": {
+    "address_line_1": "38 Derwent Drive",
+    "locality": "Littleborough",
+    "postal_code": "OL15 0BT",
+    "region": "Lancashire"
+   },
+   "appointed_before": "1991-04-16",
+   "date_of_birth": {
+    "month": 10,
+    "year": 1937
+   },
+   "etag": "3414a68964d9cc15988238c915c3431775624e4e",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/7j_C3r6HudUsu1KU1zapAku7k1k/appointments"
+    },
+    "self": "/company/01450904/appointments/GejxSxJOxoiVhQdpadbWRv9GlB8"
+   },
+   "name": "BROWN, Thomas John",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "8264620001",
+   "resigned_on": "2000-12-21"
+  },
+  {
+   "address": {
+    "address_line_1": "Stakehill Industrial Estate, Touchet Hall Road",
+    "address_line_2": "Middleton",
+    "country": "England",
+    "locality": "Manchester",
+    "postal_code": "M24 2FL",
+    "premises": "Unit 44"
+   },
+   "appointed_on": "1998-02-01",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 10,
+    "year": 1961
+   },
+   "etag": "ed9a5e62bd41c1814823632dfde4b0f701129d93",
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/Sa2zJocYHjvF9O8B-ayAzoaA46s/appointments"
+    },
+    "self": "/company/01450904/appointments/I9LiLKDBKTbgbtnv_CM1q-W_3iQ"
+   },
+   "name": "EDMONDS, Mark George",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "78975670003",
+   "resigned_on": "2019-03-20"
+  },
+  {
+   "address": {
+    "address_line_1": "Stakehill Industrial Estate, Touchet Hall Road",
+    "address_line_2": "Middleton",
+    "country": "England",
+    "locality": "Manchester",
+    "postal_code": "M24 2FL",
+    "premises": "Unit 44"
+   },
+   "appointed_on": "2000-12-21",
+   "country_of_residence": "England",
+   "date_of_birth": {
+    "month": 11,
+    "year": 1966
+   },
+   "etag": "8db8a0622c573151fd9dc9e7ed27a923c070f4cb",
+   "identity_verification_details": {
+    "appointment_verification_statement_due_on": "2026-05-03"
+   },
+   "is_pre_1992_appointment": false,
+   "links": {
+    "officer": {
+     "appointments": "/officers/AogOEYthgZL2yxrJD2D-glbUIfk/appointments"
+    },
+    "self": "/company/01450904/appointments/NNLU3SDHgWUKSaYqU-I1wtshWL0"
+   },
+   "name": "MAGEE, Geoffrey Peter",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "75861410005",
+   "resigned_on": "2026-04-02"
+  },
+  {
+   "address": {
+    "address_line_1": "18 Avocet Drive",
+    "address_line_2": "Broadheath",
+    "locality": "Altrincham",
+    "postal_code": "WA14 5NR",
+    "region": "Cheshire"
+   },
+   "appointed_before": "1991-04-16",
+   "date_of_birth": {
+    "month": 8,
+    "year": 1946
+   },
+   "etag": "8f53c92898a089738261525e69d6c917f1380c24",
+   "is_pre_1992_appointment": true,
+   "links": {
+    "officer": {
+     "appointments": "/officers/VlYoXP_eMbr6sPQbDivhGWJSu34/appointments"
+    },
+    "self": "/company/01450904/appointments/vRWOKeFkgH5jOPExXXDmSq_HNns"
+   },
+   "name": "MAGEE, Peter John",
+   "nationality": "British",
+   "officer_role": "director",
+   "person_number": "8264640001",
+   "resigned_on": "2006-10-19"
+  }
+ ],
+ "items_per_page": 35,
+ "kind": "officer-list",
+ "links": {
+  "self": "/company/01450904/officers"
+ },
+ "resigned_count": 7,
+ "start_index": 0,
+ "total_results": 10
+}

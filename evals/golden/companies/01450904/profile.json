@@ -1,0 +1,68 @@
+{
+ "accounts": {
+  "accounting_reference_date": {
+   "day": "30",
+   "month": "11"
+  },
+  "last_accounts": {
+   "made_up_to": "2024-11-30",
+   "period_end_on": "2024-11-30",
+   "period_start_on": "2023-12-01",
+   "type": "total-exemption-full"
+  },
+  "next_accounts": {
+   "due_on": "2026-08-31",
+   "overdue": false,
+   "period_end_on": "2025-11-30",
+   "period_start_on": "2024-12-01"
+  },
+  "next_due": "2026-08-31",
+  "next_made_up_to": "2025-11-30",
+  "overdue": false
+ },
+ "can_file": true,
+ "company_name": "MOUNT ENGRAVING TOOLS LIMITED",
+ "company_number": "01450904",
+ "company_status": "active",
+ "confirmation_statement": {
+  "last_made_up_to": "2026-04-19",
+  "next_due": "2027-05-03",
+  "next_made_up_to": "2027-04-19",
+  "overdue": false
+ },
+ "date_of_creation": "1979-09-27",
+ "etag": "1141821ed57c89cf416e8140979b7a4f154cfab8",
+ "has_been_liquidated": false,
+ "has_charges": false,
+ "has_insolvency_history": false,
+ "has_super_secure_pscs": false,
+ "jurisdiction": "england-wales",
+ "last_full_members_list_date": "2016-04-16",
+ "links": {
+  "charges": "/company/01450904/charges",
+  "filing_history": "/company/01450904/filing-history",
+  "officers": "/company/01450904/officers",
+  "persons_with_significant_control": "/company/01450904/persons-with-significant-control",
+  "self": "/company/01450904"
+ },
+ "previous_company_names": [
+  {
+   "ceased_on": "2004-09-30",
+   "effective_from": "1979-09-27",
+   "name": "ENGRAVING TOOLS LIMITED"
+  }
+ ],
+ "registered_office_address": {
+  "address_line_1": "Unit 44 Touchet Hall Road",
+  "address_line_2": "Stakehill Industrial Estate",
+  "locality": "Middleton",
+  "postal_code": "M24 2FL",
+  "region": "Manchester"
+ },
+ "registered_office_is_in_dispute": false,
+ "sic_codes": [
+  "71129"
+ ],
+ "type": "ltd",
+ "undeliverable_registered_office_address": false
+}

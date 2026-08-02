@@ -1,0 +1,23 @@
+{
+ "barcode": "XDZBBF7S",
+ "category": "accounts",
+ "company_number": "00515148",
+ "created_at": "2025-03-28T15:07:54.496821033Z",
+ "etag": "",
+ "filename": "00515148_aa_2025-03-28",
+ "links": {
+  "document": "https://document-api.company-information.service.gov.uk/document/soBvnwDGPlhFK0cNg9axOyQF7e9LOGkklKu4o0bnglE/content",
+  "self": "https://document-api.company-information.service.gov.uk/document/soBvnwDGPlhFK0cNg9axOyQF7e9LOGkklKu4o0bnglE"
+ },
+ "pages": 7,
+ "resources": {
+  "application/pdf": {
+   "content_length": 150167
+  },
+  "application/xhtml+xml": {
+   "content_length": 134872
+  }
+ },
+ "significant_date": "2024-06-30T00:00:00Z",
+ "significant_date_type": "made-up-date"
+}

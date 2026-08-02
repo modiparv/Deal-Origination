@@ -108,6 +108,13 @@ const latest = DATA.runs[0] || null;
     "screening modes (financial / signal)",
     "machine-readable accounts vs observable behaviour"
   );
+  if (modes.parse_failed) {
+    tile(
+      modes.parse_failed,
+      "parse failed",
+      "system defect, not a data limitation — excluded from signal count"
+    );
+  }
   tile(c.coverage_facts ?? 0, "coverage facts", "absence carries a cause");
   tile((s.errors || []).length, "errors", (s.errors || []).length ? "see run log" : "clean run");
   root.appendChild(tiles);

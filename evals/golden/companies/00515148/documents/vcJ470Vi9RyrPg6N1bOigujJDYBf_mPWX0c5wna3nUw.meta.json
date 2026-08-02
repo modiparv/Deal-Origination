@@ -1,0 +1,20 @@
+{
+ "barcode": "XDZ2US2G",
+ "category": "miscellaneous",
+ "company_number": "00515148",
+ "created_at": "2025-03-25T14:59:39.913605335Z",
+ "etag": "",
+ "filename": "00515148_aa01_2025-03-25",
+ "links": {
+  "document": "https://document-api.company-information.service.gov.uk/document/vcJ470Vi9RyrPg6N1bOigujJDYBf_mPWX0c5wna3nUw/content",
+  "self": "https://document-api.company-information.service.gov.uk/document/vcJ470Vi9RyrPg6N1bOigujJDYBf_mPWX0c5wna3nUw"
+ },
+ "pages": 1,
+ "resources": {
+  "application/pdf": {
+   "content_length": 79562
+  }
+ },
+ "significant_date": null,
+ "significant_date_type": ""
+}

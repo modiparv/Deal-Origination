@@ -1,0 +1,23 @@
+{
+ "barcode": "XF33QUGG",
+ "category": "accounts",
+ "company_number": "01169166",
+ "created_at": "2026-05-29T11:12:02.691945566Z",
+ "etag": "",
+ "filename": "01169166_aa_2026-05-29",
+ "links": {
+  "document": "https://document-api.company-information.service.gov.uk/document/dnxsxrHpg1EFUJmAv1fvQcEBvD5JPIfAfLyGh8a7dZM/content",
+  "self": "https://document-api.company-information.service.gov.uk/document/dnxsxrHpg1EFUJmAv1fvQcEBvD5JPIfAfLyGh8a7dZM"
+ },
+ "pages": 7,
+ "resources": {
+  "application/pdf": {
+   "content_length": 94970
+  },
+  "application/xhtml+xml": {
+   "content_length": 118475
+  }
+ },
+ "significant_date": "2025-08-31T00:00:00Z",
+ "significant_date_type": "made-up-date"
+}

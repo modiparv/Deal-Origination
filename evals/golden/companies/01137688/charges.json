@@ -1,0 +1,267 @@
+{
+ "etag": "90a33d86b550ff53b2108b99a9f911f5d1244d79",
+ "items": [
+  {
+   "charge_number": 6,
+   "classification": {
+    "description": "Fixed & floating charge",
+    "type": "charge-description"
+   },
+   "created_on": "2008-06-09",
+   "delivered_on": "2008-06-14",
+   "etag": "059f5f94e8a864d77d76e021d75d784756d17617",
+   "links": {
+    "self": "/company/01137688/charges/0H8s3hK8uhR_KOVdIDVarfZcNFE"
+   },
+   "particulars": {
+    "description": "Fixed and floating charge over the undertaking and all property and assets present and future, including goodwill, book debts, uncalled capital, buildings, fixtures, fixed plant & machinery.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Barclays Bank PLC"
+    }
+   ],
+   "satisfied_on": "2013-07-20",
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee on any account whatsoever",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "2008-06-14",
+     "filing_type": "create-charge-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01137688/filing-history/MjAwNzQxNzgyM2FkaXF6a2N4"
+     }
+    },
+    {
+     "delivered_on": "2013-07-20",
+     "filing_type": "charge-satisfaction",
+     "links": {
+      "filing": "/company/01137688/filing-history/MzA4MjE2NDkzOWFkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 5,
+   "classification": {
+    "description": "Guarantee and fixed and floating charge",
+    "type": "charge-description"
+   },
+   "created_on": "2008-06-09",
+   "delivered_on": "2008-06-14",
+   "etag": "58d3635551db4e9886c44b497e3bf5adc49e1c53",
+   "links": {
+    "self": "/company/01137688/charges/5I-AjR46CCQ282gIt5jf3TNa80g"
+   },
+   "particulars": {
+    "description": "Fixed and floating charge over the undertaking and all property and assets present and future, including goodwill, book debts, uncalled capital, buildings, fixtures, fixed plant & machinery see image for full details.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Barclays Bank PLC"
+    }
+   ],
+   "satisfied_on": "2013-07-20",
+   "secured_details": {
+    "description": "All monies due or to become due from the company and/or all or any of the companies named therein to the chargee on any account whatsoever",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "2008-06-14",
+     "filing_type": "create-charge-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01137688/filing-history/MjAwNzM4MjM5MWFkaXF6a2N4"
+     }
+    },
+    {
+     "delivered_on": "2013-07-20",
+     "filing_type": "charge-satisfaction",
+     "links": {
+      "filing": "/company/01137688/filing-history/MzA4MjE2NTA5MmFkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 4,
+   "classification": {
+    "description": "Guarantee & debenture guarantee & debenture",
+    "type": "charge-description"
+   },
+   "created_on": "2008-04-30",
+   "delivered_on": "2008-05-10",
+   "etag": "0361077f8825d888f05026ed6911700ce11e103d",
+   "links": {
+    "self": "/company/01137688/charges/5DBz4iWu4Q14WjJ90EJDcDaqVU4"
+   },
+   "particulars": {
+    "description": "Fixed and floating charge over the undertaking and all property and assets present and future, including goodwill, book debts, uncalled capital, buildings, fixtures, fixed plant & machinery.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Barclays Bank PLC"
+    }
+   ],
+   "satisfied_on": "2013-07-20",
+   "secured_details": {
+    "description": "All monies due or to become due from the company and/or all or any of the companies named therein to the chargee on any account whatsoever",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "2008-05-10",
+     "filing_type": "create-charge-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01137688/filing-history/MjAwNTM5MTk4OWFkaXF6a2N4"
+     }
+    },
+    {
+     "delivered_on": "2013-07-20",
+     "filing_type": "charge-satisfaction",
+     "links": {
+      "filing": "/company/01137688/filing-history/MzA4MjE2NTE3MGFkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 3,
+   "classification": {
+    "description": "Debenture",
+    "type": "charge-description"
+   },
+   "created_on": "2003-03-13",
+   "delivered_on": "2003-03-21",
+   "etag": "87e158f4b5fccbbe7e76f473638edd2f25934dc6",
+   "links": {
+    "self": "/company/01137688/charges/Vtb-imum1VASxJEZ2bVcsx8-x7E"
+   },
+   "particulars": {
+    "description": "Fixed and floating charges over the undertaking and all property and assets present and future including goodwill bookdebts uncalled capital buildings fixtures fixed plant and machinery.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "Barclays Bank PLC"
+    }
+   ],
+   "satisfied_on": "2008-05-03",
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee on any account whatsoever",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "2003-03-21",
+     "filing_type": "create-charge-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01137688/filing-history/MDEwMDQ4MTIxM2FkaXF6a2N4"
+     }
+    },
+    {
+     "delivered_on": "2008-05-03",
+     "filing_type": "charge-satisfaction-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01137688/filing-history/MjAwNTEwODcxN2FkaXF6a2N4"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 2,
+   "classification": {
+    "description": "Legal mortgage",
+    "type": "charge-description"
+   },
+   "created_on": "1980-04-08",
+   "delivered_on": "1980-04-14",
+   "etag": "ff63bc60f71989a170960e8a9fa2cc359f973525",
+   "links": {
+    "self": "/company/01137688/charges/XEv7YAIS2jiHdy1AehPBtLjrC_A"
+   },
+   "particulars": {
+    "description": "F/H premises at woodrolfe road, tollesbury essex. Floating charge over all moveable plant machinery implements utensils furniture and equipment.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "National Westminster Bank PLC"
+    }
+   ],
+   "satisfied_on": "2003-03-19",
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee on any account whatsoever",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1980-04-14",
+     "filing_type": "create-charge"
+    },
+    {
+     "delivered_on": "2003-03-19",
+     "filing_type": "charge-satisfaction-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01137688/filing-history/YWRpcXprY3g"
+     }
+    }
+   ]
+  },
+  {
+   "charge_number": 1,
+   "classification": {
+    "description": "Legal mortgage",
+    "type": "charge-description"
+   },
+   "created_on": "1975-09-26",
+   "delivered_on": "1975-10-14",
+   "etag": "1058a73c54333ec034cfc381795ff2e7e7574f53",
+   "links": {
+    "self": "/company/01137688/charges/hjBwEl9t3VC4GoQ5uXSS4kuV5Vk"
+   },
+   "particulars": {
+    "description": "Land and works fronting woodrolfe road, tollesbury essex. Floating charge over all moveable plant machinery implements utensils furniture and equipment.",
+    "type": "short-particulars"
+   },
+   "persons_entitled": [
+    {
+     "name": "National Westminster Bank PLC"
+    }
+   ],
+   "satisfied_on": "2003-03-19",
+   "secured_details": {
+    "description": "All monies due or to become due from the company to the chargee on any account whatsoever",
+    "type": "amount-secured"
+   },
+   "status": "fully-satisfied",
+   "transactions": [
+    {
+     "delivered_on": "1975-10-14",
+     "filing_type": "create-charge"
+    },
+    {
+     "delivered_on": "2003-03-19",
+     "filing_type": "charge-satisfaction-pre-2006-companies-act",
+     "links": {
+      "filing": "/company/01137688/filing-history/YWRpcXprY3g"
+     }
+    }
+   ]
+  }
+ ],
+ "part_satisfied_count": 0,
+ "satisfied_count": 6,
+ "total_count": 6,
+ "unfiltered_count": 6
+}
