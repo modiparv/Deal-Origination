@@ -418,3 +418,48 @@ Silence on any of these blocks the corresponding build step; per §0 I will not 
   gate is identical either way.
 - **A Companies House API key** (free, registered at the Developer Hub) supplied as `CH_API_KEY`. REST and streaming keys are distinct types; only REST is needed for Phase 1.
 - One human read of the CH API terms page at key registration (the page itself was unreachable from here). Caching/storing register data and filed documents is permitted — CH publishes its own bulk products for exactly that — with UK GDPR responsibility for officer/PSC personal data noted in CLAUDE.md.
+
+## 9. Phase 2 queue (approved at the Phase 1 gate review, 2026-08-02)
+
+Recorded from the gate review of ingest runs 30696915083 (baseline) and
+30743865139 (post-fix validation) so nothing lives only in conversation
+history. Approved for Phase 2; none of it is built yet.
+
+1. **Plausibility layer** (design approved as specified). A
+   post-persistence pass of named, tested rules writes
+   `plausibility_flags` per figure — annotations, never corrections;
+   figures stay verbatim observations. Rules: `unit_concept_mismatch`
+   (count concept with a currency unit — observed: Aral Estates
+   employees tagged `iso4217:GBP`), `suspicious_scale_attribute` (any
+   `scale` on a pure-unit count — observed: Cultura Technologies
+   employees filed with `scale="-2"`, 39 → 0.39, spec-correct and
+   absurd), `series_discontinuity` (~100× jump vs the company's own
+   history, restatement-aware), `cross_filing_disagreement` (same
+   concept/period differing across filings). Consumption differs by
+   class: the first two exclude the figure from proxy computations
+   (dimension records `insufficient_data` unless a clean observation
+   exists; composites renormalise); `series_discontinuity` stays IN
+   screening and carries the flag into the screen result's evidence — a
+   real step change (acquisition, disposal) is signal, not noise. Every
+   flagged figure always renders in profiles, flag alongside;
+   suppression is never an option.
+
+2. **New invariant — historical zero-yield documents.** Coverage facts
+   describe the latest filing, so a machine-readable document that
+   yields zero mapped figures needs its own signal, independent of
+   whether the company currently parses. Found the hard way: 3
+   companies that switched filing software mid-history had their
+   Digita-era documents silently yielding nothing while their current
+   documents parsed fine — no `parse_failed` fact, no defect bucket,
+   invisible to every existing metric, discovered only by diffing two
+   runs' figure counts (+80 of the +562 delta). Partial detection
+   already exists: `by_production_software.zero_figure` counts these at
+   product level across ALL machine-readable documents. Missing: the
+   per-company signal (document-level yield recorded on the source
+   document row exists via figure counts; the coverage report should
+   surface companies carrying any zero-yield machine-readable document
+   as their own line, analogous to `parse_failed`).
+
+3. **Minor:** serialize `by_production_software` sorted by document
+   count descending — thin-sample products (n≤3) are the statistically
+   invisible risk and belong visibly grouped, not alphabetized.
