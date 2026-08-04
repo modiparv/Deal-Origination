@@ -71,6 +71,11 @@ jobs:
             --sample "${{ inputs.spot_check_sample }}" \
             --out data/reports/spot-check.md
 
+      - name: Export demo dataset
+        run: |
+          python scripts/export_demo_data.py data/engine.db \
+            --out web/demo-data/demo-data.json
+
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v4
@@ -91,6 +96,6 @@ jobs:
           cp -r data/reports/. "$dest/"
           cp -r logs/runs/. "$dest/"
           gzip -c data/engine.db > "$dest/engine.db.gz"
-          git add "$dest"
-          git commit -m "Ingest run ${{ github.run_id }}: coverage report + spot-check"
+          git add "$dest" web/demo-data/demo-data.json
+          git commit -m "Ingest run ${{ github.run_id }}: coverage report + spot-check + demo dataset"
           git push
