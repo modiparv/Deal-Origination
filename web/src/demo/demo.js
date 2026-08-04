@@ -101,7 +101,7 @@
       ` · every figure is a filed observation citing its source document, period end and filed date;` +
       ` nothing on this surface is computed by a language model. Filed registry data is 9–21 months` +
       ` stale by construction; each figure shows its own age. ` +
-      `<a href="../index.html">operations viewer</a>`;
+      `<a href="../">engine home</a> · <a href="../ops/">operations viewer</a>`;
   }
 
   function legendHtml(codes) {

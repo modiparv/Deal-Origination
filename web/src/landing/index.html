@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Deal Origination Engine</title>
+<link rel="stylesheet" href="landing.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📇</text></svg>" />
+</head>
+<body>
+<header class="top">
+  <span class="brand">Deal Origination Engine</span>
+  <nav>
+    <a href="demo/">Screen results</a>
+    <a href="ops/">Operations</a>
+    <a href="https://github.com/modiparv/Deal-Origination" rel="noopener">Source</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Origination screening on filed registry data,<br>where every figure traces to a filing.</h1>
+    <p class="lede">
+      A UK lower-mid-market screening engine built on Companies House filings.
+      No figure on any screen is computed by a language model; each one is a
+      filed observation carrying its source document, tag, period end and filed
+      date — and a one-click trace to the actual filing on the public register.
+    </p>
+    <p class="cta-row">
+      <a class="cta primary" href="demo/">Open the screen results →</a>
+      <a class="cta" href="ops/">Operations &amp; coverage</a>
+    </p>
+  </section>
+
+  <section class="stats" id="stats"></section>
+
+  <section class="principles">
+    <div class="principle">
+      <h2>Provenance, transitively</h2>
+      <p>Click any figure and walk the chain: figure → inline-XBRL tag →
+      source document (with its producing software and content hash) →
+      filing date and registry transaction → the filing itself on
+      find-and-company. Derived figures walk back through every
+      input to its own source. A filed figure without a source document
+      cannot be persisted.</p>
+    </div>
+    <div class="principle">
+      <h2>Absence carries a cause</h2>
+      <p>Most UK small companies file no public P&amp;L. The engine never
+      papers over a gap: every missing concept states its recorded reason —
+      <code>filed_without_concept</code>, <code>unparseable_format</code>,
+      <code>parse_failed</code>, <code>not_reached</code>,
+      <code>not_captured</code> — as distinct, first-class states. A parse
+      failure is reported as a system defect, never disguised as a data
+      limitation.</p>
+    </div>
+    <div class="principle">
+      <h2>Staleness shown, never hidden</h2>
+      <p>Filed registry data is 9–21 months old by construction, and worse in
+      the tail. Every figure shows its period end, filed date and age;
+      profiles lead with the freshest machine-readable period. Reports state
+      dated public evidence of absence — never the unevidenceable claim that a
+      company is &ldquo;not being marketed&rdquo;.</p>
+    </div>
+  </section>
+
+  <section class="honesty">
+    <p>What you will not find here: financial figures invented or computed by
+    a language model, aggregator-sourced numbers, sample companies, or
+    placeholder values. If a screen has no data, it says so.</p>
+  </section>
+</main>
+
+<footer class="bottom" id="site-footer"></footer>
+
+<script src="site-summary.js"></script>
+<script src="landing.js"></script>
+</body>
+</html>
