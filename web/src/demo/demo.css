@@ -173,3 +173,10 @@ tr:hover td { background: color-mix(in srgb, var(--surface) 60%, var(--grid) 40%
   border-top: 1px solid var(--grid); margin-top: 34px;
 }
 .demo-footer code { font-family: var(--mono); font-size: 11px; }
+
+/* Shared top navigation */
+.top-nav { align-self: center; }
+.top-nav a {
+  color: var(--ink-2); text-decoration: none; font-size: 13px; margin-left: 20px;
+}
+.top-nav a:hover { color: var(--accent); }

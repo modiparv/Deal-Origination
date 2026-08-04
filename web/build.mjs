@@ -96,10 +96,14 @@ const data = {
 
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });
+
+// Ops viewer lives under /ops/ — the root belongs to the landing page.
+const opsDist = join(dist, "ops");
+mkdirSync(opsDist, { recursive: true });
 for (const asset of ["index.html", "styles.css", "app.js"]) {
-  cpSync(join(here, "src", asset), join(dist, asset));
+  cpSync(join(here, "src", asset), join(opsDist, asset));
 }
-writeFileSync(join(dist, "data.js"), `window.__DATA__ = ${JSON.stringify(data)};\n`);
+writeFileSync(join(opsDist, "data.js"), `window.__DATA__ = ${JSON.stringify(data)};\n`);
 
 // Demo surface (web/src/demo/): a separate audience — investment
 // professionals, not operations. Its dataset is exported from the
@@ -120,6 +124,33 @@ writeFileSync(
     ? `window.__DEMO__ = ${demoData};\n`
     : `window.__DEMO__ = { run: {}, companies: [], figures: {}, figures_by_company: {}, documents: {}, coverage: {} };\n`
 );
+
+// Landing page at the root. Its stats are computed here, mechanically,
+// from the same committed demo dataset — never typed in.
+for (const asset of ["index.html", "landing.css", "landing.js"]) {
+  cpSync(join(here, "src", "landing", asset), join(dist, asset));
+}
+let site = { commit: data.commit };
+if (demoData) {
+  const demo = JSON.parse(demoData);
+  const modes = {};
+  for (const c of demo.companies) modes[c.mode] = (modes[c.mode] || 0) + 1;
+  const products = new Set(
+    Object.values(demo.documents)
+      .map((d) => d.production_software)
+      .filter(Boolean)
+  );
+  site = {
+    commit: data.commit,
+    run_id: demo.run.run_id,
+    companies: demo.companies.length,
+    figures: Object.keys(demo.figures).length,
+    documents: Object.keys(demo.documents).length,
+    modes,
+    products: products.size,
+  };
+}
+writeFileSync(join(dist, "site-summary.js"), `window.__SITE__ = ${JSON.stringify(site)};\n`);
 
 console.log(
   `built dist: ${data.runs.length} run summaries, ${data.mandates.length} mandate(s), ` +
