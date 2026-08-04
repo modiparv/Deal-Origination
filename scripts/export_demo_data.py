@@ -114,6 +114,7 @@ def export(db_path: Path) -> dict:
                 "status": c["status"],
                 "incorporated": c["incorporation_date"],
                 "sic": _maybe_json(c["classification_codes"]) or [],
+                "address": _maybe_json(c["registered_address"]) or {},
                 "ownership_classification": c["ownership_classification"],
                 "mode": mode,
                 "coverage": {
@@ -150,6 +151,8 @@ def export(db_path: Path) -> dict:
                         "natures": _maybe_json(r["control_natures"]) or [],
                         "notified_on": r["notified_on"],
                         "ceased_on": r["ceased_on"],
+                        "dob_year": r["dob_year"],
+                        "dob_month": r["dob_month"],
                     }
                     for r in _rows(
                         db,
@@ -169,17 +172,32 @@ def export(db_path: Path) -> dict:
                         (cid,),
                     )
                 ],
+                "officers": [
+                    {
+                        "name": r["name"],
+                        "role": r["role"],
+                        "appointed_on": r["appointed_on"],
+                        "resigned_on": r["resigned_on"],
+                        "dob_year": r["dob_year"],
+                    }
+                    for r in _rows(
+                        db,
+                        "SELECT * FROM officers WHERE company_id=? ORDER BY appointed_on",
+                        (cid,),
+                    )
+                ],
                 "recent_charges": [
                     {
                         "status": r["status"],
                         "created_on": r["created_on"],
                         "satisfied_on": r["satisfied_on"],
                         "classification": _maybe_json(r["classification"]),
+                        "secured_parties": _maybe_json(r["secured_parties"]) or [],
                     }
                     for r in _rows(
                         db,
                         "SELECT * FROM security_interests WHERE company_id=? "
-                        "ORDER BY created_on DESC LIMIT 5",
+                        "ORDER BY created_on DESC",
                         (cid,),
                     )
                 ],
