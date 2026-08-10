@@ -463,3 +463,46 @@ history. Approved for Phase 2; none of it is built yet.
 3. **Minor:** serialize `by_production_software` sorted by document
    count descending — thin-sample products (n≤3) are the statistically
    invisible risk and belong visibly grouped, not alphabetized.
+
+## 10. Scale phase — bulk-first ingest (designed 2026-08-10, approval pending)
+
+200 ingested companies is a gate sample; the product number is the
+mandate universe (~906k). The API rate limit (600 req/5 min, ~13 calls
+per company) caps API-only ingestion at ~10k companies/day — three
+months to the universe. The sanctioned route is Companies House's free
+bulk products (download.companieshouse.gov.uk, already allowlisted;
+published precisely so consumers stop polling the API):
+
+1. **Basic company data** (monthly, ~5.4M companies): replaces universe
+   enumeration and registration facts — zero API calls.
+2. **Accounts Monthly Data** (every iXBRL accounts filing, monthly
+   ZIPs): the existing parser, concept map and per-product telemetry
+   apply unchanged. Twelve months ≈ figures for ~500-600k mandate
+   companies at the observed 62% machine-readable rate; the remainder
+   are honestly unparseable_format → signal mode.
+3. **PSC snapshot** (daily): beneficial owners and birth months for the
+   whole register.
+
+The API demotes to **enrichment**: officers, charges, and
+filing-history transaction ids (the exact-document trace links),
+spent on companies that survive screens or get opened — ~10k/day
+budget, prioritised. Un-enriched companies trace to their
+filing-history page with a state saying so.
+
+Interim accumulation (live now): the ingest workflow seeds each run
+from a rolling `data-store` release (engine.db.gz + checkpoint), runs
+nightly at limit 800, and uploads the grown store back — the checkpoint
+skips stored companies before any API call, and idempotent re-ingest
+makes the accumulation safe by construction. The store stays out of
+git history; per-run reports and a capped (400-company, most recently
+filed) frontend dataset stay committed.
+
+Frontend at scale: the inline-JSON model dies past a few thousand
+companies. Planned replacement: range-request SQLite over static
+hosting (browser fetches only the DB pages a query touches — no
+server), so the three-way count computes over the actual universe.
+All invariants (provenance, absence states, staleness, no LLM
+figures) carry over unchanged; bulk documents still provide sha-256,
+filed dates and verbatim tags.
+
+Not proposed: multiple API keys to evade the rate limit.
