@@ -41,7 +41,7 @@ def _maybe_json(value):
         return value
 
 
-def export(db_path: Path) -> dict:
+def export(db_path: Path, cap: int | None = None) -> dict:
     db = sqlite3.connect(db_path)
 
     runs = _rows(db, "SELECT * FROM runs ORDER BY started_at DESC LIMIT 1")
@@ -260,12 +260,39 @@ def export(db_path: Path) -> dict:
         for cid, facts in by_company_cov.items()
     }
 
+    mode_totals: dict[str, int] = {}
+    for c in out_companies:
+        mode_totals[c["mode"]] = mode_totals.get(c["mode"], 0) + 1
+    store_totals = {
+        "companies": len(out_companies),
+        "figures": len(out_figures),
+        "documents": len(out_documents),
+        "modes": mode_totals,
+    }
+
+    if cap and len(out_companies) > cap:
+        # Deterministic slice: the N most recently filed (freshest period
+        # end, then name). The frontend states the slice; totals above
+        # describe the full store.
+        out_companies = sorted(
+            out_companies,
+            key=lambda c: (c["freshest_period"] or "", c["name"]),
+            reverse=True,
+        )[:cap]
+        keep = {c["id"] for c in out_companies}
+        by_company_figs = {k: v for k, v in by_company_figs.items() if k in keep}
+        kept_figs = {fid for ids in by_company_figs.values() for fid in ids}
+        out_figures = {k: v for k, v in out_figures.items() if k in kept_figs}
+        out_documents = {k: v for k, v in out_documents.items() if v["company_id"] in keep}
+        out_coverage = {k: v for k, v in out_coverage.items() if k in keep}
+
     return {
         "run": {
             "run_id": run_meta.get("run_id"),
             "git_sha": run_meta.get("git_sha"),
             "started_at": run_meta.get("started_at"),
             "finished_at": run_meta.get("finished_at"),
+            "store_totals": store_totals,
         },
         "companies": out_companies,
         "figures": out_figures,
@@ -279,6 +306,9 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("db", type=Path)
     ap.add_argument("--out", type=Path, required=True)
+    ap.add_argument("--cap", type=int, default=None,
+                    help="Export at most N companies (most recently filed first); "
+                         "store totals still describe the full store")
     args = ap.parse_args()
 
     db_path = args.db
@@ -288,7 +318,7 @@ def main() -> None:
             shutil.copyfileobj(src, dst)
         db_path = tmp
 
-    data = export(db_path)
+    data = export(db_path, cap=args.cap)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(data, separators=(",", ":")), encoding="utf-8")
     print(

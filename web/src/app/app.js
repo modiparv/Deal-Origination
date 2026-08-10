@@ -244,9 +244,13 @@
       for (const c of DATA.companies) buckets[evaluate(c, f)].push(c);
       const uni = window.__SITE__ && window.__SITE__.universe_hits;
 
+      const st = DATA.run.store_totals;
+      const sliceNote = st && st.companies > DATA.companies.length
+        ? ` · store holds ${nf.format(st.companies)}; this surface carries the ${nf.format(DATA.companies.length)} most recently filed`
+        : "";
       $("#countblock").innerHTML = `
         <div class="headcount"><span class="big">${nf.format(buckets.pass.length)}</span>
-          <span class="of">of ${uni ? nf.format(uni) : nf.format(DATA.companies.length)} companies${uni ? " in the mandate universe" : ""}</span></div>
+          <span class="of">of ${uni ? nf.format(uni) : nf.format(DATA.companies.length)} companies${uni ? " in the mandate universe" : ""}${sliceNote}</span></div>
         <div class="threeway">
           <button class="tw ${view === "pass" ? "on" : ""}" data-view="pass"><span class="tick">✓</span> ${nf.format(buckets.pass.length)} matched</button>
           <button class="tw ${view === "fail" ? "on" : ""}" data-view="fail"><span class="cross">✕</span> ${nf.format(buckets.fail.length)} failed the test</button>
