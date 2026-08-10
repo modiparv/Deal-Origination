@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Screen — Deal Origination Engine</title>
+<link rel="stylesheet" href="app.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📇</text></svg>" />
+</head>
+<body data-page="screen">
+<div class="shell">
+<header class="app-header">
+  <div>
+    <h1>Screen</h1>
+    <p class="crumb">Every figure traces to a filing; unmeasurable companies are counted, never dropped</p>
+  </div>
+  <nav class="top-nav"><a href="../">Engine</a><a class="here" href="screen.html">Screen</a><a href="../ops/">Operations</a></nav>
+</header>
+
+<div class="fpanel">
+  <div class="f-search"><input type="search" id="f-q" placeholder="Search company name or number…"></div>
+
+  <div class="f-grid">
+    <div class="f-col">
+      <label class="f-label">Sector</label>
+      <div class="sector-list" id="f-sectors"></div>
+    </div>
+    <div class="f-col">
+      <label class="f-label">Ownership</label>
+      <select id="f-ownership">
+        <option value="">any</option>
+        <option value="owner_managed">owner managed</option>
+        <option value="independent">independent</option>
+        <option value="sponsor_backed">sponsor backed</option>
+        <option value="unclassifiable">unclassifiable</option>
+      </select>
+      <label class="f-label">Screening mode</label>
+      <select id="f-mode"><option value="">any</option><option value="financial">financial</option><option value="signal">signal</option><option value="parse_failed">parse_failed</option></select>
+    </div>
+    <div class="f-col">
+      <label class="f-label">EBITDA band £</label>
+      <div class="f-band"><input type="number" id="f-eb-min" placeholder="min"><input type="number" id="f-eb-max" placeholder="max"></div>
+      <label class="f-label">Revenue band £</label>
+      <div class="f-band"><input type="number" id="f-rev-min" placeholder="min"><input type="number" id="f-rev-max" placeholder="max"></div>
+    </div>
+    <div class="f-col">
+      <label class="f-label">Region</label>
+      <select id="f-country"></select>
+      <input type="text" id="f-locality" placeholder="town / locality contains…">
+    </div>
+    <div class="f-col">
+      <label class="f-label">Owner age over</label>
+      <input type="number" id="f-owner-min" placeholder="e.g. 50">
+      <label class="f-label">Figures no older than (months)</label>
+      <input type="number" id="f-stale" placeholder="e.g. 18">
+    </div>
+  </div>
+
+  <div class="chips">
+    <span class="chip" data-toggle id="chip-nosucc"
+      title="Observable form of 'no successor appointed': no active officer appointed within the last five years. Companies with no officer records count as could-not-be-measured.">No officer appointed in 5y</span>
+    <span class="chip" id="chip-fresh18" title="Sets the staleness cutoff to 18 months.">Accounts under 18 months old</span>
+    <span class="chip inert" title="Further signal chips (going-concern language, auditor resignation, filing overdue) are Phase 2 detectors — not_reached.">+ add signal · P2</span>
+    <a href="#" id="f-clear" class="clear">clear all</a>
+  </div>
+</div>
+
+<div id="countblock"></div>
+<div id="results"></div>
+
+<footer class="app-footer"><p id="app-footer"></p></footer>
+</div>
+<script src="../demo/demo-data.js"></script>
+<script src="site-summary.js"></script>
+<script src="sic-groups.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

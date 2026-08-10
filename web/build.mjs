@@ -140,6 +140,7 @@ if (demoData) {
       .map((d) => d.production_software)
       .filter(Boolean)
   );
+  const latestIngest = data.runs.find((r) => r.kind === "ingest");
   site = {
     commit: data.commit,
     run_id: demo.run.run_id,
@@ -148,9 +149,19 @@ if (demoData) {
     documents: Object.keys(demo.documents).length,
     modes,
     products: products.size,
+    universe_hits: latestIngest ? latestIngest.summary.universe_hits : null,
   };
 }
 writeFileSync(join(dist, "site-summary.js"), `window.__SITE__ = ${JSON.stringify(site)};\n`);
+
+// Product surface (/app/): SCREEN, COMPANY, TRACE — the primary surface.
+// Shares the demo's exported dataset (one copy, referenced relatively).
+const appDist = join(dist, "app");
+mkdirSync(appDist, { recursive: true });
+for (const asset of ["screen.html", "company.html", "trace.html", "app.css", "app.js", "sic-groups.js"]) {
+  cpSync(join(here, "src", "app", asset), join(appDist, asset));
+}
+writeFileSync(join(appDist, "site-summary.js"), `window.__SITE__ = ${JSON.stringify(site)};\n`);
 
 console.log(
   `built dist: ${data.runs.length} run summaries, ${data.mandates.length} mandate(s), ` +
