@@ -11,73 +11,61 @@
 <header class="app-header">
   <div>
     <h1>Screen</h1>
-    <p class="crumb">Thesis builder — filters narrow the ingested universe; every figure traces to its filing</p>
+    <p class="crumb">Every figure traces to a filing; unmeasurable companies are counted, never dropped</p>
   </div>
   <nav class="top-nav"><a href="../">Engine</a><a class="here" href="screen.html">Screen</a><a href="../ops/">Operations</a></nav>
 </header>
 
-<div class="screen-grid">
-  <aside class="rail">
-    <h3>Search</h3>
-    <div class="f-row"><input type="search" id="f-q" placeholder="name or company number"></div>
+<div class="fpanel">
+  <div class="f-search"><input type="search" id="f-q" placeholder="Search company name or number…"></div>
 
-    <h3>Sector</h3>
-    <div class="sector-list" id="f-sectors"></div>
+  <div class="f-grid">
+    <div class="f-col">
+      <label class="f-label">Sector</label>
+      <div class="sector-list" id="f-sectors"></div>
+    </div>
+    <div class="f-col">
+      <label class="f-label">Ownership</label>
+      <select id="f-ownership">
+        <option value="">any</option>
+        <option value="owner_managed">owner managed</option>
+        <option value="independent">independent</option>
+        <option value="sponsor_backed">sponsor backed</option>
+        <option value="unclassifiable">unclassifiable</option>
+      </select>
+      <label class="f-label">Screening mode</label>
+      <select id="f-mode"><option value="">any</option><option value="financial">financial</option><option value="signal">signal</option><option value="parse_failed">parse_failed</option></select>
+    </div>
+    <div class="f-col">
+      <label class="f-label">EBITDA band £</label>
+      <div class="f-band"><input type="number" id="f-eb-min" placeholder="min"><input type="number" id="f-eb-max" placeholder="max"></div>
+      <label class="f-label">Revenue band £</label>
+      <div class="f-band"><input type="number" id="f-rev-min" placeholder="min"><input type="number" id="f-rev-max" placeholder="max"></div>
+    </div>
+    <div class="f-col">
+      <label class="f-label">Region</label>
+      <select id="f-country"></select>
+      <input type="text" id="f-locality" placeholder="town / locality contains…">
+    </div>
+    <div class="f-col">
+      <label class="f-label">Owner age over</label>
+      <input type="number" id="f-owner-min" placeholder="e.g. 50">
+      <label class="f-label">Figures no older than (months)</label>
+      <input type="number" id="f-stale" placeholder="e.g. 18">
+    </div>
+  </div>
 
-    <h3>Size</h3>
-    <div class="f-row"><label>revenue £ (latest filed)</label>
-      <div class="f-band"><input type="number" id="f-rev-min" placeholder="min"><input type="number" id="f-rev-max" placeholder="max"></div></div>
-    <div class="f-row"><label>employees</label>
-      <div class="f-band"><input type="number" id="f-emp-min" placeholder="min"><input type="number" id="f-emp-max" placeholder="max"></div></div>
-    <div class="f-row"><label>net assets £</label>
-      <div class="f-band"><input type="number" id="f-na-min" placeholder="min"><input type="number" id="f-na-max" placeholder="max"></div></div>
-    <div class="f-row f-inert" title="EBITDA is a Phase 2 derived figure — no values exist yet, so this filter cannot run. It will enable when the derive layer lands.">
-      <label>EBITDA £ <span class="state st-not_reached">not_reached</span></label>
-      <div class="f-band"><input type="number" placeholder="min" disabled><input type="number" placeholder="max" disabled></div></div>
-
-    <h3>Region</h3>
-    <div class="f-row"><select id="f-country"></select></div>
-    <div class="f-row"><input type="text" id="f-locality" placeholder="town / locality contains…"></div>
-
-    <h3>Company</h3>
-    <div class="f-row"><label>company age, years</label>
-      <div class="f-band"><input type="number" id="f-age-min" placeholder="min"><input type="number" id="f-age-max" placeholder="max"></div></div>
-    <div class="f-row"><label>screening mode</label>
-      <select id="f-mode"><option value="">any</option><option value="financial">financial</option><option value="signal">signal</option><option value="parse_failed">parse_failed</option></select></div>
-    <div class="f-row f-inert" title="Ownership classification is Phase 2 and fail-closed — every company is currently unclassified, so this filter cannot run.">
-      <label>ownership class <span class="state st-not_reached">not_reached</span></label>
-      <select disabled><option>owner-managed / independent / sponsor-backed</option></select></div>
-
-    <h3>Succession</h3>
-    <div class="f-row"><label>owner age at least (~, from PSC birth year)</label>
-      <input type="number" id="f-owner-min" placeholder="e.g. 60"></div>
-    <div class="f-row f-inert" title="Younger-officer and single-shareholder succession detectors are Phase 2 signal rules.">
-      <label>succession detectors <span class="state st-not_reached">not_reached</span></label>
-      <select disabled><option>no younger officer / single shareholder</option></select></div>
-
-    <h3>Financial &amp; distress</h3>
-    <div class="f-row"><label>security interests outstanding</label>
-      <select id="f-charges"><option value="">any</option><option value="yes">has outstanding</option><option value="no">none outstanding</option></select></div>
-    <div class="f-row f-inert" title="Margin, growth and gearing are Phase 2 derived figures; distress-language extraction (going concern, auditor resignation) is Phase 2 signal work.">
-      <label>margin / growth / gearing / distress <span class="state st-not_reached">not_reached</span></label>
-      <select disabled><option>—</option></select></div>
-
-    <h3>Data quality</h3>
-    <div class="f-row"><label>exclude figures older than (months)</label>
-      <input type="number" id="f-stale" placeholder="e.g. 24"></div>
-    <div class="f-row f-inert" title="Plausibility flags are Phase 2 (design approved).">
-      <label>exclude plausibility-flagged <span class="state st-not_reached">not_reached</span></label>
-      <select disabled><option>—</option></select></div>
-    <div class="f-row"><label><input type="checkbox" id="f-watch"> watchlist only</label></div>
-
-    <p class="f-row"><a href="#" id="f-clear" class="clear">clear all filters</a></p>
-  </aside>
-
-  <div>
-    <div class="countbar" id="countbar"></div>
-    <div id="results"></div>
+  <div class="chips">
+    <span class="chip" data-toggle id="chip-nosucc"
+      title="Observable form of 'no successor appointed': no active officer appointed within the last five years. Companies with no officer records count as could-not-be-measured.">No officer appointed in 5y</span>
+    <span class="chip" id="chip-fresh18" title="Sets the staleness cutoff to 18 months.">Accounts under 18 months old</span>
+    <span class="chip inert" title="Further signal chips (going-concern language, auditor resignation, filing overdue) are Phase 2 detectors — not_reached.">+ add signal · P2</span>
+    <a href="#" id="f-clear" class="clear">clear all</a>
   </div>
 </div>
+
+<div id="countblock"></div>
+<div id="results"></div>
 
 <footer class="app-footer"><p id="app-footer"></p></footer>
 </div>

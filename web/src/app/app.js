@@ -128,92 +128,105 @@
       return;
     }
 
-    // ---- filter rail ----
+    // Short cause word for an absent concept — canonical code in tooltip.
+    function causeChip(cid, concept) {
+      const f = coverageOf(cid).find((x) => x.concept === concept);
+      if (!f) return `<span class="state st-not_captured" title="not_captured — ${esc(STATES.not_captured)}">not filed</span>`;
+      if (f.status === "filed_without_concept") {
+        const m = /regime '([^']+)'/.exec(f.detail || "");
+        return `<span class="state st-filed_without_concept" title="filed_without_concept — ${esc(f.detail || "")}">${esc(m ? m[1] : "regime omits")}</span>`;
+      }
+      if (f.status === "unparseable_format")
+        return `<span class="state st-unparseable_format" title="unparseable_format — ${esc(f.detail || "")}">pdf only</span>`;
+      if (f.status === "parse_failed")
+        return `<span class="state st-parse_failed" title="parse_failed — ${esc(f.detail || "")}">parse failed</span>`;
+      return state(f.status, f.detail || undefined);
+    }
+    const notDerived = () =>
+      `<span class="state st-not_reached" title="not_reached — ${esc(STATES.not_reached)}">not derived · P2</span>`;
+
+    // ---- filter panel ----
     const divisions = {};
     for (const c of DATA.companies)
       for (const d of divisionsOf(c)) divisions[d] = (divisions[d] || 0) + 1;
     $("#f-sectors").innerHTML = Object.keys(divisions).sort()
       .map((d) => `<label><input type="checkbox" data-div="${d}"> ${esc(divName(d))}
                    <span class="n">${divisions[d]}</span></label>`).join("");
-
     const countries = [...new Set(DATA.companies.map((c) => region(c).country).filter(Boolean))].sort();
     $("#f-country").innerHTML = `<option value="">any country</option>` +
       countries.map((x) => `<option>${esc(x)}</option>`).join("");
 
+    const num = (sel) => { const v = $(sel).value.trim(); return v === "" ? null : Number(v); };
     const F = () => ({
       q: $("#f-q").value.trim().toLowerCase(),
       divs: [...document.querySelectorAll("#f-sectors input:checked")].map((i) => i.dataset.div),
+      ownership: $("#f-ownership").value,
+      ebMin: num("#f-eb-min"), ebMax: num("#f-eb-max"),
       revMin: num("#f-rev-min"), revMax: num("#f-rev-max"),
-      empMin: num("#f-emp-min"), empMax: num("#f-emp-max"),
-      naMin: num("#f-na-min"), naMax: num("#f-na-max"),
       country: $("#f-country").value, locality: $("#f-locality").value.trim().toLowerCase(),
-      ageMin: num("#f-age-min"), ageMax: num("#f-age-max"),
       ownerMin: num("#f-owner-min"),
-      mode: $("#f-mode").value,
-      chargesSel: $("#f-charges").value,
+      noRecentOfficer: $("#chip-nosucc").classList.contains("on"),
       staleMax: num("#f-stale"),
-      watchOnly: $("#f-watch").checked,
+      mode: $("#f-mode").value,
     });
-    const num = (sel) => { const v = $(sel).value.trim(); return v === "" ? null : Number(v); };
 
-    // Each active test returns 'pass' | 'fail' | 'unmeasurable'.
+    // Each active test: 'pass' | 'fail' | 'unmeasurable'. A test over a
+    // concept the store cannot measure for ANY company (EBITDA,
+    // ownership class) still runs — and honestly floods the third
+    // bucket until the Phase 2 machinery lands.
     function evaluate(c, f) {
-      const tests = [];
-      if (f.q) tests.push(c.name.toLowerCase().includes(f.q) || c.registration_id.toLowerCase().includes(f.q) ? "pass" : "fail");
-      if (f.divs.length) tests.push(divisionsOf(c).some((d) => f.divs.includes(d)) ? "pass" : "fail");
-      const band = (figId, min, max) => {
-        if (min === null && max === null) return null;
-        const g = fig(figId);
-        if (!g) return "unmeasurable";
-        const v = Number(g.value);
-        return (min === null || v >= min) && (max === null || v <= max) ? "pass" : "fail";
-      };
-      const t1 = band(c.latest_revenue_fig, f.revMin, f.revMax); if (t1) tests.push(t1);
-      const t2 = band(c.latest_employees_fig, f.empMin, f.empMax); if (t2) tests.push(t2);
-      const t3 = band(c.latest_net_assets_fig, f.naMin, f.naMax); if (t3) tests.push(t3);
+      const t = [];
+      if (f.q) t.push(c.name.toLowerCase().includes(f.q) || c.registration_id.toLowerCase().includes(f.q) ? "pass" : "fail");
+      if (f.divs.length) t.push(divisionsOf(c).some((d) => f.divs.includes(d)) ? "pass" : "fail");
+      if (f.ownership) t.push(c.ownership_classification ? (c.ownership_classification === f.ownership ? "pass" : "fail") : "unmeasurable");
+      if (f.ebMin !== null || f.ebMax !== null) t.push("unmeasurable"); // EBITDA: no derived figures exist yet
+      if (f.revMin !== null || f.revMax !== null) {
+        const g = fig(c.latest_revenue_fig);
+        if (!g) t.push("unmeasurable");
+        else { const v = Number(g.value); t.push((f.revMin === null || v >= f.revMin) && (f.revMax === null || v <= f.revMax) ? "pass" : "fail"); }
+      }
       if (f.country || f.locality) {
         const a = region(c);
-        if (!a.country && !a.locality) tests.push("unmeasurable");
-        else tests.push(
-          (!f.country || a.country === f.country) &&
+        if (!a.country && !a.locality) t.push("unmeasurable");
+        else t.push((!f.country || a.country === f.country) &&
           (!f.locality || String(a.locality || "").toLowerCase().includes(f.locality)) ? "pass" : "fail");
-      }
-      if (f.ageMin !== null || f.ageMax !== null) {
-        const y = companyAgeYears(c);
-        tests.push(y === null ? "unmeasurable"
-          : (f.ageMin === null || y >= f.ageMin) && (f.ageMax === null || y <= f.ageMax) ? "pass" : "fail");
       }
       if (f.ownerMin !== null) {
         const a = ownerAge(c);
-        tests.push(a === null ? "unmeasurable" : a >= f.ownerMin ? "pass" : "fail");
+        t.push(a === null ? "unmeasurable" : a >= f.ownerMin ? "pass" : "fail");
       }
-      if (f.mode) tests.push(c.mode === f.mode ? "pass" : "fail");
-      if (f.chargesSel) {
-        const n = outstandingCharges(c);
-        tests.push(f.chargesSel === "yes" ? (n > 0 ? "pass" : "fail") : (n === 0 ? "pass" : "fail"));
+      if (f.noRecentOfficer) {
+        const off = c.officers || [];
+        if (!off.length) t.push("unmeasurable");
+        else t.push(off.some((o) => !o.resigned_on && o.appointed_on && o.appointed_on >= `${THIS_YEAR - 5}-01-01`) ? "fail" : "pass");
       }
       if (f.staleMax !== null) {
         const a = ageInfo(c.freshest_period);
-        tests.push(!a ? "unmeasurable" : a.months <= f.staleMax ? "pass" : "fail");
+        t.push(!a ? "unmeasurable" : a.months <= f.staleMax ? "pass" : "fail");
       }
-      if (f.watchOnly) tests.push(watch().has(c.id) ? "pass" : "fail");
-      if (tests.includes("fail")) return "fail";
-      if (tests.includes("unmeasurable")) return "unmeasurable";
+      if (f.mode) t.push(c.mode === f.mode ? "pass" : "fail");
+      if (t.includes("fail")) return "fail";
+      if (t.includes("unmeasurable")) return "unmeasurable";
       return "pass";
     }
 
-    let view = "pass"; // pass | fail | unmeasurable
+    // filed date of the document behind the freshest current figure
+    function freshFiled(c) {
+      const ds = figuresOf(c.id)
+        .filter((x) => x.is_current && x.period_end === c.freshest_period && x.source_document_id)
+        .map((x) => doc(x.source_document_id)).filter(Boolean);
+      return ds.length ? ds[0].filed_date : null;
+    }
+
+    let view = "pass";
     const sort = { key: "name", dir: 1 };
     const sortVal = (c, k) => {
       switch (k) {
         case "name": return c.name;
+        case "sector": return divName(divisionsOf(c)[0]);
         case "revenue": { const g = fig(c.latest_revenue_fig); return g ? Number(g.value) : -Infinity; }
-        case "employees": { const g = fig(c.latest_employees_fig); return g ? Number(g.value) : -Infinity; }
-        case "net_assets": { const g = fig(c.latest_net_assets_fig); return g ? Number(g.value) : -Infinity; }
         case "owner": { const a = ownerAge(c); return a === null ? -Infinity : a; }
-        case "fresh": return c.freshest_period || "";
-        case "mode": return c.mode;
-        case "coverage": return c.coverage.statuses.available || 0;
+        case "filed": return freshFiled(c) || "";
         default: return "";
       }
     };
@@ -225,58 +238,48 @@
       for (const c of DATA.companies) buckets[evaluate(c, f)].push(c);
       const uni = window.__SITE__ && window.__SITE__.universe_hits;
 
-      $("#countbar").innerHTML = `
-        <span class="big">${nf.format(buckets.pass.length)}</span>
-        <span class="of">matched of ${nf.format(DATA.companies.length)} ingested${uni ? ` (universe ${nf.format(uni)})` : ""}</span>
-        <span class="split"><b>${nf.format(buckets.fail.length)}</b> failed filters ·
-          <b>${nf.format(buckets.unmeasurable.length)}</b> could not be measured</span>
-        <button class="viewtab ${view === "pass" ? "on" : ""}" data-view="pass">matched</button>
-        <button class="viewtab ${view === "fail" ? "on" : ""}" data-view="fail">failed</button>
-        <button class="viewtab ${view === "unmeasurable" ? "on" : ""}" data-view="unmeasurable">not measurable</button>
-        <span class="saved">
-          <select id="saved-list"><option value="">saved screens…</option>${savedNames()
-            .map((n) => `<option>${esc(n)}</option>`).join("")}</select>
-          <input id="saved-name" placeholder="name this screen" size="14">
-          <button id="saved-save">save</button>
-        </span>`;
-      document.querySelectorAll(".viewtab").forEach((b) =>
+      $("#countblock").innerHTML = `
+        <div class="headcount"><span class="big">${nf.format(buckets.pass.length)}</span>
+          <span class="of">of ${uni ? nf.format(uni) : nf.format(DATA.companies.length)} companies${uni ? " in the mandate universe" : ""}</span></div>
+        <div class="threeway">
+          <button class="tw ${view === "pass" ? "on" : ""}" data-view="pass"><span class="tick">✓</span> ${nf.format(buckets.pass.length)} matched</button>
+          <button class="tw ${view === "fail" ? "on" : ""}" data-view="fail"><span class="cross">✕</span> ${nf.format(buckets.fail.length)} failed the test</button>
+          <button class="tw warn ${view === "unmeasurable" ? "on" : ""}" data-view="unmeasurable"><span class="warnmark">⚠</span> ${nf.format(buckets.unmeasurable.length)} could not be measured</button>
+          <span class="of">— across the ${nf.format(DATA.companies.length)} ingested; export includes source references</span>
+          <button id="export-csv" class="tw">⬇ export (Excel CSV)</button>
+        </div>`;
+      document.querySelectorAll(".tw[data-view]").forEach((b) =>
         b.addEventListener("click", () => { view = b.dataset.view; focusIdx = -1; draw(); }));
-      $("#saved-save").addEventListener("click", saveScreen);
-      $("#saved-list").addEventListener("change", (e) => loadScreen(e.target.value));
+      $("#export-csv").addEventListener("click", () => exportCsv(buckets[view]));
 
       const rows = buckets[view].slice().sort((a, b) => {
         const A = sortVal(a, sort.key), B = sortVal(b, sort.key);
         return (A < B ? -1 : A > B ? 1 : 0) * sort.dir;
       });
       const arrow = (k) => (sort.key === k ? `<span class="dir">${sort.dir > 0 ? "▲" : "▼"}</span>` : "");
-      const th = (k, label, cls = "") => `<th class="sortable ${cls}" data-key="${k}">${label} ${arrow(k)}</th>`;
+      const th = (k, label, cls = "") => k
+        ? `<th class="sortable ${cls}" data-key="${k}">${label} ${arrow(k)}</th>`
+        : `<th class="${cls}">${label}</th>`;
       const w = watch();
 
       $("#results").innerHTML = `<table id="rt"><thead><tr>
-          <th></th>${th("name", "Company")}<th>Sector</th><th>Region</th>
+          <th></th>${th("name", "Company")}${th("sector", "Sector")}
           ${th("revenue", "Revenue", "num")}<th class="num">EBITDA</th><th class="num">Margin</th>
-          ${th("employees", "Empl.", "num")}${th("net_assets", "Net assets", "num")}
-          ${th("owner", "Owner age", "num")}<th class="num">Score</th>${th("mode", "Mode")}
-          ${th("fresh", "Freshest")}${th("coverage", "Cov.", "num")}
+          ${th("owner", "Owner age", "num")}${th("filed", "Filed")}
         </tr></thead><tbody>${rows.map((c, i) => {
-          const rev = fig(c.latest_revenue_fig), emp = fig(c.latest_employees_fig), na = fig(c.latest_net_assets_fig);
-          const oa = ownerAge(c), a = region(c);
-          const d0 = divisionsOf(c);
+          const rev = fig(c.latest_revenue_fig);
+          const oa = ownerAge(c);
+          const filed = freshFiled(c);
+          const fa = ageInfo(c.freshest_period);
           return `<tr data-cid="${esc(c.id)}" data-i="${i}">
             <td><span class="star ${w.has(c.id) ? "on" : ""}" data-star="${esc(c.id)}" title="watchlist">★</span></td>
             <td class="co-name"><a href="${companyHref(c.id)}">${esc(c.name)}</a><br><span class="co-reg">${esc(c.registration_id)}</span></td>
-            <td><span class="sic-label">${esc(divName(d0[0]))}${d0.length > 1 ? ` +${d0.length - 1}` : ""}</span><br><span class="sic-code">${c.sic.map(esc).join(" ")}</span></td>
-            <td>${esc(a.locality || "")}${a.country ? `<br><span class="sic-code">${esc(a.country)}</span>` : state("not_observable", "no registered address recorded")}</td>
-            <td class="num">${rev ? figCell(rev) : coverageState(c.id, "revenue")}</td>
-            <td class="num">${state("not_reached")}</td>
-            <td class="num">${state("not_reached")}</td>
-            <td class="num">${emp ? figCell(emp) : coverageState(c.id, "average_employees")}</td>
-            <td class="num">${na ? figCell(na) : coverageState(c.id, "net_assets")}</td>
-            <td class="num">${oa !== null ? `~${oa}` : state("not_observable", "no active individual beneficial owner with a published birth year")}</td>
-            <td class="num">${state("not_reached")}</td>
-            <td><span class="mode ${esc(c.mode)}">${esc(c.mode)}</span></td>
-            <td>${c.freshest_period ? `${esc(c.freshest_period)}<br>${ageSpan(c.freshest_period)}` : state("unparseable_format", "no machine-readable figures")}</td>
-            <td class="num">${c.coverage.statuses.available || 0}/21</td>
+            <td><span class="sic-label">${esc(divName(divisionsOf(c)[0]))}${divisionsOf(c).length > 1 ? " +" + (divisionsOf(c).length - 1) : ""}</span></td>
+            <td class="num">${rev ? figCell(rev) : causeChip(c.id, "revenue")}</td>
+            <td class="num">${notDerived()}</td>
+            <td class="num">${notDerived()}</td>
+            <td class="num">${oa !== null ? "~" + oa : `<span class="state st-not_observable" title="not_observable — no active individual beneficial owner with a published birth year">no PSC dob</span>`}</td>
+            <td>${filed ? `<span class="${fa && fa.stale ? "filed-stale" : ""}">${esc(filed)}</span>${fa && fa.stale ? ` <span class="age stale" title="period end ${esc(c.freshest_period)}">stale</span>` : ""}` : causeChip(c.id, "net_assets")}</td>
           </tr>`;
         }).join("")}</tbody></table>`;
 
@@ -291,38 +294,65 @@
           e.stopPropagation();
           el.classList.toggle("on", toggleWatch(el.dataset.star));
         }));
+      document.querySelectorAll("#rt tbody tr").forEach((tr) =>
+        tr.addEventListener("click", (e) => {
+          if (e.target.closest("a") || e.target.closest("[data-star]")) return;
+          location.href = companyHref(tr.dataset.cid);
+        }));
     }
 
-    // saved screens (local, this browser only)
-    const SAVE_KEY = "doe.screens";
-    const savedAll = () => JSON.parse(localStorage.getItem(SAVE_KEY) || "{}");
-    const savedNames = () => Object.keys(savedAll()).sort();
-    function currentInputs() {
-      const o = {};
-      document.querySelectorAll(".rail input, .rail select").forEach((el) => {
-        if (el.type === "checkbox") o[el.dataset.div ? "d:" + el.dataset.div : el.id] = el.checked;
-        else o[el.id] = el.value;
-      });
-      return o;
-    }
-    function saveScreen() {
-      const name = $("#saved-name").value.trim();
-      if (!name) return;
-      const all = savedAll(); all[name] = currentInputs();
-      localStorage.setItem(SAVE_KEY, JSON.stringify(all));
-      draw();
-    }
-    function loadScreen(name) {
-      const s = savedAll()[name]; if (!s) return;
-      document.querySelectorAll(".rail input, .rail select").forEach((el) => {
-        const k = el.dataset.div ? "d:" + el.dataset.div : el.id;
-        if (el.type === "checkbox") el.checked = !!s[k];
-        else if (k in s) el.value = s[k];
-      });
-      draw();
+    // Excel-compatible CSV: every figure column is followed by a source
+    // column carrying the register document link, filed date and tag —
+    // an export that loses provenance defeats the product.
+    function exportCsv(rows) {
+      const q = (s) => `"${String(s ?? "").replace(/"/g, '""')}"`;
+      const src = (g) => {
+        if (!g) return "";
+        const d = g.source_document_id ? doc(g.source_document_id) : null;
+        if (!d) return "";
+        const url = documentUrl(companiesById[g.company_id].registration_id, d.transaction_id) || "";
+        return `${g.source_tag} | period end ${g.period_end} | filed ${d.filed_date} | ${url}`;
+      };
+      const causeText = (cid, concept) => {
+        const f = coverageOf(cid).find((x) => x.concept === concept);
+        return f ? `${f.status}: ${f.detail || ""}` : "not_captured";
+      };
+      const header = ["company", "registration", "sector (SIC)", "revenue", "revenue_source",
+        "EBITDA", "EBITDA_source", "margin", "margin_source", "owner_age_approx", "owner_age_source",
+        "freshest_period_end", "filed_date", "screening_mode", "register_url"];
+      const lines = [header.map(q).join(",")];
+      for (const c of rows) {
+        const rev = fig(c.latest_revenue_fig);
+        const oa = ownerAge(c);
+        lines.push([
+          c.name, c.registration_id, c.sic.join(" "),
+          rev ? rev.value : causeText(c.id, "revenue"), rev ? src(rev) : causeText(c.id, "revenue"),
+          "not_reached", "derived figures are Phase 2 — no value exists",
+          "not_reached", "derived figures are Phase 2 — no value exists",
+          oa !== null ? oa : "not_observable",
+          oa !== null ? "PSC register birth month/year (approximate)" : "no active individual PSC with published birth year",
+          c.freshest_period || "", freshFiled(c) || "", c.mode,
+          companyUrl(c.registration_id),
+        ].map(q).join(","));
+      }
+      const blob = new Blob(["\ufeff" + lines.join("\r\n")], { type: "text/csv;charset=utf-8" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `screen-${(DATA.run.run_id || "run")}.csv`;
+      a.click();
+      URL.revokeObjectURL(a.href);
     }
 
-    // keyboard navigation on results
+    // chips
+    document.querySelectorAll(".chip[data-toggle]").forEach((ch) =>
+      ch.addEventListener("click", () => { ch.classList.toggle("on"); draw(); }));
+    $("#chip-fresh18").addEventListener("click", () => {
+      $("#f-stale").value = $("#f-stale").value === "18" ? "" : "18";
+      $("#chip-fresh18").classList.toggle("on", $("#f-stale").value === "18");
+      draw();
+    });
+
+    // keyboard navigation
     document.addEventListener("keydown", (e) => {
       if (["INPUT", "SELECT", "TEXTAREA"].includes(document.activeElement.tagName)) return;
       const rows = [...document.querySelectorAll("#rt tbody tr")];
@@ -338,14 +368,29 @@
       }
     });
 
-    document.querySelectorAll(".rail input, .rail select").forEach((el) =>
-      el.addEventListener(el.type === "text" || el.type === "number" || el.type === "search" ? "input" : "change", draw));
+    document.querySelectorAll(".fpanel input, .fpanel select").forEach((el) =>
+      el.addEventListener(["text", "number", "search"].includes(el.type) ? "input" : "change", draw));
     $("#f-clear").addEventListener("click", (e) => {
       e.preventDefault();
-      document.querySelectorAll(".rail input, .rail select").forEach((el) => {
+      document.querySelectorAll(".fpanel input, .fpanel select").forEach((el) => {
         if (el.type === "checkbox") el.checked = false; else el.value = "";
       });
+      document.querySelectorAll(".chip.on").forEach((ch) => ch.classList.remove("on"));
       draw();
+    });
+
+    // shareable initial state via query params (also used for screenshots)
+    const qp = new URLSearchParams(location.search);
+    const setIf = (id, key) => { if (qp.has(key)) $(id).value = qp.get(key); };
+    setIf("#f-owner-min", "owner_min"); setIf("#f-stale", "stale");
+    setIf("#f-rev-min", "rev_min"); setIf("#f-rev-max", "rev_max");
+    setIf("#f-eb-min", "eb_min"); setIf("#f-eb-max", "eb_max");
+    setIf("#f-mode", "mode");
+    if (qp.get("stale") === "18") $("#chip-fresh18").classList.add("on");
+    if (qp.has("nosucc")) $("#chip-nosucc").classList.add("on");
+    (qp.get("divs") || "").split(",").filter(Boolean).forEach((d) => {
+      const cb = document.querySelector(`#f-sectors input[data-div="${d}"]`);
+      if (cb) cb.checked = true;
     });
     draw();
   }
