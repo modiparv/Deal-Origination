@@ -185,11 +185,16 @@
         if (!g) t.push("unmeasurable");
         else { const v = Number(g.value); t.push((f.revMin === null || v >= f.revMin) && (f.revMax === null || v <= f.revMax) ? "pass" : "fail"); }
       }
-      if (f.country || f.locality) {
+      // Country and locality are independent sub-tests: absence of the
+      // tested FIELD is unmeasurable, never evidence of non-match.
+      if (f.country) {
         const a = region(c);
-        if (!a.country && !a.locality) t.push("unmeasurable");
-        else t.push((!f.country || a.country === f.country) &&
-          (!f.locality || String(a.locality || "").toLowerCase().includes(f.locality)) ? "pass" : "fail");
+        t.push(!a.country ? "unmeasurable" : a.country === f.country ? "pass" : "fail");
+      }
+      if (f.locality) {
+        const a = region(c);
+        t.push(!a.locality ? "unmeasurable"
+          : String(a.locality).toLowerCase().includes(f.locality) ? "pass" : "fail");
       }
       if (f.ownerMin !== null) {
         const a = ownerAge(c);
@@ -233,6 +238,7 @@
 
     let focusIdx = -1;
     function draw() {
+      focusIdx = -1; // rows are rebuilt; a stale index must never navigate
       const f = F();
       const buckets = { pass: [], fail: [], unmeasurable: [] };
       for (const c of DATA.companies) buckets[evaluate(c, f)].push(c);
@@ -305,7 +311,13 @@
     // column carrying the register document link, filed date and tag —
     // an export that loses provenance defeats the product.
     function exportCsv(rows) {
-      const q = (s) => `"${String(s ?? "").replace(/"/g, '""')}"`;
+      // Quote every cell; prefix ' when text begins with a formula
+      // trigger (= + - @) so Excel treats it as text, never executes it.
+      const q = (s) => {
+        let v = String(s ?? "");
+        if (/^[=+\-@]/.test(v) && !/^-?\d/.test(v)) v = "'" + v;
+        return `"${v.replace(/"/g, '""')}"`;
+      };
       const src = (g) => {
         if (!g) return "";
         const d = g.source_document_id ? doc(g.source_document_id) : null;
@@ -388,7 +400,7 @@
     setIf("#f-mode", "mode");
     if (qp.get("stale") === "18") $("#chip-fresh18").classList.add("on");
     if (qp.has("nosucc")) $("#chip-nosucc").classList.add("on");
-    (qp.get("divs") || "").split(",").filter(Boolean).forEach((d) => {
+    (qp.get("divs") || "").split(",").filter((d) => /^\d{2}$/.test(d)).forEach((d) => {
       const cb = document.querySelector(`#f-sectors input[data-div="${d}"]`);
       if (cb) cb.checked = true;
     });
