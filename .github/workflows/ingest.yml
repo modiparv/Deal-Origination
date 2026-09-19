@@ -4,12 +4,20 @@ name: ingest
 # the store from the rolling "data-store" release so each run ADDS new
 # companies instead of starting over — the checkpoint file skips
 # already-processed companies before any API call, and re-ingest is
-# idempotent by invariant. On success the run:
+# idempotent by invariant. Every run that produced a coverage report:
 #   - uploads engine.db.gz + checkpoint.json back to the data-store
 #     release (kept out of git history — the store grows nightly),
-#   - commits the coverage report, spot-check dossier, run log and the
-#     capped demo dataset to the branch (small, reviewable),
+#   - uploads the web data bundle (index + per-bucket company shards)
+#     the static site downloads at build time,
+#   - commits the coverage report, spot-check dossier, run log, store
+#     operations report and the small web-data manifest to the branch,
 # which triggers the production redeploy.
+#
+# Per-company errors are isolated inside the CLI (logged, the company
+# rolled back, the run continues). They still make the job RED at the
+# end — but only after the night's progress has been persisted. A run
+# that lost 800 companies of work to one malformed filing was the
+# failure mode this ordering exists to prevent.
 #
 # Request volume: ~13 API calls per NEW company; already-stored
 # companies cost nothing. The client-side rate limiter (500 requests
@@ -88,7 +96,12 @@ jobs:
             fi
           fi
 
+      # Exit 5 = per-company errors were recorded (the CLI's contract).
+      # The job continues so the night's progress is persisted; the
+      # final step re-raises the failure once everything is saved.
       - name: Run ingest
+        id: ingest
+        continue-on-error: true
         run: |
           deal-engine ingest \
             --mandate "$MANDATE" \
@@ -96,17 +109,31 @@ jobs:
             --docs-per-company "$DOCS" \
             --db data/engine.db --data data
 
+      - name: Detect ingest output
+        id: probe
+        run: |
+          if ls data/reports/coverage-*.json >/dev/null 2>&1; then
+            echo "has_report=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_report=false" >> "$GITHUB_OUTPUT"
+            echo "No coverage report was produced — nothing to persist."
+          fi
+
       - name: Spot-check dossier
+        if: steps.probe.outputs.has_report == 'true'
         run: |
           python scripts/spot_check.py \
             --db data/engine.db \
             --sample "$SAMPLE" \
             --out data/reports/spot-check.md
 
-      - name: Export demo dataset
+      - name: Export web data bundle
+        if: steps.probe.outputs.has_report == 'true'
         run: |
-          python scripts/export_demo_data.py data/engine.db \
-            --out web/demo-data/demo-data.json --cap 400
+          python scripts/export_web_data.py data/engine.db --out /tmp/web-data \
+            --bundle-url "https://github.com/${{ github.repository }}/releases/download/data-store/web-data.jsonl.gz"
+          cp /tmp/web-data/manifest.json web/data/manifest.json
+          cp /tmp/web-data/ops.json data/reports/store-ops.json
 
       - name: Upload results
         if: always()
@@ -119,18 +146,19 @@ jobs:
           if-no-files-found: error
 
       - name: Persist store to rolling release
-        if: success()
+        if: steps.probe.outputs.has_report == 'true'
         run: |
           gzip -c data/engine.db > /tmp/engine.db.gz
           cp data/ingest/lmm-gb-buyout.checkpoint.json /tmp/checkpoint.json
           gh release create data-store \
             --title "Rolling data store" \
-            --notes "Accumulating engine.db + ingest checkpoint. Updated by every successful ingest run; not part of git history." \
+            --notes "Accumulating engine.db + ingest checkpoint + web data bundle. Updated by every ingest run that produced a report; not part of git history." \
             2>/dev/null || true
-          gh release upload data-store /tmp/engine.db.gz /tmp/checkpoint.json --clobber
+          gh release upload data-store /tmp/engine.db.gz /tmp/checkpoint.json \
+            /tmp/web-data/web-data.jsonl.gz --clobber
 
       - name: Commit results to branch
-        if: success()
+        if: steps.probe.outputs.has_report == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898024+github-actions[bot]@users.noreply.github.com"
@@ -138,6 +166,21 @@ jobs:
           mkdir -p "$dest"
           cp -r data/reports/. "$dest/"
           cp -r logs/runs/. "$dest/"
-          git add "$dest" web/demo-data/demo-data.json
-          git commit -m "Ingest run ${{ github.run_id }}: coverage report + spot-check + demo dataset"
+          git add "$dest" web/data/manifest.json
+          git commit -m "Ingest run ${{ github.run_id }}: coverage report + spot-check + web data manifest"
+          git pull --rebase origin "${{ github.ref_name }}"
           git push
+
+      - name: Report ingest errors
+        if: steps.ingest.outcome != 'success'
+        run: |
+          echo "::error::ingest exited non-zero (see the 'Run ingest' step). Progress was persisted; the errors below still need fixing."
+          for f in data/reports/coverage-*.json; do
+            python - "$f" <<'EOF'
+          import json, sys
+          summary = json.load(open(sys.argv[1]))
+          for line in summary.get("errors", []):
+              print("ERROR:", line)
+          EOF
+          done
+          exit 1

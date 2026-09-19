@@ -9,3 +9,6 @@ logs/
 
 out/
 web/dist/
+
+# development-only web data bundle (the deployed bundle lives on the data-store release)
+web/data/local/

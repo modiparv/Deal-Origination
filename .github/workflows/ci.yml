@@ -41,3 +41,16 @@ jobs:
 
       - name: Gate — db init
         run: deal-engine db init --db /tmp/gate.db
+
+      # The static site must build from a checkout with no store (empty
+      # state) — the deploy host runs exactly this script, dependency-free.
+      - name: Gate — site build (empty state) and script syntax
+        run: |
+          for f in web/build.mjs web/src/app/*.js web/src/ops/app.js web/src/landing/landing.js; do
+            node --check "$f"
+          done
+          mv web/data/manifest.json /tmp/manifest.json 2>/dev/null || true
+          node web/build.mjs
+          test -f web/dist/app/screen.html
+          grep -q '"store_present":false' web/dist/site-summary.js
+          mv /tmp/manifest.json web/data/manifest.json 2>/dev/null || true

@@ -3,5 +3,13 @@
   "installCommand": "",
   "buildCommand": "node web/build.mjs",
   "outputDirectory": "web/dist",
-  "framework": null
+  "framework": null,
+  "headers": [
+    {
+      "source": "/app/data/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=600, stale-while-revalidate=86400" }
+      ]
+    }
+  ]
 }

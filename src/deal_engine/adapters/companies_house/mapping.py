@@ -101,17 +101,33 @@ def document_id_from_metadata_url(url: str | None) -> str | None:
     return url.rstrip("/").rsplit("/", 1)[-1]
 
 
+def _text(value) -> str | None:
+    """A registry string field, defensively.
+
+    The filing-history API documents `subcategory` as a string but returns
+    an array for some resolution filings (e.g. ["resolution", "capital"]).
+    A list bound to a String column raises at persist time and, because
+    per-company isolation rolls back the whole company, silently drops
+    it. Join verbatim, in registry order, so nothing is lost or reordered.
+    """
+    if value is None:
+        return None
+    if isinstance(value, (list, tuple)):
+        return ", ".join(str(v) for v in value)
+    return str(value)
+
+
 def map_filing(item: dict, cid: str) -> dict:
     transaction = item.get("transaction_id", "")
     return {
         "id": f"{cid}:filing:{transaction}",
         "company_id": cid,
         "transaction_id": transaction,
-        "category": item.get("category"),
-        "subcategory": item.get("subcategory"),
-        "type": item.get("type"),
+        "category": _text(item.get("category")),
+        "subcategory": _text(item.get("subcategory")),
+        "type": _text(item.get("type")),
         "filing_date": item.get("date"),
-        "description": item.get("description"),
+        "description": _text(item.get("description")),
         "description_values": {
             k: str(v) for k, v in (item.get("description_values") or {}).items()
         },

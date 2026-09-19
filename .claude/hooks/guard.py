@@ -41,6 +41,11 @@ ALLOWED_HOSTS = (
 BUILD_HOSTS = (
     "pypi.org",
     "files.pythonhosted.org",
+    # This repository's own release assets: the site build downloads the
+    # web data bundle (our verified export, not a registry) from here.
+    "github.com",
+    "objects.githubusercontent.com",
+    "release-assets.githubusercontent.com",
 )
 
 # Real network CLIs only. The `http`/`httpx` CLI names are deliberately

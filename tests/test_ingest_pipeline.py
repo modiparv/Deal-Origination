@@ -315,6 +315,31 @@ class TestFullIngest:
         assert summary["examined"] == 0
         assert summary["skipped"] == {"checkpointed": 2}
 
+    def test_checkpoint_retries_errored_companies(self, tmp_path, mandate, db):
+        # A company that failed last time is re-examined, not skipped —
+        # otherwise a transient or since-fixed defect hides it forever.
+        state: dict = {}
+        checkpoint = tmp_path / "ckpt.json"
+        checkpoint.write_text(
+            json.dumps({"processed": {"10122954": "error", "08140876": "skipped:dormant"}})
+        )
+        with make_client(state) as client:
+            summary = run_ingest(
+                client,
+                db,
+                mandate,
+                run_id="run1",
+                data_root=tmp_path / "data",
+                config=IngestConfig(limit=10),
+                checkpoint_path=checkpoint,
+                incorporated_to=date(2026, 1, 1),
+            )
+        assert summary["examined"] == 1
+        assert summary["ingested"] == 1
+        assert summary["skipped"] == {"checkpointed": 1}
+        recorded = json.loads(checkpoint.read_text())["processed"]
+        assert recorded["10122954"] == "ingested"
+
 
 class TestTriage:
     def test_dormant_skipped(self, mandate):
