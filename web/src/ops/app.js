@@ -43,6 +43,69 @@ function el(tag, attrs = {}, html = "") {
     `Source: <a href="${esc(DATA.repoUrl)}">modiparv/Deal-Origination</a>.`;
 })();
 
+/* ---------------- the store (accumulated across runs) ---------------- */
+
+(function storeSection() {
+  const root = document.getElementById("store");
+  const STORE = window.__STORE__ || {};
+  const m = STORE.manifest, ops = STORE.ops;
+  if (!root || !m) return;
+  const nf = new Intl.NumberFormat("en-GB");
+  root.appendChild(el("h2", {}, "The store"));
+  root.appendChild(
+    el(
+      "p",
+      { class: "section-note" },
+      `Accumulated across every ingest run; exported ${esc(String(m.generated_at || "").replace("T", " ").slice(0, 16))} UTC ` +
+        `from run <code>${esc(m.run.run_id || "?")}</code>. The web bundle the site carries is verified against ` +
+        `sha-256 <code>${esc(String((m.bundle || {}).sha256 || "").slice(0, 16))}…</code> at build time.`
+    )
+  );
+  const tiles = el("div", { class: "tiles" });
+  const tile = (value, label, detail = "") =>
+    tiles.appendChild(
+      el("div", { class: "tile" },
+        `<div class="value">${esc(value)}</div><div class="label">${esc(label)}</div>` + (detail ? `<div class="detail">${esc(detail)}</div>` : ""))
+    );
+  const t = m.totals || {}, modes = m.modes || {};
+  tile(nf.format(t.companies || 0), "companies", `${nf.format(t.filings || 0)} filings on record`);
+  tile(nf.format(t.figures || 0), "filed figures", `${nf.format(t.documents || 0)} source documents`);
+  tile(`${nf.format(modes.financial || 0)} / ${nf.format(modes.signal || 0)}`, "screening modes (financial / signal)", modes.parse_failed ? `${modes.parse_failed} parse_failed` : "no parse-failed companies");
+  tile(nf.format(t.beneficial_owners || 0), "beneficial owners", `${nf.format(t.officers || 0)} officers · ${nf.format(t.security_interests || 0)} security interests`);
+  tile(nf.format((m.parse_failures || {}).documents || 0), "documents failed to parse", `${(m.parse_failures || {}).companies || 0} companies — a defect list, never a data limitation`);
+  tile(nf.format(t.restatement_events || 0), "restatement events", "later filings changing an earlier figure");
+  root.appendChild(tiles);
+
+  if (!ops) return;
+  const sw = ops.by_production_software || {};
+  const swRows = Object.entries(sw).map(([name, s]) => `<tr>
+      <td>${esc(name)}</td><td class="num">${nf.format(s.documents || 0)}</td><td class="num">${nf.format(s.parsed || 0)}</td>
+      <td class="num">${nf.format(s.with_figures || 0)}</td><td class="num">${nf.format(s.zero_figure || 0)}</td>
+      <td class="num">${nf.format(s.pdf_only || 0)}</td><td class="num">${nf.format(s.quarantined || 0)}</td>
+      <td class="num">${s.figure_yield == null ? "—" : (100 * s.figure_yield).toFixed(1) + "%"}</td></tr>`).join("");
+  root.appendChild(
+    el("details", { class: "card table-view", open: "" },
+      `<summary>Parse yield by filing software — ${Object.keys(sw).length} products, whole store</summary>
+       <p class="section-note">Which accounts-production packages produce documents the parser reads cleanly. A product with zero-figure documents is a parser-defect lead, sorted by volume.</p>
+       <table><thead><tr><th>product</th><th class="num">documents</th><th class="num">parsed</th><th class="num">with figures</th><th class="num">zero figures</th><th class="num">pdf only</th><th class="num">quarantined</th><th class="num">figure yield</th></tr></thead>
+       <tbody>${swRows}</tbody></table>`)
+  );
+  const pf = ops.parse_failures || [];
+  root.appendChild(
+    el("details", { class: "card table-view", open: pf.length ? "" : null },
+      `<summary>Parse failures — ${pf.length} document(s)</summary>
+       <p class="section-note">Every machine-readable document the parser could not turn into figures, with the recorded cause. Each is a system defect to diagnose (the Digita per-element namespace defect was found this way), not a data limitation.</p>
+       ${pf.length ? `<table><thead><tr><th>company</th><th>filed</th><th>period end</th><th>regime</th><th>produced by</th><th>status</th><th class="num">errors</th><th>recorded cause</th></tr></thead>
+       <tbody>${pf.map((r) => `<tr>
+         <td><a href="../app/company.html?id=${encodeURIComponent(r.company_id)}">${esc(r.name || r.company_id)}</a> <code>${esc(r.registration_id || "")}</code></td>
+         <td>${esc(r.filed_date || "")}</td><td>${esc(r.period_end || "")}</td><td>${esc(r.account_type || "")}</td>
+         <td>${esc(r.production_software || "undeclared")}</td><td><code>${esc(r.parse_status)}</code></td>
+         <td class="num">${esc(r.parse_error_count ?? "")}</td><td>${esc(r.detail || "")}</td></tr>`).join("")}</tbody></table>` : `<p class="section-note">None.</p>`}`)
+  );
+  // A details element with open="null" would still open; remove the attribute when closed.
+  root.querySelectorAll("details[open='null']").forEach((d) => d.removeAttribute("open"));
+})();
+
 /* ---------------- latest run ---------------- */
 
 const latest = DATA.runs[0] || null;

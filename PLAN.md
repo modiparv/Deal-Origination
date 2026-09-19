@@ -497,12 +497,78 @@ makes the accumulation safe by construction. The store stays out of
 git history; per-run reports and a capped (400-company, most recently
 filed) frontend dataset stay committed.
 
-Frontend at scale: the inline-JSON model dies past a few thousand
-companies. Planned replacement: range-request SQLite over static
-hosting (browser fetches only the DB pages a query touches — no
-server), so the three-way count computes over the actual universe.
+Frontend at scale (built 2026-09-19, §11): the inline-JSON model died
+at 400 companies. The replacement is a per-company INDEX plus BUCKETED
+full records, exported by `scripts/export_web_data.py` and served as
+static files — the screen computes its three-way count over the whole
+store in the browser; company, trace and compare pages fetch one small
+bucket each. Range-request SQLite stays the option if the index itself
+outgrows one download (~1 MB gzipped per 10k companies).
 All invariants (provenance, absence states, staleness, no LLM
 figures) carry over unchanged; bulk documents still provide sha-256,
 filed dates and verbatim tags.
 
 Not proposed: multiple API keys to evade the rate limit.
+
+## 11. Product surface v3 and the store's web data layer (2026-09-19)
+
+Context: the accumulated store held 6,600 companies while the site
+carried a committed 400-company slice, and the nightly ingest had
+failed for 30 consecutive nights (21 Aug → 19 Sep). Both were found in
+the same review.
+
+**Nightly failure, post-mortem.** One company (02757259) returned a
+filing whose `subcategory` was an array where the registry documents a
+string; binding it raised `sqlite3.ProgrammingError`, per-company
+isolation rolled the company back and recorded the error — and the
+CLI's exit code 5 ("errors were recorded") made the workflow's
+`if: success()` skip the persist and commit steps. Every night 800
+companies were ingested, ~2 hours of API budget spent, and the result
+discarded. Three changes, each with a test:
+
+1. `mapping._text()` coerces list-valued registry strings verbatim
+   (joined in registry order) for filing category/subcategory/type/
+   description.
+2. The workflow persists the store, bundle and reports whenever a
+   coverage report exists, and only THEN re-raises the ingest failure
+   (`continue-on-error` + a final failing step). A red run with the
+   night's work saved is the correct outcome; a red run that discards
+   it is the failure mode.
+3. The checkpoint retries `error` outcomes instead of skipping them:
+   re-ingest is idempotent, so a retry after a fix costs nothing and a
+   still-failing company stays visible in every run's error list.
+
+Invariant recorded: **persist before failing.** Unattended runs save
+whatever verified progress they made before reporting any error.
+
+**Web data layer.** `export_web_data.py` writes a manifest (committed;
+run id, totals, bundle sha-256), an index (one row per company — what
+the screen needs), 1,000 bucket shards keyed on the last three
+characters of the registration id (full records: figures, documents,
+coverage, officers, PSCs, charges, five years of filings, restatement
+events) and an ops report (parse failures as a defect list, parse
+yield by filing software, coverage by classification code, run
+history). The bundle is one gzipped JSON-lines file on the rolling
+release; `web/build.mjs` downloads it, verifies the sha-256 against
+the committed manifest, refuses to publish on mismatch, and streams it
+into `dist/app/data/`. The 15 MB nightly `demo-data.json` commit is
+retired (git history stops growing by a bundle a night).
+
+**Surfaces.** TODAY (store status, new since last visit by run id,
+watchlist with staleness and register events, pipeline summary, saved
+screens with live counts, coverage by division, run history), SCREEN
+(whole store; saved screens as named query strings; compare selection;
+add-to-pipeline; observed-event chips; paging), COMPANY (trend
+sparklines of filed values, observed-on-the-register table, registry
+activity timeline, restatements, working notes, figures export, print),
+COMPARE (up to four), PIPELINE (browser-local board), TRACE (citation
+copy). OPS gains the store panel and the parse-failure defect list.
+Observed-event chips are named after what the register shows
+(`security_interest_registered`, `officer_resigned`, `psc_ceased`, …),
+dated, and never inferred beyond the observation (§1 invariant 7).
+Browser-local state is stated as such wherever it appears; no send
+capability exists anywhere (the brief's do-not-build list holds).
+
+Still Phase 2, still `not_reached`: derived figures (EBITDA, margins,
+growth), ownership classification, scores, detectors (going concern,
+auditor change, overdue filing), plausibility flags.

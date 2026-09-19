@@ -1,0 +1,72 @@
+name: publish-web-data
+
+# Rebuild the static site's data bundle from the CURRENT rolling store
+# without ingesting anything — used when the export format changes (a
+# frontend release) and the deployed site must pick it up before the
+# next nightly run. Shares the ingest concurrency group so it never
+# races a nightly upload to the same release asset.
+#
+# Outputs: web-data.jsonl.gz on the data-store release, and a commit of
+# web/data/manifest.json (run id, totals, bundle sha-256) to the branch
+# this workflow was dispatched on — which is what triggers the deploy.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ingest
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Fetch rolling store
+        run: |
+          mkdir -p data
+          gh release download data-store -p 'engine.db.gz' -D /tmp/seed
+          gunzip -c /tmp/seed/engine.db.gz > data/engine.db
+          ls -la data/engine.db
+
+      - name: Export web data bundle
+        run: |
+          python scripts/export_web_data.py data/engine.db --out /tmp/web-data \
+            --bundle-url "https://github.com/${{ github.repository }}/releases/download/data-store/web-data.jsonl.gz"
+          mkdir -p web/data
+          cp /tmp/web-data/manifest.json web/data/manifest.json
+          ls -la /tmp/web-data
+
+      - name: Upload bundle to rolling release
+        run: |
+          gh release upload data-store /tmp/web-data/web-data.jsonl.gz --clobber
+
+      - name: Upload ops report
+        uses: actions/upload-artifact@v4
+        with:
+          name: store-ops
+          path: /tmp/web-data/ops.json
+
+      - name: Commit manifest
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898024+github-actions[bot]@users.noreply.github.com"
+          git add web/data/manifest.json
+          if git diff --cached --quiet; then
+            echo "Manifest unchanged."
+          else
+            git commit -m "Publish web data bundle from store (run ${{ github.run_id }})"
+            git pull --rebase origin "${{ github.ref_name }}"
+            git push
+          fi

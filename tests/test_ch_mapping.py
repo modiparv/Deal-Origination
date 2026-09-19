@@ -64,6 +64,26 @@ class TestFilingMapping:
         assert mapped["document_id"] == "-uIFIZvVQM2_WxuNYmjA10Fv96C0Yuxb-wNWhAqNezY"
         assert mapped["paper_filed"] is True
 
+    def test_array_valued_subcategory_is_joined_verbatim(self):
+        # Live defect (nightly run 35428392839, company 02757259): the
+        # registry returned subcategory as an array; binding it to the
+        # String column raised and the whole company rolled back.
+        item = {
+            "transaction_id": "TXNRES1",
+            "type": "RES01",
+            "date": "2026-03-04",
+            "category": "resolution",
+            "subcategory": ["resolution", "capital"],
+            "description": "resolution",
+            "links": {},
+        }
+        mapped = mapping.map_filing(item, "gb:02757259")
+        assert mapped["subcategory"] == "resolution, capital"
+        assert mapped["category"] == "resolution"
+        assert mapped["type"] == "RES01"
+        assert mapping.map_filing({**item, "subcategory": None}, "gb:x")["subcategory"] is None
+        assert mapping.map_filing({**item, "subcategory": "capital"}, "gb:x")["subcategory"] == "capital"
+
     def test_account_type_parsed_from_description(self):
         assert mapping.account_type_from_description("accounts-with-accounts-type-group") == "group"
         assert (

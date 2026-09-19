@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Deal Origination Engine</title>
+<meta name="description" content="UK lower-mid-market origination screening on Companies House filings, where every figure traces to a filed document." />
 <link rel="stylesheet" href="landing.css" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📇</text></svg>" />
 </head>
@@ -11,7 +12,9 @@
 <header class="top">
   <span class="brand">Deal Origination Engine</span>
   <nav>
+    <a href="app/today.html">Today</a>
     <a href="app/screen.html">Screen</a>
+    <a href="app/pipeline.html">Pipeline</a>
     <a href="ops/">Operations</a>
     <a href="https://github.com/modiparv/Deal-Origination" rel="noopener">Source</a>
   </nav>
@@ -28,21 +31,34 @@
     </p>
     <p class="cta-row">
       <a class="cta primary" href="app/screen.html">Open the screen →</a>
+      <a class="cta" href="app/today.html">Today</a>
       <a class="cta" href="ops/">Operations &amp; coverage</a>
     </p>
   </section>
 
   <section class="stats" id="stats"></section>
 
+  <section class="surfaces">
+    <h2>What is inside</h2>
+    <div class="surface-grid">
+      <a class="surface" href="app/today.html"><b>Today</b><span>The store's shape, what entered it since your last visit, your watchlist with staleness and register events, the pipeline at a glance, saved screens with live counts, run history.</span></a>
+      <a class="surface" href="app/screen.html"><b>Screen</b><span>Thesis builder over the whole store. Sector, ownership, size bands, region, owner age, succession and staleness filters; observed-event chips. Every count breaks three ways — matched, failed, could not be measured. Sort, star, compare, export to Excel with sources.</span></a>
+      <a class="surface" href="app/screen.html"><b>Company</b><span>Deep dive: filed trajectory with trends, ownership and control as observations, security, registry activity timeline, restatements, peers, fetched documents and per-concept coverage with recorded causes.</span></a>
+      <a class="surface" href="app/compare.html"><b>Compare</b><span>Up to four companies side by side, each value keeping its period, filed date and trace.</span></a>
+      <a class="surface" href="app/pipeline.html"><b>Pipeline</b><span>A browser-local board — stages and notes for the analyst's own working state. No send capability, by design.</span></a>
+      <a class="surface" href="ops/"><b>Operations</b><span>Every ingest run's coverage report, parse yield by filing software, parse failures as a standing defect list, spot-check dossiers.</span></a>
+    </div>
+  </section>
+
   <section class="principles">
     <div class="principle">
       <h2>Provenance, transitively</h2>
       <p>Click any figure and walk the chain: figure → inline-XBRL tag →
       source document (with its producing software and content hash) →
-      filing date and registry transaction → the filing itself on
-      find-and-company. Derived figures walk back through every
-      input to its own source. A filed figure without a source document
-      cannot be persisted.</p>
+      filing date and registry transaction → the filing itself on the
+      public register. Derived figures walk back through every input to
+      its own source. A filed figure without a source document cannot be
+      persisted.</p>
     </div>
     <div class="principle">
       <h2>Absence carries a cause</h2>
@@ -67,7 +83,9 @@
   <section class="honesty">
     <p>What you will not find here: financial figures invented or computed by
     a language model, aggregator-sourced numbers, sample companies, or
-    placeholder values. If a screen has no data, it says so.</p>
+    placeholder values. If a screen has no data, it says so. Derived metrics
+    (EBITDA, margins, growth) and scores are Phase 2 and render as
+    <code>not_reached</code> until the tested derive layer exists.</p>
   </section>
 </main>
 

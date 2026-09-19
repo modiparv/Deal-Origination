@@ -1007,7 +1007,11 @@ def run_ingest(
         if not registration_id or registration_id in seen:
             continue
         seen.add(registration_id)
-        if checkpoint and registration_id in checkpoint.processed:
+        # An "error" outcome is retried, never skipped: re-ingest is
+        # idempotent by invariant, so a retry after a fix costs nothing
+        # and a still-failing company stays visible in every run's
+        # error list instead of vanishing behind the checkpoint.
+        if checkpoint and checkpoint.processed.get(registration_id) not in (None, "error"):
             _bump(skipped, "checkpointed")
             continue
         examined += 1
