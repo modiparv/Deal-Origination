@@ -23,7 +23,11 @@ say so — never work around it silently.
    flag changes.
 4. **Aggregators are not sources.** Aggregator-derived numbers carry
    basis `unverified` and never render in a profile.
-5. **Every unattended run is logged** to `logs/runs/` (RunLogger).
+5. **Every unattended run is logged** to `logs/runs/` (RunLogger), and
+   **persists before failing**: a run saves whatever verified progress it
+   made (store, bundle, reports) before it reports any error. A red run
+   with the night's work kept is correct; a red run that discards it is
+   the failure mode (PLAN.md §11).
 6. **Ownership fail-closed:** ABSENCE OF A PSC STATEMENT IS NOT EVIDENCE
    OF INDEPENDENCE. Unclassifiable ownership is flagged, never passed.
 7. **Signals are named after what is observed, not what is inferred** —
@@ -48,6 +52,12 @@ subagent Write/Edit on `data/**`, network calls outside the Companies
 House allowlist, and anything touching credential files. The guard
 pattern-matches tool arguments; it is a guardrail, **not** a network
 egress sandbox — do not present it as containment.
+
+The site never inlines the store. `scripts/export_web_data.py` writes the
+web bundle (index + bucketed records) to the rolling `data-store`
+release and a small manifest to `web/data/manifest.json`; `web/build.mjs`
+downloads the bundle, verifies its sha-256 against the manifest, and
+refuses to publish on mismatch. Never commit exported data files.
 
 ## The commercial claim
 
