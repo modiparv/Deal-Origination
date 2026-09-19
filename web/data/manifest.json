@@ -1,47 +1,47 @@
 {
  "format": 1,
- "generated_at": "2026-09-19T18:11:01+00:00",
+ "generated_at": "2026-09-19T22:02:47+00:00",
  "run": {
-  "run_id": "20260819T025755Z-7e7e512b",
+  "run_id": "20260919T201635Z-69c2aa4a",
   "git_sha": null,
-  "started_at": "2026-08-19 02:57:56.010480",
-  "finished_at": "2026-08-19 04:43:56.641323"
+  "started_at": "2026-09-19 20:16:35.509079",
+  "finished_at": "2026-09-19 22:02:29.834538"
  },
  "bundle": {
   "asset": "web-data.jsonl.gz",
   "url": "https://github.com/modiparv/Deal-Origination/releases/download/data-store/web-data.jsonl.gz",
-  "sha256": "e7e399ec6552fd9c9d6f21d569a9d74714c2da5e336416ea92a0a74013efe765",
-  "bytes": 47259236
+  "sha256": "f7d7b37d07288b9dc418402fe2044f34839bf27fceb69364e651de3f24b204db",
+  "bytes": 52600166
  },
  "buckets": {
   "count": 1000,
   "key": "registration_id[-3:] (non-alphanumerics \u2192 _)"
  },
  "totals": {
-  "companies": 6600,
-  "figures": 321483,
-  "documents": 19797,
-  "filings": 795302,
-  "officers": 69198,
-  "beneficial_owners": 11889,
-  "security_interests": 14045,
-  "restatement_events": 2135
+  "companies": 7400,
+  "figures": 360706,
+  "documents": 22197,
+  "filings": 872930,
+  "officers": 76223,
+  "beneficial_owners": 13227,
+  "security_interests": 15016,
+  "restatement_events": 2430
  },
  "modes": {
-  "signal": 1248,
-  "financial": 5318,
-  "parse_failed": 34
+  "signal": 1367,
+  "financial": 5981,
+  "parse_failed": 52
  },
- "products": 178,
+ "products": 196,
  "coverage_by_status": {
-  "unparseable_format": 26187,
-  "available": 44344,
-  "filed_without_concept": 67334,
-  "parse_failed": 714
+  "unparseable_format": 28686,
+  "available": 49792,
+  "filed_without_concept": 75809,
+  "parse_failed": 1092
  },
  "parse_failures": {
-  "documents": 0,
-  "companies": 0
+  "documents": 52,
+  "companies": 52
  },
  "runs": [
   {
@@ -133,6 +133,16 @@
    "ingested": 800,
    "errors": 0,
    "figures_new": 39230
+  },
+  {
+   "run_id": "20260919T201635Z-69c2aa4a",
+   "command": "ingest",
+   "started_at": "2026-09-19 20:16:35.509079",
+   "finished_at": "2026-09-19 22:02:29.834538",
+   "exit_status": 0,
+   "ingested": 800,
+   "errors": 0,
+   "figures_new": 39223
   }
  ]
 }
