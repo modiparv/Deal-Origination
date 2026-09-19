@@ -1,0 +1,40 @@
+name: check-site
+
+# Anonymous smoke check of the deployed site from a neutral network:
+# requests the key pages exactly as a visitor with no Vercel login would,
+# fails on anything but HTTP 200, and reports what the deployed store
+# summary says. Run it after a deploy, or whenever "is the link public?"
+# needs a verified answer rather than an assumption.
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: Site base URL (no trailing slash)
+        default: https://deal-origination-alpha.vercel.app
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Request pages anonymously
+        env:
+          BASE: ${{ inputs.base_url || 'https://deal-origination-alpha.vercel.app' }}
+        run: |
+          fail=0
+          for path in / /app/today.html /app/screen.html /app/company.html /app/pipeline.html /ops/ /site-summary.js /app/data/index.json; do
+            code=$(curl -sS -o /tmp/body -w '%{http_code}' -H 'Accept: text/html,*/*' "$BASE$path" || echo "000")
+            bytes=$(wc -c < /tmp/body)
+            printf '%-26s %s  %8s bytes\n' "$path" "$code" "$bytes"
+            if [ "$code" != "200" ]; then
+              fail=1
+              if grep -qi 'vercel' /tmp/body && grep -qi 'authentication\|log in\|sso' /tmp/body; then
+                echo "  -> looks like Vercel Authentication (deployment protection) is intercepting this URL"
+              fi
+            fi
+          done
+          echo
+          echo "Deployed store summary:"
+          curl -sS "$BASE/site-summary.js" | tr ',' '\n' | grep -E '"store_present"|"run_id"|"companies"|"figures"|"documents"' | head -8
+          exit $fail
