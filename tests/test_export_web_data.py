@@ -48,6 +48,8 @@ def store(tmp_path):
                            name_variants=["OLD NAME LTD"], incorporation_date=date(1995, 3, 29), status="active",
                            classification_codes=["62012", "69102"], classification_taxonomy="sic_2007",
                            registered_address={"locality": "Glasgow", "country": "Scotland"}))
+    # Foreign keys are enforced; parents flush before children, as the pipeline does.
+    session.commit()
     session.add(SourceDocumentRow(id="gb:SC157026:doc:D1", adapter="companies_house", jurisdiction="GB",
                                   company_id="gb:SC157026", external_document_id="D1", transaction_id="TXN1",
                                   document_type="AA", account_type="total-exemption-full", filed_date=date(2026, 3, 27),
@@ -60,6 +62,7 @@ def store(tmp_path):
                                   period_end=date(2025, 3, 25), retrieved_at=datetime(2026, 9, 1, 3),
                                   content_type="application/xhtml+xml", content_hash="cd" * 32,
                                   parse_status="quarantined", parse_error_count=31))
+    session.commit()
     for fid, concept, value, pe, current in (
         ("fig:1", "revenue", 17009, date(2026, 3, 25), True),
         ("fig:2", "net_assets", 334222, date(2026, 3, 25), True),
