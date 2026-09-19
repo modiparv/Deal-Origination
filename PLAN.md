@@ -541,6 +541,16 @@ discarded. Three changes, each with a test:
 Invariant recorded: **persist before failing.** Unattended runs save
 whatever verified progress they made before reporting any error.
 
+Same day, second lesson: the first catch-up run after the fix ingested
+800 companies, exported the bundle — and lost everything to a `cp` into
+a directory the checkout did not yet have. The persist step was
+skipped because a GitHub Actions `if:` without `always()` implicitly
+requires every earlier step to have succeeded. The invariant now holds
+mechanically: the store is uploaded to the release *before* the
+spot-check and export steps run, and every post-ingest step is gated
+`always() && has_report`, never on an earlier step's success; the
+manifest is committed only after its bundle is on the release.
+
 **Web data layer.** `export_web_data.py` writes a manifest (committed;
 run id, totals, bundle sha-256), an index (one row per company — what
 the screen needs), 1,000 bucket shards keyed on the last three

@@ -367,16 +367,25 @@ def export(db_path: Path, out: Path, bundle_url: str | None) -> dict:
         s["figure_yield"] = round(s.get("with_figures", 0) / parsed, 3) if parsed else None
 
     company_by_id = {c["id"]: c for c in companies}
-    # quarantined → the coverage layer's parse_failed; a document still
-    # "pending" after a run was fetched and never parsed — also a defect.
-    parse_failed_states = ("quarantined", "pending")
+    # The defect list is what the coverage layer calls parse_failed — a
+    # quarantined document OR a machine-readable document that parsed
+    # to zero figures (each latest-run fact names its document and
+    # carries the recorded cause) — plus any document still "pending"
+    # after a run: fetched and never parsed, also a defect.
+    failed_docs: dict[str, str | None] = {}
+    for facts in cov_by_company.values():
+        for f in facts:
+            if f["status"] == "parse_failed" and f["source_document_id"]:
+                failed_docs.setdefault(f["source_document_id"], f["detail"])
+    for d in documents:
+        if d["parse_status"] in ("quarantined", "pending"):
+            failed_docs.setdefault(d["id"], f"parse_status {d['parse_status']}")
     parse_failures = []
     for d in documents:
-        if d["parse_status"] not in parse_failed_states:
+        if d["id"] not in failed_docs:
             continue
         c = company_by_id.get(d["company_id"], {})
-        detail = next((f["detail"] for f in cov_by_company.get(d["company_id"], [])
-                       if f["status"] == "parse_failed" and f["detail"]), None)
+        detail = failed_docs[d["id"]]
         parse_failures.append({
             "company_id": d["company_id"],
             "registration_id": c.get("registration_id"),
