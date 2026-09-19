@@ -62,6 +62,14 @@ def store(tmp_path):
                                   period_end=date(2025, 3, 25), retrieved_at=datetime(2026, 9, 1, 3),
                                   content_type="application/xhtml+xml", content_hash="cd" * 32,
                                   parse_status="quarantined", parse_error_count=31))
+    # Parsed cleanly but yielded no figures: the coverage layer records
+    # parse_failed against it — the defect list must carry it too.
+    session.add(SourceDocumentRow(id="gb:SC157026:doc:D2", adapter="companies_house", jurisdiction="GB",
+                                  company_id="gb:SC157026", external_document_id="D2", transaction_id="TXN2",
+                                  document_type="AA", account_type="micro-entity", filed_date=date(2024, 3, 20),
+                                  period_end=date(2024, 3, 25), retrieved_at=datetime(2026, 9, 1, 3),
+                                  content_type="application/xhtml+xml", content_hash="ef" * 32,
+                                  parse_status="parsed", production_software="Zero Yield Ltd"))
     session.commit()
     for fid, concept, value, pe, current in (
         ("fig:1", "revenue", 17009, date(2026, 3, 25), True),
@@ -80,6 +88,11 @@ def store(tmp_path):
     session.add(ConceptCoverageRow(id="cov:2", company_id="gb:SC157026", concept="cash", period_end=date(2026, 3, 25),
                                    status="filed_without_concept", source_document_id="gb:SC157026:doc:D1",
                                    detail="regime 'total-exemption-full' omits this concept",
+                                   run_id="20260901T020000Z-aaaaaaaa"))
+    session.add(ConceptCoverageRow(id="cov:3", company_id="gb:SC157026", concept="gross_profit",
+                                   period_end=date(2026, 3, 25), status="parse_failed",
+                                   source_document_id="gb:SC157026:doc:D2",
+                                   detail="0 figures extracted; unmapped tags: x:Foo, x:Bar",
                                    run_id="20260901T020000Z-aaaaaaaa"))
     session.add(OfficerRow(id="o1", company_id="gb:SC157026", appointment_id="p1:2000-11-01", name="DOE, Jane",
                            role="director", appointed_on=date(2000, 11, 1), dob_year=1961))
@@ -110,11 +123,11 @@ def test_export_shapes_and_integrity(store, tmp_path):
 
     # manifest: totals are counts, the bundle is hashed, run history carried
     assert manifest["totals"] == {
-        "companies": 1, "figures": 3, "documents": 2, "filings": 2, "officers": 1,
+        "companies": 1, "figures": 3, "documents": 3, "filings": 2, "officers": 1,
         "beneficial_owners": 1, "security_interests": 1, "restatement_events": 0,
     }
     assert manifest["modes"] == {"financial": 1}
-    assert manifest["parse_failures"] == {"documents": 1, "companies": 1}
+    assert manifest["parse_failures"] == {"documents": 2, "companies": 1}
     assert manifest["run"]["run_id"] == "20260901T020000Z-aaaaaaaa"
     assert manifest["runs"][-1]["ingested"] == 1
     bundle = out / "web-data.jsonl.gz"
@@ -132,12 +145,12 @@ def test_export_shapes_and_integrity(store, tmp_path):
     assert row["latest"]["employees"] is None
     assert row["owner_dob"] == {"year": 1961, "month": 5}
     assert row["single_owner_75"] is True
-    assert row["coverage"] == {"statuses": {"available": 1, "filed_without_concept": 1}, "of": 2,
-                               "period_end": "2026-03-25"}
+    assert row["coverage"] == {"statuses": {"available": 1, "filed_without_concept": 1, "parse_failed": 1},
+                               "of": 3, "period_end": "2026-03-25"}
     assert row["freshest_period"] == "2026-03-25" and row["freshest_filed"] == "2026-03-27"
     assert row["last_charge_created"] == "2014-11-19"
     assert row["last_officer_appointed"] == "2000-11-01"
-    assert row["filings"] == 2 and row["documents"] == 2
+    assert row["filings"] == 2 and row["documents"] == 3
     assert row["first_seen"] == "20260901T020000Z-aaaaaaaa"
     assert row["software"] == "Companies House"
     assert "EBITDA" not in json.dumps(row).upper()  # no derived figure sneaks into the export
@@ -153,11 +166,17 @@ def test_export_shapes_and_integrity(store, tmp_path):
     assert rec["coverage"][0]["concept"] == "cash"  # sorted by concept
     assert rec["charges"][0]["secured_parties"] == ["A BANK PLC"]
 
-    # ops: the quarantined document is a listed defect with its software
+    # ops: the quarantined document AND the zero-yield parsed document
+    # are listed defects, each with its software and recorded cause
     ops = json.loads((out / "ops.json").read_text())
-    assert ops["parse_failures"][0]["document_id"] == "gb:SC157026:doc:D0"
-    assert ops["parse_failures"][0]["parse_status"] == "quarantined"
+    failures = {r["document_id"]: r for r in ops["parse_failures"]}
+    assert set(failures) == {"gb:SC157026:doc:D0", "gb:SC157026:doc:D2"}
+    assert failures["gb:SC157026:doc:D0"]["parse_status"] == "quarantined"
+    assert failures["gb:SC157026:doc:D0"]["detail"] == "parse_status quarantined"
+    assert failures["gb:SC157026:doc:D2"]["detail"].startswith("0 figures extracted")
+    assert failures["gb:SC157026:doc:D2"]["production_software"] == "Zero Yield Ltd"
     assert ops["by_production_software"]["Companies House"]["with_figures"] == 1
+    assert ops["by_production_software"]["Zero Yield Ltd"]["zero_figure"] == 1
     assert ops["by_production_software"]["undeclared"]["quarantined"] == 1
 
     # bundle: streamable records, manifest first, one bucket line

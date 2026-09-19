@@ -6,18 +6,19 @@ name: ingest
 # already-processed companies before any API call, and re-ingest is
 # idempotent by invariant. Every run that produced a coverage report:
 #   - uploads engine.db.gz + checkpoint.json back to the data-store
-#     release (kept out of git history — the store grows nightly),
-#   - uploads the web data bundle (index + per-bucket company shards)
-#     the static site downloads at build time,
-#   - commits the coverage report, spot-check dossier, run log, store
-#     operations report and the small web-data manifest to the branch,
-# which triggers the production redeploy.
+#     release FIRST (kept out of git history — the store grows nightly),
+#   - then exports and uploads the web data bundle the static site
+#     downloads at build time,
+#   - then commits the coverage report, spot-check dossier, run log,
+#     store operations report and the small web-data manifest to the
+#     branch, which triggers the production redeploy.
 #
-# Per-company errors are isolated inside the CLI (logged, the company
-# rolled back, the run continues). They still make the job RED at the
-# end — but only after the night's progress has been persisted. A run
-# that lost 800 companies of work to one malformed filing was the
-# failure mode this ordering exists to prevent.
+# Persist before failing (CLAUDE.md invariant 5): the store is saved
+# before anything that could fail, and every later step is gated with
+# always() on "a report exists", never on the success of an earlier
+# step — an `if:` without always() implicitly requires success, which is
+# how one missing directory in the export step once discarded a whole
+# night's ingest. Failures anywhere still make the job RED at the end.
 #
 # Request volume: ~13 API calls per NEW company; already-stored
 # companies cost nothing. The client-side rate limiter (500 requests
@@ -98,7 +99,7 @@ jobs:
 
       # Exit 5 = per-company errors were recorded (the CLI's contract).
       # The job continues so the night's progress is persisted; the
-      # final step re-raises the failure once everything is saved.
+      # final step re-raises every failure once everything is saved.
       - name: Run ingest
         id: ingest
         continue-on-error: true
@@ -111,6 +112,7 @@ jobs:
 
       - name: Detect ingest output
         id: probe
+        if: always()
         run: |
           if ls data/reports/coverage-*.json >/dev/null 2>&1; then
             echo "has_report=true" >> "$GITHUB_OUTPUT"
@@ -119,8 +121,23 @@ jobs:
             echo "No coverage report was produced — nothing to persist."
           fi
 
+      - name: Persist store to rolling release
+        id: persist
+        if: always() && steps.probe.outputs.has_report == 'true'
+        run: |
+          gzip -c data/engine.db > /tmp/engine.db.gz
+          cp data/ingest/lmm-gb-buyout.checkpoint.json /tmp/checkpoint.json
+          gh release create data-store \
+            --title "Rolling data store" \
+            --notes "Accumulating engine.db + ingest checkpoint + web data bundle. Updated by every ingest run that produced a report; not part of git history." \
+            2>/dev/null || true
+          gh release upload data-store /tmp/engine.db.gz /tmp/checkpoint.json --clobber
+          echo "Store persisted: $(stat -c %s /tmp/engine.db.gz) bytes."
+
       - name: Spot-check dossier
-        if: steps.probe.outputs.has_report == 'true'
+        id: spot
+        if: always() && steps.probe.outputs.has_report == 'true'
+        continue-on-error: true
         run: |
           python scripts/spot_check.py \
             --db data/engine.db \
@@ -128,12 +145,25 @@ jobs:
             --out data/reports/spot-check.md
 
       - name: Export web data bundle
-        if: steps.probe.outputs.has_report == 'true'
+        id: export
+        if: always() && steps.probe.outputs.has_report == 'true'
+        continue-on-error: true
         run: |
           python scripts/export_web_data.py data/engine.db --out /tmp/web-data \
             --bundle-url "https://github.com/${{ github.repository }}/releases/download/data-store/web-data.jsonl.gz"
-          cp /tmp/web-data/manifest.json web/data/manifest.json
+          mkdir -p web/data
           cp /tmp/web-data/ops.json data/reports/store-ops.json
+
+      - name: Publish web data bundle
+        id: publish
+        if: always() && steps.export.outcome == 'success'
+        continue-on-error: true
+        run: |
+          gh release upload data-store /tmp/web-data/web-data.jsonl.gz --clobber
+          # The manifest names this exact bundle; it is committed only
+          # once the bundle is on the release, so the site never builds
+          # against a manifest whose bundle does not exist.
+          cp /tmp/web-data/manifest.json web/data/manifest.json
 
       - name: Upload results
         if: always()
@@ -145,20 +175,9 @@ jobs:
             logs/runs/
           if-no-files-found: error
 
-      - name: Persist store to rolling release
-        if: steps.probe.outputs.has_report == 'true'
-        run: |
-          gzip -c data/engine.db > /tmp/engine.db.gz
-          cp data/ingest/lmm-gb-buyout.checkpoint.json /tmp/checkpoint.json
-          gh release create data-store \
-            --title "Rolling data store" \
-            --notes "Accumulating engine.db + ingest checkpoint + web data bundle. Updated by every ingest run that produced a report; not part of git history." \
-            2>/dev/null || true
-          gh release upload data-store /tmp/engine.db.gz /tmp/checkpoint.json \
-            /tmp/web-data/web-data.jsonl.gz --clobber
-
       - name: Commit results to branch
-        if: steps.probe.outputs.has_report == 'true'
+        id: commit
+        if: always() && steps.probe.outputs.has_report == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898024+github-actions[bot]@users.noreply.github.com"
@@ -166,21 +185,37 @@ jobs:
           mkdir -p "$dest"
           cp -r data/reports/. "$dest/"
           cp -r logs/runs/. "$dest/"
-          git add "$dest" web/data/manifest.json
+          git add "$dest"
+          if [ -f web/data/manifest.json ]; then git add web/data/manifest.json; fi
           git commit -m "Ingest run ${{ github.run_id }}: coverage report + spot-check + web data manifest"
           git pull --rebase origin "${{ github.ref_name }}"
           git push
 
-      - name: Report ingest errors
-        if: steps.ingest.outcome != 'success'
+      - name: Report failures
+        if: always()
         run: |
-          echo "::error::ingest exited non-zero (see the 'Run ingest' step). Progress was persisted; the errors below still need fixing."
-          for f in data/reports/coverage-*.json; do
-            python - "$f" <<'EOF'
+          status=0
+          for step in ingest persist spot export publish commit; do
+            case "$step" in
+              ingest)  outcome="${{ steps.ingest.outcome }}" ;;
+              persist) outcome="${{ steps.persist.outcome }}" ;;
+              spot)    outcome="${{ steps.spot.outcome }}" ;;
+              export)  outcome="${{ steps.export.outcome }}" ;;
+              publish) outcome="${{ steps.publish.outcome }}" ;;
+              commit)  outcome="${{ steps.commit.outcome }}" ;;
+            esac
+            echo "$step: $outcome"
+            if [ "$outcome" = "failure" ]; then status=1; fi
+          done
+          if [ "${{ steps.ingest.outcome }}" != "success" ]; then
+            echo "::error::ingest exited non-zero. Progress was persisted; the errors below still need fixing."
+            for f in data/reports/coverage-*.json; do
+              [ -f "$f" ] && python - "$f" <<'EOF'
           import json, sys
           summary = json.load(open(sys.argv[1]))
           for line in summary.get("errors", []):
               print("ERROR:", line)
           EOF
-          done
-          exit 1
+            done
+          fi
+          exit $status
