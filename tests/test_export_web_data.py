@@ -184,3 +184,18 @@ def test_export_shapes_and_integrity(store, tmp_path):
         kinds = [line.split("\t", 2)[:2] for line in fh]
     assert kinds[0] == ["manifest", "-"] and kinds[1] == ["index", "-"] and kinds[2] == ["ops", "-"]
     assert kinds[3:] == [["bucket", "026"]]
+    assert manifest["bundle"]["asset"] == "web-data.jsonl.gz"
+    assert manifest["bundle"]["url"] == "https://example.invalid/web-data.jsonl.gz"
+
+
+def test_versioned_bundle_named_per_run(store, tmp_path):
+    # A {run_id} in the URL names the asset per run, so an older
+    # manifest keeps pointing at a bundle that still exists.
+    out = tmp_path / "web-data-v"
+    manifest = export_web_data.export(store, out, "https://example.invalid/web-data-{run_id}.jsonl.gz")
+    assert manifest["bundle"]["asset"] == "web-data-20260901T020000Z-aaaaaaaa.jsonl.gz"
+    assert manifest["bundle"]["url"] == "https://example.invalid/web-data-20260901T020000Z-aaaaaaaa.jsonl.gz"
+    bundle = out / manifest["bundle"]["asset"]
+    assert bundle.is_file()
+    assert manifest["bundle"]["sha256"] == hashlib.sha256(bundle.read_bytes()).hexdigest()
+    assert not (out / "web-data.jsonl.gz").exists()

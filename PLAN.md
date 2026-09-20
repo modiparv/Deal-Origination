@@ -551,6 +551,13 @@ spot-check and export steps run, and every post-ingest step is gated
 `always() && has_report`, never on an earlier step's success; the
 manifest is committed only after its bundle is on the release.
 
+Third lesson, next morning: a single rolling bundle name means every
+nightly upload invalidates every older manifest — a branch behind main
+fails its preview build on the sha-256 guard (correctly), and production
+has a race between upload and commit. Bundles are now named per run
+(`web-data-<run_id>.jsonl.gz`, the newest six kept); each manifest
+names its own, so any commit builds against the bundle it was made with.
+
 **Web data layer.** `export_web_data.py` writes a manifest (committed;
 run id, totals, bundle sha-256), an index (one row per company — what
 the screen needs), 1,000 bucket shards keyed on the last three

@@ -150,20 +150,28 @@ jobs:
         continue-on-error: true
         run: |
           python scripts/export_web_data.py data/engine.db --out /tmp/web-data \
-            --bundle-url "https://github.com/${{ github.repository }}/releases/download/data-store/web-data.jsonl.gz"
+            --bundle-url "https://github.com/${{ github.repository }}/releases/download/data-store/web-data-{run_id}.jsonl.gz"
           mkdir -p web/data
           cp /tmp/web-data/ops.json data/reports/store-ops.json
 
+      # Bundles are named per run so every committed manifest keeps naming
+      # a bundle that exists (older commits and branches behind main still
+      # build); the newest few are kept, the rest pruned.
       - name: Publish web data bundle
         id: publish
         if: always() && steps.export.outcome == 'success'
         continue-on-error: true
         run: |
-          gh release upload data-store /tmp/web-data/web-data.jsonl.gz --clobber
+          asset=$(python -c "import json; print(json.load(open('/tmp/web-data/manifest.json'))['bundle']['asset'])")
+          gh release upload data-store "/tmp/web-data/$asset" --clobber
           # The manifest names this exact bundle; it is committed only
           # once the bundle is on the release, so the site never builds
           # against a manifest whose bundle does not exist.
           cp /tmp/web-data/manifest.json web/data/manifest.json
+          keep=6
+          gh release view data-store --json assets -q '.assets[].name' \
+            | grep -E '^web-data-.*\.jsonl\.gz$' | sort | head -n -"$keep" \
+            | while read -r old; do echo "pruning $old"; gh release delete-asset data-store "$old" -y || true; done
 
       - name: Upload results
         if: always()

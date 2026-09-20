@@ -48,6 +48,10 @@ from pathlib import Path
 
 FORMAT_VERSION = 1
 BUNDLE_ASSET = "web-data.jsonl.gz"
+# A bundle URL may carry "{run_id}"; the asset is then named per run so
+# every committed manifest keeps naming a bundle that still exists, and
+# a build of an older commit (or a branch behind main) still verifies.
+VERSIONED_ASSET = "web-data-{run_id}.jsonl.gz"
 BUCKET_KEY_RULE = "registration_id[-3:] (non-alphanumerics → _)"
 FILINGS_WINDOW_YEARS = 5  # per-company filing timeline carried in the record
 RUN_HISTORY = 40
@@ -413,6 +417,9 @@ def export(db_path: Path, out: Path, bundle_url: str | None) -> dict:
         "runs": runs,
     }
 
+    run_id = latest_run.get("run_id") or "no-run"
+    versioned = bool(bundle_url and "{run_id}" in bundle_url)
+    asset = VERSIONED_ASSET.format(run_id=run_id) if versioned else BUNDLE_ASSET
     manifest = {
         "format": FORMAT_VERSION,
         "generated_at": generated_at,
@@ -422,7 +429,12 @@ def export(db_path: Path, out: Path, bundle_url: str | None) -> dict:
             "started_at": latest_run.get("started_at"),
             "finished_at": latest_run.get("finished_at"),
         },
-        "bundle": {"asset": BUNDLE_ASSET, "url": bundle_url, "sha256": None, "bytes": None},
+        "bundle": {
+            "asset": asset,
+            "url": bundle_url.replace("{run_id}", run_id) if bundle_url else None,
+            "sha256": None,
+            "bytes": None,
+        },
         "buckets": {"count": len(buckets), "key": BUCKET_KEY_RULE},
         "totals": {
             "companies": len(companies),
@@ -463,7 +475,7 @@ def export(db_path: Path, out: Path, bundle_url: str | None) -> dict:
     for key, obj in buckets.items():
         (out / "c" / f"{key}.json").write_text(json.dumps(obj, **compact), encoding="utf-8")
 
-    bundle_path = out / BUNDLE_ASSET
+    bundle_path = out / asset
     with gzip.open(bundle_path, "wt", encoding="utf-8", compresslevel=6) as fh:
         fh.write("manifest\t-\t" + json.dumps(manifest, **compact) + "\n")
         fh.write("index\t-\t" + json.dumps(index, **compact) + "\n")
@@ -485,7 +497,8 @@ def main() -> None:
     ap.add_argument("db", type=Path, help="engine.db or engine.db.gz")
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--bundle-url", default=None,
-                    help="public URL the site build downloads the bundle from (recorded in the manifest)")
+                    help="public URL the site build downloads the bundle from (recorded in the manifest); "
+                         "may contain {run_id}, in which case the bundle file is named per run")
     args = ap.parse_args()
 
     db_path = args.db
@@ -500,7 +513,8 @@ def main() -> None:
     print(
         f"exported {t['companies']} companies, {t['figures']} figures, {t['documents']} documents "
         f"into {manifest['buckets']['count']} buckets -> {args.out} "
-        f"(bundle {manifest['bundle']['bytes']:,} bytes, sha256 {manifest['bundle']['sha256'][:12]}…)"
+        f"(bundle {manifest['bundle']['asset']}, {manifest['bundle']['bytes']:,} bytes, "
+        f"sha256 {manifest['bundle']['sha256'][:12]}…)"
     )
 
 
