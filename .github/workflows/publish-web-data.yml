@@ -43,14 +43,21 @@ jobs:
       - name: Export web data bundle
         run: |
           python scripts/export_web_data.py data/engine.db --out /tmp/web-data \
-            --bundle-url "https://github.com/${{ github.repository }}/releases/download/data-store/web-data.jsonl.gz"
-          mkdir -p web/data
-          cp /tmp/web-data/manifest.json web/data/manifest.json
+            --bundle-url "https://github.com/${{ github.repository }}/releases/download/data-store/web-data-{run_id}.jsonl.gz"
           ls -la /tmp/web-data
 
+      # Named per run (see ingest.yml); the manifest is copied into the
+      # tree only after its bundle is on the release.
       - name: Upload bundle to rolling release
         run: |
-          gh release upload data-store /tmp/web-data/web-data.jsonl.gz --clobber
+          asset=$(python -c "import json; print(json.load(open('/tmp/web-data/manifest.json'))['bundle']['asset'])")
+          gh release upload data-store "/tmp/web-data/$asset" --clobber
+          mkdir -p web/data
+          cp /tmp/web-data/manifest.json web/data/manifest.json
+          keep=6
+          gh release view data-store --json assets -q '.assets[].name' \
+            | grep -E '^web-data-.*\.jsonl\.gz$' | sort | head -n -"$keep" \
+            | while read -r old; do echo "pruning $old"; gh release delete-asset data-store "$old" -y || true; done
 
       - name: Upload ops report
         uses: actions/upload-artifact@v4
