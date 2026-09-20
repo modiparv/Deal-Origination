@@ -5,12 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Deal Origination Engine</title>
 <meta name="description" content="UK lower-mid-market origination screening on Companies House filings, where every figure traces to a filed document." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" />
 <link rel="stylesheet" href="landing.css" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📇</text></svg>" />
 </head>
 <body>
 <header class="top">
-  <span class="brand">Deal Origination Engine</span>
+  <a class="brand" href="./">Deal Origination Engine</a>
   <nav>
     <a href="app/today.html">Today</a>
     <a href="app/screen.html">Screen</a>
@@ -22,70 +25,68 @@
 
 <main>
   <section class="hero">
-    <h1>Origination screening on filed registry data,<br>where every figure traces to a filing.</h1>
+    <p class="eyebrow">UK lower-mid-market · Companies House filings</p>
+    <h1>Every figure traces<br>to a filing.</h1>
     <p class="lede">
-      A UK lower-mid-market screening engine built on Companies House filings.
-      No figure on any screen is computed by a language model; each one is a
-      filed observation carrying its source document, tag, period end and filed
-      date — and a one-click trace to the actual filing on the public register.
+      A deal-origination screen built on the public register. Filed accounts
+      become numbers you can filter and compare, and each one is a click away
+      from the document it came from. Nothing is estimated, and nothing is
+      computed by a language model.
     </p>
-    <p class="cta-row">
-      <a class="cta primary" href="app/screen.html">Open the screen →</a>
-      <a class="cta" href="app/today.html">Today</a>
-      <a class="cta" href="ops/">Operations &amp; coverage</a>
+    <p class="actions">
+      <a class="button" href="app/screen.html">Open the screen</a>
+      <a class="textlink" href="#how">How it works</a>
     </p>
   </section>
 
-  <section class="stats" id="stats"></section>
+  <section class="numbers" id="numbers" aria-label="Store"></section>
+
+  <section class="how" id="how">
+    <ol>
+      <li>
+        <span class="n">01</span>
+        <div>
+          <h2>Read the register, keep the provenance</h2>
+          <p>The engine enumerates a mandate's universe, ingests each company's
+          filings, and parses inline-XBRL accounts into figures. A figure without
+          its source document, tag, period end and filed date cannot be stored —
+          the database refuses it.</p>
+        </div>
+      </li>
+      <li>
+        <span class="n">02</span>
+        <div>
+          <h2>Absence carries a cause</h2>
+          <p>Most small UK companies file no public P&amp;L. Where a number is
+          missing, the screen says why — <code>filed_without_concept</code>,
+          <code>unparseable_format</code>, <code>parse_failed</code> — and every
+          count breaks three ways: matched, failed, could not be measured. The
+          third number is never hidden.</p>
+        </div>
+      </li>
+      <li>
+        <span class="n">03</span>
+        <div>
+          <h2>Staleness shown, never hidden</h2>
+          <p>Registry data is nine to twenty-one months old by construction.
+          Every figure shows its period end and filed date; anything over two
+          years is marked stale. The engine states dated public evidence — never
+          that a company is “not being marketed”, which no register can prove.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
 
   <section class="surfaces">
-    <h2>What is inside</h2>
-    <div class="surface-grid">
-      <a class="surface" href="app/today.html"><b>Today</b><span>The store's shape, what entered it since your last visit, your watchlist with staleness and register events, the pipeline at a glance, saved screens with live counts, run history.</span></a>
-      <a class="surface" href="app/screen.html"><b>Screen</b><span>Thesis builder over the whole store. Sector, ownership, size bands, region, owner age, succession and staleness filters; observed-event chips. Every count breaks three ways — matched, failed, could not be measured. Sort, star, compare, export to Excel with sources.</span></a>
-      <a class="surface" href="app/screen.html"><b>Company</b><span>Deep dive: filed trajectory with trends, ownership and control as observations, security, registry activity timeline, restatements, peers, fetched documents and per-concept coverage with recorded causes.</span></a>
-      <a class="surface" href="app/compare.html"><b>Compare</b><span>Up to four companies side by side, each value keeping its period, filed date and trace.</span></a>
-      <a class="surface" href="app/pipeline.html"><b>Pipeline</b><span>A browser-local board — stages and notes for the analyst's own working state. No send capability, by design.</span></a>
-      <a class="surface" href="ops/"><b>Operations</b><span>Every ingest run's coverage report, parse yield by filing software, parse failures as a standing defect list, spot-check dossiers.</span></a>
-    </div>
-  </section>
-
-  <section class="principles">
-    <div class="principle">
-      <h2>Provenance, transitively</h2>
-      <p>Click any figure and walk the chain: figure → inline-XBRL tag →
-      source document (with its producing software and content hash) →
-      filing date and registry transaction → the filing itself on the
-      public register. Derived figures walk back through every input to
-      its own source. A filed figure without a source document cannot be
-      persisted.</p>
-    </div>
-    <div class="principle">
-      <h2>Absence carries a cause</h2>
-      <p>Most UK small companies file no public P&amp;L. The engine never
-      papers over a gap: every missing concept states its recorded reason —
-      <code>filed_without_concept</code>, <code>unparseable_format</code>,
-      <code>parse_failed</code>, <code>not_reached</code>,
-      <code>not_captured</code> — as distinct, first-class states. A parse
-      failure is reported as a system defect, never disguised as a data
-      limitation.</p>
-    </div>
-    <div class="principle">
-      <h2>Staleness shown, never hidden</h2>
-      <p>Filed registry data is 9–21 months old by construction, and worse in
-      the tail. Every figure shows its period end, filed date and age;
-      profiles lead with the freshest machine-readable period. Reports state
-      dated public evidence of absence — never the unevidenceable claim that a
-      company is &ldquo;not being marketed&rdquo;.</p>
-    </div>
-  </section>
-
-  <section class="honesty">
-    <p>What you will not find here: financial figures invented or computed by
-    a language model, aggregator-sourced numbers, sample companies, or
-    placeholder values. If a screen has no data, it says so. Derived metrics
-    (EBITDA, margins, growth) and scores are Phase 2 and render as
-    <code>not_reached</code> until the tested derive layer exists.</p>
+    <h2 class="section-label">Inside</h2>
+    <ul>
+      <li><a href="app/today.html">Today</a><span>What entered the store since your last visit, your watchlist, the pipeline, saved screens.</span></li>
+      <li><a href="app/screen.html">Screen</a><span>The thesis builder: sector, size, region, owner age, succession, staleness, register events. Export to Excel with sources.</span></li>
+      <li><a href="app/screen.html">Company</a><span>Filed trajectory, ownership as observations, security, registry activity, restatements, peers, coverage.</span></li>
+      <li><a href="app/compare.html">Compare</a><span>Up to four companies side by side, every value keeping its period and trace.</span></li>
+      <li><a href="app/pipeline.html">Pipeline</a><span>A private board for the analyst's own notes and stages. No send capability, by design.</span></li>
+      <li><a href="ops/">Operations</a><span>Every nightly run's coverage, parse yield by filing software, the parse-failure defect list.</span></li>
+    </ul>
   </section>
 </main>
 
