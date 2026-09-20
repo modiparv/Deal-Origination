@@ -1,6 +1,6 @@
 {
  "format": 1,
- "generated_at": "2026-09-19T22:02:47+00:00",
+ "generated_at": "2026-09-20T05:11:30+00:00",
  "run": {
   "run_id": "20260919T201635Z-69c2aa4a",
   "git_sha": null,
@@ -8,10 +8,10 @@
   "finished_at": "2026-09-19 22:02:29.834538"
  },
  "bundle": {
-  "asset": "web-data.jsonl.gz",
-  "url": "https://github.com/modiparv/Deal-Origination/releases/download/data-store/web-data.jsonl.gz",
-  "sha256": "f7d7b37d07288b9dc418402fe2044f34839bf27fceb69364e651de3f24b204db",
-  "bytes": 52600166
+  "asset": "web-data-20260919T201635Z-69c2aa4a.jsonl.gz",
+  "url": "https://github.com/modiparv/Deal-Origination/releases/download/data-store/web-data-20260919T201635Z-69c2aa4a.jsonl.gz",
+  "sha256": "567cb06d2572091f54b6b89a7bb548b8fbdf3a720c13a746fe98d318d6569e45",
+  "bytes": 52600192
  },
  "buckets": {
   "count": 1000,
