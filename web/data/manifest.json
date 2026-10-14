@@ -1,48 +1,48 @@
 {
  "format": 1,
- "generated_at": "2026-10-13T10:51:14+00:00",
+ "generated_at": "2026-10-14T08:59:15+00:00",
  "run": {
-  "run_id": "20261013T090342Z-caffcf54",
+  "run_id": "20261014T071241Z-fd1cdb4b",
   "git_sha": null,
-  "started_at": "2026-10-13 09:03:42.495067",
-  "finished_at": "2026-10-13 10:50:14.836978"
+  "started_at": "2026-10-14 07:12:41.875637",
+  "finished_at": "2026-10-14 08:58:18.400527"
  },
  "bundle": {
-  "asset": "web-data-20261013T090342Z-caffcf54.jsonl.gz",
-  "url": "https://github.com/modiparv/Deal-Origination/releases/download/data-store/web-data-20261013T090342Z-caffcf54.jsonl.gz",
-  "sha256": "7b000c1edf260ad242c683ed640a573842a946b33b7502ca655b93af4f09b431",
-  "bytes": 168013438
+  "asset": "web-data-20261014T071241Z-fd1cdb4b.jsonl.gz",
+  "url": "https://github.com/modiparv/Deal-Origination/releases/download/data-store/web-data-20261014T071241Z-fd1cdb4b.jsonl.gz",
+  "sha256": "8602dff5965a1347202601c86562a50d98d88a0759c2c2c862a02ac4a5a59388",
+  "bytes": 172690052
  },
  "buckets": {
   "count": 1000,
   "key": "registration_id[-3:] (non-alphanumerics \u2192 _)"
  },
  "totals": {
-  "companies": 25800,
-  "figures": 1280188,
-  "documents": 77396,
-  "filings": 2403073,
-  "officers": 211009,
-  "beneficial_owners": 45482,
-  "security_interests": 31328,
-  "restatement_events": 8986
+  "companies": 26600,
+  "figures": 1321748,
+  "documents": 79796,
+  "filings": 2456821,
+  "officers": 215415,
+  "beneficial_owners": 46820,
+  "security_interests": 31774,
+  "restatement_events": 9286
  },
  "modes": {
-  "signal": 3399,
-  "financial": 21974,
-  "parse_failed": 427
+  "signal": 3449,
+  "financial": 22711,
+  "parse_failed": 440
  },
- "products": 387,
+ "products": 391,
  "coverage_by_status": {
-  "unparseable_format": 71316,
-  "available": 179618,
-  "filed_without_concept": 281857,
-  "parse_failed": 8967,
+  "unparseable_format": 72366,
+  "available": 185583,
+  "filed_without_concept": 291369,
+  "parse_failed": 9240,
   "not_filed": 21
  },
  "parse_failures": {
-  "documents": 427,
-  "companies": 427
+  "documents": 440,
+  "companies": 440
  },
  "runs": [
   {
@@ -374,6 +374,16 @@
    "ingested": 800,
    "errors": 2,
    "figures_new": 39166
+  },
+  {
+   "run_id": "20261014T071241Z-fd1cdb4b",
+   "command": "ingest",
+   "started_at": "2026-10-14 07:12:41.875637",
+   "finished_at": "2026-10-14 08:58:18.400527",
+   "exit_status": 0,
+   "ingested": 800,
+   "errors": 0,
+   "figures_new": 41560
   }
  ]
 }
