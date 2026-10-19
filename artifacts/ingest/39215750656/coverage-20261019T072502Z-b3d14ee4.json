@@ -1,0 +1,1864 @@
+{
+ "run_id": "20261019T072502Z-b3d14ee4",
+ "universe_hits": 2029788,
+ "search_slices": 18,
+ "examined": 859,
+ "ingested": 800,
+ "skipped": {
+  "checkpointed": 31764,
+  "dormant": 59
+ },
+ "notes": {},
+ "counts": {
+  "companies_new": 800,
+  "officers_new": 4025,
+  "officers_updated": 192,
+  "beneficial_owners_new": 1336,
+  "security_interests_new": 371,
+  "filings_new": 49843,
+  "documents_fetched": 2400,
+  "figures_new": 38979,
+  "current_flag_changes": 11513,
+  "restatement_events_new": 280,
+  "coverage_facts": 16800,
+  "ownership_statements_new": 58,
+  "exemptions_new": 4
+ },
+ "errors": [],
+ "coverage": {
+  "run_id": "20261019T072502Z-b3d14ee4",
+  "mandate_id": "lmm-gb-buyout",
+  "companies_with_coverage_facts": 800,
+  "screening_modes": {
+   "financial": 706,
+   "signal": 73,
+   "parse_failed": 21
+  },
+  "by_production_software": {
+   "Acorah Software Products - Accounts Production": {
+    "documents": 310,
+    "with_figures": 300,
+    "zero_figure": 10,
+    "quarantined": 0,
+    "figure_yield": 0.968
+   },
+   "Acting Office - Tax and Accounts": {
+    "documents": 20,
+    "with_figures": 20,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "BTCSoftware AP Solution 2021 8.1.02": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "BTCSoftware AP Solution 2021 8.3.02": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "BTCSoftware AP Solution 2022 9.4.03": {
+    "documents": 2,
+    "with_figures": 2,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "BTCSoftware AP Solution 2023 10.1.01": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "BTCSoftware AP Solution 2023 10.4.03": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "BTCSoftware AP Solution 2023 10.4.20": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "BTCSoftware AP Solution 2024 11.1.01": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "BTCSoftware AP Solution 2024 11.1.03": {
+    "documents": 7,
+    "with_figures": 7,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "BTCSoftware AP Solution 2024 11.1.07": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "BTCSoftware AP Solution 2024 11.2.01": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "BTCSoftware AP Solution 2024 11.2.09": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "BTCSoftware AP Solution 2025 12.1.01": {
+    "documents": 2,
+    "with_figures": 2,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "BTCSoftware AP Solution 2025 12.1.03": {
+    "documents": 3,
+    "with_figures": 3,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "BTCSoftware AP Solution 2025 12.3.02": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "BTCSoftware AP Solution 2026 14.1.01": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "BTCSoftware AP Solution 2026 14.1.04": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "BrightAccountsProduction v1.0.0": {
+    "documents": 2,
+    "with_figures": 2,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "CCH Software": {
+    "documents": 230,
+    "with_figures": 219,
+    "zero_figure": 11,
+    "quarantined": 0,
+    "figure_yield": 0.952
+   },
+   "Capium Accounts Production": {
+    "documents": 27,
+    "with_figures": 27,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Caseware UK (AP4) 2022.0.179": {
+    "documents": 7,
+    "with_figures": 7,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Caseware UK (AP4) 2023.0.135": {
+    "documents": 11,
+    "with_figures": 11,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Caseware UK (AP4) 2024.0.164": {
+    "documents": 16,
+    "with_figures": 16,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Caseware UK (AP4) 2025.0.111": {
+    "documents": 5,
+    "with_figures": 5,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Comdal Limited - EasyDigitalFiling.com": {
+    "documents": 3,
+    "with_figures": 3,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Companies House": {
+    "documents": 291,
+    "with_figures": 291,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Company Accounts and Tax Online": {
+    "documents": 93,
+    "with_figures": 93,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Digita Accounts Production Advanced": {
+    "documents": 99,
+    "with_figures": 99,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Digita Accounts Production Advanced 6.20.8420.0": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Digita Accounts Production Advanced 6.24.8820.0": {
+    "documents": 3,
+    "with_figures": 3,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Easy Digital Filing": {
+    "documents": 2,
+    "with_figures": 2,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "FreeAgent": {
+    "documents": 31,
+    "with_figures": 31,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "IRIS Accounts Production": {
+    "documents": 459,
+    "with_figures": 459,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "IRIS Elements Accounts Production": {
+    "documents": 11,
+    "with_figures": 11,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "PTP Accounts Production": {
+    "documents": 12,
+    "with_figures": 12,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Sage Accounts Production 21.0 - FRS102_2021": {
+    "documents": 9,
+    "with_figures": 9,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Sage Accounts Production 23.0 - FRS102_2021": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Sage Accounts Production 23.0 - FRS102_2023": {
+    "documents": 25,
+    "with_figures": 25,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Sage Accounts Production 24.0 - FRS102_2021": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Sage Accounts Production 24.0 - FRS102_2023": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Sage Accounts Production 24.0 - FRS102_2024": {
+    "documents": 9,
+    "with_figures": 9,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Sage Accounts Production 25.0 - FRS102_2023": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Sage Accounts Production 25.0 - FRS102_2025": {
+    "documents": 4,
+    "with_figures": 4,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Sage Accounts Production Advanced 2021 - FRS102_2021": {
+    "documents": 5,
+    "with_figures": 5,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Sage Accounts Production Advanced 2023 - FRS102_2023": {
+    "documents": 17,
+    "with_figures": 17,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Sage Accounts Production Advanced 2024 - FRS102_2024": {
+    "documents": 9,
+    "with_figures": 9,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Sage Accounts Production Advanced 2025 - FRS102_2024": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Sage Accounts Production Advanced 2025 - FRS102_2025": {
+    "documents": 2,
+    "with_figures": 2,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Silverfin": {
+    "documents": 14,
+    "with_figures": 14,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "TVision DynamicsNAV Interface for Brookson Ltd": {
+    "documents": 11,
+    "with_figures": 11,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "Taxfiler": {
+    "documents": 73,
+    "with_figures": 73,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "TinyTax": {
+    "documents": 2,
+    "with_figures": 2,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "VT Final Accounts": {
+    "documents": 195,
+    "with_figures": 195,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "WeFile": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "undeclared": {
+    "documents": 123,
+    "with_figures": 122,
+    "zero_figure": 1,
+    "quarantined": 0,
+    "figure_yield": 0.992
+   },
+   "v2023.25.1 micro_entity_frs_105_v1_1_0 filing": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "v2024.21.1 limited_company_frs_102_section_1a_v1_1_1 companies_house": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "v2024.32.1 micro_entity_frs_105_v1_1_1 filing": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "v2024.34.1 limited_company_frs_102_section_1a_v1_1_1 companies_house": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "v2024.57.1 micro_entity_frs_105_v1_1_2 filing": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "v2025.12.1 micro_entity_frs_105_v1_1_2 filing": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "v2025.15.1 micro_entity_frs_105_v1_1_2 filing": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "v2025.46.1 micro_entity_frs_105_v1_1_2 filing": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "v2025.63.1 limited_company_frs_102_section_1a_v1_1_2 companies_house": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "v2026.10.1 micro_entity_frs_105_v1_1_3 filing": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "v2026.13.1 micro_entity_frs_105_v1_1_3 filing": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "v2026.5.1 micro_entity_frs_105_v1_1_3 filing": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   },
+   "v2026.6.1 micro_entity_frs_105_v1_1_3 filing": {
+    "documents": 1,
+    "with_figures": 1,
+    "zero_figure": 0,
+    "quarantined": 0,
+    "figure_yield": 1.0
+   }
+  },
+  "by_classification_code": {
+   "62011": {
+    "companies": 13,
+    "concepts": {
+     "average_employees": {
+      "available": 11,
+      "filed_without_concept": 1,
+      "unparseable_format": 1
+     },
+     "cash": {
+      "available": 7,
+      "filed_without_concept": 5,
+      "unparseable_format": 1
+     },
+     "creditors_after_one_year": {
+      "available": 1,
+      "filed_without_concept": 11,
+      "unparseable_format": 1
+     },
+     "creditors_within_one_year": {
+      "available": 5,
+      "filed_without_concept": 7,
+      "unparseable_format": 1
+     },
+     "current_assets": {
+      "available": 12,
+      "unparseable_format": 1
+     },
+     "debtors": {
+      "available": 8,
+      "filed_without_concept": 4,
+      "unparseable_format": 1
+     },
+     "depreciation_amortisation": {
+      "filed_without_concept": 12,
+      "unparseable_format": 1
+     },
+     "equity": {
+      "available": 12,
+      "unparseable_format": 1
+     },
+     "fixed_assets": {
+      "available": 5,
+      "filed_without_concept": 7,
+      "unparseable_format": 1
+     },
+     "gross_profit": {
+      "filed_without_concept": 12,
+      "unparseable_format": 1
+     },
+     "net_assets": {
+      "available": 10,
+      "filed_without_concept": 2,
+      "unparseable_format": 1
+     },
+     "net_current_assets": {
+      "available": 12,
+      "unparseable_format": 1
+     },
+     "operating_profit": {
+      "filed_without_concept": 12,
+      "unparseable_format": 1
+     },
+     "profit_before_tax": {
+      "filed_without_concept": 12,
+      "unparseable_format": 1
+     },
+     "profit_for_period": {
+      "available": 1,
+      "filed_without_concept": 11,
+      "unparseable_format": 1
+     },
+     "retained_earnings": {
+      "available": 1,
+      "filed_without_concept": 11,
+      "unparseable_format": 1
+     },
+     "revenue": {
+      "filed_without_concept": 12,
+      "unparseable_format": 1
+     },
+     "share_capital": {
+      "available": 1,
+      "filed_without_concept": 11,
+      "unparseable_format": 1
+     },
+     "staff_costs": {
+      "filed_without_concept": 12,
+      "unparseable_format": 1
+     },
+     "tax_charge": {
+      "filed_without_concept": 12,
+      "unparseable_format": 1
+     },
+     "total_assets_less_current_liabilities": {
+      "available": 11,
+      "filed_without_concept": 1,
+      "unparseable_format": 1
+     }
+    }
+   },
+   "62012": {
+    "companies": 104,
+    "concepts": {
+     "average_employees": {
+      "available": 92,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "cash": {
+      "available": 36,
+      "filed_without_concept": 56,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "creditors_after_one_year": {
+      "available": 29,
+      "filed_without_concept": 63,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "creditors_within_one_year": {
+      "available": 55,
+      "filed_without_concept": 37,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "current_assets": {
+      "available": 86,
+      "filed_without_concept": 6,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "debtors": {
+      "available": 33,
+      "filed_without_concept": 59,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "depreciation_amortisation": {
+      "available": 3,
+      "filed_without_concept": 89,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "equity": {
+      "available": 88,
+      "filed_without_concept": 4,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "fixed_assets": {
+      "available": 56,
+      "filed_without_concept": 36,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "gross_profit": {
+      "available": 1,
+      "filed_without_concept": 91,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "net_assets": {
+      "available": 84,
+      "filed_without_concept": 8,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "net_current_assets": {
+      "available": 88,
+      "filed_without_concept": 4,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "operating_profit": {
+      "available": 1,
+      "filed_without_concept": 91,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "profit_before_tax": {
+      "available": 2,
+      "filed_without_concept": 90,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "profit_for_period": {
+      "available": 7,
+      "filed_without_concept": 85,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "retained_earnings": {
+      "filed_without_concept": 92,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "revenue": {
+      "available": 4,
+      "filed_without_concept": 88,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "share_capital": {
+      "filed_without_concept": 92,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "staff_costs": {
+      "available": 5,
+      "filed_without_concept": 87,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "tax_charge": {
+      "available": 5,
+      "filed_without_concept": 87,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     },
+     "total_assets_less_current_liabilities": {
+      "available": 82,
+      "filed_without_concept": 10,
+      "parse_failed": 3,
+      "unparseable_format": 9
+     }
+    }
+   },
+   "62020": {
+    "companies": 284,
+    "concepts": {
+     "average_employees": {
+      "available": 249,
+      "filed_without_concept": 1,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "cash": {
+      "available": 93,
+      "filed_without_concept": 157,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "creditors_after_one_year": {
+      "available": 41,
+      "filed_without_concept": 209,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "creditors_within_one_year": {
+      "available": 136,
+      "filed_without_concept": 114,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "current_assets": {
+      "available": 220,
+      "filed_without_concept": 30,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "debtors": {
+      "available": 76,
+      "filed_without_concept": 174,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "depreciation_amortisation": {
+      "available": 1,
+      "filed_without_concept": 249,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "equity": {
+      "available": 242,
+      "filed_without_concept": 8,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "fixed_assets": {
+      "available": 156,
+      "filed_without_concept": 94,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "gross_profit": {
+      "available": 3,
+      "filed_without_concept": 247,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "net_assets": {
+      "available": 226,
+      "filed_without_concept": 24,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "net_current_assets": {
+      "available": 240,
+      "filed_without_concept": 10,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "operating_profit": {
+      "available": 3,
+      "filed_without_concept": 247,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "profit_before_tax": {
+      "available": 3,
+      "filed_without_concept": 247,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "profit_for_period": {
+      "available": 15,
+      "filed_without_concept": 235,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "retained_earnings": {
+      "filed_without_concept": 250,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "revenue": {
+      "available": 6,
+      "filed_without_concept": 244,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "share_capital": {
+      "filed_without_concept": 250,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "staff_costs": {
+      "available": 1,
+      "filed_without_concept": 249,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "tax_charge": {
+      "available": 1,
+      "filed_without_concept": 249,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     },
+     "total_assets_less_current_liabilities": {
+      "available": 229,
+      "filed_without_concept": 21,
+      "parse_failed": 9,
+      "unparseable_format": 25
+     }
+    }
+   },
+   "62030": {
+    "companies": 16,
+    "concepts": {
+     "average_employees": {
+      "available": 13,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "cash": {
+      "available": 6,
+      "filed_without_concept": 7,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "creditors_after_one_year": {
+      "available": 3,
+      "filed_without_concept": 10,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "creditors_within_one_year": {
+      "available": 8,
+      "filed_without_concept": 5,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "current_assets": {
+      "available": 12,
+      "filed_without_concept": 1,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "debtors": {
+      "available": 5,
+      "filed_without_concept": 8,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "depreciation_amortisation": {
+      "filed_without_concept": 13,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "equity": {
+      "available": 12,
+      "filed_without_concept": 1,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "fixed_assets": {
+      "available": 11,
+      "filed_without_concept": 2,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "gross_profit": {
+      "available": 2,
+      "filed_without_concept": 11,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "net_assets": {
+      "available": 12,
+      "filed_without_concept": 1,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "net_current_assets": {
+      "available": 11,
+      "filed_without_concept": 2,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "operating_profit": {
+      "available": 1,
+      "filed_without_concept": 12,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "profit_before_tax": {
+      "available": 2,
+      "filed_without_concept": 11,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "profit_for_period": {
+      "available": 2,
+      "filed_without_concept": 11,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "retained_earnings": {
+      "filed_without_concept": 13,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "revenue": {
+      "available": 1,
+      "filed_without_concept": 12,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "share_capital": {
+      "filed_without_concept": 13,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "staff_costs": {
+      "available": 1,
+      "filed_without_concept": 12,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "tax_charge": {
+      "available": 1,
+      "filed_without_concept": 12,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     },
+     "total_assets_less_current_liabilities": {
+      "available": 12,
+      "filed_without_concept": 1,
+      "parse_failed": 1,
+      "unparseable_format": 2
+     }
+    }
+   },
+   "62090": {
+    "companies": 234,
+    "concepts": {
+     "average_employees": {
+      "available": 201,
+      "filed_without_concept": 2,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "cash": {
+      "available": 98,
+      "filed_without_concept": 105,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "creditors_after_one_year": {
+      "available": 45,
+      "filed_without_concept": 158,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "creditors_within_one_year": {
+      "available": 112,
+      "filed_without_concept": 91,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "current_assets": {
+      "available": 187,
+      "filed_without_concept": 16,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "debtors": {
+      "available": 91,
+      "filed_without_concept": 112,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "depreciation_amortisation": {
+      "available": 2,
+      "filed_without_concept": 201,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "equity": {
+      "available": 196,
+      "filed_without_concept": 7,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "fixed_assets": {
+      "available": 127,
+      "filed_without_concept": 76,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "gross_profit": {
+      "available": 1,
+      "filed_without_concept": 202,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "net_assets": {
+      "available": 186,
+      "filed_without_concept": 17,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "net_current_assets": {
+      "available": 198,
+      "filed_without_concept": 5,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "operating_profit": {
+      "available": 1,
+      "filed_without_concept": 202,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "profit_before_tax": {
+      "available": 2,
+      "filed_without_concept": 201,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "profit_for_period": {
+      "available": 10,
+      "filed_without_concept": 193,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "retained_earnings": {
+      "filed_without_concept": 203,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "revenue": {
+      "available": 4,
+      "filed_without_concept": 199,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "share_capital": {
+      "filed_without_concept": 203,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "staff_costs": {
+      "available": 3,
+      "filed_without_concept": 200,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "tax_charge": {
+      "available": 3,
+      "filed_without_concept": 200,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     },
+     "total_assets_less_current_liabilities": {
+      "available": 184,
+      "filed_without_concept": 19,
+      "parse_failed": 6,
+      "unparseable_format": 25
+     }
+    }
+   },
+   "71111": {
+    "companies": 81,
+    "concepts": {
+     "average_employees": {
+      "available": 76,
+      "filed_without_concept": 1,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "cash": {
+      "available": 37,
+      "filed_without_concept": 40,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "creditors_after_one_year": {
+      "available": 14,
+      "filed_without_concept": 63,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "creditors_within_one_year": {
+      "available": 38,
+      "filed_without_concept": 39,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "current_assets": {
+      "available": 71,
+      "filed_without_concept": 6,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "debtors": {
+      "available": 34,
+      "filed_without_concept": 43,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "depreciation_amortisation": {
+      "filed_without_concept": 77,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "equity": {
+      "available": 74,
+      "filed_without_concept": 3,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "fixed_assets": {
+      "available": 50,
+      "filed_without_concept": 27,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "gross_profit": {
+      "filed_without_concept": 77,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "net_assets": {
+      "available": 58,
+      "filed_without_concept": 19,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "net_current_assets": {
+      "available": 74,
+      "filed_without_concept": 3,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "operating_profit": {
+      "filed_without_concept": 77,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "profit_before_tax": {
+      "filed_without_concept": 77,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "profit_for_period": {
+      "available": 6,
+      "filed_without_concept": 71,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "retained_earnings": {
+      "available": 1,
+      "filed_without_concept": 76,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "revenue": {
+      "filed_without_concept": 77,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "share_capital": {
+      "available": 1,
+      "filed_without_concept": 76,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "staff_costs": {
+      "available": 1,
+      "filed_without_concept": 76,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "tax_charge": {
+      "available": 1,
+      "filed_without_concept": 76,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     },
+     "total_assets_less_current_liabilities": {
+      "available": 73,
+      "filed_without_concept": 4,
+      "parse_failed": 2,
+      "unparseable_format": 2
+     }
+    }
+   },
+   "71112": {
+    "companies": 8,
+    "concepts": {
+     "average_employees": {
+      "available": 7,
+      "unparseable_format": 1
+     },
+     "cash": {
+      "available": 5,
+      "filed_without_concept": 2,
+      "unparseable_format": 1
+     },
+     "creditors_after_one_year": {
+      "available": 1,
+      "filed_without_concept": 6,
+      "unparseable_format": 1
+     },
+     "creditors_within_one_year": {
+      "available": 2,
+      "filed_without_concept": 5,
+      "unparseable_format": 1
+     },
+     "current_assets": {
+      "available": 6,
+      "filed_without_concept": 1,
+      "unparseable_format": 1
+     },
+     "debtors": {
+      "available": 4,
+      "filed_without_concept": 3,
+      "unparseable_format": 1
+     },
+     "depreciation_amortisation": {
+      "filed_without_concept": 7,
+      "unparseable_format": 1
+     },
+     "equity": {
+      "available": 7,
+      "unparseable_format": 1
+     },
+     "fixed_assets": {
+      "available": 6,
+      "filed_without_concept": 1,
+      "unparseable_format": 1
+     },
+     "gross_profit": {
+      "filed_without_concept": 7,
+      "unparseable_format": 1
+     },
+     "net_assets": {
+      "available": 6,
+      "filed_without_concept": 1,
+      "unparseable_format": 1
+     },
+     "net_current_assets": {
+      "available": 6,
+      "filed_without_concept": 1,
+      "unparseable_format": 1
+     },
+     "operating_profit": {
+      "filed_without_concept": 7,
+      "unparseable_format": 1
+     },
+     "profit_before_tax": {
+      "filed_without_concept": 7,
+      "unparseable_format": 1
+     },
+     "profit_for_period": {
+      "filed_without_concept": 7,
+      "unparseable_format": 1
+     },
+     "retained_earnings": {
+      "filed_without_concept": 7,
+      "unparseable_format": 1
+     },
+     "revenue": {
+      "filed_without_concept": 7,
+      "unparseable_format": 1
+     },
+     "share_capital": {
+      "filed_without_concept": 7,
+      "unparseable_format": 1
+     },
+     "staff_costs": {
+      "filed_without_concept": 7,
+      "unparseable_format": 1
+     },
+     "tax_charge": {
+      "filed_without_concept": 7,
+      "unparseable_format": 1
+     },
+     "total_assets_less_current_liabilities": {
+      "available": 6,
+      "filed_without_concept": 1,
+      "unparseable_format": 1
+     }
+    }
+   },
+   "71121": {
+    "companies": 17,
+    "concepts": {
+     "average_employees": {
+      "available": 16,
+      "parse_failed": 1
+     },
+     "cash": {
+      "available": 7,
+      "filed_without_concept": 9,
+      "parse_failed": 1
+     },
+     "creditors_after_one_year": {
+      "available": 2,
+      "filed_without_concept": 14,
+      "parse_failed": 1
+     },
+     "creditors_within_one_year": {
+      "available": 6,
+      "filed_without_concept": 10,
+      "parse_failed": 1
+     },
+     "current_assets": {
+      "available": 16,
+      "parse_failed": 1
+     },
+     "debtors": {
+      "available": 7,
+      "filed_without_concept": 9,
+      "parse_failed": 1
+     },
+     "depreciation_amortisation": {
+      "filed_without_concept": 16,
+      "parse_failed": 1
+     },
+     "equity": {
+      "available": 16,
+      "parse_failed": 1
+     },
+     "fixed_assets": {
+      "available": 14,
+      "filed_without_concept": 2,
+      "parse_failed": 1
+     },
+     "gross_profit": {
+      "filed_without_concept": 16,
+      "parse_failed": 1
+     },
+     "net_assets": {
+      "available": 15,
+      "filed_without_concept": 1,
+      "parse_failed": 1
+     },
+     "net_current_assets": {
+      "available": 16,
+      "parse_failed": 1
+     },
+     "operating_profit": {
+      "filed_without_concept": 16,
+      "parse_failed": 1
+     },
+     "profit_before_tax": {
+      "filed_without_concept": 16,
+      "parse_failed": 1
+     },
+     "profit_for_period": {
+      "filed_without_concept": 16,
+      "parse_failed": 1
+     },
+     "retained_earnings": {
+      "filed_without_concept": 16,
+      "parse_failed": 1
+     },
+     "revenue": {
+      "filed_without_concept": 16,
+      "parse_failed": 1
+     },
+     "share_capital": {
+      "filed_without_concept": 16,
+      "parse_failed": 1
+     },
+     "staff_costs": {
+      "filed_without_concept": 16,
+      "parse_failed": 1
+     },
+     "tax_charge": {
+      "filed_without_concept": 16,
+      "parse_failed": 1
+     },
+     "total_assets_less_current_liabilities": {
+      "available": 15,
+      "filed_without_concept": 1,
+      "parse_failed": 1
+     }
+    }
+   },
+   "71122": {
+    "companies": 41,
+    "concepts": {
+     "average_employees": {
+      "available": 38,
+      "unparseable_format": 3
+     },
+     "cash": {
+      "available": 21,
+      "filed_without_concept": 17,
+      "unparseable_format": 3
+     },
+     "creditors_after_one_year": {
+      "available": 10,
+      "filed_without_concept": 28,
+      "unparseable_format": 3
+     },
+     "creditors_within_one_year": {
+      "available": 20,
+      "filed_without_concept": 18,
+      "unparseable_format": 3
+     },
+     "current_assets": {
+      "available": 34,
+      "filed_without_concept": 4,
+      "unparseable_format": 3
+     },
+     "debtors": {
+      "available": 19,
+      "filed_without_concept": 19,
+      "unparseable_format": 3
+     },
+     "depreciation_amortisation": {
+      "filed_without_concept": 38,
+      "unparseable_format": 3
+     },
+     "equity": {
+      "available": 34,
+      "filed_without_concept": 4,
+      "unparseable_format": 3
+     },
+     "fixed_assets": {
+      "available": 20,
+      "filed_without_concept": 18,
+      "unparseable_format": 3
+     },
+     "gross_profit": {
+      "filed_without_concept": 38,
+      "unparseable_format": 3
+     },
+     "net_assets": {
+      "available": 30,
+      "filed_without_concept": 8,
+      "unparseable_format": 3
+     },
+     "net_current_assets": {
+      "available": 35,
+      "filed_without_concept": 3,
+      "unparseable_format": 3
+     },
+     "operating_profit": {
+      "filed_without_concept": 38,
+      "unparseable_format": 3
+     },
+     "profit_before_tax": {
+      "available": 1,
+      "filed_without_concept": 37,
+      "unparseable_format": 3
+     },
+     "profit_for_period": {
+      "available": 1,
+      "filed_without_concept": 37,
+      "unparseable_format": 3
+     },
+     "retained_earnings": {
+      "filed_without_concept": 38,
+      "unparseable_format": 3
+     },
+     "revenue": {
+      "filed_without_concept": 38,
+      "unparseable_format": 3
+     },
+     "share_capital": {
+      "filed_without_concept": 38,
+      "unparseable_format": 3
+     },
+     "staff_costs": {
+      "filed_without_concept": 38,
+      "unparseable_format": 3
+     },
+     "tax_charge": {
+      "filed_without_concept": 38,
+      "unparseable_format": 3
+     },
+     "total_assets_less_current_liabilities": {
+      "available": 35,
+      "filed_without_concept": 3,
+      "unparseable_format": 3
+     }
+    }
+   },
+   "71129": {
+    "companies": 74,
+    "concepts": {
+     "average_employees": {
+      "available": 62,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "cash": {
+      "available": 33,
+      "filed_without_concept": 29,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "creditors_after_one_year": {
+      "available": 10,
+      "filed_without_concept": 52,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "creditors_within_one_year": {
+      "available": 26,
+      "filed_without_concept": 36,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "current_assets": {
+      "available": 60,
+      "filed_without_concept": 2,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "debtors": {
+      "available": 34,
+      "filed_without_concept": 28,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "depreciation_amortisation": {
+      "filed_without_concept": 62,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "equity": {
+      "available": 59,
+      "filed_without_concept": 3,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "fixed_assets": {
+      "available": 32,
+      "filed_without_concept": 30,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "gross_profit": {
+      "filed_without_concept": 62,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "net_assets": {
+      "available": 50,
+      "filed_without_concept": 12,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "net_current_assets": {
+      "available": 59,
+      "filed_without_concept": 3,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "operating_profit": {
+      "filed_without_concept": 62,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "profit_before_tax": {
+      "filed_without_concept": 62,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "profit_for_period": {
+      "available": 1,
+      "filed_without_concept": 61,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "retained_earnings": {
+      "filed_without_concept": 62,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "revenue": {
+      "filed_without_concept": 62,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "share_capital": {
+      "filed_without_concept": 62,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "staff_costs": {
+      "filed_without_concept": 62,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "tax_charge": {
+      "filed_without_concept": 62,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     },
+     "total_assets_less_current_liabilities": {
+      "available": 57,
+      "filed_without_concept": 5,
+      "parse_failed": 5,
+      "unparseable_format": 7
+     }
+    }
+   },
+   "86101": {
+    "companies": 6,
+    "concepts": {
+     "average_employees": {
+      "available": 2,
+      "unparseable_format": 4
+     },
+     "cash": {
+      "available": 1,
+      "filed_without_concept": 1,
+      "unparseable_format": 4
+     },
+     "creditors_after_one_year": {
+      "filed_without_concept": 2,
+      "unparseable_format": 4
+     },
+     "creditors_within_one_year": {
+      "available": 2,
+      "unparseable_format": 4
+     },
+     "current_assets": {
+      "available": 2,
+      "unparseable_format": 4
+     },
+     "debtors": {
+      "available": 1,
+      "filed_without_concept": 1,
+      "unparseable_format": 4
+     },
+     "depreciation_amortisation": {
+      "filed_without_concept": 2,
+      "unparseable_format": 4
+     },
+     "equity": {
+      "available": 2,
+      "unparseable_format": 4
+     },
+     "fixed_assets": {
+      "filed_without_concept": 2,
+      "unparseable_format": 4
+     },
+     "gross_profit": {
+      "filed_without_concept": 2,
+      "unparseable_format": 4
+     },
+     "net_assets": {
+      "available": 2,
+      "unparseable_format": 4
+     },
+     "net_current_assets": {
+      "available": 2,
+      "unparseable_format": 4
+     },
+     "operating_profit": {
+      "filed_without_concept": 2,
+      "unparseable_format": 4
+     },
+     "profit_before_tax": {
+      "filed_without_concept": 2,
+      "unparseable_format": 4
+     },
+     "profit_for_period": {
+      "filed_without_concept": 2,
+      "unparseable_format": 4
+     },
+     "retained_earnings": {
+      "filed_without_concept": 2,
+      "unparseable_format": 4
+     },
+     "revenue": {
+      "filed_without_concept": 2,
+      "unparseable_format": 4
+     },
+     "share_capital": {
+      "filed_without_concept": 2,
+      "unparseable_format": 4
+     },
+     "staff_costs": {
+      "filed_without_concept": 2,
+      "unparseable_format": 4
+     },
+     "tax_charge": {
+      "filed_without_concept": 2,
+      "unparseable_format": 4
+     },
+     "total_assets_less_current_liabilities": {
+      "available": 2,
+      "unparseable_format": 4
+     }
+    }
+   },
+   "86102": {
+    "companies": 5,
+    "concepts": {
+     "average_employees": {
+      "available": 3,
+      "unparseable_format": 2
+     },
+     "cash": {
+      "available": 3,
+      "unparseable_format": 2
+     },
+     "creditors_after_one_year": {
+      "available": 1,
+      "filed_without_concept": 2,
+      "unparseable_format": 2
+     },
+     "creditors_within_one_year": {
+      "available": 1,
+      "filed_without_concept": 2,
+      "unparseable_format": 2
+     },
+     "current_assets": {
+      "available": 3,
+      "unparseable_format": 2
+     },
+     "debtors": {
+      "available": 3,
+      "unparseable_format": 2
+     },
+     "depreciation_amortisation": {
+      "filed_without_concept": 3,
+      "unparseable_format": 2
+     },
+     "equity": {
+      "available": 3,
+      "unparseable_format": 2
+     },
+     "fixed_assets": {
+      "available": 1,
+      "filed_without_concept": 2,
+      "unparseable_format": 2
+     },
+     "gross_profit": {
+      "filed_without_concept": 3,
+      "unparseable_format": 2
+     },
+     "net_assets": {
+      "available": 2,
+      "filed_without_concept": 1,
+      "unparseable_format": 2
+     },
+     "net_current_assets": {
+      "available": 3,
+      "unparseable_format": 2
+     },
+     "operating_profit": {
+      "filed_without_concept": 3,
+      "unparseable_format": 2
+     },
+     "profit_before_tax": {
+      "filed_without_concept": 3,
+      "unparseable_format": 2
+     },
+     "profit_for_period": {
+      "filed_without_concept": 3,
+      "unparseable_format": 2
+     },
+     "retained_earnings": {
+      "filed_without_concept": 3,
+      "unparseable_format": 2
+     },
+     "revenue": {
+      "filed_without_concept": 3,
+      "unparseable_format": 2
+     },
+     "share_capital": {
+      "filed_without_concept": 3,
+      "unparseable_format": 2
+     },
+     "staff_costs": {
+      "filed_without_concept": 3,
+      "unparseable_format": 2
+     },
+     "tax_charge": {
+      "filed_without_concept": 3,
+      "unparseable_format": 2
+     },
+     "total_assets_less_current_liabilities": {
+      "available": 3,
+      "unparseable_format": 2
+     }
+    }
+   }
+  }
+ }
+}
