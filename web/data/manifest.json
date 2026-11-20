@@ -1,60 +1,50 @@
 {
  "format": 1,
- "generated_at": "2026-11-19T11:45:38+00:00",
+ "generated_at": "2026-11-20T11:33:24+00:00",
  "run": {
-  "run_id": "20261119T095807Z-6ae6bd63",
+  "run_id": "20261120T094559Z-9bd5e4eb",
   "git_sha": null,
-  "started_at": "2026-11-19 09:58:07.627765",
-  "finished_at": "2026-11-19 11:43:59.305482"
+  "started_at": "2026-11-20 09:45:59.602924",
+  "finished_at": "2026-11-20 11:31:48.144794"
  },
  "bundle": {
-  "asset": "web-data-20261119T095807Z-6ae6bd63.jsonl.gz",
-  "url": "https://github.com/modiparv/Deal-Origination/releases/download/data-store/web-data-20261119T095807Z-6ae6bd63.jsonl.gz",
-  "sha256": "a28d07e2ab6aa135f46bb187f91b6bb68d23d622dfc605b6c154bcfd9efa0572",
-  "bytes": 328314648
+  "asset": "web-data-20261120T094559Z-9bd5e4eb.jsonl.gz",
+  "url": "https://github.com/modiparv/Deal-Origination/releases/download/data-store/web-data-20261120T094559Z-9bd5e4eb.jsonl.gz",
+  "sha256": "3fa8a73ce6a2495d39e61cba3652d7dfb4b97b737669bf76bc23d08abaed09c7",
+  "bytes": 332355557
  },
  "buckets": {
   "count": 1000,
   "key": "registration_id[-3:] (non-alphanumerics \u2192 _)"
  },
  "totals": {
-  "companies": 55400,
-  "figures": 2741181,
-  "documents": 166190,
-  "filings": 4075477,
-  "officers": 335515,
-  "beneficial_owners": 94197,
-  "security_interests": 41934,
-  "restatement_events": 20344
+  "companies": 56200,
+  "figures": 2780610,
+  "documents": 168590,
+  "filings": 4112035,
+  "officers": 337885,
+  "beneficial_owners": 95498,
+  "security_interests": 42095,
+  "restatement_events": 20667
  },
  "modes": {
-  "signal": 5623,
-  "financial": 48611,
-  "parse_failed": 1166
+  "signal": 5673,
+  "financial": 49331,
+  "parse_failed": 1196
  },
- "products": 510,
+ "products": 513,
  "coverage_by_status": {
-  "unparseable_format": 117957,
-  "available": 391287,
-  "filed_without_concept": 629565,
-  "parse_failed": 24486,
+  "unparseable_format": 119007,
+  "available": 396963,
+  "filed_without_concept": 639009,
+  "parse_failed": 25116,
   "not_filed": 63
  },
  "parse_failures": {
-  "documents": 1166,
-  "companies": 1166
+  "documents": 1196,
+  "companies": 1196
  },
  "runs": [
-  {
-   "run_id": "20261011T082312Z-65a5c08b",
-   "command": "ingest",
-   "started_at": "2026-10-11 08:23:12.505498",
-   "finished_at": "2026-10-11 10:08:50.864138",
-   "exit_status": 0,
-   "ingested": 800,
-   "errors": 0,
-   "figures_new": 39972
-  },
   {
    "run_id": "20261012T084455Z-401d5985",
    "command": "ingest",
@@ -444,6 +434,16 @@
    "ingested": 800,
    "errors": 10,
    "figures_new": 38550
+  },
+  {
+   "run_id": "20261120T094559Z-9bd5e4eb",
+   "command": "ingest",
+   "started_at": "2026-11-20 09:45:59.602924",
+   "finished_at": "2026-11-20 11:31:48.144794",
+   "exit_status": 0,
+   "ingested": 800,
+   "errors": 0,
+   "figures_new": 39429
   }
  ]
 }
